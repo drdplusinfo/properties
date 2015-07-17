@@ -1,0 +1,34 @@
+{
+  "name": "drd-plus/properties",
+  "license": "MIT",
+  "type": "project",
+  "description": "Drd+ properties",
+  "autoload": {
+    "psr-4": {
+      "DrdPlus\\": "DrdPlus/"
+    }
+  },
+  "require": {
+    "php": ">=5.5.0",
+    "doctrineum/strict-string": "dev-master",
+    "doctrineum/float": "dev-master",
+    "doctrineum/integer": "dev-master",
+    "doctrineum/scalar": "dev-master",
+    "granam/strict-string": "dev-master",
+    "granam/strict-float": "dev-master",
+    "granam/strict-integer": "dev-master",
+    "granam/float": "dev-master",
+    "granam/integer": "dev-master",
+    "granam/strict-scalar": "dev-master",
+    "granam/scalar": "dev-master",
+    "granam/exception-hierarchy": "dev-master",
+    "granam/strict-object": "dev-master",
+    "drd-plus/tools": "dev-master",
+    "drd/dice-roll": "dev-master",
+    "granam/exception-hierarchy": "dev-master"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.4",
+    "mockery/mockery": ">=0.9"
+  }
+}
