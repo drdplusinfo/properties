@@ -1,9 +1,7 @@
 <?php
 namespace DrdPlus\Properties\RemarkableSenses;
 
-use Doctrineum\Strict\String\StrictStringEnum;
-
-class Smell extends StrictStringEnum implements SenseInterface
+class Smell extends Parts\AbstractRemarkableSense
 {
 
     const SMELL = 'smell';
@@ -15,4 +13,13 @@ class Smell extends StrictStringEnum implements SenseInterface
     {
         return static::createByValue(self::SMELL);
     }
+
+    /**
+     * @return string
+     */
+    public function getCode()
+    {
+        return self::SMELL;
+    }
+
 }

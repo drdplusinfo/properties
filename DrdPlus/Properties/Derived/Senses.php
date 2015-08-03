@@ -1,7 +1,14 @@
 <?php
 namespace DrdPlus\Properties\Derived;
 
-class Senses extends DerivedProperty
+use DrdPlus\Properties\Derived\Parts\AbstractDerivedProperty;
+
+class Senses extends AbstractDerivedProperty
 {
     const SENSES = 'senses';
+
+    public function getCode()
+    {
+        return self::SENSES;
+    }
 }

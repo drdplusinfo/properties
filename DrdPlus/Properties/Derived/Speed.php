@@ -1,7 +1,14 @@
 <?php
 namespace DrdPlus\Properties\Derived;
 
-class Speed extends DerivedProperty
+use DrdPlus\Properties\Derived\Parts\AbstractDerivedProperty;
+
+class Speed extends AbstractDerivedProperty
 {
     const SPEED = 'speed';
+
+    public function getCode()
+    {
+        return self::SPEED;
+    }
 }

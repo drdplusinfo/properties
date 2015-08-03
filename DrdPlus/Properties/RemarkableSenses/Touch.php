@@ -1,9 +1,7 @@
 <?php
 namespace DrdPlus\Properties\RemarkableSenses;
 
-use Doctrineum\Strict\String\StrictStringEnum;
-
-class Touch extends StrictStringEnum implements SenseInterface
+class Touch extends Parts\AbstractRemarkableSense
 {
 
     const TOUCH = 'touch';
@@ -14,5 +12,13 @@ class Touch extends StrictStringEnum implements SenseInterface
     public static function getIt()
     {
         return static::createByValue(self::TOUCH);
+    }
+
+    /**
+     * @return string
+     */
+    public function getCode()
+    {
+        return self::TOUCH;
     }
 }

@@ -1,9 +1,7 @@
 <?php
 namespace DrdPlus\Properties\RemarkableSenses;
 
-use Doctrineum\Strict\String\StrictStringEnum;
-
-class Hearing extends StrictStringEnum implements SenseInterface
+class Hearing extends Parts\AbstractRemarkableSense
 {
 
     const HEARING = 'hearing';
@@ -13,6 +11,15 @@ class Hearing extends StrictStringEnum implements SenseInterface
      */
     public static function getIt()
     {
-        return static::createByValue(self::HEARING);
+        return static::getEnum(self::HEARING);
     }
+
+    /**
+     * @return string
+     */
+    public function getCode()
+    {
+        return self::HEARING;
+    }
+
 }

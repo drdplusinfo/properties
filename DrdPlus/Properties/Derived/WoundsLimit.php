@@ -1,7 +1,14 @@
 <?php
 namespace DrdPlus\Properties\Derived;
 
-class WoundsLimit extends DerivedProperty
+use DrdPlus\Properties\Derived\Parts\AbstractDerivedProperty;
+
+class WoundsLimit extends AbstractDerivedProperty
 {
     const WOUNDS_LIMIT = 'wounds_limit';
+
+    public function getCode()
+    {
+        return self::WOUNDS_LIMIT;
+    }
 }
