@@ -1,5 +1,5 @@
 <?php
-namespace DrdPlus\Tests\Properties\Base\EnumTypes;
+namespace DrdPlus\Tests\Properties\EnumTypes;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
@@ -12,7 +12,7 @@ abstract class AbstractTestOfPropertyType extends TestWithMockery
     /**
      * @test
      */
-    public function type_is_as_expected()
+    public function Type_has_expected_name()
     {
         $propertyTypeClass = $this->getPropertyTypeClass();
         $propertyName = $this->getPropertyName();
@@ -56,9 +56,9 @@ abstract class AbstractTestOfPropertyType extends TestWithMockery
 
     /**
      * @test
-     * @depends type_is_as_expected
+     * @depends Type_has_expected_name
      */
-    public function can_be_registered()
+    public function I_can_registered_the_type()
     {
         $propertyTypeClass = $this->getPropertyTypeClass();
         $propertyTypeClass::registerSelf();
@@ -67,16 +67,18 @@ abstract class AbstractTestOfPropertyType extends TestWithMockery
 
     /**
      * @test
-     * @depends can_be_registered
+     * @depends I_can_registered_the_type
      */
-    public function conversion_to_php_gives_property()
+    public function Type_can_be_converted_to_PHP_value()
     {
         $propertyTypeClass = $this->getPropertyTypeClass();
         $propertyType = Type::getType($propertyTypeClass::getTypeName());
-        $phpValue = $propertyType->convertToPHPValue($value = 12345, $this->getPlatform());
+        $phpValue = $propertyType->convertToPHPValue($value = $this->getValue(), $this->getPlatform());
         $this->assertInstanceOf($this->getPropertyClass(), $phpValue);
         $this->assertEquals($value, $phpValue->__toString());
     }
+
+    abstract protected function getValue();
 
     protected function getPropertyClass()
     {

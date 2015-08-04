@@ -8,15 +8,6 @@ class WeightInKg extends AbstractFloatProperty
     const WEIGHT_IN_KG = 'weight_in_kg';
 
     /**
-     * @param int $value
-     * @return self
-     */
-    public static function getIt($value)
-    {
-        return static::getEnum($value);
-    }
-
-    /**
      * @return string
      */
     public function getCode()
@@ -24,11 +15,4 @@ class WeightInKg extends AbstractFloatProperty
         return self::WEIGHT_IN_KG;
     }
 
-    /**
-     * @return int
-     */
-    public function getValue()
-    {
-        return $this->getEnumValue();
-    }
 }

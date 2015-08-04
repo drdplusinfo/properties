@@ -1,7 +1,9 @@
 <?php
 namespace DrdPlus\Tests\Properties\Base\EnumTypes;
 
-class WillTypeTest extends AbstractTestOfPropertyType
+use DrdPlus\Tests\Properties\EnumTypes\AbstractTestOfIntegerPropertyType;
+
+class WillTypeTest extends AbstractTestOfIntegerPropertyType
 {
 
 }

@@ -1,6 +1,8 @@
 <?php
 namespace DrdPlus\Tests\Properties\Base;
 
-class WillTest extends AbstractTestOfProperty
+use DrdPlus\Tests\Properties\AbstractTestOfIntegerStoredProperty;
+
+class WillTest extends AbstractTestOfIntegerStoredProperty
 {
 }

@@ -1,9 +1,8 @@
 <?php
-namespace DrdPlus\Tests\Properties\Base;
+namespace DrdPlus\Tests\Properties;
 
 use Doctrineum\Scalar\Enum;
 use DrdPlus\Properties\PropertyInterface;
-use DrdPlus\Tests\Properties\TestWithMockery;
 
 abstract class AbstractTestOfProperty extends TestWithMockery
 {
@@ -13,19 +12,32 @@ abstract class AbstractTestOfProperty extends TestWithMockery
      *
      * @test
      */
-    public function can_be_created()
+    public function I_can_create_property()
     {
         $propertyClass = $this->getPropertyClass();
-        $instance = $propertyClass::getEnum(12345);
+        $instance = $this->createInstance($propertyClass, $this->getValue());
         $this->assertInstanceOf($propertyClass, $instance);
 
         return $instance;
     }
 
     /**
+     * @param string $propertyClass
+     * @param $value
+     *
+     * @return PropertyInterface
+     */
+    abstract protected function createInstance($propertyClass, $value);
+
+    /**
+     * @return int|float|string
+     */
+    abstract protected function getValue();
+
+    /**
      * @return string|PropertyInterface|Enum
      */
-    private function getPropertyClass()
+    protected function getPropertyClass()
     {
         return preg_replace('~Tests\\\(.+)Test$~', '$1', static::class);
     }
@@ -34,9 +46,9 @@ abstract class AbstractTestOfProperty extends TestWithMockery
      * @param PropertyInterface $property
      *
      * @test
-     * @depends can_be_created
+     * @depends I_can_create_property
      */
-    public function has_expected_property_code(PropertyInterface $property)
+    public function I_can_get_property_code(PropertyInterface $property)
     {
         $this->assertSame($this->getExpectedPropertyCode(), $property->getCode());
     }
@@ -64,13 +76,13 @@ abstract class AbstractTestOfProperty extends TestWithMockery
 
     /**
      * @test
-     * @depends can_be_created
+     * @depends I_can_create_property
      */
-    public function can_give_value_by_shortcut_getter()
+    public function I_can_get_value_of_property()
     {
         $propertyClass = $this->getPropertyClass();
         /** @var PropertyInterface $property */
-        $property = $propertyClass::getEnum($value = 123);
+        $property = $this->createInstance($propertyClass, $value = $this->getValue());
         $this->assertSame($value, $property->getValue());
     }
 }

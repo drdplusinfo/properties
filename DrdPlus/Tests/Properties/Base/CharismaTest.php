@@ -1,6 +1,8 @@
 <?php
 namespace DrdPlus\Tests\Properties\Base;
 
-class CharismaTest extends AbstractTestOfProperty
+use DrdPlus\Tests\Properties\AbstractTestOfIntegerStoredProperty;
+
+class CharismaTest extends AbstractTestOfIntegerStoredProperty
 {
 }

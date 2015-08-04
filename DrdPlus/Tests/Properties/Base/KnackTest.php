@@ -1,6 +1,8 @@
 <?php
 namespace DrdPlus\Tests\Properties\Base;
 
-class KnackTest extends AbstractTestOfProperty
+use DrdPlus\Tests\Properties\AbstractTestOfIntegerStoredProperty;
+
+class KnackTest extends AbstractTestOfIntegerStoredProperty
 {
 }

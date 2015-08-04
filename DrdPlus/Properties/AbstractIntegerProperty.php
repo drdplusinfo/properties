@@ -10,7 +10,7 @@ abstract class AbstractIntegerProperty extends IntegerEnum implements PropertyIn
     /**
      * @param int $value
      *
-     * @return AbstractIntegerProperty
+     * @return static
      */
     public static function getIt($value)
     {

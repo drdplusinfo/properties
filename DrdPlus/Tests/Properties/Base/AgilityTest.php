@@ -1,6 +1,8 @@
 <?php
 namespace DrdPlus\Tests\Properties\Base;
 
-class AgilityTest extends AbstractTestOfProperty
+use DrdPlus\Tests\Properties\AbstractTestOfIntegerStoredProperty;
+
+class AgilityTest extends AbstractTestOfIntegerStoredProperty
 {
 }

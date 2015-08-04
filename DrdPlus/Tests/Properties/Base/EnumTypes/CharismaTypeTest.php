@@ -1,7 +1,9 @@
 <?php
 namespace DrdPlus\Tests\Properties\Base\EnumTypes;
 
-class CharismaTypeTest extends AbstractTestOfPropertyType
+use DrdPlus\Tests\Properties\EnumTypes\AbstractTestOfIntegerPropertyType;
+
+class CharismaTypeTest extends AbstractTestOfIntegerPropertyType
 {
 
 }
