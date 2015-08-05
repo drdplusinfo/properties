@@ -2,6 +2,11 @@
 namespace DrdPlus\Properties\RemarkableSenses\EnumTypes;
 
 use DrdPlus\Properties\EnumTypes\AbstractStringType;
+use DrdPlus\Properties\RemarkableSenses\Hearing;
+use DrdPlus\Properties\RemarkableSenses\Sight;
+use DrdPlus\Properties\RemarkableSenses\Smell;
+use DrdPlus\Properties\RemarkableSenses\Taste;
+use DrdPlus\Properties\RemarkableSenses\Touch;
 
 class RemarkableSenseType extends AbstractStringType
 {
@@ -14,10 +19,20 @@ class RemarkableSenseType extends AbstractStringType
         /*
          * Remarkable senses are enum subtypes - one column for one and only one sense
          */
-        self::addSubTypeEnum(HearingType::class, '~' . HearingType::class . '~' /* regexp */);
-        self::addSubTypeEnum(SightType::class, '~' . SightType::class . '~' /* regexp */);
-        self::addSubTypeEnum(SmellType::class, '~' . SmellType::class . '~' /* regexp */);
-        self::addSubTypeEnum(TasteType::class, '~' . TasteType::class . '~' /* regexp */);
-        self::addSubTypeEnum(TouchType::class, '~' . TouchType::class . '~' /* regexp */);
+        if (!self::hasSubTypeEnum(Hearing::class)) {
+            self::addSubTypeEnum(Hearing::class, '~' . Hearing::HEARING . '~' /* regexp */);
+        }
+        if (!self::hasSubTypeEnum(Sight::class)) {
+            self::addSubTypeEnum(Sight::class, '~' . Sight::SIGHT . '~' /* regexp */);
+        }
+        if (!self::hasSubTypeEnum(Smell::class)) {
+            self::addSubTypeEnum(Smell::class, '~' . Smell::SMELL . '~' /* regexp */);
+        }
+        if (!self::hasSubTypeEnum(Taste::class)) {
+            self::addSubTypeEnum(Taste::class, '~' . Taste::TASTE . '~' /* regexp */);
+        }
+        if (!self::hasSubTypeEnum(Touch::class)) {
+            self::addSubTypeEnum(Touch::class, '~' . Touch::TOUCH . '~' /* regexp */);
+        }
     }
 }
