@@ -13,6 +13,11 @@ class Size extends IntegerObject implements PropertyInterface
 {
     const SIZE = 'size';
 
+    public static function getIt($value)
+    {
+        return new static($value);
+    }
+
     /**
      * @return string
      */
