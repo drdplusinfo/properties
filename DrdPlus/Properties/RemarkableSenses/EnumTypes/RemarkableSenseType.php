@@ -1,14 +1,14 @@
 <?php
 namespace DrdPlus\Properties\RemarkableSenses\EnumTypes;
 
-use DrdPlus\Properties\EnumTypes\AbstractStringType;
+use Doctrineum\Strict\String\StrictStringEnumType;
 use DrdPlus\Properties\RemarkableSenses\Hearing;
 use DrdPlus\Properties\RemarkableSenses\Sight;
 use DrdPlus\Properties\RemarkableSenses\Smell;
 use DrdPlus\Properties\RemarkableSenses\Taste;
 use DrdPlus\Properties\RemarkableSenses\Touch;
 
-class RemarkableSenseType extends AbstractStringType
+class RemarkableSenseType extends StrictStringEnumType
 {
     const REMARKABLE_SENSE = 'remarkable_sense';
 

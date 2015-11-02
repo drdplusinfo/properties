@@ -1,10 +1,10 @@
 <?php
 namespace DrdPlus\Properties\Base\EnumTypes;
 
+use Doctrineum\Integer\IntegerEnumType;
 use DrdPlus\Properties\Base\Will;
-use DrdPlus\Properties\EnumTypes\AbstractIntegerType;
 
-class WillType extends AbstractIntegerType
+class WillType extends IntegerEnumType
 {
     const WILL = Will::WILL;
 }

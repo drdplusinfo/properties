@@ -1,10 +1,10 @@
 <?php
 namespace DrdPlus\Properties\Base\EnumTypes;
 
+use Doctrineum\Integer\IntegerEnumType;
 use DrdPlus\Properties\Base\Knack;
-use DrdPlus\Properties\EnumTypes\AbstractIntegerType;
 
-class KnackType extends AbstractIntegerType
+class KnackType extends IntegerEnumType
 {
     const KNACK = Knack::KNACK;
 }

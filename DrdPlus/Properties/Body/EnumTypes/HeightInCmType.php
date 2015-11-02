@@ -1,10 +1,10 @@
 <?php
 namespace DrdPlus\Properties\Body\EnumTypes;
 
+use Doctrineum\Float\FloatEnumType;
 use DrdPlus\Properties\Body\HeightInCm;
-use DrdPlus\Properties\EnumTypes\AbstractFloatType;
 
-class HeightInCmType extends AbstractFloatType
+class HeightInCmType extends FloatEnumType
 {
 
     const HEIGHT_IN_CM = HeightInCm::HEIGHT_IN_CM;

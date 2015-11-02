@@ -10,6 +10,8 @@ use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Base\Will;
 use DrdPlus\Properties\Body\WeightInKg;
 use DrdPlus\Properties\EnumTypes\Registrar;
+use DrdPlus\Properties\Native\Infravision;
+use DrdPlus\Properties\Native\NativeRegeneration;
 use DrdPlus\Properties\RemarkableSenses\EnumTypes\RemarkableSenseType;
 use DrdPlus\Properties\RemarkableSenses\Hearing;
 use DrdPlus\Properties\RemarkableSenses\Sight;
@@ -36,11 +38,14 @@ class RegistrarTest extends TestWithMockery
 
         $this->assertTrue(Type::hasType(WeightInKg::WEIGHT_IN_KG));
 
-        $this->assertTrue(Type::hasType(RemarkableSenseType::REMARKABLE_SENSE));
+        $this->assertTrue(Type::hasType(RemarkableSenseType::getTypeName()));
         $this->assertTrue(RemarkableSenseType::hasSubTypeEnum(Hearing::class));
         $this->assertTrue(RemarkableSenseType::hasSubTypeEnum(Sight::class));
         $this->assertTrue(RemarkableSenseType::hasSubTypeEnum(Smell::class));
         $this->assertTrue(RemarkableSenseType::hasSubTypeEnum(Taste::class));
         $this->assertTrue(RemarkableSenseType::hasSubTypeEnum(Touch::class));
+
+        $this->assertTrue(Type::hasType(Infravision::INFRAVISION));
+        $this->assertTrue(Type::hasType(NativeRegeneration::NATIVE_REGENERATION));
     }
 }

@@ -8,6 +8,8 @@ use DrdPlus\Properties\Base\EnumTypes\KnackType;
 use DrdPlus\Properties\Base\EnumTypes\StrengthType;
 use DrdPlus\Properties\Base\EnumTypes\WillType;
 use DrdPlus\Properties\Body\EnumTypes\WeightInKgType;
+use DrdPlus\Properties\Native\EnumTypes\InfravisionType;
+use DrdPlus\Properties\Native\EnumTypes\NativeRegenerationType;
 use DrdPlus\Properties\RemarkableSenses\EnumTypes\RemarkableSenseType;
 use Granam\Strict\Object\StrictObject;
 
@@ -18,6 +20,7 @@ class Registrar extends StrictObject
         static::registerBase();
         static::registerBody();
         static::registerRemarkableSenses();
+        static::registerNative();
     }
 
     protected static function registerBase()
@@ -39,5 +42,11 @@ class Registrar extends StrictObject
     {
         // Senses are subtypes of enum
         RemarkableSenseType::registerSenses();
+    }
+
+    protected static function registerNative()
+    {
+        InfravisionType::registerSelf();
+        NativeRegenerationType::registerSelf();
     }
 }

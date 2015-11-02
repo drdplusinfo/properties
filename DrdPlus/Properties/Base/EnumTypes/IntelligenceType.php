@@ -1,10 +1,10 @@
 <?php
 namespace DrdPlus\Properties\Base\EnumTypes;
 
+use Doctrineum\Integer\IntegerEnumType;
 use DrdPlus\Properties\Base\Intelligence;
-use DrdPlus\Properties\EnumTypes\AbstractIntegerType;
 
-class IntelligenceType extends AbstractIntegerType
+class IntelligenceType extends IntegerEnumType
 {
     const INTELLIGENCE = Intelligence::INTELLIGENCE;
 }

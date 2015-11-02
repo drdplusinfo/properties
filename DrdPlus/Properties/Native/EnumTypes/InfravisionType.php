@@ -1,10 +1,10 @@
 <?php
 namespace DrdPlus\Properties\Native\EnumTypes;
 
+use Doctrineum\Boolean\BooleanEnumType;
 use DrdPlus\Properties\Native\Infravision;
-use DrdPlus\Properties\EnumTypes\AbstractBooleanType;
 
-class InfravisionType extends AbstractBooleanType
+class InfravisionType extends BooleanEnumType
 {
     const INFRAVISION = Infravision::INFRAVISION;
 }
