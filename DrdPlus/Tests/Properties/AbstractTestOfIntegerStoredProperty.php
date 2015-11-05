@@ -13,16 +13,16 @@ abstract class AbstractTestOfIntegerStoredProperty extends AbstractTestOfStoredP
     {
         $propertyClass = $this->getPropertyClass();
         /** @var AbstractIntegerProperty $propertyClass */
-        $property = $propertyClass::getIt($this->getValue());
+        $property = $propertyClass::getIt($this->getValuesForTest());
         $this->assertInstanceOf($propertyClass, $property);
     }
 
     /**
      * @return int
      */
-    protected function getValue()
+    protected function getValuesForTest()
     {
-        return 123456;
+        return [123456];
     }
 
 }

@@ -8,11 +8,11 @@ class InfravisionTest extends \PHPUnit_Framework_TestCase
      */
     public function I_can_create_infravision()
     {
-        $infravision = new Infravision(true);
+        $infravision = Infravision::getIt(true);
         $this->assertSame(true, $infravision->getValue());
         $this->assertSame('infravision', $infravision->getCode());
 
-        $infravision = new Infravision(false);
+        $infravision = Infravision::getIt(false);
         $this->assertSame(false, $infravision->getValue());
     }
 }

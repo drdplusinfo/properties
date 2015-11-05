@@ -1,19 +1,9 @@
 <?php
 namespace DrdPlus\Tests\Properties\Body;
 
-use DrdPlus\Properties\Body\Size;
-use DrdPlus\Tests\Properties\TestWithMockery;
+use DrdPlus\Tests\Properties\AbstractTestOfIntegerStoredProperty;
 
-class SizeTest extends TestWithMockery
+class SizeTest extends AbstractTestOfIntegerStoredProperty
 {
 
-    /**
-     * @test
-     */
-    public function I_can_create_size()
-    {
-        $size = new Size($value = 123);
-        $this->assertSame($value, $size->getValue());
-        $this->assertSame('size', $size->getCode());
-    }
 }

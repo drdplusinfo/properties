@@ -6,14 +6,9 @@ use DrdPlus\Tests\Properties\AbstractTestOfProperty;
 class AbstractTestOfDerivedProperty extends AbstractTestOfProperty
 {
 
-    protected function createInstance($propertyClass, $value)
+    protected function getValuesForTest()
     {
-        return new $propertyClass($value);
-    }
-
-    protected function getValue()
-    {
-        return 123;
+        return [123];
     }
 
 }

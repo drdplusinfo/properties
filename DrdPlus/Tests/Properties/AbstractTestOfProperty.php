@@ -15,7 +15,7 @@ abstract class AbstractTestOfProperty extends TestWithMockery
     public function I_can_create_property()
     {
         $propertyClass = $this->getPropertyClass();
-        $instance = $this->createInstance($propertyClass, $this->getValue());
+        $instance = $this->createInstance($propertyClass, $this->getValuesForTest());
         $this->assertInstanceOf($propertyClass, $instance);
 
         return $instance;
@@ -27,12 +27,16 @@ abstract class AbstractTestOfProperty extends TestWithMockery
      *
      * @return PropertyInterface
      */
-    abstract protected function createInstance($propertyClass, $value);
+    protected function createInstance($propertyClass, $value)
+    {
+        /** @var PropertyInterface $propertyClass */
+        return $propertyClass::getIt($value);
+    }
 
     /**
-     * @return int|float|string
+     * @return []
      */
-    abstract protected function getValue();
+    abstract protected function getValuesForTest();
 
     /**
      * @return string|PropertyInterface|Enum
@@ -81,8 +85,11 @@ abstract class AbstractTestOfProperty extends TestWithMockery
     public function I_can_get_value_of_property()
     {
         $propertyClass = $this->getPropertyClass();
-        /** @var PropertyInterface $property */
-        $property = $this->createInstance($propertyClass, $value = $this->getValue());
-        $this->assertSame($value, $property->getValue());
+        foreach ($this->getValuesForTest() as $value) {
+            /** @var PropertyInterface $propertyClass */
+            $property = $propertyClass::getIt($value);
+            $this->assertInstanceOf($propertyClass, $property);
+            $this->assertSame($value, $property->getValue());
+        }
     }
 }

@@ -13,16 +13,15 @@ abstract class AbstractTestOfFloatStoredProperty extends AbstractTestOfStoredPro
     {
         $propertyClass = $this->getPropertyClass();
         /** @var AbstractFloatProperty $propertyClass */
-        $property = $propertyClass::getIt($this->getValue());
-        $this->assertInstanceOf($propertyClass, $property);
+        foreach ($this->getValuesForTest() as $value) {
+            $property = $propertyClass::getIt($value);
+            $this->assertInstanceOf($propertyClass, $property);
+        }
     }
 
-    /**
-     * @return float
-     */
-    protected function getValue()
+    protected function getValuesForTest()
     {
-        return 123.456;
+        return [123.456];
     }
 
 }

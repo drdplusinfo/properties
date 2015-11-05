@@ -6,9 +6,9 @@ abstract class AbstractTestOfStringStoredProperty extends AbstractTestOfStoredPr
     /**
      * @return string
      */
-    protected function getValue()
+    protected function getValuesForTest()
     {
-        return 'foo';
+        return ['foo'];
     }
 
 }
