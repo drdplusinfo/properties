@@ -3,7 +3,10 @@ namespace DrdPlus\Properties\Body;
 
 use DrdPlus\Properties\AbstractFloatProperty;
 
-class WeightInKg extends AbstractFloatProperty
+/**
+ * @method static WeightInKg getIt($value)
+ */
+class WeightInKg extends AbstractFloatProperty implements BodyProperty
 {
     const WEIGHT_IN_KG = 'weight_in_kg';
 

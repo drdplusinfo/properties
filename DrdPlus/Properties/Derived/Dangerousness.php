@@ -10,32 +10,13 @@ class Dangerousness extends AbstractAspectOfVisage
 {
     const DANGEROUSNESS = 'dangerousness';
 
-    private $value;
-
     public function __construct(Strength $strength, Will $will, Charisma $charisma)
     {
-        $this->value = $this->calculateValue($strength, $will, $charisma);
+        $this->value = $this->calculateVisageValue($strength, $will, $charisma);
     }
 
     public function getCode()
     {
         return self::DANGEROUSNESS;
     }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return (string)$this->getValue();
-    }
-
-    /**
-     * @return int
-     */
-    public function getValue()
-    {
-        return $this->value;
-    }
-
 }

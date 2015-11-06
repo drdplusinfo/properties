@@ -1,18 +1,9 @@
 <?php
-namespace DrdPlus\Properties\Native;
+namespace DrdPlus\Tests\Properties\Native;
 
-class InfravisionTest extends \PHPUnit_Framework_TestCase
+use DrdPlus\Tests\Properties\AbstractTestOfBooleanStoredProperty;
+
+class InfravisionTest extends AbstractTestOfBooleanStoredProperty
 {
-    /**
-     * @test
-     */
-    public function I_can_create_infravision()
-    {
-        $infravision = Infravision::getIt(true);
-        $this->assertSame(true, $infravision->getValue());
-        $this->assertSame('infravision', $infravision->getCode());
 
-        $infravision = Infravision::getIt(false);
-        $this->assertSame(false, $infravision->getValue());
-    }
 }

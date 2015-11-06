@@ -2,9 +2,8 @@
 namespace DrdPlus\Properties;
 
 use Doctrineum\Integer\IntegerEnum;
-use Granam\Integer\IntegerInterface;
 
-abstract class AbstractIntegerProperty extends IntegerEnum implements PropertyInterface, IntegerInterface
+abstract class AbstractIntegerProperty extends IntegerEnum implements PropertyInterface
 {
 
     /**

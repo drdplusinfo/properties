@@ -1,9 +1,7 @@
 <?php
 namespace DrdPlus\Properties\Native;
 
-use DrdPlus\Properties\Native\Parts\AbstractNativeProperty;
-
-class NativeRegeneration extends AbstractNativeProperty
+class NativeRegeneration extends NativeProperty
 {
     const NATIVE_REGENERATION = 'native_regeneration';
 

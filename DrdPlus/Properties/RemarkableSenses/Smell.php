@@ -1,13 +1,13 @@
 <?php
 namespace DrdPlus\Properties\RemarkableSenses;
 
-class Smell extends Parts\AbstractRemarkableSense
+class Smell extends RemarkableSenseProperty
 {
 
     const SMELL = 'smell';
 
     /**
-     * @return self
+     * @return Smell
      */
     public static function getIt()
     {

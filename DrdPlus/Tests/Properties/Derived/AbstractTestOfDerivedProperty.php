@@ -8,7 +8,6 @@ class AbstractTestOfDerivedProperty extends AbstractTestOfProperty
 
     protected function getValuesForTest()
     {
-        return [123];
+        throw new \LogicException('Should not be called');
     }
-
 }

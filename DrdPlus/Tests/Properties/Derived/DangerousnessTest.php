@@ -12,13 +12,15 @@ class DangerousnessTest extends AbstractTestOfAspectOfVisage
     /**
      * #@test
      */
-    public function I_can_create_dangerousness()
+    public function I_can_get_property_easily()
     {
         $dangerousness = new Dangerousness($this->getStrength($strengthValue = 123), $this->getWill($willValue = 456), $this->getCharisma($charismaValue = 789));
         $this->assertSame('dangerousness', $dangerousness->getCode());
         $this->assertSame('dangerousness', $dangerousness->getCode());
         $this->assertSame($this->calculateValue($strengthValue, $willValue, $charismaValue), $dangerousness->getValue());
         $this->assertSame((string)$this->calculateValue($strengthValue, $willValue, $charismaValue), "$dangerousness");
+
+        return $dangerousness;
     }
 
     /**

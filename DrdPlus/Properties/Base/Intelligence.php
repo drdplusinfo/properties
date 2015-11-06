@@ -1,13 +1,11 @@
 <?php
 namespace DrdPlus\Properties\Base;
-
 use DrdPlus\Properties\AbstractIntegerProperty;
 
 /**
  * @method static Intelligence getIt(int $value)
- * @see Property::getIt
  */
-class Intelligence extends AbstractIntegerProperty
+class Intelligence extends AbstractIntegerProperty implements BaseProperty
 {
     const INTELLIGENCE = 'intelligence';
 

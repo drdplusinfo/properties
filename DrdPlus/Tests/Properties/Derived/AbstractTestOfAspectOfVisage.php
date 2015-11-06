@@ -1,10 +1,9 @@
 <?php
 namespace DrdPlus\Tests\Properties\Derived;
 
-use DrdPlus\Tests\Properties\TestWithMockery;
 use DrdPlus\Tools\Numbers\SumAndRound;
 
-abstract class AbstractTestOfAspectOfVisage extends TestWithMockery
+abstract class AbstractTestOfAspectOfVisage extends AbstractTestOfDerivedProperty
 {
     protected function calculateValue($firstPropertyValue, $secondPropertyValue, $charismaValue)
     {

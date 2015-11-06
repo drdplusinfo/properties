@@ -1,15 +1,17 @@
 <?php
 namespace DrdPlus\Tests\Properties;
 
-use Doctrineum\Scalar\Enum;
+use Doctrineum\Scalar\EnumType;
 
 abstract class AbstractTestOfStoredProperty extends AbstractTestOfProperty
 {
-
-    protected function createInstance($propertyClass, $value)
+    /**
+     * @test
+     */
+    public function I_can_register_it_as_enum()
     {
-        /** @var Enum $propertyClass */
-        return $propertyClass::getEnum($value);
+        $basename = $this->getPropertyBaseName();
+        $namespace = $this->getPropertyNamespace();
+        $this->assertTrue(is_a($namespace . '\\EnumTypes\\' . $basename . 'Type', EnumType::class, true));
     }
-
 }

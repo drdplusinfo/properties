@@ -3,7 +3,10 @@ namespace DrdPlus\Properties\Body;
 
 use DrdPlus\Properties\AbstractFloatProperty;
 
-class HeightInCm extends AbstractFloatProperty
+/**
+ * @method static HeightInCm getIt($value)
+ */
+class HeightInCm extends AbstractFloatProperty implements BodyProperty
 {
     const HEIGHT_IN_CM = 'height_in_cm';
 

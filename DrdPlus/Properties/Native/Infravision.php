@@ -1,9 +1,7 @@
 <?php
 namespace DrdPlus\Properties\Native;
 
-use DrdPlus\Properties\Native\Parts\AbstractNativeProperty;
-
-class Infravision extends AbstractNativeProperty
+class Infravision extends NativeProperty
 {
     const INFRAVISION = 'infravision';
 

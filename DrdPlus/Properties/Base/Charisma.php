@@ -1,13 +1,11 @@
 <?php
 namespace DrdPlus\Properties\Base;
-
 use DrdPlus\Properties\AbstractIntegerProperty;
 
 /**
  * @method static Charisma getIt(int $value)
- * @see Property::getIt
  */
-class Charisma extends AbstractIntegerProperty
+class Charisma extends AbstractIntegerProperty implements BaseProperty
 {
     const CHARISMA = 'charisma';
 

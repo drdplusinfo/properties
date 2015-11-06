@@ -7,6 +7,8 @@ use DrdPlus\Properties\Base\EnumTypes\IntelligenceType;
 use DrdPlus\Properties\Base\EnumTypes\KnackType;
 use DrdPlus\Properties\Base\EnumTypes\StrengthType;
 use DrdPlus\Properties\Base\EnumTypes\WillType;
+use DrdPlus\Properties\Body\EnumTypes\HeightInCmType;
+use DrdPlus\Properties\Body\EnumTypes\SizeType;
 use DrdPlus\Properties\Body\EnumTypes\WeightInKgType;
 use DrdPlus\Properties\Native\EnumTypes\InfravisionType;
 use DrdPlus\Properties\Native\EnumTypes\NativeRegenerationType;
@@ -35,12 +37,13 @@ class Registrar extends StrictObject
 
     protected static function registerBody()
     {
+        HeightInCmType::registerSelf();
+        SizeType::registerSelf();
         WeightInKgType::registerSelf();
     }
 
     protected static function registerRemarkableSenses()
     {
-        // Senses are subtypes of enum
         RemarkableSenseType::registerSenses();
     }
 

@@ -1,13 +1,13 @@
 <?php
 namespace DrdPlus\Properties\RemarkableSenses;
 
-class Hearing extends Parts\AbstractRemarkableSense
+class Hearing extends RemarkableSenseProperty
 {
 
     const HEARING = 'hearing';
 
     /**
-     * @return self
+     * @return Hearing
      */
     public static function getIt()
     {

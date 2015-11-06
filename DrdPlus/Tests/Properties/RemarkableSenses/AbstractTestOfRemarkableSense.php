@@ -1,18 +1,39 @@
 <?php
 namespace DrdPlus\Tests\Properties\RemarkableSenses;
 
-use DrdPlus\Tests\Properties\AbstractTestOfStringStoredProperty;
+use DrdPlus\Properties\RemarkableSenses\EnumTypes\RemarkableSenseType;
+use DrdPlus\Properties\RemarkableSenses\RemarkableSenseProperty;
+use DrdPlus\Tests\Properties\AbstractTestOfStoredProperty;
 
-abstract class AbstractTestOfRemarkableSense extends AbstractTestOfStringStoredProperty
+abstract class AbstractTestOfRemarkableSense extends AbstractTestOfStoredProperty
 {
 
     /**
      * @test
+     * @return RemarkableSenseProperty
      */
-    public function I_can_get_remarkable_sense_easily()
+    public function I_can_get_property_easily()
     {
         $propertyClass = $this->getPropertyClass();
-        /** @noinspection PhpUndefinedMethodInspection */
-        $propertyClass::getIt();
+        /** @var RemarkableSenseProperty $propertyClass */
+        $property = $propertyClass::getIt();
+        $this->assertInstanceOf($propertyClass, $property);
+        $this->assertSame(strtolower($this->getPropertyBaseName()), $property->getValue());
+
+        return $property;
+    }
+
+    protected function getValuesForTest()
+    {
+        throw new \LogicException('Should not be called');
+    }
+
+    /**
+     * @test
+     */
+    public function I_can_register_it_as_enum()
+    {
+        RemarkableSenseType::registerSenses();
+        $this->assertTrue(RemarkableSenseType::hasSubTypeEnum($this->getPropertyClass()));
     }
 }

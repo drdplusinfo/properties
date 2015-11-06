@@ -1,13 +1,29 @@
 <?php
 namespace DrdPlus\Properties\Derived\Parts;
 
-use Granam\Integer\IntegerObject;
+use DrdPlus\Properties\Derived\DerivedProperty;
+use Granam\Strict\Object\StrictObject;
 
-abstract class AbstractDerivedProperty extends IntegerObject implements DerivedPropertyInterface
+abstract class AbstractDerivedProperty extends StrictObject implements DerivedProperty
 {
+    /**
+     * @var int
+     */
+    protected $value;
 
-    public static function getIt($value)
+    /**
+     * @return string
+     */
+    public function __toString()
     {
-        return new static($value);
+        return (string)$this->getValue();
+    }
+
+    /**
+     * @return int
+     */
+    public function getValue()
+    {
+        return $this->value;
     }
 }

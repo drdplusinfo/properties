@@ -1,10 +1,9 @@
 <?php
 namespace DrdPlus\Properties;
 
-/**
- * @method static PropertyInterface getIt($value)
- */
-interface PropertyInterface
+use Granam\Scalar\ScalarInterface;
+
+interface PropertyInterface extends ScalarInterface
 {
 
     /**
@@ -12,5 +11,8 @@ interface PropertyInterface
      */
     public function getCode();
 
+    /**
+     * @return int|float|bool|string
+     */
     public function getValue();
 }

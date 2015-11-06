@@ -2,44 +2,35 @@
 namespace DrdPlus\Tests\Properties;
 
 use Doctrineum\Scalar\Enum;
+use DrdPlus\Properties\Base\BaseProperty;
+use DrdPlus\Properties\Body\BodyProperty;
+use DrdPlus\Properties\Native\NativeProperty;
 use DrdPlus\Properties\PropertyInterface;
+use Granam\Scalar\Scalar;
 
 abstract class AbstractTestOfProperty extends TestWithMockery
 {
 
     /**
-     * @return PropertyInterface
-     *
      * @test
+     * @return PropertyInterface
      */
-    public function I_can_create_property()
+    public function I_can_get_property_easily()
     {
         $propertyClass = $this->getPropertyClass();
-        $instance = $this->createInstance($propertyClass, $this->getValuesForTest());
-        $this->assertInstanceOf($propertyClass, $instance);
+        $property = false;
+        foreach ($this->getValuesForTest() as $value) {
+            $property = $propertyClass::getIt($value);
+            $this->assertInstanceOf($propertyClass, $property);
+            /** @var Scalar $property */
+            $this->assertSame("$value", "{$property->getValue()}");
+        }
 
-        return $instance;
+        return $property;
     }
 
     /**
-     * @param string $propertyClass
-     * @param $value
-     *
-     * @return PropertyInterface
-     */
-    protected function createInstance($propertyClass, $value)
-    {
-        /** @var PropertyInterface $propertyClass */
-        return $propertyClass::getIt($value);
-    }
-
-    /**
-     * @return []
-     */
-    abstract protected function getValuesForTest();
-
-    /**
-     * @return string|PropertyInterface|Enum
+     * @return string|Enum|BaseProperty|BodyProperty|NativeProperty
      */
     protected function getPropertyClass()
     {
@@ -47,10 +38,16 @@ abstract class AbstractTestOfProperty extends TestWithMockery
     }
 
     /**
+     * @return []
+     */
+    abstract protected function getValuesForTest();
+
+
+    /**
      * @param PropertyInterface $property
      *
      * @test
-     * @depends I_can_create_property
+     * @depends I_can_get_property_easily
      */
     public function I_can_get_property_code(PropertyInterface $property)
     {
@@ -71,25 +68,36 @@ abstract class AbstractTestOfProperty extends TestWithMockery
     /**
      * @return string
      */
-    private function getPropertyBaseName()
+    protected function getPropertyBaseName()
     {
         $propertyClass = $this->getPropertyClass();
 
-        return preg_replace('~(\w+\\\)*(\w+)~', '$2', $propertyClass);
+        return preg_replace('~^[\\\]?(\w+\\\)*(\w+)$~', '$2', $propertyClass);
     }
 
     /**
      * @test
-     * @depends I_can_create_property
      */
-    public function I_can_get_value_of_property()
+    public function I_can_use_it_as_generic_group_property()
     {
         $propertyClass = $this->getPropertyClass();
-        foreach ($this->getValuesForTest() as $value) {
-            /** @var PropertyInterface $propertyClass */
-            $property = $propertyClass::getIt($value);
-            $this->assertInstanceOf($propertyClass, $property);
-            $this->assertSame($value, $property->getValue());
-        }
+        $this->assertTrue(is_a($propertyClass, $this->getGenericGroupPropertyClassName(), true));
+    }
+
+    private function getGenericGroupPropertyClassName()
+    {
+        $propertyNamespace = $this->getPropertyNamespace();
+        $namespaceBaseName = preg_replace('~^[\\\]?(\w+\\\)*(\w+)$~', '$2', $propertyNamespace);
+        $groupPropertyClassBaseName = preg_replace('~s$~', '', $namespaceBaseName) . 'Property';
+
+        return $propertyNamespace . '\\' . $groupPropertyClassBaseName;
+    }
+
+    protected function getPropertyNamespace()
+    {
+        $propertyClass = $this->getPropertyClass();
+        $propertyNamespace = preg_replace('~[\\\]\w+$~', '', $propertyClass);
+
+        return $propertyNamespace;
     }
 }

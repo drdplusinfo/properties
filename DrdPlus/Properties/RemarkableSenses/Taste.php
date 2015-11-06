@@ -1,13 +1,13 @@
 <?php
 namespace DrdPlus\Properties\RemarkableSenses;
 
-class Taste extends Parts\AbstractRemarkableSense
+class Taste extends RemarkableSenseProperty
 {
 
     const TASTE = 'taste';
 
     /**
-     * @return self
+     * @return Taste
      */
     public static function getIt()
     {

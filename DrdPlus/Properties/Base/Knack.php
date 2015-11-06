@@ -1,13 +1,11 @@
 <?php
 namespace DrdPlus\Properties\Base;
-
 use DrdPlus\Properties\AbstractIntegerProperty;
 
 /**
  * @method static Knack getIt(int $value)
- * @see Property::getIt
  */
-class Knack extends AbstractIntegerProperty
+class Knack extends AbstractIntegerProperty implements BaseProperty
 {
     const KNACK = 'knack';
 

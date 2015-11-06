@@ -1,13 +1,12 @@
 <?php
 namespace DrdPlus\Properties\Base;
-
 use DrdPlus\Properties\AbstractIntegerProperty;
 
 /**
  * @method static Will getIt(int $value)
  * @see Property::getIt
  */
-class Will extends AbstractIntegerProperty
+class Will extends AbstractIntegerProperty implements BaseProperty
 {
     const WILL = 'will';
 

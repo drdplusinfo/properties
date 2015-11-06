@@ -1,5 +1,5 @@
 <?php
-namespace DrdPlus\Properties\Body;
+namespace DrdPlus\Tests\Properties\Body;
 
 use DrdPlus\Tests\Properties\AbstractTestOfIntegerStoredProperty;
 

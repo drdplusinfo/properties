@@ -12,13 +12,15 @@ class BeautyTest extends AbstractTestOfAspectOfVisage
     /**
      * #@test
      */
-    public function I_can_create_beauty()
+    public function I_can_get_property_easily()
     {
         $beauty = new Beauty($this->getAgility($agilityValue = 123), $this->getKnack($knackValue = 456), $this->getCharisma($charismaValue = 789));
         $this->assertSame('beauty', $beauty->getCode());
-        $this->assertSame('beauty', $beauty->getCode());
+        $this->assertSame('beauty', $beauty::BEAUTY);
         $this->assertSame($this->calculateValue($agilityValue, $knackValue, $charismaValue), $beauty->getValue());
         $this->assertSame((string)$this->calculateValue($agilityValue, $knackValue, $charismaValue), "$beauty");
+
+        return $beauty;
     }
 
     /**

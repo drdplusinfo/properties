@@ -1,22 +1,19 @@
 <?php
 namespace DrdPlus\Properties\Body;
 
-use DrdPlus\Properties\PropertyInterface;
-use Granam\Integer\IntegerObject;
+use DrdPlus\Properties\AbstractIntegerProperty;
 
 /**
  * Note: Size does not need to be persisted and therefore does not need enum type.
  * Can be anytime calculated by race, gender and strength at first level.
  * @see PPH page 33 left column
  */
-class Size extends IntegerObject implements PropertyInterface
+/**
+ * @method static Size getIt($value)
+ */
+class Size extends AbstractIntegerProperty implements BodyProperty
 {
     const SIZE = 'size';
-
-    public static function getIt($value)
-    {
-        return new static($value);
-    }
 
     /**
      * @return string

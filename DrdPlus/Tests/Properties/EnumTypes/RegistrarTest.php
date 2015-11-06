@@ -8,6 +8,8 @@ use DrdPlus\Properties\Base\Intelligence;
 use DrdPlus\Properties\Base\Knack;
 use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Base\Will;
+use DrdPlus\Properties\Body\HeightInCm;
+use DrdPlus\Properties\Body\Size;
 use DrdPlus\Properties\Body\WeightInKg;
 use DrdPlus\Properties\EnumTypes\Registrar;
 use DrdPlus\Properties\Native\Infravision;
@@ -36,6 +38,8 @@ class RegistrarTest extends TestWithMockery
         $this->assertTrue(Type::hasType(Intelligence::INTELLIGENCE));
         $this->assertTrue(Type::hasType(Charisma::CHARISMA));
 
+        $this->assertTrue(Type::hasType(HeightInCm::HEIGHT_IN_CM));
+        $this->assertTrue(Type::hasType(Size::SIZE));
         $this->assertTrue(Type::hasType(WeightInKg::WEIGHT_IN_KG));
 
         $this->assertTrue(Type::hasType(RemarkableSenseType::getTypeName()));
