@@ -15,14 +15,15 @@ class EnduranceTest extends AbstractTestOfDerivedProperty
         $endurance = new Endurance($this->getStrength($agilityValue = 123), $this->getWill($knackValue = 456));
         $this->assertSame('endurance', $endurance->getCode());
         $this->assertSame('endurance', $endurance->getCode());
-        $this->assertSame((int)round($agilityValue + $knackValue), $endurance->getValue());
-        $this->assertSame((string)round($agilityValue + $knackValue), "$endurance");
+        $this->assertSame((int)round(($agilityValue + $knackValue) / 2), $endurance->getValue());
+        $this->assertSame((string)round(($agilityValue + $knackValue) / 2), "$endurance");
 
         return $endurance;
     }
 
     /**
      * @param $value
+     *
      * @return \Mockery\MockInterface|Strength
      */
     private function getStrength($value)
@@ -33,6 +34,7 @@ class EnduranceTest extends AbstractTestOfDerivedProperty
     /**
      * @param $className
      * @param $value
+     *
      * @return \Mockery\MockInterface
      */
     private function createProperty($className, $value)
@@ -48,6 +50,7 @@ class EnduranceTest extends AbstractTestOfDerivedProperty
 
     /**
      * @param $value
+     *
      * @return \Mockery\MockInterface|Will
      */
     private function getWill($value)

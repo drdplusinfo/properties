@@ -12,7 +12,7 @@ class Endurance extends AbstractDerivedProperty
 
     public function __construct(Strength $strength, Will $will)
     {
-        $this->value = SumAndRound::round($strength->getValue() + $will->getValue());
+        $this->value = SumAndRound::average($strength->getValue(), $will->getValue());
     }
 
     public function getCode()
