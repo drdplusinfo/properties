@@ -1,28 +1,31 @@
 <?php
 namespace DrdPlus\Tests\Properties\Derived;
 
+use DrdPlus\Properties\Base\Strength;
+use DrdPlus\Properties\Base\Will;
 use DrdPlus\Properties\Derived\Endurance;
 use DrdPlus\Properties\Derived\FatigueLimit;
+use DrdPlus\Tables\Measurements\Fatigue\FatigueTable;
+use DrdPlus\Tables\Measurements\Wounds\WoundsTable;
 
 class FatigueLimitTest extends AbstractTestOfDerivedProperty
 {
 
     /**
      * @test
+     * @return FatigueLimit
      */
-    public function I_can_calculate_fatigue_limit_bonus()
+    public function I_can_get_property_easily()
     {
-        $endurance = \Mockery::mock(Endurance::class)
-            ->shouldReceive('getValue')
-            ->andReturn($value = 123)
-            ->atLeast()->once()
-            ->getMock();
-        /** @var Endurance $endurance */
-        $this->assertSame($value + 10, FatigueLimit::calculateFatigueBonus($endurance));
-    }
+        $fatigueLimit = FatigueLimit::getIt(
+            new FatigueTable(new WoundsTable()),
+            new Endurance(new Strength($strength = 1), new Will($will = 2))
+        );
+        $this->assertSame(
+            (int)round(($strength + $will) / 2) + 10, // simplified; bonus of wound 12 = wound of 12
+            $fatigueLimit->getValue()
+        );
 
-    protected function getValuesForTest()
-    {
-        return [0, 10, 123];
+        return $fatigueLimit;
     }
 }

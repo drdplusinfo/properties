@@ -2,25 +2,24 @@
 namespace DrdPlus\Properties\Derived;
 
 use DrdPlus\Properties\Derived\Parts\AbstractDerivedProperty;
-use Granam\Integer\Tools\ToInteger;
+use DrdPlus\Tables\Measurements\Fatigue\FatigueBonus;
+use DrdPlus\Tables\Measurements\Fatigue\FatigueTable;
 
 class FatigueLimit extends AbstractDerivedProperty
 {
     const FATIGUE_LIMIT = 'fatigue_limit';
 
-    public static function calculateFatigueBonus(Endurance $endurance)
+    public static function getIt(FatigueTable $fatigueTable, Endurance $endurance)
     {
-        return $endurance->getValue() + 10;
+        return new static($fatigueTable, $endurance);
     }
 
-    public static function getIt($fatigueLimitValue)
+    public function __construct(FatigueTable $fatigueTable, Endurance $endurance)
     {
-        return new static($fatigueLimitValue);
-    }
-
-    public function __construct($fatigueLimitValue)
-    {
-        $this->value = ToInteger::toInteger($fatigueLimitValue);
+        $fatigue = $fatigueTable->toFatigue(
+            new FatigueBonus($endurance->getValue() + 10, $fatigueTable)
+        );
+        $this->value = $fatigue->getValue();
     }
 
     public function getCode()
