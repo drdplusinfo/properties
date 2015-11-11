@@ -10,4 +10,20 @@ class AbstractTestOfDerivedProperty extends AbstractTestOfProperty
     {
         throw new \LogicException('Should not be called');
     }
+
+    /**
+     * @param $className
+     * @param $value
+     * @return \Mockery\MockInterface
+     */
+    protected function createProperty($className, $value)
+    {
+        $property = $this->mockery($className);
+        /** @noinspection PhpMethodParametersCountMismatchInspection */
+        $property->shouldReceive('getValue')
+            ->atLeast()->once()
+            ->andReturn($value);
+
+        return $property;
+    }
 }

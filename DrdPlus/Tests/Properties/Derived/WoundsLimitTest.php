@@ -4,8 +4,9 @@ namespace DrdPlus\Tests\Properties\Derived;
 use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Derived\Toughness;
 use DrdPlus\Properties\Derived\WoundsLimit;
+use DrdPlus\Races\Dwarfs\MountainDwarf;
 use DrdPlus\Tables\Measurements\Wounds\WoundsTable;
-use Granam\Integer\IntegerObject;
+use DrdPlus\Tables\Races\RacesTable;
 
 class WoundsLimitTest extends AbstractTestOfDerivedProperty
 {
@@ -17,11 +18,15 @@ class WoundsLimitTest extends AbstractTestOfDerivedProperty
     public function I_can_get_property_easily()
     {
         $woundsLimit = new WoundsLimit(
-            new Toughness(new Strength($strength = 1), new IntegerObject($raceToughness = 2)),
+            new Toughness(
+                new Strength($strength = 6),
+                MountainDwarf::getIt(),
+                new RacesTable()
+            ),
             new WoundsTable()
         );
         $this->assertSame(
-            14, // simplified; bonus of wound 13 = wound of 14
+            22, // bonus of wound 17 (6 + 10 + 1) = wound of 22
             $woundsLimit->getValue()
         );
 

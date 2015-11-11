@@ -18,6 +18,7 @@
     "granam/strict-object": "dev-master",
     "drd-plus/tools": "dev-master",
     "drd-plus/tables": "dev-master",
+    "drd-plus/races": "dev-master",
     "drd/dice-roll": "dev-master"
   },
   "require-dev": {

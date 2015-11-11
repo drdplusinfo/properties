@@ -29,20 +29,4 @@ class SensesTest extends AbstractTestOfDerivedProperty
     {
         return $this->createProperty(Knack::class, $value);
     }
-
-    /**
-     * @param $className
-     * @param $value
-     * @return \Mockery\MockInterface
-     */
-    private function createProperty($className, $value)
-    {
-        $property = $this->mockery($className);
-        /** @noinspection PhpMethodParametersCountMismatchInspection */
-        $property->shouldReceive('getValue')
-            ->atLeast()->once()
-            ->andReturn($value);
-
-        return $property;
-    }
 }

@@ -3,15 +3,16 @@ namespace DrdPlus\Properties\Derived;
 
 use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Derived\Parts\AbstractDerivedProperty;
-use Granam\Integer\IntegerInterface;
+use DrdPlus\Races\Race;
+use DrdPlus\Tables\Races\RacesTable;
 
 class Toughness extends AbstractDerivedProperty
 {
     const TOUGHNESS = 'toughness';
 
-    public function __construct(Strength $strength, IntegerInterface $raceToughness)
+    public function __construct(Strength $strength, Race $race, RacesTable $racesTable)
     {
-        $this->value = $strength->getValue() + $raceToughness->getValue();
+        $this->value = $strength->getValue() + $racesTable->getToughness($race->getRaceCode(), $race->getSubraceCode());
     }
 
     public function getCode()

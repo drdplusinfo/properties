@@ -3,7 +3,8 @@ namespace DrdPlus\Tests\Properties\Derived;
 
 use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Derived\Toughness;
-use Granam\Integer\IntegerObject;
+use DrdPlus\Races\Dwarfs\WoodDwarf;
+use DrdPlus\Tables\Races\RacesTable;
 
 class ToughnessTest extends AbstractTestOfDerivedProperty
 {
@@ -12,11 +13,15 @@ class ToughnessTest extends AbstractTestOfDerivedProperty
      */
     public function I_can_get_property_easily()
     {
-        $toughness = new Toughness($this->getStrength($strengthValue = 123), new IntegerObject($raceToughness = 456));
+        $toughness = new Toughness(
+            $this->getStrength($strengthValue = 123),
+            WoodDwarf::getIt(),
+            new RacesTable()
+        );
         $this->assertSame('toughness', $toughness->getCode());
         $this->assertSame('toughness', $toughness::TOUGHNESS);
-        $this->assertSame($strengthValue + $raceToughness, $toughness->getValue());
-        $this->assertSame((string)($strengthValue + $raceToughness), "$toughness");
+        $this->assertSame($strengthValue + 1, $toughness->getValue());
+        $this->assertSame((string)($strengthValue + 1), "$toughness");
 
         return $toughness;
     }
@@ -28,21 +33,5 @@ class ToughnessTest extends AbstractTestOfDerivedProperty
     private function getStrength($value)
     {
         return $this->createProperty(Strength::class, $value);
-    }
-
-    /**
-     * @param $className
-     * @param $value
-     * @return \Mockery\MockInterface
-     */
-    private function createProperty($className, $value)
-    {
-        $property = $this->mockery($className);
-        /** @noinspection PhpMethodParametersCountMismatchInspection */
-        $property->shouldReceive('getValue')
-            ->atLeast()->once()
-            ->andReturn($value);
-
-        return $property;
     }
 }
