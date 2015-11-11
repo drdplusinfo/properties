@@ -1,28 +1,30 @@
 <?php
 namespace DrdPlus\Tests\Properties\Derived;
 
+use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Derived\Toughness;
 use DrdPlus\Properties\Derived\WoundsLimit;
+use DrdPlus\Tables\Measurements\Wounds\WoundsTable;
+use Granam\Integer\IntegerObject;
 
 class WoundsLimitTest extends AbstractTestOfDerivedProperty
 {
 
     /**
      * @test
+     * @return WoundsLimit
      */
-    public function I_can_calculate_wounds_limit_bonus()
+    public function I_can_get_property_easily()
     {
-        $toughness = \Mockery::mock(Toughness::class)
-            ->shouldReceive('getValue')
-            ->andReturn($value = 123)
-            ->atLeast()->once()
-            ->getMock();
-        /** @var Toughness $toughness */
-        $this->assertSame($value + 10, WoundsLimit::calculateWoundsBonus($toughness));
-    }
+        $woundsLimit = new WoundsLimit(
+            new Toughness(new Strength($strength = 1), new IntegerObject($raceToughness = 2)),
+            new WoundsTable()
+        );
+        $this->assertSame(
+            14, // simplified; bonus of wound 13 = wound of 14
+            $woundsLimit->getValue()
+        );
 
-    protected function getValuesForTest()
-    {
-        return [0, 123, 999];
+        return $woundsLimit;
     }
 }

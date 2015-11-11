@@ -2,25 +2,17 @@
 namespace DrdPlus\Properties\Derived;
 
 use DrdPlus\Properties\Derived\Parts\AbstractDerivedProperty;
-use Granam\Integer\Tools\ToInteger;
+use DrdPlus\Tables\Measurements\Wounds\WoundsBonus;
+use DrdPlus\Tables\Measurements\Wounds\WoundsTable;
 
 class WoundsLimit extends AbstractDerivedProperty
 {
     const WOUNDS_LIMIT = 'wounds_limit';
 
-    public static function calculateWoundsBonus(Toughness $toughness)
+    public function __construct(Toughness $toughness, WoundsTable $woundsTable)
     {
-        return $toughness->getValue() + 10;
-    }
-
-    public static function getIt($woundLimitValue)
-    {
-        return new static($woundLimitValue);
-    }
-
-    public function __construct($woundLimitValue)
-    {
-        $this->value = ToInteger::toInteger($woundLimitValue);
+        $wounds = $woundsTable->toWounds(new WoundsBonus($toughness->getValue() + 10, $woundsTable));
+        $this->value = $wounds->getValue();
     }
 
     public function getCode()
