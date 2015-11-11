@@ -81,7 +81,10 @@ abstract class AbstractTestOfProperty extends TestWithMockery
     public function I_can_use_it_as_generic_group_property()
     {
         $propertyClass = $this->getPropertyClass();
-        $this->assertTrue(is_a($propertyClass, $this->getGenericGroupPropertyClassName(), true));
+        $this->assertTrue(
+            is_a($propertyClass, $this->getGenericGroupPropertyClassName(), true),
+            $propertyClass . ' does not belongs into ' . $this->getGenericGroupPropertyClassName()
+        );
     }
 
     private function getGenericGroupPropertyClassName()
