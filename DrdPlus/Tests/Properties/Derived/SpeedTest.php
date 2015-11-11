@@ -9,7 +9,7 @@ use DrdPlus\Properties\Derived\Speed;
 class SpeedTest extends AbstractTestOfDerivedProperty
 {
     /**
-     * #@test
+     * @test
      */
     public function I_can_get_property_easily()
     {
@@ -27,7 +27,53 @@ class SpeedTest extends AbstractTestOfDerivedProperty
     }
 
     /**
+     * @test
+     * @dataProvider sizesToSpeed
+     *
+     * @param int $size
+     * @param int $speedModifier
+     *
+     * @return Speed
+     */
+    public function I_can_get_speed_for_any_size($size, $speedModifier)
+    {
+        $speed = new Speed(
+            $this->getStrength($strengthValue = 123),
+            $this->getAgility($agilityValue = 456),
+            $this->getSizeProperty($size)
+        );
+        $this->assertSame((int)round(($strengthValue + $agilityValue) / 2) + $speedModifier, $speed->getValue());
+        $this->assertSame((string)(round(($strengthValue + $agilityValue) / 2) + $speedModifier), "$speed");
+
+        return $speed;
+    }
+
+    public function sizesToSpeed()
+    {
+        return [
+            [-6, -4],
+            [-5, -3],
+            [-4, -3],
+            [-3, -3],
+            [-2, -2],
+            [-1, -2],
+            [0, -2],
+            [1, -1],
+            [2, -1],
+            [3, -1],
+            [4, 0],
+            [5, 0],
+            [6, 0],
+            [7, 1],
+            [8, 1],
+            [9, 1],
+            [10, 2],
+        ];
+    }
+
+    /**
      * @param $value
+     *
      * @return \Mockery\MockInterface|Strength
      */
     private function getStrength($value)
@@ -38,6 +84,7 @@ class SpeedTest extends AbstractTestOfDerivedProperty
     /**
      * @param $className
      * @param $value
+     *
      * @return \Mockery\MockInterface
      */
     private function createProperty($className, $value)
@@ -53,6 +100,7 @@ class SpeedTest extends AbstractTestOfDerivedProperty
 
     /**
      * @param $value
+     *
      * @return \Mockery\MockInterface|Agility
      */
     private function getAgility($value)
@@ -62,6 +110,7 @@ class SpeedTest extends AbstractTestOfDerivedProperty
 
     /**
      * @param $value
+     *
      * @return \Mockery\MockInterface|Size
      */
     private function getSizeProperty($value)
