@@ -18,8 +18,8 @@ class FatigueLimitTest extends AbstractTestOfDerivedProperty
     public function I_can_get_property_easily()
     {
         $fatigueLimit = new FatigueLimit(
-            new FatigueTable(new WoundsTable()),
-            new Endurance(new Strength($strength = 1), new Will($will = 2))
+            new Endurance(new Strength($strength = 1), new Will($will = 2)),
+            new FatigueTable(new WoundsTable())
         );
         $this->assertSame(
             (int)round(($strength + $will) / 2) + 10, // simplified; bonus of wound 12 = wound of 12

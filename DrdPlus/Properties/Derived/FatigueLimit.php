@@ -9,7 +9,7 @@ class FatigueLimit extends AbstractDerivedProperty
 {
     const FATIGUE_LIMIT = 'fatigue_limit';
 
-    public function __construct(FatigueTable $fatigueTable, Endurance $endurance)
+    public function __construct(Endurance $endurance, FatigueTable $fatigueTable)
     {
         $fatigue = $fatigueTable->toFatigue(
             new FatigueBonus($endurance->getValue() + 10, $fatigueTable)
