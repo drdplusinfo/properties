@@ -17,7 +17,7 @@ class FatigueLimitTest extends AbstractTestOfDerivedProperty
      */
     public function I_can_get_property_easily()
     {
-        $fatigueLimit = FatigueLimit::getIt(
+        $fatigueLimit = new FatigueLimit(
             new FatigueTable(new WoundsTable()),
             new Endurance(new Strength($strength = 1), new Will($will = 2))
         );
