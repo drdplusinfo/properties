@@ -1,9 +1,9 @@
 <?php
 namespace DrdPlus\Tests\Properties\Derived;
 
+use DrdPlus\Codes\RaceCodes;
 use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Derived\Toughness;
-use DrdPlus\Races\Dwarfs\WoodDwarf;
 use DrdPlus\Tables\Races\RacesTable;
 
 class ToughnessTest extends AbstractTestOfDerivedProperty
@@ -15,7 +15,8 @@ class ToughnessTest extends AbstractTestOfDerivedProperty
     {
         $toughness = new Toughness(
             $this->getStrength($strengthValue = 123),
-            WoodDwarf::getIt(),
+            RaceCodes::DWARF,
+            RaceCodes::WOOD,
             new RacesTable()
         );
         $this->assertSame('toughness', $toughness->getCode());
