@@ -1,6 +1,7 @@
 <?php
 namespace DrdPlus\Properties\Body;
 
+use DrdPlus\Codes\PropertyCodes;
 use DrdPlus\Properties\AbstractFloatProperty;
 
 /**
@@ -8,7 +9,7 @@ use DrdPlus\Properties\AbstractFloatProperty;
  */
 class WeightInKg extends AbstractFloatProperty implements BodyProperty
 {
-    const WEIGHT_IN_KG = 'weight_in_kg';
+    const WEIGHT_IN_KG = PropertyCodes::WEIGHT_IN_KG;
 
     /**
      * @return string

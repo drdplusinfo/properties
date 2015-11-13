@@ -1,10 +1,12 @@
 <?php
 namespace DrdPlus\Properties\RemarkableSenses;
 
+use DrdPlus\Codes\PropertyCodes;
+
 class Taste extends RemarkableSenseProperty
 {
 
-    const TASTE = 'taste';
+    const TASTE = PropertyCodes::TASTE;
 
     /**
      * @return Taste

@@ -1,6 +1,7 @@
 <?php
 namespace DrdPlus\Properties\Body;
 
+use DrdPlus\Codes\PropertyCodes;
 use DrdPlus\Properties\AbstractIntegerProperty;
 
 /**
@@ -13,7 +14,7 @@ use DrdPlus\Properties\AbstractIntegerProperty;
  */
 class Size extends AbstractIntegerProperty implements BodyProperty
 {
-    const SIZE = 'size';
+    const SIZE = PropertyCodes::SIZE;
 
     /**
      * @return string

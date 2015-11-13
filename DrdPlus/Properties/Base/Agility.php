@@ -1,5 +1,6 @@
 <?php
 namespace DrdPlus\Properties\Base;
+use DrdPlus\Codes\PropertyCodes;
 use DrdPlus\Properties\AbstractIntegerProperty;
 
 /**
@@ -7,7 +8,7 @@ use DrdPlus\Properties\AbstractIntegerProperty;
  */
 class Agility extends AbstractIntegerProperty implements BaseProperty
 {
-    const AGILITY = 'agility';
+    const AGILITY = PropertyCodes::AGILITY;
 
     /**
      * @return string

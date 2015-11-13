@@ -1,10 +1,12 @@
 <?php
 namespace DrdPlus\Properties\RemarkableSenses;
 
+use DrdPlus\Codes\PropertyCodes;
+
 class Hearing extends RemarkableSenseProperty
 {
 
-    const HEARING = 'hearing';
+    const HEARING = PropertyCodes::HEARING;
 
     /**
      * @return Hearing

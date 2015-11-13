@@ -1,13 +1,14 @@
 <?php
 namespace DrdPlus\Properties\Derived;
 
+use DrdPlus\Codes\PropertyCodes;
 use DrdPlus\Properties\Derived\Parts\AbstractDerivedProperty;
 use DrdPlus\Tables\Measurements\Wounds\WoundsBonus;
 use DrdPlus\Tables\Measurements\Wounds\WoundsTable;
 
 class WoundsLimit extends AbstractDerivedProperty
 {
-    const WOUNDS_LIMIT = 'wounds_limit';
+    const WOUNDS_LIMIT = PropertyCodes::WOUNDS_LIMIT;
 
     public function __construct(Toughness $toughness, WoundsTable $woundsTable)
     {

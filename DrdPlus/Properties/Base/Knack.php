@@ -1,5 +1,6 @@
 <?php
 namespace DrdPlus\Properties\Base;
+use DrdPlus\Codes\PropertyCodes;
 use DrdPlus\Properties\AbstractIntegerProperty;
 
 /**
@@ -7,7 +8,7 @@ use DrdPlus\Properties\AbstractIntegerProperty;
  */
 class Knack extends AbstractIntegerProperty implements BaseProperty
 {
-    const KNACK = 'knack';
+    const KNACK = PropertyCodes::KNACK;
 
     /**
      * @return string

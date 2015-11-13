@@ -1,5 +1,6 @@
 <?php
 namespace DrdPlus\Properties\Base;
+use DrdPlus\Codes\PropertyCodes;
 use DrdPlus\Properties\AbstractIntegerProperty;
 
 /**
@@ -8,7 +9,7 @@ use DrdPlus\Properties\AbstractIntegerProperty;
  */
 class Strength extends AbstractIntegerProperty implements BaseProperty
 {
-    const STRENGTH = 'strength';
+    const STRENGTH = PropertyCodes::STRENGTH;
 
     /**
      * @return string

@@ -1,10 +1,12 @@
 <?php
 namespace DrdPlus\Properties\RemarkableSenses;
 
+use DrdPlus\Codes\PropertyCodes;
+
 class Touch extends RemarkableSenseProperty
 {
 
-    const TOUCH = 'touch';
+    const TOUCH = PropertyCodes::TOUCH;
 
     /**
      * @return Touch

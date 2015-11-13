@@ -1,6 +1,7 @@
 <?php
 namespace DrdPlus\Properties\Derived;
 
+use DrdPlus\Codes\PropertyCodes;
 use DrdPlus\Properties\Base\Charisma;
 use DrdPlus\Properties\Derived\Parts\AbstractAspectOfVisage;
 use DrdPlus\Properties\Base\Intelligence;
@@ -8,7 +9,7 @@ use DrdPlus\Properties\Base\Will;
 
 class Dignity extends AbstractAspectOfVisage
 {
-    const DIGNITY = 'dignity';
+    const DIGNITY = PropertyCodes::DIGNITY;
 
     public function __construct(Intelligence $intelligence, Will $will, Charisma $charisma)
     {

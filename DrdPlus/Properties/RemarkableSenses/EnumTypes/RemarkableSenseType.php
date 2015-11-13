@@ -2,6 +2,7 @@
 namespace DrdPlus\Properties\RemarkableSenses\EnumTypes;
 
 use Doctrineum\Strict\String\StrictStringEnumType;
+use DrdPlus\Codes\PropertyCodes;
 use DrdPlus\Properties\RemarkableSenses\Hearing;
 use DrdPlus\Properties\RemarkableSenses\Sight;
 use DrdPlus\Properties\RemarkableSenses\Smell;
@@ -10,7 +11,7 @@ use DrdPlus\Properties\RemarkableSenses\Touch;
 
 class RemarkableSenseType extends StrictStringEnumType
 {
-    const REMARKABLE_SENSE = 'remarkable_sense';
+    const REMARKABLE_SENSE = PropertyCodes::REMARKABLE_SENSE;
 
     public static function registerSenses()
     {

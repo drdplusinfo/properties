@@ -1,5 +1,6 @@
 <?php
 namespace DrdPlus\Properties\Base;
+use DrdPlus\Codes\PropertyCodes;
 use DrdPlus\Properties\AbstractIntegerProperty;
 
 /**
@@ -8,7 +9,7 @@ use DrdPlus\Properties\AbstractIntegerProperty;
  */
 class Will extends AbstractIntegerProperty implements BaseProperty
 {
-    const WILL = 'will';
+    const WILL = PropertyCodes::WILL;
 
     /**
      * @return string

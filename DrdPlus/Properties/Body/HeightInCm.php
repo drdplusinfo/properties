@@ -1,6 +1,7 @@
 <?php
 namespace DrdPlus\Properties\Body;
 
+use DrdPlus\Codes\PropertyCodes;
 use DrdPlus\Properties\AbstractFloatProperty;
 
 /**
@@ -8,7 +9,7 @@ use DrdPlus\Properties\AbstractFloatProperty;
  */
 class HeightInCm extends AbstractFloatProperty implements BodyProperty
 {
-    const HEIGHT_IN_CM = 'height_in_cm';
+    const HEIGHT_IN_CM = PropertyCodes::HEIGHT_IN_CM;
 
     /**
      * @return string
