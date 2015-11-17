@@ -17,9 +17,7 @@
     "granam/string": "dev-master",
     "granam/strict-object": "dev-master",
     "drd-plus/tools": "dev-master",
-    "drd-plus/tables": "dev-master",
-    "drd-plus/races": "dev-master",
-    "drd/dice-roll": "dev-master"
+    "drd-plus/tables": "dev-master"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.4",
