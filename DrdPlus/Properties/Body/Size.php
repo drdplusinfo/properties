@@ -10,7 +10,7 @@ use DrdPlus\Properties\AbstractIntegerProperty;
  * @see PPH page 33 left column
  */
 /**
- * @method static Size getIt($value)
+ * @method static Size getIt(int $value)
  */
 class Size extends AbstractIntegerProperty implements BodyProperty
 {

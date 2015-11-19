@@ -5,7 +5,7 @@ use DrdPlus\Codes\PropertyCodes;
 use DrdPlus\Properties\AbstractFloatProperty;
 
 /**
- * @method static HeightInCm getIt($value)
+ * @method static HeightInCm getIt(float $value)
  */
 class HeightInCm extends AbstractFloatProperty implements BodyProperty
 {

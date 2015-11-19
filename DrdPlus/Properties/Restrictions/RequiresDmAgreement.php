@@ -8,6 +8,10 @@ class RequiresDmAgreement extends BooleanEnum implements RestrictionProperty
 {
     const REQUIRES_DM_AGREEMENT = PropertyCodes::REQUIRES_DM_AGREEMENT;
 
+    /**
+     * @param bool $value
+     * @return static
+     */
     public static function getIt($value)
     {
         return new static($value);

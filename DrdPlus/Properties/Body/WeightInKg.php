@@ -5,7 +5,7 @@ use DrdPlus\Codes\PropertyCodes;
 use DrdPlus\Properties\AbstractFloatProperty;
 
 /**
- * @method static WeightInKg getIt($value)
+ * @method static WeightInKg getIt(float $value)
  */
 class WeightInKg extends AbstractFloatProperty implements BodyProperty
 {
