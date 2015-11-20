@@ -8,7 +8,7 @@ abstract class AbstractFloatProperty extends FloatEnum implements PropertyInterf
 {
 
     /**
-     * @param int $value
+     * @param float $value
      *
      * @return static
      */
@@ -18,7 +18,7 @@ abstract class AbstractFloatProperty extends FloatEnum implements PropertyInterf
     }
 
     /**
-     * @return int
+     * @return float
      */
     public function getValue()
     {
