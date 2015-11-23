@@ -20,7 +20,7 @@ use DrdPlus\Properties\RemarkableSenses\Sight;
 use DrdPlus\Properties\RemarkableSenses\Smell;
 use DrdPlus\Properties\RemarkableSenses\Taste;
 use DrdPlus\Properties\RemarkableSenses\Touch;
-use DrdPlus\Tests\Properties\TestWithMockery;
+use DrdPlus\Tools\Tests\TestWithMockery;
 
 class RegistrarTest extends TestWithMockery
 {

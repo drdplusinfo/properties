@@ -4,7 +4,7 @@ namespace DrdPlus\Tests\Properties\EnumTypes;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 use Doctrineum\Scalar\EnumType;
-use DrdPlus\Tests\Properties\TestWithMockery;
+use DrdPlus\Tools\Tests\TestWithMockery;
 
 abstract class AbstractTestOfPropertyType extends TestWithMockery
 {
