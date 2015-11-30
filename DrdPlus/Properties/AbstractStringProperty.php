@@ -7,12 +7,4 @@ use Granam\String\StringInterface;
 abstract class AbstractStringProperty extends StrictStringEnum implements PropertyInterface, StringInterface
 {
 
-    /**
-     * @return string
-     */
-    public function getValue()
-    {
-        return $this->getEnumValue();
-    }
-
 }

@@ -15,13 +15,4 @@ abstract class AbstractIntegerProperty extends IntegerEnum implements PropertyIn
     {
         return static::getEnum($value);
     }
-
-    /**
-     * @return int
-     */
-    public function getValue()
-    {
-        return $this->getEnumValue();
-    }
-
 }

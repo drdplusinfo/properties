@@ -16,12 +16,4 @@ abstract class AbstractFloatProperty extends FloatEnum implements PropertyInterf
     {
         return static::getEnum($value);
     }
-
-    /**
-     * @return float
-     */
-    public function getValue()
-    {
-        return $this->getEnumValue();
-    }
 }
