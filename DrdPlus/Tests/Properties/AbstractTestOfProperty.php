@@ -1,7 +1,7 @@
 <?php
 namespace DrdPlus\Tests\Properties;
 
-use Doctrineum\Scalar\Enum;
+use Doctrineum\Scalar\ScalarEnum;
 use DrdPlus\Properties\Base\BaseProperty;
 use DrdPlus\Properties\Body\BodyProperty;
 use DrdPlus\Properties\Native\NativeProperty;
@@ -31,7 +31,7 @@ abstract class AbstractTestOfProperty extends TestWithMockery
     }
 
     /**
-     * @return string|Enum|BaseProperty|BodyProperty|NativeProperty
+     * @return string|ScalarEnum|BaseProperty|BodyProperty|NativeProperty
      */
     protected function getPropertyClass()
     {

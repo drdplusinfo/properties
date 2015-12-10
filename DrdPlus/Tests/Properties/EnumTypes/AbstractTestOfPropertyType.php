@@ -3,7 +3,7 @@ namespace DrdPlus\Tests\Properties\EnumTypes;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
-use Doctrineum\Scalar\EnumType;
+use Doctrineum\Scalar\ScalarEnumType;
 use DrdPlus\Tools\Tests\TestWithMockery;
 
 abstract class AbstractTestOfPropertyType extends TestWithMockery
@@ -26,7 +26,7 @@ abstract class AbstractTestOfPropertyType extends TestWithMockery
     }
 
     /**
-     * @return string|EnumType
+     * @return string|ScalarEnumType
      */
     private function getPropertyTypeClass()
     {

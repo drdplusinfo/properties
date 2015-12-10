@@ -1,7 +1,7 @@
 <?php
 namespace DrdPlus\Tests\Properties;
 
-use Doctrineum\Scalar\EnumType;
+use Doctrineum\Scalar\ScalarEnumType;
 
 abstract class AbstractTestOfStoredProperty extends AbstractTestOfProperty
 {
@@ -13,7 +13,7 @@ abstract class AbstractTestOfStoredProperty extends AbstractTestOfProperty
         $basename = $this->getPropertyBaseName();
         $namespace = $this->getPropertyNamespace();
         $this->assertTrue(
-            is_a($namespace . '\\EnumTypes\\' . $basename . 'Type', EnumType::class, true),
+            is_a($namespace . '\\EnumTypes\\' . $basename . 'Type', ScalarEnumType::class, true),
             'Not an enum type: ' . $namespace . '\\EnumTypes\\' . $basename . 'Type'
         );
     }
