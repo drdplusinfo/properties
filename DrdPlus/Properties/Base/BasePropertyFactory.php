@@ -1,7 +1,7 @@
 <?php
 namespace DrdPlus\Properties\Base;
 
-use Granam\Scalar\Tools\ValueDescriber;
+use Granam\Tools\ValueDescriber;
 use Granam\Strict\Object\StrictObject;
 
 class BasePropertyFactory extends StrictObject

@@ -6,8 +6,8 @@ use DrdPlus\Properties\Base\BaseProperty;
 use DrdPlus\Properties\Body\BodyProperty;
 use DrdPlus\Properties\Native\NativeProperty;
 use DrdPlus\Properties\PropertyInterface;
-use DrdPlus\Tools\Tests\TestWithMockery;
 use Granam\Scalar\Scalar;
+use Granam\Tests\Tools\TestWithMockery;
 
 abstract class AbstractTestOfProperty extends TestWithMockery
 {

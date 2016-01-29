@@ -8,7 +8,7 @@ use DrdPlus\Properties\RemarkableSenses\Sight;
 use DrdPlus\Properties\RemarkableSenses\Smell;
 use DrdPlus\Properties\RemarkableSenses\Taste;
 use DrdPlus\Properties\RemarkableSenses\Touch;
-use DrdPlus\Tools\Tests\TestWithMockery;
+use Granam\Tests\Tools\TestWithMockery;
 
 class RemarkableSenseTypeTest extends TestWithMockery
 {
