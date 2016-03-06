@@ -2,7 +2,7 @@
 namespace DrdPlus\Properties\Derived\Parts;
 
 use DrdPlus\Properties\Base\Charisma;
-use DrdPlus\Tools\Numbers\SumAndRound;
+use DrdPlus\Tools\Calculations\SumAndRound;
 use Granam\Integer\IntegerInterface;
 
 abstract class AbstractAspectOfVisage extends AbstractDerivedProperty

@@ -1,7 +1,7 @@
 <?php
 namespace DrdPlus\Tests\Properties\Derived;
 
-use DrdPlus\Tools\Numbers\SumAndRound;
+use DrdPlus\Tools\Calculations\SumAndRound;
 
 abstract class AbstractTestOfAspectOfVisage extends AbstractTestOfDerivedProperty
 {

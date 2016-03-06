@@ -5,7 +5,7 @@ use DrdPlus\Codes\PropertyCodes;
 use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Base\Will;
 use DrdPlus\Properties\Derived\Parts\AbstractDerivedProperty;
-use DrdPlus\Tools\Numbers\SumAndRound;
+use DrdPlus\Tools\Calculations\SumAndRound;
 
 class Endurance extends AbstractDerivedProperty
 {
