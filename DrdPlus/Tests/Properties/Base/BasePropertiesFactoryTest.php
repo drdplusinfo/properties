@@ -2,21 +2,21 @@
 namespace DrdPlus\Tests\Properties\Base;
 
 use DrdPlus\Properties\Base\Agility;
-use DrdPlus\Properties\Base\BasePropertyFactory;
+use DrdPlus\Properties\Base\BasePropertiesFactory;
 use DrdPlus\Properties\Base\Charisma;
 use DrdPlus\Properties\Base\Intelligence;
 use DrdPlus\Properties\Base\Knack;
 use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Base\Will;
 
-class BasePropertyFactoryTest extends \PHPUnit_Framework_TestCase
+class BasePropertiesFactoryTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @test
      */
     public function I_can_create_every_property()
     {
-        $factory = new BasePropertyFactory();
+        $factory = new BasePropertiesFactory();
 
         $strength = $factory->createStrength($strengthValue = 123);
         $this->assertInstanceOf(Strength::class, $strength);
@@ -67,7 +67,7 @@ class BasePropertyFactoryTest extends \PHPUnit_Framework_TestCase
      */
     public function I_can_not_create_property_by_unknown_code()
     {
-        $factory = new BasePropertyFactory();
+        $factory = new BasePropertiesFactory();
 
         $factory->createProperty(123, 'unknown code');
     }

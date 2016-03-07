@@ -4,7 +4,7 @@ namespace DrdPlus\Properties\Base;
 use Granam\Tools\ValueDescriber;
 use Granam\Strict\Object\StrictObject;
 
-class BasePropertyFactory extends StrictObject
+class BasePropertiesFactory extends StrictObject
 {
     public function createStrength($strengthValue)
     {
