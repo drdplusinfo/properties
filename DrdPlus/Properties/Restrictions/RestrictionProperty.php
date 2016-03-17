@@ -1,9 +1,9 @@
 <?php
 namespace DrdPlus\Properties\Restrictions;
 
-use DrdPlus\Properties\PropertyInterface;
+use DrdPlus\Properties\Property;
 
-interface RestrictionProperty extends PropertyInterface
+interface RestrictionProperty extends Property
 {
 
 }

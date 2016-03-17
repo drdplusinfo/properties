@@ -1,10 +1,10 @@
 <?php
 namespace DrdPlus\Properties\Derived;
 
-use DrdPlus\Properties\PropertyInterface;
+use DrdPlus\Properties\Property;
 use Granam\Integer\IntegerInterface;
 
-interface DerivedProperty extends PropertyInterface, IntegerInterface
+interface DerivedProperty extends Property, IntegerInterface
 {
 
 }

@@ -5,7 +5,7 @@ use Doctrineum\Scalar\ScalarEnum;
 use DrdPlus\Properties\Base\BaseProperty;
 use DrdPlus\Properties\Body\BodyProperty;
 use DrdPlus\Properties\Native\NativeProperty;
-use DrdPlus\Properties\PropertyInterface;
+use DrdPlus\Properties\Property;
 use Granam\Scalar\Scalar;
 use Granam\Tests\Tools\TestWithMockery;
 
@@ -14,7 +14,7 @@ abstract class AbstractTestOfProperty extends TestWithMockery
 
     /**
      * @test
-     * @return PropertyInterface
+     * @return Property
      */
     public function I_can_get_property_easily()
     {
@@ -22,9 +22,9 @@ abstract class AbstractTestOfProperty extends TestWithMockery
         $property = false;
         foreach ($this->getValuesForTest() as $value) {
             $property = $propertyClass::getIt($value);
-            $this->assertInstanceOf($propertyClass, $property);
+            self::assertInstanceOf($propertyClass, $property);
             /** @var Scalar $property */
-            $this->assertSame("$value", "{$property->getValue()}");
+            self::assertSame("$value", "{$property->getValue()}");
         }
 
         return $property;
@@ -43,16 +43,15 @@ abstract class AbstractTestOfProperty extends TestWithMockery
      */
     abstract protected function getValuesForTest();
 
-
     /**
-     * @param PropertyInterface $property
+     * @param Property $property
      *
      * @test
      * @depends I_can_get_property_easily
      */
-    public function I_can_get_property_code(PropertyInterface $property)
+    public function I_can_get_property_code(Property $property)
     {
-        $this->assertSame($this->getExpectedPropertyCode(), $property->getCode());
+        self::assertSame($this->getExpectedPropertyCode(), $property->getCode());
     }
 
     /**
@@ -82,7 +81,7 @@ abstract class AbstractTestOfProperty extends TestWithMockery
     public function I_can_use_it_as_generic_group_property()
     {
         $propertyClass = $this->getPropertyClass();
-        $this->assertTrue(
+        self::assertTrue(
             is_a($propertyClass, $this->getGenericGroupPropertyClassName(), true),
             $propertyClass . ' does not belongs into ' . $this->getGenericGroupPropertyClassName()
         );
@@ -100,8 +99,7 @@ abstract class AbstractTestOfProperty extends TestWithMockery
     protected function getPropertyNamespace()
     {
         $propertyClass = $this->getPropertyClass();
-        $propertyNamespace = preg_replace('~[\\\]\w+$~', '', $propertyClass);
 
-        return $propertyNamespace;
+        return preg_replace('~[\\\]\w+$~', '', $propertyClass);
     }
 }

@@ -1,13 +1,13 @@
 <?php
 namespace DrdPlus\Properties\Base;
 
-use DrdPlus\Properties\PropertyInterface;
+use DrdPlus\Properties\Property;
 use Granam\Integer\IntegerInterface;
 
 /**
  * @method static BaseProperty getIt(int $value)
  */
-interface BaseProperty extends PropertyInterface, IntegerInterface
+interface BaseProperty extends Property, IntegerInterface
 {
 
 }

@@ -1,9 +1,9 @@
 <?php
 namespace DrdPlus\Properties\Body;
 
-use DrdPlus\Properties\PropertyInterface;
+use DrdPlus\Properties\Property;
 
-interface BodyProperty extends PropertyInterface
+interface BodyProperty extends Property
 {
 
 }

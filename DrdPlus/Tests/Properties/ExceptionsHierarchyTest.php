@@ -1,21 +1,21 @@
 <?php
 namespace DrdPlus\Tests\Properties;
 
-use DrdPlus\Properties\PropertyInterface;
-use Granam\Exceptions\Tests\Tools\AbstractTestOfExceptionsHierarchy;
+use DrdPlus\Properties\Property;
+use Granam\Tests\Exceptions\Tools\AbstractExceptionsHierarchyTest;
 
-class ExceptionsHierarchyTest extends AbstractTestOfExceptionsHierarchy
+class ExceptionsHierarchyTest extends AbstractExceptionsHierarchyTest
 {
     protected function getTestedNamespace()
     {
-        $reflection = new \ReflectionClass(PropertyInterface::class);
-
-        return $reflection->getNamespaceName();
+        return $this->getRootNamespace();
     }
 
     protected function getRootNamespace()
     {
-        return $this->getTestedNamespace();
+        $reflection = new \ReflectionClass(Property::class);
+
+        return $reflection->getNamespaceName();
     }
 
 }

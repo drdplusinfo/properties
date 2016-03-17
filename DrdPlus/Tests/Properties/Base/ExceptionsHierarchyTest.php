@@ -2,10 +2,10 @@
 namespace DrdPlus\Tests\Properties\Base;
 
 use DrdPlus\Properties\Base\BaseProperty;
-use DrdPlus\Properties\PropertyInterface;
-use Granam\Exceptions\Tests\Tools\AbstractTestOfExceptionsHierarchy;
+use DrdPlus\Properties\Property;
+use Granam\Tests\Exceptions\Tools\AbstractExceptionsHierarchyTest;
 
-class ExceptionsHierarchyTest extends AbstractTestOfExceptionsHierarchy
+class ExceptionsHierarchyTest extends AbstractExceptionsHierarchyTest
 {
     protected function getTestedNamespace()
     {
@@ -16,7 +16,7 @@ class ExceptionsHierarchyTest extends AbstractTestOfExceptionsHierarchy
 
     protected function getRootNamespace()
     {
-        $reflection = new \ReflectionClass(PropertyInterface::class);
+        $reflection = new \ReflectionClass(Property::class);
 
         return $reflection->getNamespaceName();
     }

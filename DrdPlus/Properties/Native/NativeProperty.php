@@ -2,9 +2,9 @@
 namespace DrdPlus\Properties\Native;
 
 use Doctrineum\Boolean\BooleanEnum;
-use DrdPlus\Properties\PropertyInterface;
+use DrdPlus\Properties\Property;
 
-abstract class NativeProperty extends BooleanEnum implements PropertyInterface
+abstract class NativeProperty extends BooleanEnum implements Property
 {
 
     /**

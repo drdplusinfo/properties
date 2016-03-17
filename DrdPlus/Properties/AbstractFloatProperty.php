@@ -4,7 +4,7 @@ namespace DrdPlus\Properties;
 use Doctrineum\Float\FloatEnum;
 use Granam\Float\FloatInterface;
 
-abstract class AbstractFloatProperty extends FloatEnum implements PropertyInterface, FloatInterface
+abstract class AbstractFloatProperty extends FloatEnum implements Property, FloatInterface
 {
 
     /**

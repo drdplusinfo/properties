@@ -3,7 +3,7 @@ namespace DrdPlus\Properties;
 
 use Doctrineum\Integer\IntegerEnum;
 
-abstract class AbstractIntegerProperty extends IntegerEnum implements PropertyInterface
+abstract class AbstractIntegerProperty extends IntegerEnum implements Property
 {
 
     /**

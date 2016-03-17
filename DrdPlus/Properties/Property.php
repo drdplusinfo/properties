@@ -3,7 +3,7 @@ namespace DrdPlus\Properties;
 
 use Granam\Scalar\ScalarInterface;
 
-interface PropertyInterface extends ScalarInterface
+interface Property extends ScalarInterface
 {
 
     /**
