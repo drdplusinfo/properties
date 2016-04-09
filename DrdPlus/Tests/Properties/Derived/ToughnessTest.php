@@ -19,10 +19,10 @@ class ToughnessTest extends AbstractTestOfDerivedProperty
             RaceCodes::WOOD,
             new RacesTable()
         );
-        $this->assertSame('toughness', $toughness->getCode());
-        $this->assertSame('toughness', $toughness::TOUGHNESS);
-        $this->assertSame($strengthValue + 1, $toughness->getValue());
-        $this->assertSame((string)($strengthValue + 1), "$toughness");
+        self::assertSame('toughness', $toughness->getCode());
+        self::assertSame('toughness', $toughness::TOUGHNESS);
+        self::assertSame($strengthValue + 1, $toughness->getValue());
+        self::assertSame((string)($strengthValue + 1), "$toughness");
 
         return $toughness;
     }

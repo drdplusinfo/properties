@@ -19,12 +19,12 @@ class RemarkableSenseTypeTest extends TestWithMockery
     {
         RemarkableSenseType::registerSenses();
 
-        $this->assertTrue(Type::hasType(RemarkableSenseType::REMARKABLE_SENSE));
+        self::assertTrue(Type::hasType(RemarkableSenseType::REMARKABLE_SENSE));
 
-        $this->assertTrue(RemarkableSenseType::hasSubTypeEnum(Hearing::class));
-        $this->assertTrue(RemarkableSenseType::hasSubTypeEnum(Sight::class));
-        $this->assertTrue(RemarkableSenseType::hasSubTypeEnum(Smell::class));
-        $this->assertTrue(RemarkableSenseType::hasSubTypeEnum(Taste::class));
-        $this->assertTrue(RemarkableSenseType::hasSubTypeEnum(Touch::class));
+        self::assertTrue(RemarkableSenseType::hasSubTypeEnum(Hearing::class));
+        self::assertTrue(RemarkableSenseType::hasSubTypeEnum(Sight::class));
+        self::assertTrue(RemarkableSenseType::hasSubTypeEnum(Smell::class));
+        self::assertTrue(RemarkableSenseType::hasSubTypeEnum(Taste::class));
+        self::assertTrue(RemarkableSenseType::hasSubTypeEnum(Touch::class));
     }
 }

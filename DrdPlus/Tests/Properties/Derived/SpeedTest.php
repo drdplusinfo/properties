@@ -18,10 +18,10 @@ class SpeedTest extends AbstractTestOfDerivedProperty
             $this->getAgility($agilityValue = 456),
             $this->getSizeProperty($sizeValue = 789)
         );
-        $this->assertSame('speed', $speed->getCode());
-        $this->assertSame('speed', $speed::SPEED);
-        $this->assertSame((int)round(($strengthValue + $agilityValue) / 2) + ($sizeValue / 3 - 2), $speed->getValue());
-        $this->assertSame((string)(round(($strengthValue + $agilityValue) / 2) + ($sizeValue / 3 - 2)), "$speed");
+        self::assertSame('speed', $speed->getCode());
+        self::assertSame('speed', $speed::SPEED);
+        self::assertSame((int)round(($strengthValue + $agilityValue) / 2) + ($sizeValue / 3 - 2), $speed->getValue());
+        self::assertSame((string)(round(($strengthValue + $agilityValue) / 2) + ($sizeValue / 3 - 2)), "$speed");
 
         return $speed;
     }
@@ -42,8 +42,8 @@ class SpeedTest extends AbstractTestOfDerivedProperty
             $this->getAgility($agilityValue = 456),
             $this->getSizeProperty($size)
         );
-        $this->assertSame((int)round(($strengthValue + $agilityValue) / 2) + $speedModifier, $speed->getValue());
-        $this->assertSame((string)(round(($strengthValue + $agilityValue) / 2) + $speedModifier), "$speed");
+        self::assertSame((int)round(($strengthValue + $agilityValue) / 2) + $speedModifier, $speed->getValue());
+        self::assertSame((string)(round(($strengthValue + $agilityValue) / 2) + $speedModifier), "$speed");
 
         return $speed;
     }

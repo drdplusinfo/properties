@@ -19,46 +19,46 @@ class BasePropertiesFactoryTest extends \PHPUnit_Framework_TestCase
         $factory = new BasePropertiesFactory();
 
         $strength = $factory->createStrength($strengthValue = 123);
-        $this->assertInstanceOf(Strength::class, $strength);
-        $this->assertSame($strengthValue, $strength->getValue());
+        self::assertInstanceOf(Strength::class, $strength);
+        self::assertSame($strengthValue, $strength->getValue());
         $strength = $factory->createProperty($strengthValue, Strength::STRENGTH);
-        $this->assertInstanceOf(Strength::class, $strength);
-        $this->assertSame($strengthValue, $strength->getValue());
+        self::assertInstanceOf(Strength::class, $strength);
+        self::assertSame($strengthValue, $strength->getValue());
 
         $agility = $factory->createAgility($agilityValue = 123);
-        $this->assertInstanceOf(Agility::class, $agility);
-        $this->assertSame($agilityValue, $agility->getValue());
+        self::assertInstanceOf(Agility::class, $agility);
+        self::assertSame($agilityValue, $agility->getValue());
         $agility = $factory->createProperty($agilityValue, Agility::AGILITY);
-        $this->assertInstanceOf(Agility::class, $agility);
-        $this->assertSame($agilityValue, $agility->getValue());
+        self::assertInstanceOf(Agility::class, $agility);
+        self::assertSame($agilityValue, $agility->getValue());
 
         $knack = $factory->createKnack($knackValue = 123);
-        $this->assertInstanceOf(Knack::class, $knack);
-        $this->assertSame($knackValue, $knack->getValue());
+        self::assertInstanceOf(Knack::class, $knack);
+        self::assertSame($knackValue, $knack->getValue());
         $knack = $factory->createProperty($knackValue, Knack::KNACK);
-        $this->assertInstanceOf(Knack::class, $knack);
-        $this->assertSame($knackValue, $knack->getValue());
+        self::assertInstanceOf(Knack::class, $knack);
+        self::assertSame($knackValue, $knack->getValue());
 
         $will = $factory->createWill($willValue = 123);
-        $this->assertInstanceOf(Will::class, $will);
-        $this->assertSame($willValue, $will->getValue());
+        self::assertInstanceOf(Will::class, $will);
+        self::assertSame($willValue, $will->getValue());
         $will = $factory->createProperty($willValue, Will::WILL);
-        $this->assertInstanceOf(Will::class, $will);
-        $this->assertSame($willValue, $will->getValue());
+        self::assertInstanceOf(Will::class, $will);
+        self::assertSame($willValue, $will->getValue());
 
         $intelligence = $factory->createIntelligence($intelligenceValue = 123);
-        $this->assertInstanceOf(Intelligence::class, $intelligence);
-        $this->assertSame($intelligenceValue, $intelligence->getValue());
+        self::assertInstanceOf(Intelligence::class, $intelligence);
+        self::assertSame($intelligenceValue, $intelligence->getValue());
         $intelligence = $factory->createProperty($intelligenceValue, Intelligence::INTELLIGENCE);
-        $this->assertInstanceOf(Intelligence::class, $intelligence);
-        $this->assertSame($intelligenceValue, $intelligence->getValue());
+        self::assertInstanceOf(Intelligence::class, $intelligence);
+        self::assertSame($intelligenceValue, $intelligence->getValue());
 
         $charisma = $factory->createCharisma($charismaValue = 123);
-        $this->assertInstanceOf(Charisma::class, $charisma);
-        $this->assertSame($charismaValue, $charisma->getValue());
+        self::assertInstanceOf(Charisma::class, $charisma);
+        self::assertSame($charismaValue, $charisma->getValue());
         $charisma = $factory->createProperty($charismaValue, Charisma::CHARISMA);
-        $this->assertInstanceOf(Charisma::class, $charisma);
-        $this->assertSame($charismaValue, $charisma->getValue());
+        self::assertInstanceOf(Charisma::class, $charisma);
+        self::assertSame($charismaValue, $charisma->getValue());
     }
 
     /**

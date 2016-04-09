@@ -17,12 +17,12 @@ abstract class AbstractTestOfPropertyType extends TestWithMockery
         $propertyTypeClass = $this->getPropertyTypeClass();
         $propertyName = $this->getPropertyName();
         $constantName = strtoupper($propertyName);
-        $this->assertTrue(
+        self::assertTrue(
             defined("$propertyTypeClass::$constantName"),
             "Constant $propertyTypeClass::$constantName is not defined"
         );
-        $this->assertSame($propertyName, constant("$propertyTypeClass::$constantName"));
-        $this->assertSame($propertyName, $propertyTypeClass::getTypeName());
+        self::assertSame($propertyName, constant("$propertyTypeClass::$constantName"));
+        self::assertSame($propertyName, $propertyTypeClass::getTypeName());
     }
 
     /**
@@ -62,7 +62,7 @@ abstract class AbstractTestOfPropertyType extends TestWithMockery
     {
         $propertyTypeClass = $this->getPropertyTypeClass();
         $propertyTypeClass::registerSelf();
-        $this->assertTrue(Type::hasType($propertyTypeClass::getTypeName()));
+        self::assertTrue(Type::hasType($propertyTypeClass::getTypeName()));
     }
 
     /**
@@ -74,8 +74,8 @@ abstract class AbstractTestOfPropertyType extends TestWithMockery
         $propertyTypeClass = $this->getPropertyTypeClass();
         $propertyType = Type::getType($propertyTypeClass::getTypeName());
         $phpValue = $propertyType->convertToPHPValue($value = $this->getValue(), $this->getPlatform());
-        $this->assertInstanceOf($this->getPropertyClass(), $phpValue);
-        $this->assertEquals($value, $phpValue->__toString());
+        self::assertInstanceOf($this->getPropertyClass(), $phpValue);
+        self::assertEquals($value, (string)$phpValue);
     }
 
     abstract protected function getValue();

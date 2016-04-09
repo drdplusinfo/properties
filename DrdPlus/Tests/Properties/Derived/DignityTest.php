@@ -15,10 +15,10 @@ class DignityTest extends AbstractTestOfAspectOfVisage
     public function I_can_get_property_easily()
     {
         $dignity = new Dignity($this->getIntelligence($agilityValue = 123), $this->getWill($knackValue = 456), $this->getCharisma($charismaValue = 789));
-        $this->assertSame('dignity', $dignity->getCode());
-        $this->assertSame('dignity', $dignity->getCode());
-        $this->assertSame($this->calculateValue($agilityValue, $knackValue, $charismaValue), $dignity->getValue());
-        $this->assertSame((string)$this->calculateValue($agilityValue, $knackValue, $charismaValue), "$dignity");
+        self::assertSame('dignity', $dignity->getCode());
+        self::assertSame('dignity', $dignity->getCode());
+        self::assertSame($this->calculateValue($agilityValue, $knackValue, $charismaValue), $dignity->getValue());
+        self::assertSame((string)$this->calculateValue($agilityValue, $knackValue, $charismaValue), "$dignity");
 
         return $dignity;
     }

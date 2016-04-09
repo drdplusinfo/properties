@@ -12,10 +12,10 @@ class SensesTest extends AbstractTestOfDerivedProperty
     public function I_can_get_property_easily()
     {
         $senses = new Senses($this->getKnack($knackValue = 123), $raceGenderSenses = 456);
-        $this->assertSame('senses', $senses->getCode());
-        $this->assertSame('senses', $senses::SENSES);
-        $this->assertSame($knackValue + $raceGenderSenses, $senses->getValue());
-        $this->assertSame((string)($knackValue + $raceGenderSenses), "$senses");
+        self::assertSame('senses', $senses->getCode());
+        self::assertSame('senses', $senses::SENSES);
+        self::assertSame($knackValue + $raceGenderSenses, $senses->getValue());
+        self::assertSame((string)($knackValue + $raceGenderSenses), "$senses");
 
         return $senses;
     }

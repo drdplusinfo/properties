@@ -12,7 +12,7 @@ abstract class AbstractTestOfStoredProperty extends AbstractTestOfProperty
     {
         $basename = $this->getPropertyBaseName();
         $namespace = $this->getPropertyNamespace();
-        $this->assertTrue(
+        self::assertTrue(
             is_a($namespace . '\\EnumTypes\\' . $basename . 'Type', ScalarEnumType::class, true),
             'Not an enum type: ' . $namespace . '\\EnumTypes\\' . $basename . 'Type'
         );

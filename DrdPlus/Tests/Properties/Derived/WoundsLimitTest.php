@@ -26,7 +26,7 @@ class WoundsLimitTest extends AbstractTestOfDerivedProperty
             ),
             new WoundsTable()
         );
-        $this->assertSame(
+        self::assertSame(
             22, // bonus of wound 17 (6 + 10 + 1) = wound of 22
             $woundsLimit->getValue()
         );
