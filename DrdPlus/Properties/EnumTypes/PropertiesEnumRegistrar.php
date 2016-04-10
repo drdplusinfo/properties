@@ -7,6 +7,7 @@ use DrdPlus\Properties\Base\EnumTypes\IntelligenceType;
 use DrdPlus\Properties\Base\EnumTypes\KnackType;
 use DrdPlus\Properties\Base\EnumTypes\StrengthType;
 use DrdPlus\Properties\Base\EnumTypes\WillType;
+use DrdPlus\Properties\Body\EnumTypes\AgeType;
 use DrdPlus\Properties\Body\EnumTypes\HeightInCmType;
 use DrdPlus\Properties\Body\EnumTypes\SizeType;
 use DrdPlus\Properties\Body\EnumTypes\WeightInKgType;
@@ -40,6 +41,7 @@ class PropertiesEnumRegistrar extends StrictObject
         HeightInCmType::registerSelf();
         SizeType::registerSelf();
         WeightInKgType::registerSelf();
+        AgeType::registerSelf();
     }
 
     protected static function registerRemarkableSenses()

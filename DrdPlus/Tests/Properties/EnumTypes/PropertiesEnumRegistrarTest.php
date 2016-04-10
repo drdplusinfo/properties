@@ -8,6 +8,7 @@ use DrdPlus\Properties\Base\Intelligence;
 use DrdPlus\Properties\Base\Knack;
 use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Base\Will;
+use DrdPlus\Properties\Body\Age;
 use DrdPlus\Properties\Body\HeightInCm;
 use DrdPlus\Properties\Body\Size;
 use DrdPlus\Properties\Body\WeightInKg;
@@ -41,6 +42,7 @@ class PropertiesEnumRegistrarTest extends TestWithMockery
         self::assertTrue(Type::hasType(HeightInCm::HEIGHT_IN_CM));
         self::assertTrue(Type::hasType(Size::SIZE));
         self::assertTrue(Type::hasType(WeightInKg::WEIGHT_IN_KG));
+        self::assertTrue(Type::hasType(Age::AGE));
 
         self::assertTrue(Type::hasType(RemarkableSenseType::getTypeName()));
         self::assertTrue(RemarkableSenseType::hasSubTypeEnum(Hearing::class));
