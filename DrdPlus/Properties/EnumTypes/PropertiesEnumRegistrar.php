@@ -15,7 +15,7 @@ use DrdPlus\Properties\Native\EnumTypes\NativeRegenerationType;
 use DrdPlus\Properties\RemarkableSenses\EnumTypes\RemarkableSenseType;
 use Granam\Strict\Object\StrictObject;
 
-class PropertiesRegistrar extends StrictObject
+class PropertiesEnumRegistrar extends StrictObject
 {
     public static function registerAll()
     {

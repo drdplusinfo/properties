@@ -11,7 +11,7 @@ use DrdPlus\Properties\Base\Will;
 use DrdPlus\Properties\Body\HeightInCm;
 use DrdPlus\Properties\Body\Size;
 use DrdPlus\Properties\Body\WeightInKg;
-use DrdPlus\Properties\EnumTypes\PropertiesRegistrar;
+use DrdPlus\Properties\EnumTypes\PropertiesEnumRegistrar;
 use DrdPlus\Properties\Native\Infravision;
 use DrdPlus\Properties\Native\NativeRegeneration;
 use DrdPlus\Properties\RemarkableSenses\EnumTypes\RemarkableSenseType;
@@ -22,14 +22,14 @@ use DrdPlus\Properties\RemarkableSenses\Taste;
 use DrdPlus\Properties\RemarkableSenses\Touch;
 use Granam\Tests\Tools\TestWithMockery;
 
-class PropertiesRegistrarTest extends TestWithMockery
+class PropertiesEnumRegistrarTest extends TestWithMockery
 {
     /**
      * @test
      */
     public function I_can_register_all_properties_as_doctrine_types()
     {
-        PropertiesRegistrar::registerAll();
+        PropertiesEnumRegistrar::registerAll();
 
         self::assertTrue(Type::hasType(Strength::STRENGTH));
         self::assertTrue(Type::hasType(Agility::AGILITY));
