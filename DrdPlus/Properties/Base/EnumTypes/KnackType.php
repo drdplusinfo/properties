@@ -2,9 +2,17 @@
 namespace DrdPlus\Properties\Base\EnumTypes;
 
 use Doctrineum\Integer\IntegerEnumType;
-use DrdPlus\Properties\Base\Knack;
+use DrdPlus\Codes\PropertyCodes;
 
 class KnackType extends IntegerEnumType
 {
-    const KNACK = Knack::KNACK;
+    const KNACK = PropertyCodes::KNACK;
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return self::KNACK;
+    }
 }

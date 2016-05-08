@@ -2,9 +2,17 @@
 namespace DrdPlus\Properties\Body\EnumTypes;
 
 use Doctrineum\Float\FloatEnumType;
-use DrdPlus\Properties\Body\WeightInKg;
+use DrdPlus\Codes\PropertyCodes;
 
 class WeightInKgType extends FloatEnumType
 {
-    const WEIGHT_IN_KG = WeightInKg::WEIGHT_IN_KG;
+    const WEIGHT_IN_KG = PropertyCodes::WEIGHT_IN_KG;
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return self::WEIGHT_IN_KG;
+    }
 }

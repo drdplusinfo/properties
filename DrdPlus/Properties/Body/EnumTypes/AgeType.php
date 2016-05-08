@@ -2,9 +2,17 @@
 namespace DrdPlus\Properties\Body\EnumTypes;
 
 use Doctrineum\Integer\IntegerEnumType;
-use DrdPlus\Properties\Body\Age;
+use DrdPlus\Codes\PropertyCodes;
 
 class AgeType extends IntegerEnumType
 {
-    const AGE = Age::AGE;
+    const AGE = PropertyCodes::AGE;
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return self::AGE;
+    }
 }

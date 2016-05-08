@@ -2,9 +2,17 @@
 namespace DrdPlus\Properties\Base\EnumTypes;
 
 use Doctrineum\Integer\IntegerEnumType;
-use DrdPlus\Properties\Base\Charisma;
+use DrdPlus\Codes\PropertyCodes;
 
 class CharismaType extends IntegerEnumType
 {
-    const CHARISMA = Charisma::CHARISMA;
+    const CHARISMA = PropertyCodes::CHARISMA;
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return self::CHARISMA;
+    }
 }

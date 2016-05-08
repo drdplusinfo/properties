@@ -2,9 +2,17 @@
 namespace DrdPlus\Properties\Base\EnumTypes;
 
 use Doctrineum\Integer\IntegerEnumType;
-use DrdPlus\Properties\Base\Strength;
+use DrdPlus\Codes\PropertyCodes;
 
 class StrengthType extends IntegerEnumType
 {
-    const STRENGTH = Strength::STRENGTH;
+    const STRENGTH = PropertyCodes::STRENGTH;
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return self::STRENGTH;
+    }
 }

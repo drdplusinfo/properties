@@ -2,9 +2,17 @@
 namespace DrdPlus\Properties\Body\EnumTypes;
 
 use Doctrineum\Integer\IntegerEnumType;
-use DrdPlus\Properties\Body\Size;
+use DrdPlus\Codes\PropertyCodes;
 
 class SizeType extends IntegerEnumType
 {
-    const SIZE = Size::SIZE;
+    const SIZE = PropertyCodes::SIZE;
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return self::SIZE;
+    }
 }

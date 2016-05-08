@@ -2,9 +2,17 @@
 namespace DrdPlus\Properties\Base\EnumTypes;
 
 use Doctrineum\Integer\IntegerEnumType;
-use DrdPlus\Properties\Base\Agility;
+use DrdPlus\Codes\PropertyCodes;
 
 class AgilityType extends IntegerEnumType
 {
-    const AGILITY = Agility::AGILITY;
+    const AGILITY = PropertyCodes::AGILITY;
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return self::AGILITY;
+    }
 }

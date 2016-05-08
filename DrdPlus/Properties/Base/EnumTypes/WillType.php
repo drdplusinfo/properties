@@ -2,9 +2,17 @@
 namespace DrdPlus\Properties\Base\EnumTypes;
 
 use Doctrineum\Integer\IntegerEnumType;
-use DrdPlus\Properties\Base\Will;
+use DrdPlus\Codes\PropertyCodes;
 
 class WillType extends IntegerEnumType
 {
-    const WILL = Will::WILL;
+    const WILL = PropertyCodes::WILL;
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return self::WILL;
+    }
 }

@@ -44,7 +44,7 @@ class PropertiesEnumRegistrarTest extends TestWithMockery
         self::assertTrue(Type::hasType(WeightInKg::WEIGHT_IN_KG));
         self::assertTrue(Type::hasType(Age::AGE));
 
-        self::assertTrue(Type::hasType(RemarkableSenseType::getTypeName()));
+        self::assertTrue(Type::hasType(RemarkableSenseType::REMARKABLE_SENSE));
         self::assertTrue(RemarkableSenseType::hasSubTypeEnum(Hearing::class));
         self::assertTrue(RemarkableSenseType::hasSubTypeEnum(Sight::class));
         self::assertTrue(RemarkableSenseType::hasSubTypeEnum(Smell::class));

@@ -2,9 +2,17 @@
 namespace DrdPlus\Properties\Body\EnumTypes;
 
 use Doctrineum\Integer\IntegerEnumType;
-use DrdPlus\Properties\Body\Weight;
+use DrdPlus\Codes\PropertyCodes;
 
 class WeightType extends IntegerEnumType
 {
-    const WEIGHT = Weight::WEIGHT;
+    const WEIGHT = PropertyCodes::WEIGHT;
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return self::WEIGHT;
+    }
 }

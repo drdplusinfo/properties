@@ -2,9 +2,17 @@
 namespace DrdPlus\Properties\Native\EnumTypes;
 
 use Doctrineum\Boolean\BooleanEnumType;
-use DrdPlus\Properties\Native\Infravision;
+use DrdPlus\Codes\PropertyCodes;
 
 class InfravisionType extends BooleanEnumType
 {
-    const INFRAVISION = Infravision::INFRAVISION;
+    const INFRAVISION = PropertyCodes::INFRAVISION;
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return self::INFRAVISION;
+    }
 }

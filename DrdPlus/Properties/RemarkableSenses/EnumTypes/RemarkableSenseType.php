@@ -17,23 +17,29 @@ class RemarkableSenseType extends ScalarEnumType
     {
         self::registerSelf();
 
-        /*
-         * Remarkable senses are enum subtypes - one column for one and only one sense
-         */
+        // Remarkable senses are enum subtypes - one column for one and only one remarkable sense
         if (!self::hasSubTypeEnum(Hearing::class)) {
-            self::addSubTypeEnum(Hearing::class, '~' . Hearing::HEARING . '~' /* regexp */);
+            self::addSubTypeEnum(Hearing::class, '~' . PropertyCodes::HEARING . '~' /* regexp */);
         }
         if (!self::hasSubTypeEnum(Sight::class)) {
-            self::addSubTypeEnum(Sight::class, '~' . Sight::SIGHT . '~' /* regexp */);
+            self::addSubTypeEnum(Sight::class, '~' . PropertyCodes::SIGHT . '~' /* regexp */);
         }
         if (!self::hasSubTypeEnum(Smell::class)) {
-            self::addSubTypeEnum(Smell::class, '~' . Smell::SMELL . '~' /* regexp */);
+            self::addSubTypeEnum(Smell::class, '~' . PropertyCodes::SMELL . '~' /* regexp */);
         }
         if (!self::hasSubTypeEnum(Taste::class)) {
-            self::addSubTypeEnum(Taste::class, '~' . Taste::TASTE . '~' /* regexp */);
+            self::addSubTypeEnum(Taste::class, '~' . PropertyCodes::TASTE . '~' /* regexp */);
         }
         if (!self::hasSubTypeEnum(Touch::class)) {
-            self::addSubTypeEnum(Touch::class, '~' . Touch::TOUCH . '~' /* regexp */);
+            self::addSubTypeEnum(Touch::class, '~' . PropertyCodes::TOUCH . '~' /* regexp */);
         }
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return self::REMARKABLE_SENSE;
     }
 }

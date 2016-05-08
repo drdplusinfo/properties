@@ -2,9 +2,17 @@
 namespace DrdPlus\Properties\Base\EnumTypes;
 
 use Doctrineum\Integer\IntegerEnumType;
-use DrdPlus\Properties\Base\Intelligence;
+use DrdPlus\Codes\PropertyCodes;
 
 class IntelligenceType extends IntegerEnumType
 {
-    const INTELLIGENCE = Intelligence::INTELLIGENCE;
+    const INTELLIGENCE = PropertyCodes::INTELLIGENCE;
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return self::INTELLIGENCE;
+    }
 }

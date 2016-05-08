@@ -7,4 +7,12 @@ use DrdPlus\Properties\Restrictions\RequiresDmAgreement;
 class RequiresDmAgreementType extends BooleanEnumType
 {
     const REQUIRES_DM_AGREEMENT = RequiresDmAgreement::REQUIRES_DM_AGREEMENT;
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return self::REQUIRES_DM_AGREEMENT;
+    }
 }

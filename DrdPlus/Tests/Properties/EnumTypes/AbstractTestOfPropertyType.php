@@ -3,66 +3,19 @@ namespace DrdPlus\Tests\Properties\EnumTypes;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
-use Doctrineum\Scalar\ScalarEnumType;
-use Granam\Tests\Tools\TestWithMockery;
+use Doctrineum\Tests\SelfRegisteringType\AbstractSelfRegisteringTypeTest;
 
-abstract class AbstractTestOfPropertyType extends TestWithMockery
+abstract class AbstractTestOfPropertyType extends AbstractSelfRegisteringTypeTest
 {
 
     /**
      * @test
      */
-    public function Type_has_expected_name()
-    {
-        $propertyTypeClass = $this->getPropertyTypeClass();
-        $propertyName = $this->getPropertyName();
-        $constantName = strtoupper($propertyName);
-        self::assertTrue(
-            defined("$propertyTypeClass::$constantName"),
-            "Constant $propertyTypeClass::$constantName is not defined"
-        );
-        self::assertSame($propertyName, constant("$propertyTypeClass::$constantName"));
-        self::assertSame($propertyName, $propertyTypeClass::getTypeName());
-    }
-
-    /**
-     * @return string|ScalarEnumType
-     */
-    private function getPropertyTypeClass()
-    {
-        return preg_replace('~Tests\\\(.+)Test$~', '$1', static::class);
-    }
-
-    /**
-     * @return string
-     */
-    private function getPropertyName()
-    {
-        $propertyBaseName = $this->getPropertyBaseName();
-        $underScoredClassName = preg_replace('~(\w)([A-Z])~', '$1_$2', $propertyBaseName);
-
-        return strtolower($underScoredClassName);
-    }
-
-    /**
-     * @return string
-     */
-    private function getPropertyBaseName()
-    {
-        $propertyTypeClass = $this->getPropertyTypeClass();
-
-        return preg_replace('~^.*\\\(\w+)Type$~', '$1', $propertyTypeClass);
-    }
-
-    /**
-     * @test
-     * @depends Type_has_expected_name
-     */
     public function I_can_registered_the_type()
     {
-        $propertyTypeClass = $this->getPropertyTypeClass();
+        $propertyTypeClass = $this->getTypeClass();
         $propertyTypeClass::registerSelf();
-        self::assertTrue(Type::hasType($propertyTypeClass::getTypeName()));
+        self::assertTrue(Type::hasType($this->getExpectedTypeName()));
     }
 
     /**
@@ -71,18 +24,17 @@ abstract class AbstractTestOfPropertyType extends TestWithMockery
      */
     public function Type_can_be_converted_to_PHP_value()
     {
-        $propertyTypeClass = $this->getPropertyTypeClass();
-        $propertyType = Type::getType($propertyTypeClass::getTypeName());
+        $propertyType = Type::getType($this->getExpectedtypeName());
         $phpValue = $propertyType->convertToPHPValue($value = $this->getValue(), $this->getPlatform());
-        self::assertInstanceOf($this->getPropertyClass(), $phpValue);
+        self::assertInstanceOf($this->getRegisteredClass(), $phpValue);
         self::assertEquals($value, (string)$phpValue);
     }
 
     abstract protected function getValue();
 
-    protected function getPropertyClass()
+    protected function getRegisteredClass()
     {
-        $propertyTypeClass = $this->getPropertyTypeClass();
+        $propertyTypeClass = $this->getTypeClass();
         $propertyClass = preg_replace('~\\\(\w+)\\\(\w+)Type$~', '\\\$2', $propertyTypeClass);
 
         return $propertyClass;
