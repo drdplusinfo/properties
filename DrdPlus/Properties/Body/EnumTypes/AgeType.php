@@ -2,11 +2,14 @@
 namespace DrdPlus\Properties\Body\EnumTypes;
 
 use Doctrineum\Integer\IntegerEnumType;
-use DrdPlus\Codes\PropertyCodes;
 
 class AgeType extends IntegerEnumType
 {
-    const AGE = PropertyCodes::AGE;
+    /**
+     * should be the same as @see \DrdPlus\Codes\PropertyCodes::AGE
+     * and can not be just linked to give direct return value and provide PhpStorm to-definition link support
+     */
+    const AGE = 'age';
 
     /**
      * @return string

@@ -2,11 +2,14 @@
 namespace DrdPlus\Properties\Body\EnumTypes;
 
 use Doctrineum\Integer\IntegerEnumType;
-use DrdPlus\Codes\PropertyCodes;
 
 class SizeType extends IntegerEnumType
 {
-    const SIZE = PropertyCodes::SIZE;
+    /**
+     * should be the same as @see \DrdPlus\Codes\PropertyCodes::SIZE
+     * and can not be just linked to give direct return value and provide PhpStorm to-definition link support
+     */
+    const SIZE = 'size';
 
     /**
      * @return string

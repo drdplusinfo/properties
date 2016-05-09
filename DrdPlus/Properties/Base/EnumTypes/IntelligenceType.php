@@ -2,11 +2,14 @@
 namespace DrdPlus\Properties\Base\EnumTypes;
 
 use Doctrineum\Integer\IntegerEnumType;
-use DrdPlus\Codes\PropertyCodes;
 
 class IntelligenceType extends IntegerEnumType
 {
-    const INTELLIGENCE = PropertyCodes::INTELLIGENCE;
+    /**
+     * should be the same as @see \DrdPlus\Codes\PropertyCodes::INTELLIGENCE
+     * and can not be just linked to give direct return value and provide PhpStorm to-definition link support
+     */
+    const INTELLIGENCE = 'intelligence';
 
     /**
      * @return string

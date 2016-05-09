@@ -2,11 +2,14 @@
 namespace DrdPlus\Properties\Base\EnumTypes;
 
 use Doctrineum\Integer\IntegerEnumType;
-use DrdPlus\Codes\PropertyCodes;
 
 class CharismaType extends IntegerEnumType
 {
-    const CHARISMA = PropertyCodes::CHARISMA;
+    /**
+     * should be the same as @see \DrdPlus\Codes\PropertyCodes::CHARISMA
+     * and can not be just linked to give direct return value and provide PhpStorm to-definition link support
+     */
+    const CHARISMA = 'charisma';
 
     /**
      * @return string

@@ -2,11 +2,14 @@
 namespace DrdPlus\Properties\Body\EnumTypes;
 
 use Doctrineum\Integer\IntegerEnumType;
-use DrdPlus\Codes\PropertyCodes;
 
 class WeightType extends IntegerEnumType
 {
-    const WEIGHT = PropertyCodes::WEIGHT;
+    /**
+     * should be the same as @see \DrdPlus\Codes\PropertyCodes::WEIGHT_IN_KG
+     * and can not be just linked to give direct return value and provide PhpStorm to-definition link support
+     */
+    const WEIGHT = 'weight';
 
     /**
      * @return string

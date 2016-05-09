@@ -2,11 +2,14 @@
 namespace DrdPlus\Properties\Body\EnumTypes;
 
 use Doctrineum\Float\FloatEnumType;
-use DrdPlus\Codes\PropertyCodes;
 
 class HeightInCmType extends FloatEnumType
 {
-    const HEIGHT_IN_CM = PropertyCodes::HEIGHT_IN_CM;
+    /**
+     * should be the same as @see \DrdPlus\Codes\PropertyCodes::HEIGHT_IN_CM
+     * and can not be just linked to give direct return value and provide PhpStorm to-definition link support
+     */
+    const HEIGHT_IN_CM = 'height_in_cm';
 
     /**
      * @return string

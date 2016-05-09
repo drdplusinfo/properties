@@ -2,11 +2,14 @@
 namespace DrdPlus\Properties\Native\EnumTypes;
 
 use Doctrineum\Boolean\BooleanEnumType;
-use DrdPlus\Codes\PropertyCodes;
 
 class InfravisionType extends BooleanEnumType
 {
-    const INFRAVISION = PropertyCodes::INFRAVISION;
+    /**
+     * should be the same as @see \DrdPlus\Codes\PropertyCodes::INFRAVISION
+     * and can not be just linked to give direct return value and provide PhpStorm to-definition link support
+     */
+    const INFRAVISION = 'infravision';
 
     /**
      * @return string

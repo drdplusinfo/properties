@@ -2,11 +2,14 @@
 namespace DrdPlus\Properties\Body\EnumTypes;
 
 use Doctrineum\Float\FloatEnumType;
-use DrdPlus\Codes\PropertyCodes;
 
 class WeightInKgType extends FloatEnumType
 {
-    const WEIGHT_IN_KG = PropertyCodes::WEIGHT_IN_KG;
+    /**
+     * should be the same as @see \DrdPlus\Codes\PropertyCodes::WEIGHT_IN_KG
+     * and can not be just linked to give direct return value and provide PhpStorm to-definition link support
+     */
+    const WEIGHT_IN_KG = 'weight_in_kg';
 
     /**
      * @return string

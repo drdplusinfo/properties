@@ -2,11 +2,14 @@
 namespace DrdPlus\Properties\Base\EnumTypes;
 
 use Doctrineum\Integer\IntegerEnumType;
-use DrdPlus\Codes\PropertyCodes;
 
 class AgilityType extends IntegerEnumType
 {
-    const AGILITY = PropertyCodes::AGILITY;
+    /**
+     * should be the same as @see \DrdPlus\Codes\PropertyCodes::AGILITY
+     * and can not be just linked to give direct return value and provide PhpStorm to-definition link support
+     */
+    const AGILITY = 'agility';
 
     /**
      * @return string

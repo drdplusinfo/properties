@@ -2,11 +2,14 @@
 namespace DrdPlus\Properties\Native\EnumTypes;
 
 use Doctrineum\Boolean\BooleanEnumType;
-use DrdPlus\Codes\PropertyCodes;
 
 class NativeRegenerationType extends BooleanEnumType
 {
-    const NATIVE_REGENERATION = PropertyCodes::NATIVE_REGENERATION;
+    /**
+     * should be the same as @see \DrdPlus\Codes\PropertyCodes::NATIVE_REGENERATION
+     * and can not be just linked to give direct return value and provide PhpStorm to-definition link support
+     */
+    const NATIVE_REGENERATION = 'native_regeneration';
 
     /**
      * @return string

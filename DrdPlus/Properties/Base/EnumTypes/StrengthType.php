@@ -2,11 +2,14 @@
 namespace DrdPlus\Properties\Base\EnumTypes;
 
 use Doctrineum\Integer\IntegerEnumType;
-use DrdPlus\Codes\PropertyCodes;
 
 class StrengthType extends IntegerEnumType
 {
-    const STRENGTH = PropertyCodes::STRENGTH;
+    /**
+     * should be the same as @see \DrdPlus\Codes\PropertyCodes::STRENGTH
+     * and can not be just linked to give direct return value and provide PhpStorm to-definition link support
+     */
+    const STRENGTH = 'strength';
 
     /**
      * @return string
