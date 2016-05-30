@@ -4,20 +4,22 @@ namespace DrdPlus\Tests\Properties\Derived;
 use DrdPlus\Codes\RaceCodes;
 use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Derived\Toughness;
-use DrdPlus\Properties\Derived\WoundsLimit;
+use DrdPlus\Properties\Derived\WoundBoundary;
 use DrdPlus\Tables\Measurements\Wounds\WoundsTable;
 use DrdPlus\Tables\Races\RacesTable;
 
-class WoundsLimitTest extends AbstractTestOfDerivedProperty
+/** @noinspection LongInheritanceChainInspection */
+class WoundBoundaryTest extends AbstractTestOfDerivedProperty
 {
 
     /**
      * @test
-     * @return WoundsLimit
+     * @return WoundBoundary
      */
     public function I_can_get_property_easily()
     {
-        $woundsLimit = new WoundsLimit(
+        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
+        $woundsLimit = new WoundBoundary(
             new Toughness(
                 new Strength($strength = 6),
                 RaceCodes::DWARF,

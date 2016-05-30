@@ -6,9 +6,9 @@ use DrdPlus\Properties\Derived\Parts\AbstractDerivedProperty;
 use DrdPlus\Tables\Measurements\Wounds\WoundsBonus;
 use DrdPlus\Tables\Measurements\Wounds\WoundsTable;
 
-class WoundsLimit extends AbstractDerivedProperty
+class WoundBoundary extends AbstractDerivedProperty
 {
-    const WOUNDS_LIMIT = PropertyCodes::WOUNDS_LIMIT;
+    const WOUND_BOUNDARY = PropertyCodes::WOUND_BOUNDARY;
 
     public function __construct(Toughness $toughness, WoundsTable $woundsTable)
     {
@@ -16,8 +16,11 @@ class WoundsLimit extends AbstractDerivedProperty
         $this->value = $wounds->getValue();
     }
 
+    /**
+     * @return string
+     */
     public function getCode()
     {
-        return self::WOUNDS_LIMIT;
+        return self::WOUND_BOUNDARY;
     }
 }
