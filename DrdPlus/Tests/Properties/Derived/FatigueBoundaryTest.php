@@ -4,20 +4,22 @@ namespace DrdPlus\Tests\Properties\Derived;
 use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Base\Will;
 use DrdPlus\Properties\Derived\Endurance;
-use DrdPlus\Properties\Derived\FatigueLimit;
+use DrdPlus\Properties\Derived\FatigueBoundary;
 use DrdPlus\Tables\Measurements\Fatigue\FatigueTable;
 use DrdPlus\Tables\Measurements\Wounds\WoundsTable;
 
-class FatigueLimitTest extends AbstractTestOfDerivedProperty
+/** @noinspection LongInheritanceChainInspection */
+class FatigueBoundaryTest extends AbstractTestOfDerivedProperty
 {
 
     /**
      * @test
-     * @return FatigueLimit
+     * @return FatigueBoundary
      */
     public function I_can_get_property_easily()
     {
-        $fatigueLimit = new FatigueLimit(
+        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
+        $fatigueLimit = new FatigueBoundary(
             new Endurance(new Strength($strength = 1), new Will($will = 2)),
             new FatigueTable(new WoundsTable())
         );

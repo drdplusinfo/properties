@@ -6,9 +6,9 @@ use DrdPlus\Properties\Derived\Parts\AbstractDerivedProperty;
 use DrdPlus\Tables\Measurements\Fatigue\FatigueBonus;
 use DrdPlus\Tables\Measurements\Fatigue\FatigueTable;
 
-class FatigueLimit extends AbstractDerivedProperty
+class FatigueBoundary extends AbstractDerivedProperty
 {
-    const FATIGUE_LIMIT = PropertyCodes::FATIGUE_LIMIT;
+    const FATIGUE_BOUNDARY = PropertyCodes::FATIGUE_BOUNDARY;
 
     public function __construct(Endurance $endurance, FatigueTable $fatigueTable)
     {
@@ -20,6 +20,6 @@ class FatigueLimit extends AbstractDerivedProperty
 
     public function getCode()
     {
-        return self::FATIGUE_LIMIT;
+        return self::FATIGUE_BOUNDARY;
     }
 }
