@@ -3,8 +3,8 @@ namespace DrdPlus\Properties\Derived;
 
 use DrdPlus\Properties\Derived\Parts\AbstractDerivedProperty;
 use DrdPlus\Tables\Body\MovementTypes\MovementTypesTable;
-use DrdPlus\Tables\Environments\DifficultyPercents;
 use DrdPlus\Tables\Environments\ImpassibilityOfTerrainTable;
+use DrdPlus\Tables\Environments\TerrainDifficultyPercents;
 use DrdPlus\Tables\Measurements\Speed\SpeedBonus;
 use DrdPlus\Tables\Measurements\Speed\SpeedTable;
 use DrdPlus\Tools\Calculations\SumAndRound;
@@ -35,7 +35,7 @@ class MovementSpeed extends AbstractDerivedProperty
      * @param string $movementTypeCode
      * @param SpeedTable $speedTable
      * @param string $terrainCode
-     * @param DifficultyPercents $terrainDifficultyPercents
+     * @param TerrainDifficultyPercents $terrainDifficultyPercents
      * @param ImpassibilityOfTerrainTable $impassibilityOfTerrainTable
      * @return SpeedBonus
      * @throws \DrdPlus\Tables\Body\MovementTypes\Exceptions\UnknownMovementType
@@ -47,7 +47,7 @@ class MovementSpeed extends AbstractDerivedProperty
         $movementTypeCode,
         SpeedTable $speedTable,
         $terrainCode,
-        DifficultyPercents $terrainDifficultyPercents,
+        TerrainDifficultyPercents $terrainDifficultyPercents,
         ImpassibilityOfTerrainTable $impassibilityOfTerrainTable
     )
     {

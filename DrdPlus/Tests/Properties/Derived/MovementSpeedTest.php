@@ -5,8 +5,8 @@ use DrdPlus\Codes\TerrainCodes;
 use DrdPlus\Properties\Derived\MovementSpeed;
 use DrdPlus\Properties\Derived\Speed;
 use DrdPlus\Tables\Body\MovementTypes\MovementTypesTable;
-use DrdPlus\Tables\Environments\DifficultyPercents;
 use DrdPlus\Tables\Environments\ImpassibilityOfTerrainTable;
+use DrdPlus\Tables\Environments\TerrainDifficultyPercents;
 use DrdPlus\Tables\Measurements\Speed\SpeedBonus;
 use DrdPlus\Tables\Measurements\Speed\SpeedTable;
 use Granam\Tests\Tools\TestWithMockery;
@@ -83,11 +83,11 @@ class MovementSpeedTest extends TestWithMockery
 
     /**
      * @param $percents
-     * @return \Mockery\MockInterface|DifficultyPercents
+     * @return \Mockery\MockInterface|TerrainDifficultyPercents
      */
     private function createDifficultyPercents($percents)
     {
-        $difficultyPercents = $this->mockery(DifficultyPercents::class);
+        $difficultyPercents = $this->mockery(TerrainDifficultyPercents::class);
         $difficultyPercents->shouldReceive('getRate')
             ->andReturn($percents / 100);
 
