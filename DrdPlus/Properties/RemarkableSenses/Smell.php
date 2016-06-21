@@ -1,12 +1,12 @@
 <?php
 namespace DrdPlus\Properties\RemarkableSenses;
 
-use DrdPlus\Codes\PropertyCodes;
+use DrdPlus\Codes\PropertyCode;
 
 class Smell extends RemarkableSenseProperty
 {
 
-    const SMELL = PropertyCodes::SMELL;
+    const SMELL = PropertyCode::SMELL;
 
     /**
      * @return Smell

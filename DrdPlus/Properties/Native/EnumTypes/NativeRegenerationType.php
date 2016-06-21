@@ -6,7 +6,7 @@ use Doctrineum\Boolean\BooleanEnumType;
 class NativeRegenerationType extends BooleanEnumType
 {
     /**
-     * should be the same as @see \DrdPlus\Codes\PropertyCodes::NATIVE_REGENERATION
+     * should be the same as @see \DrdPlus\Codes\PropertyCode::NATIVE_REGENERATION
      * and can not be just linked to give direct return value and provide PhpStorm to-definition link support
      */
     const NATIVE_REGENERATION = 'native_regeneration';

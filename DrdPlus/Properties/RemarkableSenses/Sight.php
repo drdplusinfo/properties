@@ -1,12 +1,12 @@
 <?php
 namespace DrdPlus\Properties\RemarkableSenses;
 
-use DrdPlus\Codes\PropertyCodes;
+use DrdPlus\Codes\PropertyCode;
 
 class Sight extends RemarkableSenseProperty
 {
 
-    const SIGHT = PropertyCodes::SIGHT;
+    const SIGHT = PropertyCode::SIGHT;
 
     /**
      * @return Sight

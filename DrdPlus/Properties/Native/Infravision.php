@@ -1,11 +1,11 @@
 <?php
 namespace DrdPlus\Properties\Native;
 
-use DrdPlus\Codes\PropertyCodes;
+use DrdPlus\Codes\PropertyCode;
 
 class Infravision extends NativeProperty
 {
-    const INFRAVISION = PropertyCodes::INFRAVISION;
+    const INFRAVISION = PropertyCode::INFRAVISION;
 
     public function getCode()
     {

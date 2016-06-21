@@ -4,7 +4,7 @@ namespace DrdPlus\Tests\Properties\EnumTypes;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 use Doctrineum\Tests\SelfRegisteringType\AbstractSelfRegisteringTypeTest;
-use DrdPlus\Codes\PropertyCodes;
+use DrdPlus\Codes\PropertyCode;
 use DrdPlus\Properties\Property;
 
 abstract class AbstractTestOfPropertyType extends AbstractSelfRegisteringTypeTest
@@ -17,7 +17,7 @@ abstract class AbstractTestOfPropertyType extends AbstractSelfRegisteringTypeTes
     {
         $propertyTypeClass = $this->getTypeClass();
         $propertyTypeClass::registerSelf();
-        $propertyType = Type::getType($this->getExpectedtypeName());
+        $propertyType = Type::getType($this->getExpectedTypeName());
         $phpValue = $propertyType->convertToPHPValue($value = $this->getValue(), $this->getPlatform());
         self::assertInstanceOf($this->getRegisteredClass(), $phpValue);
         self::assertEquals($value, (string)$phpValue);
@@ -51,7 +51,7 @@ abstract class AbstractTestOfPropertyType extends AbstractSelfRegisteringTypeTes
         $property = (new \ReflectionClass($propertyClass))->newInstanceWithoutConstructor();
         self::assertSame($this->getExpectedTypeName(), $property->getCode());
         $constantName = strtoupper($this->getExpectedTypeName());
-        self::assertTrue(defined(PropertyCodes::class . '::' . $constantName));
-        self::assertSame(constant(PropertyCodes::class . '::' . $constantName), $property->getCode());
+        self::assertTrue(defined(PropertyCode::class . '::' . $constantName));
+        self::assertSame(constant(PropertyCode::class . '::' . $constantName), $property->getCode());
     }
 }

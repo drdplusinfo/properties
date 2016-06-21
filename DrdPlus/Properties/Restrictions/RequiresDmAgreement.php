@@ -2,11 +2,11 @@
 namespace DrdPlus\Properties\Restrictions;
 
 use Doctrineum\Boolean\BooleanEnum;
-use DrdPlus\Codes\PropertyCodes;
+use DrdPlus\Codes\PropertyCode;
 
 class RequiresDmAgreement extends BooleanEnum implements RestrictionProperty
 {
-    const REQUIRES_DM_AGREEMENT = PropertyCodes::REQUIRES_DM_AGREEMENT;
+    const REQUIRES_DM_AGREEMENT = PropertyCode::REQUIRES_DM_AGREEMENT;
 
     /**
      * @param bool $value

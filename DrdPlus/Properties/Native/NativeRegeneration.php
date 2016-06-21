@@ -1,11 +1,11 @@
 <?php
 namespace DrdPlus\Properties\Native;
 
-use DrdPlus\Codes\PropertyCodes;
+use DrdPlus\Codes\PropertyCode;
 
 class NativeRegeneration extends NativeProperty
 {
-    const NATIVE_REGENERATION = PropertyCodes::NATIVE_REGENERATION;
+    const NATIVE_REGENERATION = PropertyCode::NATIVE_REGENERATION;
 
     public function getCode()
     {

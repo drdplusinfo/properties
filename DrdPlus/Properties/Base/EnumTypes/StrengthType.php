@@ -6,7 +6,7 @@ use Doctrineum\Integer\IntegerEnumType;
 class StrengthType extends IntegerEnumType
 {
     /**
-     * should be the same as @see \DrdPlus\Codes\PropertyCodes::STRENGTH
+     * should be the same as @see \DrdPlus\Codes\PropertyCode::STRENGTH
      * and can not be just linked to give direct return value and provide PhpStorm to-definition link support
      */
     const STRENGTH = 'strength';

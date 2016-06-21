@@ -1,7 +1,7 @@
 <?php
 namespace DrdPlus\Properties\Body;
 
-use DrdPlus\Codes\PropertyCodes;
+use DrdPlus\Codes\PropertyCode;
 use DrdPlus\Properties\AbstractFloatProperty;
 
 /**
@@ -9,7 +9,7 @@ use DrdPlus\Properties\AbstractFloatProperty;
  */
 class Weight extends AbstractFloatProperty implements BodyProperty
 {
-    const WEIGHT = PropertyCodes::WEIGHT;
+    const WEIGHT = PropertyCode::WEIGHT;
 
     /**
      * @return string

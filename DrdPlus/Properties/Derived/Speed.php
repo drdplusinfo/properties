@@ -1,7 +1,7 @@
 <?php
 namespace DrdPlus\Properties\Derived;
 
-use DrdPlus\Codes\PropertyCodes;
+use DrdPlus\Codes\PropertyCode;
 use DrdPlus\Properties\Base\Agility;
 use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Body\Size;
@@ -10,7 +10,7 @@ use DrdPlus\Tools\Calculations\SumAndRound;
 
 class Speed extends AbstractDerivedProperty
 {
-    const SPEED = PropertyCodes::SPEED;
+    const SPEED = PropertyCode::SPEED;
 
     public function __construct(Strength $strength, Agility $agility, Size $size)
     {

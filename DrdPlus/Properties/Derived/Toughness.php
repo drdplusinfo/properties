@@ -1,14 +1,14 @@
 <?php
 namespace DrdPlus\Properties\Derived;
 
-use DrdPlus\Codes\PropertyCodes;
+use DrdPlus\Codes\PropertyCode;
 use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Derived\Parts\AbstractDerivedProperty;
 use DrdPlus\Tables\Races\RacesTable;
 
 class Toughness extends AbstractDerivedProperty
 {
-    const TOUGHNESS = PropertyCodes::TOUGHNESS;
+    const TOUGHNESS = PropertyCode::TOUGHNESS;
 
     public function __construct(Strength $strength, $raceCode, $subraceCode, RacesTable $racesTable)
     {

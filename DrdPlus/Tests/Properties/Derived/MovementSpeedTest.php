@@ -1,7 +1,7 @@
 <?php
 namespace DrdPlus\Tests\Properties\Derived;
 
-use DrdPlus\Codes\TerrainCodes;
+use DrdPlus\Codes\TerrainCode;
 use DrdPlus\Properties\Derived\MovementSpeed;
 use DrdPlus\Properties\Derived\Speed;
 use DrdPlus\Tables\Body\MovementTypes\MovementTypesTable;
@@ -56,7 +56,7 @@ class MovementSpeedTest extends TestWithMockery
             $this->createMovementTypesTable('foo movement', 123),
             'foo movement',
             $this->createSpeedTable(),
-            TerrainCodes::DESERT,
+            TerrainCode::DESERT,
             $this->createDifficultyPercents(50),
             new ImpassibilityOfTerrainTable()
         );

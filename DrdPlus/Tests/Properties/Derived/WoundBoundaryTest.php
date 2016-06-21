@@ -1,7 +1,7 @@
 <?php
 namespace DrdPlus\Tests\Properties\Derived;
 
-use DrdPlus\Codes\RaceCodes;
+use DrdPlus\Codes\RaceCode;
 use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Derived\Toughness;
 use DrdPlus\Properties\Derived\WoundBoundary;
@@ -22,8 +22,8 @@ class WoundBoundaryTest extends AbstractTestOfDerivedProperty
         $woundsLimit = new WoundBoundary(
             new Toughness(
                 new Strength($strength = 6),
-                RaceCodes::DWARF,
-                RaceCodes::MOUNTAIN,
+                RaceCode::DWARF,
+                RaceCode::MOUNTAIN,
                 new RacesTable()
             ),
             new WoundsTable()
