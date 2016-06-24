@@ -16,7 +16,7 @@ class BeautyTest extends AbstractTestOfAspectOfVisage
     {
         $beauty = new Beauty($this->getAgility($agilityValue = 123), $this->getKnack($knackValue = 456), $this->getCharisma($charismaValue = 789));
         self::assertSame('beauty', $beauty->getCode());
-        self::assertSame('beauty', $beauty::BEAUTY);
+        self::assertSame('beauty', Beauty::BEAUTY);
         self::assertSame($this->calculateValue($agilityValue, $knackValue, $charismaValue), $beauty->getValue());
         self::assertSame((string)$this->calculateValue($agilityValue, $knackValue, $charismaValue), "$beauty");
 

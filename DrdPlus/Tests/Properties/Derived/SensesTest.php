@@ -13,7 +13,7 @@ class SensesTest extends AbstractTestOfDerivedProperty
     {
         $senses = new Senses($this->getKnack($knackValue = 123), $raceGenderSenses = 456);
         self::assertSame('senses', $senses->getCode());
-        self::assertSame('senses', $senses::SENSES);
+        self::assertSame('senses', Senses::SENSES);
         self::assertSame($knackValue + $raceGenderSenses, $senses->getValue());
         self::assertSame((string)($knackValue + $raceGenderSenses), "$senses");
 

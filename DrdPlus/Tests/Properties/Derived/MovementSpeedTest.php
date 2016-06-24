@@ -20,6 +20,7 @@ class MovementSpeedTest extends TestWithMockery
     {
         $movementSpeed = new MovementSpeed($this->createSpeed(123));
         self::assertSame('movement_speed', $movementSpeed->getCode());
+        self::assertSame('movement_speed', MovementSpeed::MOVEMENT_SPEED);
         $speedBonus = $movementSpeed->getSpeedBonus($this->createSpeedTable());
         self::assertInstanceOf(SpeedBonus::class, $speedBonus);
         self::assertSame(62, $speedBonus->getValue(), 'Expected half of movement speed as a speed bonus');

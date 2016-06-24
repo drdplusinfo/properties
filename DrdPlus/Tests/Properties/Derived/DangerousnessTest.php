@@ -16,7 +16,7 @@ class DangerousnessTest extends AbstractTestOfAspectOfVisage
     {
         $dangerousness = new Dangerousness($this->getStrength($strengthValue = 123), $this->getWill($willValue = 456), $this->getCharisma($charismaValue = 789));
         self::assertSame('dangerousness', $dangerousness->getCode());
-        self::assertSame('dangerousness', $dangerousness->getCode());
+        self::assertSame('dangerousness', Dangerousness::DANGEROUSNESS);
         self::assertSame($this->calculateValue($strengthValue, $willValue, $charismaValue), $dangerousness->getValue());
         self::assertSame((string)$this->calculateValue($strengthValue, $willValue, $charismaValue), "$dangerousness");
 

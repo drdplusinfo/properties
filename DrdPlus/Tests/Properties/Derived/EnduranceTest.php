@@ -14,7 +14,7 @@ class EnduranceTest extends AbstractTestOfDerivedProperty
     {
         $endurance = new Endurance($this->getStrength($agilityValue = 123), $this->getWill($knackValue = 456));
         self::assertSame('endurance', $endurance->getCode());
-        self::assertSame('endurance', $endurance->getCode());
+        self::assertSame('endurance', Endurance::ENDURANCE);
         self::assertSame((int)round(($agilityValue + $knackValue) / 2), $endurance->getValue());
         self::assertSame((string)round(($agilityValue + $knackValue) / 2), "$endurance");
 

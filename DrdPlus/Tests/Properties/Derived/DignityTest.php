@@ -16,7 +16,7 @@ class DignityTest extends AbstractTestOfAspectOfVisage
     {
         $dignity = new Dignity($this->getIntelligence($agilityValue = 123), $this->getWill($knackValue = 456), $this->getCharisma($charismaValue = 789));
         self::assertSame('dignity', $dignity->getCode());
-        self::assertSame('dignity', $dignity->getCode());
+        self::assertSame('dignity', Dignity::DIGNITY);
         self::assertSame($this->calculateValue($agilityValue, $knackValue, $charismaValue), $dignity->getValue());
         self::assertSame((string)$this->calculateValue($agilityValue, $knackValue, $charismaValue), "$dignity");
 

@@ -20,7 +20,7 @@ class ToughnessTest extends AbstractTestOfDerivedProperty
             new RacesTable()
         );
         self::assertSame('toughness', $toughness->getCode());
-        self::assertSame('toughness', $toughness::TOUGHNESS);
+        self::assertSame('toughness', Toughness::TOUGHNESS);
         self::assertSame($strengthValue + 1, $toughness->getValue());
         self::assertSame((string)($strengthValue + 1), "$toughness");
 
