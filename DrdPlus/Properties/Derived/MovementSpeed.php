@@ -1,6 +1,7 @@
 <?php
 namespace DrdPlus\Properties\Derived;
 
+use DrdPlus\Codes\PropertyCode;
 use DrdPlus\Properties\Derived\Parts\AbstractDerivedProperty;
 use DrdPlus\Tables\Body\MovementTypes\MovementTypesTable;
 use DrdPlus\Tables\Environments\ImpassibilityOfTerrainTable;
@@ -14,7 +15,7 @@ use DrdPlus\Tools\Calculations\SumAndRound;
  */
 class MovementSpeed extends AbstractDerivedProperty
 {
-    const MOVEMENT_SPEED = 'movement_speed';
+    const MOVEMENT_SPEED = PropertyCode::MOVEMENT_SPEED;
 
     public function __construct(Speed $speed)
     {
