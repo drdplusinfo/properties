@@ -2,6 +2,7 @@
 namespace DrdPlus\Tests\Properties\Derived;
 
 use DrdPlus\Codes\RaceCode;
+use DrdPlus\Codes\SubRaceCode;
 use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Derived\Toughness;
 use DrdPlus\Properties\Derived\WoundBoundary;
@@ -23,7 +24,7 @@ class WoundBoundaryTest extends AbstractTestOfDerivedProperty
             new Toughness(
                 new Strength($strength = 6),
                 RaceCode::DWARF,
-                RaceCode::MOUNTAIN,
+                SubRaceCode::MOUNTAIN,
                 new RacesTable()
             ),
             new WoundsTable()
