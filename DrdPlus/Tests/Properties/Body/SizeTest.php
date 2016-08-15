@@ -1,9 +1,9 @@
 <?php
 namespace DrdPlus\Tests\Properties\Body;
 
-use DrdPlus\Tests\Properties\AbstractTestOfIntegerStoredProperty;
+use DrdPlus\Tests\Properties\AbstractIntegerPropertyTest;
 
-class SizeTest extends AbstractTestOfIntegerStoredProperty
+class SizeTest extends AbstractIntegerPropertyTest
 {
 
 }

@@ -1,9 +1,9 @@
 <?php
 namespace DrdPlus\Tests\Properties\Body;
 
-use DrdPlus\Tests\Properties\AbstractTestOfIntegerStoredProperty;
+use DrdPlus\Tests\Properties\AbstractIntegerPropertyTest;
 
-class AgeTest extends AbstractTestOfIntegerStoredProperty
+class AgeTest extends AbstractIntegerPropertyTest
 {
 
 }

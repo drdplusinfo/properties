@@ -18,7 +18,7 @@ abstract class AbstractTestOfProperty extends TestWithMockery
      */
     public function I_can_get_property_easily()
     {
-        $propertyClass = $this->getPropertyClass();
+        $propertyClass = $this->getSutClass();
         $property = false;
         foreach ($this->getValuesForTest() as $value) {
             $property = $propertyClass::getIt($value);
@@ -33,7 +33,7 @@ abstract class AbstractTestOfProperty extends TestWithMockery
     /**
      * @return string|ScalarEnum|BaseProperty|BodyProperty|NativeProperty
      */
-    protected function getPropertyClass()
+    protected function getSutClass()
     {
         return preg_replace('~Tests\\\(.+)Test$~', '$1', static::class);
     }
@@ -70,7 +70,7 @@ abstract class AbstractTestOfProperty extends TestWithMockery
      */
     protected function getPropertyBaseName()
     {
-        $propertyClass = $this->getPropertyClass();
+        $propertyClass = $this->getSutClass();
 
         return preg_replace('~^[\\\]?(\w+\\\)*(\w+)$~', '$2', $propertyClass);
     }
@@ -80,7 +80,7 @@ abstract class AbstractTestOfProperty extends TestWithMockery
      */
     public function I_can_use_it_as_generic_group_property()
     {
-        $propertyClass = $this->getPropertyClass();
+        $propertyClass = $this->getSutClass();
         self::assertTrue(
             is_a($propertyClass, $this->getGenericGroupPropertyClassName(), true),
             $propertyClass . ' does not belongs into ' . $this->getGenericGroupPropertyClassName()
@@ -98,7 +98,7 @@ abstract class AbstractTestOfProperty extends TestWithMockery
 
     protected function getPropertyNamespace()
     {
-        $propertyClass = $this->getPropertyClass();
+        $propertyClass = $this->getSutClass();
 
         return preg_replace('~[\\\]\w+$~', '', $propertyClass);
     }

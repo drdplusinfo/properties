@@ -1,9 +1,9 @@
 <?php
 namespace DrdPlus\Tests\Properties\Body;
 
-use DrdPlus\Tests\Properties\AbstractTestOfIntegerStoredProperty;
+use DrdPlus\Tests\Properties\AbstractFloatPropertyTest;
 
-class HeightInCmTest extends AbstractTestOfIntegerStoredProperty
+class HeightInCmTest extends AbstractFloatPropertyTest
 {
 
 }

@@ -14,7 +14,7 @@ abstract class AbstractTestOfRemarkableSense extends AbstractTestOfStoredPropert
      */
     public function I_can_get_property_easily()
     {
-        $propertyClass = $this->getPropertyClass();
+        $propertyClass = $this->getSutClass();
         /** @var RemarkableSenseProperty $propertyClass */
         $property = $propertyClass::getIt();
         self::assertInstanceOf($propertyClass, $property);
@@ -34,6 +34,6 @@ abstract class AbstractTestOfRemarkableSense extends AbstractTestOfStoredPropert
     public function I_can_register_it_as_enum()
     {
         RemarkableSenseType::registerSenses();
-        self::assertTrue(RemarkableSenseType::hasSubTypeEnum($this->getPropertyClass()));
+        self::assertTrue(RemarkableSenseType::hasSubTypeEnum($this->getSutClass()));
     }
 }

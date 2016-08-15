@@ -1,9 +1,9 @@
 <?php
 namespace DrdPlus\Tests\Properties\Body;
 
-use DrdPlus\Tests\Properties\AbstractTestOfFloatStoredProperty;
+use DrdPlus\Tests\Properties\AbstractFloatPropertyTest;
 
-class WeightInKgTest extends AbstractTestOfFloatStoredProperty
+class WeightInKgTest extends AbstractFloatPropertyTest
 {
 
 }
