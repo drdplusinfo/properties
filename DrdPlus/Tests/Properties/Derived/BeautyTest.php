@@ -5,8 +5,9 @@ use DrdPlus\Properties\Base\Agility;
 use DrdPlus\Properties\Base\Charisma;
 use DrdPlus\Properties\Base\Knack;
 use DrdPlus\Properties\Derived\Beauty;
+use DrdPlus\Tests\Properties\Derived\Parts\AbstractAspectOfVisageTest;
 
-class BeautyTest extends AbstractTestOfAspectOfVisage
+class BeautyTest extends AbstractAspectOfVisageTest
 {
 
     /**

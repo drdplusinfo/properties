@@ -23,6 +23,8 @@ abstract class AbstractFloatPropertyTest extends AbstractTestOfStoredProperty
         self::assertSame(123.456, $property->getValue());
         self::assertNotEquals($property, $greater);
         self::assertSame(580.245, $greater->getValue());
+        $double = $greater->add($greater);
+        self::assertSame(1160.490, $double->getValue());
     }
 
     /**
@@ -37,5 +39,7 @@ abstract class AbstractFloatPropertyTest extends AbstractTestOfStoredProperty
         self::assertSame(0.5, $property->getValue());
         self::assertNotEquals($property, $low);
         self::assertSame(0.3, $low->getValue());
+        $zero = $low->sub($low);
+        self::assertSame(0.0, $zero->getValue());
     }
 }

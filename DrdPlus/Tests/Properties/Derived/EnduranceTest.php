@@ -4,8 +4,9 @@ namespace DrdPlus\Tests\Properties\Derived;
 use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Base\Will;
 use DrdPlus\Properties\Derived\Endurance;
+use DrdPlus\Tests\Properties\Derived\Parts\AbstractDerivedPropertyTest;
 
-class EnduranceTest extends AbstractTestOfDerivedProperty
+class EnduranceTest extends AbstractDerivedPropertyTest
 {
     /**
      * #@test

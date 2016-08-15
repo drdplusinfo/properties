@@ -3,8 +3,9 @@ namespace DrdPlus\Tests\Properties\Derived;
 
 use DrdPlus\Properties\Base\Knack;
 use DrdPlus\Properties\Derived\Senses;
+use DrdPlus\Tests\Properties\Derived\Parts\AbstractDerivedPropertyTest;
 
-class SensesTest extends AbstractTestOfDerivedProperty
+class SensesTest extends AbstractDerivedPropertyTest
 {
     /**
      * #@test

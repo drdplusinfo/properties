@@ -9,8 +9,7 @@ abstract class AbstractIntegerProperty extends IntegerEnum implements Property
 
     /**
      * @param int $value
-     *
-     * @return AbstractIntegerProperty
+     * @return static
      */
     public static function getIt($value)
     {
@@ -18,8 +17,8 @@ abstract class AbstractIntegerProperty extends IntegerEnum implements Property
     }
 
     /**
-     * @param int|float|AbstractFloatProperty $value
-     * @return AbstractIntegerProperty
+     * @param int|static $value
+     * @return static
      * @throws \Granam\Number\Tools\Exceptions\WrongParameterType
      * @throws \Granam\Scalar\Tools\Exceptions\WrongParameterType
      */
@@ -30,8 +29,8 @@ abstract class AbstractIntegerProperty extends IntegerEnum implements Property
     }
 
     /**
-     * @param int|float|AbstractFloatProperty $value
-     * @return AbstractIntegerProperty
+     * @param int|static $value
+     * @return static
      * @throws \Granam\Number\Tools\Exceptions\WrongParameterType
      * @throws \Granam\Scalar\Tools\Exceptions\WrongParameterType
      */

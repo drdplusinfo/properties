@@ -10,8 +10,7 @@ abstract class AbstractFloatProperty extends FloatEnum implements Property, Floa
 
     /**
      * @param float $value
-     *
-     * @return AbstractFloatProperty
+     * @return static
      */
     public static function getIt($value)
     {
@@ -19,8 +18,8 @@ abstract class AbstractFloatProperty extends FloatEnum implements Property, Floa
     }
 
     /**
-     * @param int|float|AbstractFloatProperty $value
-     * @return AbstractFloatProperty
+     * @param float|static $value
+     * @return static
      * @throws \Granam\Number\Tools\Exceptions\WrongParameterType
      * @throws \Granam\Scalar\Tools\Exceptions\WrongParameterType
      */
@@ -31,8 +30,8 @@ abstract class AbstractFloatProperty extends FloatEnum implements Property, Floa
     }
 
     /**
-     * @param int|float|AbstractFloatProperty $value
-     * @return AbstractFloatProperty
+     * @param float|static $value
+     * @return static
      * @throws \Granam\Number\Tools\Exceptions\WrongParameterType
      * @throws \Granam\Scalar\Tools\Exceptions\WrongParameterType
      */

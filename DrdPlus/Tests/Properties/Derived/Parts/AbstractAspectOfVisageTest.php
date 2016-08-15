@@ -1,9 +1,9 @@
 <?php
-namespace DrdPlus\Tests\Properties\Derived;
+namespace DrdPlus\Tests\Properties\Derived\Parts;
 
 use DrdPlus\Tools\Calculations\SumAndRound;
 
-abstract class AbstractTestOfAspectOfVisage extends AbstractTestOfDerivedProperty
+abstract class AbstractAspectOfVisageTest extends AbstractDerivedPropertyTest
 {
     protected function calculateValue($firstPropertyValue, $secondPropertyValue, $charismaValue)
     {

@@ -8,9 +8,9 @@ use DrdPlus\Properties\Derived\Toughness;
 use DrdPlus\Properties\Derived\WoundBoundary;
 use DrdPlus\Tables\Measurements\Wounds\WoundsTable;
 use DrdPlus\Tables\Races\RacesTable;
+use DrdPlus\Tests\Properties\Derived\Parts\AbstractDerivedPropertyTest;
 
-/** @noinspection LongInheritanceChainInspection */
-class WoundBoundaryTest extends AbstractTestOfDerivedProperty
+class WoundBoundaryTest extends AbstractDerivedPropertyTest
 {
 
     /**

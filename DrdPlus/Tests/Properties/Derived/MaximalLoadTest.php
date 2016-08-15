@@ -3,7 +3,7 @@ namespace DrdPlus\Tests\Properties\Derived;
 
 use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Derived\MaximalLoad;
-use DrdPlus\Properties\Derived\Parts\AthleticsInterface;
+use DrdPlus\Properties\Derived\Athletics;
 use Granam\Integer\IntegerInterface;
 use Granam\Tests\Tools\TestWithMockery;
 
@@ -15,7 +15,6 @@ class MaximalLoadTest extends TestWithMockery
      * @param $strength
      * @param $athletics
      * @param MaximalLoad
-     * @return MaximalLoad
      */
     public function I_can_get_property_easily($strength, $athletics, $expectedMaximalLoad)
     {
@@ -48,11 +47,11 @@ class MaximalLoadTest extends TestWithMockery
 
     /**
      * @param $bonusValue
-     * @return \Mockery\MockInterface|AthleticsInterface
+     * @return \Mockery\MockInterface|Athletics
      */
     private function createAthletics($bonusValue)
     {
-        $athletics = $this->mockery(AthleticsInterface::class);
+        $athletics = $this->mockery(Athletics::class);
         $athletics->shouldReceive('getAthleticsBonus')
             ->andReturn($athleticsBonus = $this->mockery(IntegerInterface::class));
         $athleticsBonus->shouldReceive('getValue')

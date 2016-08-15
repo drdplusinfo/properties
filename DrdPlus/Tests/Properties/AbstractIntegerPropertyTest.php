@@ -26,6 +26,8 @@ abstract class AbstractIntegerPropertyTest extends AbstractTestOfStoredProperty
         self::assertSame(123, $property->getValue());
         self::assertNotEquals($property, $greater);
         self::assertSame(579, $greater->getValue());
+        $double = $greater->add($greater);
+        self::assertSame(1158, $double->getValue());
     }
 
     /**
@@ -40,6 +42,8 @@ abstract class AbstractIntegerPropertyTest extends AbstractTestOfStoredProperty
         self::assertSame(123, $property->getValue());
         self::assertNotEquals($property, $low);
         self::assertSame(-333, $low->getValue());
+        $zero = $low->sub($low);
+        self::assertSame(0, $zero->getValue());
     }
 
 }
