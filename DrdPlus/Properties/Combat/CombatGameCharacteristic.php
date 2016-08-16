@@ -33,4 +33,31 @@ abstract class CombatGameCharacteristic extends StrictObject implements IntegerI
         return (string)$this->getValue();
     }
 
+    /**
+     * @param int|static|CombatGameCharacteristic $value
+     * @return static
+     * @throws \Granam\Integer\Tools\Exceptions\WrongParameterType
+     * @throws \Granam\Integer\Tools\Exceptions\ValueLostOnCast
+     */
+    public function add($value)
+    {
+        $added = clone $this;
+        $added->value += ToInteger::toInteger($value);
+
+        return $added;
+    }
+
+    /**
+     * @param int|static|CombatGameCharacteristic $value
+     * @return static
+     * @throws \Granam\Integer\Tools\Exceptions\WrongParameterType
+     * @throws \Granam\Integer\Tools\Exceptions\ValueLostOnCast
+     */
+    public function sub($value)
+    {
+        $subtracted = clone $this;
+        $subtracted->value -= ToInteger::toInteger($value);
+
+        return $subtracted;
+    }
 }
