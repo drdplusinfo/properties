@@ -9,7 +9,7 @@ abstract class AbstractIntegerProperty extends IntegerEnum implements Property
 
     /**
      * @param int $value
-     * @return static
+     * @return IntegerEnum|AbstractIntegerProperty
      */
     public static function getIt($value)
     {
@@ -19,24 +19,22 @@ abstract class AbstractIntegerProperty extends IntegerEnum implements Property
     /**
      * @param int|static $value
      * @return static
-     * @throws \Granam\Number\Tools\Exceptions\WrongParameterType
-     * @throws \Granam\Scalar\Tools\Exceptions\WrongParameterType
+     * @throws \Granam\Integer\Tools\Exceptions\WrongParameterType
+     * @throws \Granam\Integer\Tools\Exceptions\ValueLostOnCast
      */
     public function add($value)
     {
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return static::getIt($this->getValue() + ToInteger::toInteger($value));
     }
 
     /**
      * @param int|static $value
      * @return static
-     * @throws \Granam\Number\Tools\Exceptions\WrongParameterType
-     * @throws \Granam\Scalar\Tools\Exceptions\WrongParameterType
+     * @throws \Granam\Integer\Tools\Exceptions\WrongParameterType
+     * @throws \Granam\Integer\Tools\Exceptions\ValueLostOnCast
      */
     public function sub($value)
     {
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return static::getIt($this->getValue() - ToInteger::toInteger($value));
     }
 }
