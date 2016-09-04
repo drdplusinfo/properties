@@ -23,7 +23,7 @@ class DefenseAgainstShootingTest extends CombatGameCharacteristicTest
                 $this->createSize($sizeValue)
             );
             self::assertSame(
-                $defenseValue + (int)round($sizeValue / 2),
+                $defenseValue - (int)round($sizeValue / 2),
                 $defenseAgainstShooting->getValue()
             );
         }
