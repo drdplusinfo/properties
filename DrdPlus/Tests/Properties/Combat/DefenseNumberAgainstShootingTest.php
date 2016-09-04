@@ -2,14 +2,14 @@
 namespace DrdPlus\Tests\Properties\Combat;
 
 use DrdPlus\Properties\Combat\DefenseNumber;
-use DrdPlus\Properties\Combat\DefenseAgainstShooting;
+use DrdPlus\Properties\Combat\DefenseNumberAgainstShooting;
 use DrdPlus\Properties\Body\Size;
 
-class DefenseAgainstShootingTest extends CombatGameCharacteristicTest
+class DefenseNumberAgainstShootingTest extends CombatGameCharacteristicTest
 {
     protected function createSut()
     {
-        return new DefenseAgainstShooting($this->createDefense(123), $this->createSize(1));
+        return new DefenseNumberAgainstShooting($this->createDefense(123), $this->createSize(1));
     }
 
     /**
@@ -18,7 +18,7 @@ class DefenseAgainstShootingTest extends CombatGameCharacteristicTest
     public function My_shooting_defense_depends_on_agility_and_size()
     {
         for ($sizeValue = -5; $sizeValue < 5; $sizeValue++) {
-            $defenseAgainstShooting = new DefenseAgainstShooting(
+            $defenseAgainstShooting = new DefenseNumberAgainstShooting(
                 $this->createDefense($defenseValue = 123),
                 $this->createSize($sizeValue)
             );

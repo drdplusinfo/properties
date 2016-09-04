@@ -4,7 +4,7 @@ namespace DrdPlus\Properties\Combat;
 use DrdPlus\Properties\Body\Size;
 use DrdPlus\Tools\Calculations\SumAndRound;
 
-class DefenseAgainstShooting extends CombatGameCharacteristic
+class DefenseNumberAgainstShooting extends CombatGameCharacteristic
 {
     /**
      * Despite rules this library deducts half of size from defense number, instead of adding to attack number,
