@@ -1,5 +1,6 @@
 <?php
 namespace DrdPlus\Properties\Body;
+
 use DrdPlus\Properties\AbstractIntegerProperty;
 
 /**
