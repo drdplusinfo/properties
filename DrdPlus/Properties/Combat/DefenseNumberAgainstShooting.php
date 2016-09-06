@@ -2,6 +2,7 @@
 namespace DrdPlus\Properties\Combat;
 
 use DrdPlus\Properties\Body\Size;
+use DrdPlus\Properties\Combat\Partials\CombatGameCharacteristic;
 use DrdPlus\Tools\Calculations\SumAndRound;
 
 class DefenseNumberAgainstShooting extends CombatGameCharacteristic
@@ -16,6 +17,7 @@ class DefenseNumberAgainstShooting extends CombatGameCharacteristic
      */
     public function __construct(DefenseNumber $defense, Size $size)
     {
+        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         parent::__construct($defense->getValue() - SumAndRound::half($size->getValue()));
     }
 }

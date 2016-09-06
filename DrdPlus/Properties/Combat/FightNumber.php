@@ -7,6 +7,7 @@ use DrdPlus\Properties\Base\Charisma;
 use DrdPlus\Properties\Base\Intelligence;
 use DrdPlus\Properties\Base\Knack;
 use DrdPlus\Properties\Base\Agility;
+use DrdPlus\Properties\Combat\Partials\CombatGameCharacteristic;
 use DrdPlus\Tools\Calculations\SumAndRound;
 use Granam\Tools\ValueDescriber;
 
@@ -25,6 +26,7 @@ class FightNumber extends CombatGameCharacteristic
         Size $size
     )
     {
+        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         parent::__construct($this->calculateValue($professionCode, $baseProperties, $size));
     }
 

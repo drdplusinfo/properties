@@ -3,6 +3,7 @@ namespace DrdPlus\Tests\Properties\Combat;
 
 use DrdPlus\Properties\Combat\Shooting;
 use DrdPlus\Properties\Base\Knack;
+use DrdPlus\Tests\Properties\Combat\Partials\CombatGameCharacteristicTest;
 
 class ShootingTest extends CombatGameCharacteristicTest
 {

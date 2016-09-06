@@ -3,6 +3,7 @@ namespace DrdPlus\Tests\Properties\Combat;
 
 use DrdPlus\Properties\Combat\AttackNumber;
 use DrdPlus\Properties\Base\Agility;
+use DrdPlus\Tests\Properties\Combat\Partials\CombatGameCharacteristicTest;
 
 class AttackNumberTest extends CombatGameCharacteristicTest
 {

@@ -9,6 +9,7 @@ use DrdPlus\Properties\Base\Charisma;
 use DrdPlus\Properties\Base\Intelligence;
 use DrdPlus\Properties\Base\Knack;
 use DrdPlus\Properties\Body\Size;
+use DrdPlus\Tests\Properties\Combat\Partials\CombatGameCharacteristicTest;
 
 class FightNumberTest extends CombatGameCharacteristicTest
 {
@@ -45,73 +46,73 @@ class FightNumberTest extends CombatGameCharacteristicTest
                 ProfessionCode::getIt(ProfessionCode::FIGHTER),
                 $this->createBaseProperties($agility = 123, 0, 0, 0),
                 $this->createSize($size = -2),
-                (int)($agility + ceil($size / 3) - 2)
+                (int)($agility + ceil($size / 3) - 2),
             ],
             [
                 ProfessionCode::getIt(ProfessionCode::FIGHTER),
                 $this->createBaseProperties($agility = 456, 0, 0, 0),
                 $this->createSize($size = 7),
-                (int)($agility + ceil($size / 3) - 2)
+                (int)($agility + ceil($size / 3) - 2),
             ],
             [
                 ProfessionCode::getIt(ProfessionCode::THIEF),
                 $this->createBaseProperties($agility = 123, $knack = 234, 0, 0),
                 $this->createSize($size = -2),
-                (int)(round(($agility + $knack) / 2) + ceil($size / 3) - 2)
+                (int)(round(($agility + $knack) / 2) + ceil($size / 3) - 2),
             ],
             [
                 ProfessionCode::getIt(ProfessionCode::THIEF),
                 $this->createBaseProperties($agility = 456, $knack = 567, 0, 0),
                 $this->createSize($size = 7),
-                (int)(round(($agility + $knack) / 2) + ceil($size / 3) - 2)
+                (int)(round(($agility + $knack) / 2) + ceil($size / 3) - 2),
             ],
             [
                 ProfessionCode::getIt(ProfessionCode::RANGER),
                 $this->createBaseProperties($agility = 123, $knack = 234, 0, 0),
                 $this->createSize($size = -2),
-                (int)(round(($agility + $knack) / 2) + ceil($size / 3) - 2)
+                (int)(round(($agility + $knack) / 2) + ceil($size / 3) - 2),
             ],
             [
                 ProfessionCode::getIt(ProfessionCode::RANGER),
                 $this->createBaseProperties($agility = 456, $knack = 567, 0, 0),
                 $this->createSize($size = 7),
-                (int)(round(($agility + $knack) / 2) + ceil($size / 3) - 2)
+                (int)(round(($agility + $knack) / 2) + ceil($size / 3) - 2),
             ],
             [
                 ProfessionCode::getIt(ProfessionCode::WIZARD),
                 $this->createBaseProperties($agility = 123, 0, $intelligence = 234, 0),
                 $this->createSize($size = -2),
-                (int)(round(($agility + $intelligence) / 2) + ceil($size / 3) - 2)
+                (int)(round(($agility + $intelligence) / 2) + ceil($size / 3) - 2),
             ],
             [
                 ProfessionCode::getIt(ProfessionCode::WIZARD),
                 $this->createBaseProperties($agility = 456, 0, $intelligence = 567, 0),
                 $this->createSize($size = 7),
-                (int)(round(($agility + $intelligence) / 2) + ceil($size / 3) - 2)
+                (int)(round(($agility + $intelligence) / 2) + ceil($size / 3) - 2),
             ],
             [
                 ProfessionCode::getIt(ProfessionCode::THEURGIST),
                 $this->createBaseProperties($agility = 123, 0, $intelligence = 234, 0),
                 $this->createSize($size = -2),
-                (int)(round(($agility + $intelligence) / 2) + ceil($size / 3) - 2)
+                (int)(round(($agility + $intelligence) / 2) + ceil($size / 3) - 2),
             ],
             [
                 ProfessionCode::getIt(ProfessionCode::THEURGIST),
                 $this->createBaseProperties($agility = 456, 0, $intelligence = 567, 0),
                 $this->createSize($size = 7),
-                (int)(round(($agility + $intelligence) / 2) + ceil($size / 3) - 2)
+                (int)(round(($agility + $intelligence) / 2) + ceil($size / 3) - 2),
             ],
             [
                 ProfessionCode::getIt(ProfessionCode::PRIEST),
                 $this->createBaseProperties($agility = 123, 0, 0, $charisma = 234),
                 $this->createSize($size = -2),
-                (int)(round(($agility + $charisma) / 2) + ceil($size / 3) - 2)
+                (int)(round(($agility + $charisma) / 2) + ceil($size / 3) - 2),
             ],
             [
                 ProfessionCode::getIt(ProfessionCode::PRIEST),
                 $this->createBaseProperties($agility = 456, 0, 0, $charisma = 567),
                 $this->createSize($size = 7),
-                (int)(round(($agility + $charisma) / 2) + ceil($size / 3) - 2)
+                (int)(round(($agility + $charisma) / 2) + ceil($size / 3) - 2),
             ],
         ];
     }

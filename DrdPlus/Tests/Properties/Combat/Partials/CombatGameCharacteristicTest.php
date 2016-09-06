@@ -1,8 +1,8 @@
 <?php
-namespace DrdPlus\Tests\Properties\Combat;
+namespace DrdPlus\Tests\Properties\Combat\Partials;
 
 use DrdPlus\Properties\Combat\AttackNumber;
-use DrdPlus\Properties\Combat\CombatGameCharacteristic;
+use DrdPlus\Properties\Combat\Partials\CombatGameCharacteristic;
 use Granam\Integer\IntegerInterface;
 use Granam\Tests\Tools\TestWithMockery;
 

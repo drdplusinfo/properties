@@ -1,5 +1,5 @@
 <?php
-namespace DrdPlus\Properties\Combat;
+namespace DrdPlus\Properties\Combat\Partials;
 
 use Granam\Integer\IntegerInterface;
 use Granam\Integer\Tools\ToInteger;
@@ -8,11 +8,24 @@ use Granam\Strict\Object\StrictObject;
 abstract class CombatGameCharacteristic extends StrictObject implements IntegerInterface
 {
     /**
-     * @param int $value
+     * @param int
+     * @throws \Granam\Integer\Tools\Exceptions\WrongParameterType
+     * @throws \Granam\Integer\Tools\Exceptions\ValueLostOnCast
      */
     protected function __construct($value)
     {
-        $this->value = ToInteger::toInteger($value);
+        $this->value = $this->sanitizeValue($value);
+    }
+
+    /**
+     * @param int|string|float $value
+     * @return int
+     * @throws \Granam\Integer\Tools\Exceptions\WrongParameterType
+     * @throws \Granam\Integer\Tools\Exceptions\ValueLostOnCast
+     */
+    protected function sanitizeValue($value)
+    {
+        return ToInteger::toInteger($value);
     }
 
     /**
@@ -42,7 +55,8 @@ abstract class CombatGameCharacteristic extends StrictObject implements IntegerI
     public function add($value)
     {
         $added = clone $this;
-        $added->value += ToInteger::toInteger($value);
+        $expectedNewValue = $added->getValue() + $this->sanitizeValue($value);
+        $added->value = $this->sanitizeValue($expectedNewValue);
 
         return $added;
     }
@@ -56,7 +70,8 @@ abstract class CombatGameCharacteristic extends StrictObject implements IntegerI
     public function sub($value)
     {
         $subtracted = clone $this;
-        $subtracted->value -= ToInteger::toInteger($value);
+        $expectedNewValue = $subtracted->getValue() - $this->sanitizeValue($value);
+        $subtracted->value = $this->sanitizeValue($expectedNewValue);
 
         return $subtracted;
     }

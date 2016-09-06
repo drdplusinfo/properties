@@ -4,6 +4,7 @@ namespace DrdPlus\Tests\Properties\Combat;
 use DrdPlus\Properties\Combat\DefenseNumber;
 use DrdPlus\Properties\Combat\DefenseNumberAgainstShooting;
 use DrdPlus\Properties\Body\Size;
+use DrdPlus\Tests\Properties\Combat\Partials\CombatGameCharacteristicTest;
 
 class DefenseNumberAgainstShootingTest extends CombatGameCharacteristicTest
 {
