@@ -13,7 +13,8 @@ class Sight extends RemarkableSenseProperty
      */
     public static function getIt()
     {
-        return static::createByValue(self::SIGHT);
+        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
+        return static::getEnum(self::SIGHT);
     }
 
     /**

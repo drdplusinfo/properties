@@ -13,7 +13,8 @@ class Taste extends RemarkableSenseProperty
      */
     public static function getIt()
     {
-        return static::createByValue(self::TASTE);
+        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
+        return static::getEnum(self::TASTE);
     }
 
     /**

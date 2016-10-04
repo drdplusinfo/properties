@@ -13,7 +13,8 @@ class Touch extends RemarkableSenseProperty
      */
     public static function getIt()
     {
-        return static::createByValue(self::TOUCH);
+        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
+        return static::getEnum(self::TOUCH);
     }
 
     /**

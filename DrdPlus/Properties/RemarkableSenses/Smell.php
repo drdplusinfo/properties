@@ -13,7 +13,8 @@ class Smell extends RemarkableSenseProperty
      */
     public static function getIt()
     {
-        return static::createByValue(self::SMELL);
+        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
+        return static::getEnum(self::SMELL);
     }
 
     /**

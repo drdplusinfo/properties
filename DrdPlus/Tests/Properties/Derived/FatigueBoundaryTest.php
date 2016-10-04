@@ -20,7 +20,7 @@ class FatigueBoundaryTest extends AbstractDerivedPropertyTest
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         $fatigueLimit = new FatigueBoundary(
-            new Endurance(new Strength($strength = 1), new Will($will = 2)),
+            new Endurance(Strength::getIt($strength = 1), Will::getIt($will = 2)),
             new FatigueTable(new WoundsTable())
         );
         self::assertSame(
