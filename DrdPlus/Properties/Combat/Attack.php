@@ -5,7 +5,7 @@ use DrdPlus\Properties\Base\Agility;
 use DrdPlus\Properties\Combat\Partials\CombatGameCharacteristic;
 use DrdPlus\Tools\Calculations\SumAndRound;
 
-class AttackNumber extends CombatGameCharacteristic
+class Attack extends CombatGameCharacteristic
 {
 
     /**

@@ -1,15 +1,15 @@
 <?php
 namespace DrdPlus\Tests\Properties\Combat;
 
-use DrdPlus\Properties\Combat\AttackNumber;
+use DrdPlus\Properties\Combat\Attack;
 use DrdPlus\Properties\Base\Agility;
 use DrdPlus\Tests\Properties\Combat\Partials\CombatGameCharacteristicTest;
 
-class AttackNumberTest extends CombatGameCharacteristicTest
+class AttackTest extends CombatGameCharacteristicTest
 {
     protected function createSut()
     {
-        return new AttackNumber($this->createAgility(123));
+        return new Attack($this->createAgility(123));
     }
 
     /**
@@ -18,7 +18,7 @@ class AttackNumberTest extends CombatGameCharacteristicTest
     public function My_attack_depends_on_agility()
     {
         for ($value = -5; $value < 10; $value++) {
-            $attack = new AttackNumber($this->createAgility($value));
+            $attack = new Attack($this->createAgility($value));
             self::assertSame((int)floor($value / 2), $attack->getValue());
         }
     }

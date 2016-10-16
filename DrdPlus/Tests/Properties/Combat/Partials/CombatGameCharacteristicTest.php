@@ -1,7 +1,7 @@
 <?php
 namespace DrdPlus\Tests\Properties\Combat\Partials;
 
-use DrdPlus\Properties\Combat\AttackNumber;
+use DrdPlus\Properties\Combat\Attack;
 use DrdPlus\Properties\Combat\Partials\CombatGameCharacteristic;
 use Granam\Integer\IntegerInterface;
 use Granam\Tests\Tools\TestWithMockery;
@@ -24,7 +24,7 @@ abstract class CombatGameCharacteristicTest extends TestWithMockery
     abstract protected function createSut();
 
     /**
-     * @return AttackNumber|CombatGameCharacteristic|string
+     * @return Attack|CombatGameCharacteristic|string
      */
     protected function getSutClass()
     {
