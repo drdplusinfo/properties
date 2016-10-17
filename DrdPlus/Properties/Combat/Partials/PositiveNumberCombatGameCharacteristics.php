@@ -13,7 +13,7 @@ abstract class PositiveNumberCombatGameCharacteristics extends CombatGameCharact
      */
     public function __construct($value)
     {
-        parent::__construct($this->sanitizeValue($value));
+        parent::__construct($value);
     }
 
     /**

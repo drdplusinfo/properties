@@ -1,20 +1,17 @@
 <?php
 namespace DrdPlus\Properties\Combat;
 
-use DrdPlus\Properties\Combat\Partials\PositiveNumberCombatGameCharacteristics;
-use DrdPlus\Tables\Measurements\Distance\DistanceBonus;
-use DrdPlus\Tables\Measurements\Distance\DistanceTable;
+use DrdPlus\Properties\Combat\Partials\AbstractRange;
 
-class EncounterRange extends PositiveNumberCombatGameCharacteristics
+class EncounterRange extends AbstractRange
 {
     /**
-     * @param DistanceTable $distanceTable
-     * @return int
+     * @param $value
+     * @throws \Granam\Integer\Tools\Exceptions\WrongParameterType
+     * @throws \Granam\Integer\Tools\Exceptions\ValueLostOnCast
      */
-    public function getInMeters(DistanceTable $distanceTable)
+    public function __construct($value)
     {
-        // encounter range is in fact distance bonus
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        return (new DistanceBonus($this->getValue(), $distanceTable))->getDistance()->getMeters();
+        parent::__construct($value);
     }
 }

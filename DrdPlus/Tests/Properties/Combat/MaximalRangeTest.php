@@ -4,16 +4,17 @@ namespace DrdPlus\Tests\Properties\Combat;
 use DrdPlus\Properties\Combat\EncounterRange;
 use DrdPlus\Properties\Combat\MaximalRange;
 use DrdPlus\Properties\Combat\Partials\CombatGameCharacteristic;
-use DrdPlus\Tests\Properties\Combat\Partials\PositiveNumberCombatGameCharacteristicsTest;
+use DrdPlus\Tests\Properties\Combat\Partials\AbstractRangeTest;
 
-class MaximalRangeTest extends PositiveNumberCombatGameCharacteristicsTest
+class MaximalRangeTest extends AbstractRangeTest
 {
     /**
+     * @param $value
      * @return MaximalRange
      */
-    protected function createSut()
+    protected function createRangeSut($value)
     {
-        return MaximalRange::createForMeleeWeapon($this->createEncounterRange(123));
+        return MaximalRange::createForMeleeWeapon($this->createEncounterRange($value));
     }
 
     /**

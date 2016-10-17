@@ -1,11 +1,9 @@
 <?php
 namespace DrdPlus\Properties\Combat;
 
-use DrdPlus\Properties\Combat\Partials\CombatGameCharacteristic;
-use Granam\Integer\IntegerInterface;
-use Granam\Integer\Tools\ToInteger;
+use DrdPlus\Properties\Combat\Partials\AbstractRange;
 
-class MaximalRange extends CombatGameCharacteristic
+class MaximalRange extends AbstractRange
 {
     /**
      * Well, sadly maximal range of a weapon is same as encounter range and that is zero (melee respectively).
@@ -29,17 +27,5 @@ class MaximalRange extends CombatGameCharacteristic
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new static($encounterRange->getValue() + 12);
-    }
-
-    /**
-     * @param int|string|float|IntegerInterface $value
-     * @return int
-     * @throws \Granam\Integer\Tools\Exceptions\WrongParameterType
-     * @throws \Granam\Integer\Tools\Exceptions\ValueLostOnCast
-     * @throws \Granam\Integer\Tools\Exceptions\PositiveIntegerCanNotBeNegative
-     */
-    protected function sanitizeValue($value)
-    {
-        return ToInteger::toPositiveInteger($value);
     }
 }
