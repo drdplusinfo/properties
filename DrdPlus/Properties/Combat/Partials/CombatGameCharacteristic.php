@@ -18,7 +18,7 @@ abstract class CombatGameCharacteristic extends StrictObject implements IntegerI
     }
 
     /**
-     * @param int|string|float $value
+     * @param int|string|float|IntegerInterface $value
      * @return int
      * @throws \Granam\Integer\Tools\Exceptions\WrongParameterType
      * @throws \Granam\Integer\Tools\Exceptions\ValueLostOnCast
