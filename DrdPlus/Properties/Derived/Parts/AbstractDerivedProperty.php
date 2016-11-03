@@ -33,7 +33,7 @@ abstract class AbstractDerivedProperty extends StrictObject implements DerivedPr
 
     /**
      * @param int|static $value
-     * @return static
+     * @return AbstractDerivedProperty
      * @throws \Granam\Integer\Tools\Exceptions\WrongParameterType
      * @throws \Granam\Integer\Tools\Exceptions\ValueLostOnCast
      */
@@ -47,7 +47,7 @@ abstract class AbstractDerivedProperty extends StrictObject implements DerivedPr
 
     /**
      * @param int|static $value
-     * @return static
+     * @return AbstractDerivedProperty
      * @throws \Granam\Integer\Tools\Exceptions\WrongParameterType
      * @throws \Granam\Integer\Tools\Exceptions\ValueLostOnCast
      */
