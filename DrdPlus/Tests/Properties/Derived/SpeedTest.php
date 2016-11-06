@@ -3,7 +3,7 @@ namespace DrdPlus\Tests\Properties\Derived;
 
 use DrdPlus\Properties\Base\Agility;
 use DrdPlus\Properties\Base\Strength;
-use DrdPlus\Properties\Body\Size;
+use DrdPlus\Properties\Body\Height;
 use DrdPlus\Properties\Derived\Speed;
 use DrdPlus\Tests\Properties\Derived\Parts\AbstractDerivedPropertyTest;
 
@@ -17,12 +17,12 @@ class SpeedTest extends AbstractDerivedPropertyTest
         $speed = new Speed(
             $this->getStrength($strengthValue = 123),
             $this->getAgility($agilityValue = 456),
-            $this->getSizeProperty($sizeValue = 789)
+            $this->getHeight($heightValue = 789)
         );
         self::assertSame('speed', $speed->getCode());
         self::assertSame('speed', Speed::SPEED);
-        self::assertSame((int)round(($strengthValue + $agilityValue) / 2) + ($sizeValue / 3 - 2), $speed->getValue());
-        self::assertSame((string)(round(($strengthValue + $agilityValue) / 2) + ($sizeValue / 3 - 2)), "$speed");
+        self::assertSame((int)round(($strengthValue + $agilityValue) / 2) + ($heightValue / 3 - 2), $speed->getValue());
+        self::assertSame((string)(round(($strengthValue + $agilityValue) / 2) + ($heightValue / 3 - 2)), "$speed");
 
         return $speed;
     }
@@ -41,7 +41,7 @@ class SpeedTest extends AbstractDerivedPropertyTest
         $speed = new Speed(
             $this->getStrength($strengthValue = 123),
             $this->getAgility($agilityValue = 456),
-            $this->getSizeProperty($size)
+            $this->getHeight($size)
         );
         self::assertSame((int)round(($strengthValue + $agilityValue) / 2) + $speedModifier, $speed->getValue());
         self::assertSame((string)(round(($strengthValue + $agilityValue) / 2) + $speedModifier), "$speed");
@@ -95,11 +95,11 @@ class SpeedTest extends AbstractDerivedPropertyTest
     /**
      * @param $value
      *
-     * @return \Mockery\MockInterface|Size
+     * @return \Mockery\MockInterface|Height
      */
-    private function getSizeProperty($value)
+    private function getHeight($value)
     {
-        return $this->createProperty(Size::class, $value);
+        return $this->createProperty(Height::class, $value);
     }
 
 }
