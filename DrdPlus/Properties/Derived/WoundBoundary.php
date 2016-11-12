@@ -2,7 +2,7 @@
 namespace DrdPlus\Properties\Derived;
 
 use DrdPlus\Codes\PropertyCode;
-use DrdPlus\Properties\Derived\Parts\AbstractDerivedProperty;
+use DrdPlus\Properties\Derived\Partials\AbstractDerivedProperty;
 use DrdPlus\Tables\Measurements\Wounds\WoundsBonus;
 use DrdPlus\Tables\Measurements\Wounds\WoundsTable;
 

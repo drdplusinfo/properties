@@ -5,7 +5,7 @@ use DrdPlus\Codes\PropertyCode;
 use DrdPlus\Properties\Base\Agility;
 use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Body\Height;
-use DrdPlus\Properties\Derived\Parts\AbstractDerivedProperty;
+use DrdPlus\Properties\Derived\Partials\AbstractDerivedProperty;
 use DrdPlus\Tools\Calculations\SumAndRound;
 
 class Speed extends AbstractDerivedProperty

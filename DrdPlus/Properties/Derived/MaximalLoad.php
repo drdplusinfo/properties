@@ -3,7 +3,7 @@ namespace DrdPlus\Properties\Derived;
 
 use DrdPlus\Codes\PropertyCode;
 use DrdPlus\Properties\Base\Strength;
-use DrdPlus\Properties\Derived\Parts\AbstractDerivedProperty;
+use DrdPlus\Properties\Derived\Partials\AbstractDerivedProperty;
 
 class MaximalLoad extends AbstractDerivedProperty
 {

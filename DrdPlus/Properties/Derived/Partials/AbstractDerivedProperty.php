@@ -1,5 +1,5 @@
 <?php
-namespace DrdPlus\Properties\Derived\Parts;
+namespace DrdPlus\Properties\Derived\Partials;
 
 use DrdPlus\Properties\Derived\DerivedProperty;
 use Granam\Integer\Tools\ToInteger;

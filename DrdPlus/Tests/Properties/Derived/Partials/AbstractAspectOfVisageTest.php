@@ -1,5 +1,5 @@
 <?php
-namespace DrdPlus\Tests\Properties\Derived\Parts;
+namespace DrdPlus\Tests\Properties\Derived\Partials;
 
 use DrdPlus\Tools\Calculations\SumAndRound;
 

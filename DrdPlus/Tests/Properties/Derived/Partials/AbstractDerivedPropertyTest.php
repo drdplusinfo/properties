@@ -1,7 +1,7 @@
 <?php
-namespace DrdPlus\Tests\Properties\Derived\Parts;
+namespace DrdPlus\Tests\Properties\Derived\Partials;
 
-use DrdPlus\Properties\Derived\Parts\AbstractDerivedProperty;
+use DrdPlus\Properties\Derived\Partials\AbstractDerivedProperty;
 use DrdPlus\Tests\Properties\AbstractTestOfProperty;
 
 abstract class AbstractDerivedPropertyTest extends AbstractTestOfProperty

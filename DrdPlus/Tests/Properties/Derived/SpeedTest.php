@@ -5,7 +5,7 @@ use DrdPlus\Properties\Base\Agility;
 use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Body\Height;
 use DrdPlus\Properties\Derived\Speed;
-use DrdPlus\Tests\Properties\Derived\Parts\AbstractDerivedPropertyTest;
+use DrdPlus\Tests\Properties\Derived\Partials\AbstractDerivedPropertyTest;
 
 class SpeedTest extends AbstractDerivedPropertyTest
 {

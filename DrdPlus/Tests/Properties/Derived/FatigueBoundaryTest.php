@@ -7,7 +7,7 @@ use DrdPlus\Properties\Derived\Endurance;
 use DrdPlus\Properties\Derived\FatigueBoundary;
 use DrdPlus\Tables\Measurements\Fatigue\FatigueTable;
 use DrdPlus\Tables\Measurements\Wounds\WoundsTable;
-use DrdPlus\Tests\Properties\Derived\Parts\AbstractDerivedPropertyTest;
+use DrdPlus\Tests\Properties\Derived\Partials\AbstractDerivedPropertyTest;
 
 class FatigueBoundaryTest extends AbstractDerivedPropertyTest
 {

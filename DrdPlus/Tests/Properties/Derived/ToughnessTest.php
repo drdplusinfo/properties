@@ -6,7 +6,7 @@ use DrdPlus\Codes\SubRaceCode;
 use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Derived\Toughness;
 use DrdPlus\Tables\Races\RacesTable;
-use DrdPlus\Tests\Properties\Derived\Parts\AbstractDerivedPropertyTest;
+use DrdPlus\Tests\Properties\Derived\Partials\AbstractDerivedPropertyTest;
 
 class ToughnessTest extends AbstractDerivedPropertyTest
 {

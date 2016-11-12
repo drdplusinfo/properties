@@ -1,5 +1,5 @@
 <?php
-namespace DrdPlus\Properties\Derived\Parts;
+namespace DrdPlus\Properties\Derived\Partials;
 
 use DrdPlus\Properties\Base\Charisma;
 use DrdPlus\Tools\Calculations\SumAndRound;

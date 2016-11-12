@@ -3,7 +3,7 @@ namespace DrdPlus\Properties\Derived;
 
 use DrdPlus\Codes\PropertyCode;
 use DrdPlus\Properties\Base\Charisma;
-use DrdPlus\Properties\Derived\Parts\AbstractAspectOfVisage;
+use DrdPlus\Properties\Derived\Partials\AbstractAspectOfVisage;
 use DrdPlus\Properties\Base\Intelligence;
 use DrdPlus\Properties\Base\Will;
 

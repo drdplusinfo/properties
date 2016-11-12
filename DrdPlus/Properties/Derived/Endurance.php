@@ -4,7 +4,7 @@ namespace DrdPlus\Properties\Derived;
 use DrdPlus\Codes\PropertyCode;
 use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Base\Will;
-use DrdPlus\Properties\Derived\Parts\AbstractDerivedProperty;
+use DrdPlus\Properties\Derived\Partials\AbstractDerivedProperty;
 use DrdPlus\Tools\Calculations\SumAndRound;
 
 class Endurance extends AbstractDerivedProperty
