@@ -2,12 +2,14 @@
 namespace DrdPlus\Properties\Body;
 
 use DrdPlus\Codes\PropertyCode;
-use DrdPlus\Properties\AbstractFloatProperty;
+use DrdPlus\Properties\AbstractIntegerProperty;
 
 /**
- * @method static Weight getIt(float $value)
+ * In fact bonus of weight in kg, @see \DrdPlus\Tables\Measurements\Weight\WeightBonus
+ *
+ * @method static Weight getIt(int $value)
  */
-class Weight extends AbstractFloatProperty implements BodyProperty
+class Weight extends AbstractIntegerProperty implements BodyProperty
 {
     const WEIGHT = PropertyCode::WEIGHT;
 

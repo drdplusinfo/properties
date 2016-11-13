@@ -1,9 +1,9 @@
 <?php
 namespace DrdPlus\Tests\Properties\Body;
 
-use DrdPlus\Tests\Properties\AbstractFloatPropertyTest;
+use DrdPlus\Tests\Properties\AbstractIntegerPropertyTest;
 
-class WeightTest extends AbstractFloatPropertyTest
+class WeightTest extends AbstractIntegerPropertyTest
 {
 
 }
