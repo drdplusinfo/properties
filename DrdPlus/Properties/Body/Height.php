@@ -7,6 +7,9 @@ use DrdPlus\Tables\Measurements\Distance\DistanceTable;
 use Granam\Integer\IntegerInterface;
 use Granam\Strict\Object\StrictObject;
 
+/**
+ * In fact bonus of a distance, @see \DrdPlus\Tables\Measurements\Distance\DistanceBonus
+ */
 class Height extends StrictObject implements Property, BodyProperty, IntegerInterface
 {
     const HEIGHT = 'height';

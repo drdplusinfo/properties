@@ -5,12 +5,15 @@ use Doctrineum\Float\FloatEnum;
 use Granam\Float\FloatInterface;
 use Granam\Float\Tools\ToFloat;
 
+/**
+ * @method static AbstractFloatProperty getEnum(float $enumValue)
+ */
 abstract class AbstractFloatProperty extends FloatEnum implements Property, FloatInterface
 {
 
     /**
      * @param float $value
-     * @return static
+     * @return AbstractFloatProperty
      */
     public static function getIt($value)
     {
@@ -19,7 +22,7 @@ abstract class AbstractFloatProperty extends FloatEnum implements Property, Floa
 
     /**
      * @param float|static $value
-     * @return static
+     * @return AbstractFloatProperty
      * @throws \Granam\Number\Tools\Exceptions\WrongParameterType
      * @throws \Granam\Scalar\Tools\Exceptions\WrongParameterType
      */
@@ -31,7 +34,7 @@ abstract class AbstractFloatProperty extends FloatEnum implements Property, Floa
 
     /**
      * @param float|static $value
-     * @return static
+     * @return AbstractFloatProperty
      * @throws \Granam\Number\Tools\Exceptions\WrongParameterType
      * @throws \Granam\Scalar\Tools\Exceptions\WrongParameterType
      */
