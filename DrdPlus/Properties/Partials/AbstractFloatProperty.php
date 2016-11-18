@@ -1,7 +1,8 @@
 <?php
-namespace DrdPlus\Properties;
+namespace DrdPlus\Properties\Partials;
 
 use Doctrineum\Float\FloatEnum;
+use DrdPlus\Properties\Property;
 use Granam\Float\FloatInterface;
 
 /**

@@ -1,5 +1,7 @@
 <?php
-namespace DrdPlus\Tests\Properties;
+namespace DrdPlus\Tests\Properties\Partials;
+
+use DrdPlus\Tests\Properties\AbstractTestOfStoredProperty;
 
 abstract class AbstractFloatPropertyTest extends AbstractTestOfStoredProperty
 {

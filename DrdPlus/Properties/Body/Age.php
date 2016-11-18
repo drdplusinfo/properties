@@ -1,7 +1,7 @@
 <?php
 namespace DrdPlus\Properties\Body;
 
-use DrdPlus\Properties\AbstractIntegerProperty;
+use DrdPlus\Properties\Partials\AbstractIntegerProperty;
 
 /**
  * @method static Age getIt(int $value)

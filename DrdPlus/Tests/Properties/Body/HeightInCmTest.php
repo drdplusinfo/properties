@@ -1,7 +1,7 @@
 <?php
 namespace DrdPlus\Tests\Properties\Body;
 
-use DrdPlus\Tests\Properties\AbstractFloatPropertyTest;
+use DrdPlus\Tests\Properties\Partials\AbstractFloatPropertyTest;
 
 class HeightInCmTest extends AbstractFloatPropertyTest
 {

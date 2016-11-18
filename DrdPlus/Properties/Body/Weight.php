@@ -2,7 +2,7 @@
 namespace DrdPlus\Properties\Body;
 
 use DrdPlus\Codes\PropertyCode;
-use DrdPlus\Properties\AbstractIntegerProperty;
+use DrdPlus\Properties\Partials\AbstractIntegerProperty;
 
 /**
  * In fact bonus of weight in kg, @see \DrdPlus\Tables\Measurements\Weight\WeightBonus

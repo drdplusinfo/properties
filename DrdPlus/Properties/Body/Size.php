@@ -2,7 +2,7 @@
 namespace DrdPlus\Properties\Body;
 
 use DrdPlus\Codes\PropertyCode;
-use DrdPlus\Properties\AbstractIntegerProperty;
+use DrdPlus\Properties\Partials\AbstractIntegerProperty;
 
 /**
  * Note: Size does not need to be persisted and therefore does not need enum type.

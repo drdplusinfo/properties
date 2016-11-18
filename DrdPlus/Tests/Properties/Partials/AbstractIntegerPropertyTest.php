@@ -1,7 +1,8 @@
 <?php
-namespace DrdPlus\Tests\Properties;
+namespace DrdPlus\Tests\Properties\Partials;
 
-use DrdPlus\Properties\AbstractIntegerProperty;
+use DrdPlus\Properties\Partials\AbstractIntegerProperty;
+use DrdPlus\Tests\Properties\AbstractTestOfStoredProperty;
 use Granam\Tools\ValueDescriber;
 
 abstract class AbstractIntegerPropertyTest extends AbstractTestOfStoredProperty

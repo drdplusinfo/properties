@@ -1,7 +1,8 @@
 <?php
-namespace DrdPlus\Properties;
+namespace DrdPlus\Properties\Partials;
 
 use Doctrineum\Integer\IntegerEnum;
+use DrdPlus\Properties\Property;
 use Granam\Integer\IntegerInterface;
 use Granam\Integer\Tools\ToInteger;
 use Granam\Tools\ValueDescriber;

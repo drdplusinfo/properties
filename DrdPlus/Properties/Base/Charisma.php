@@ -2,7 +2,7 @@
 namespace DrdPlus\Properties\Base;
 
 use DrdPlus\Codes\PropertyCode;
-use DrdPlus\Properties\AbstractIntegerProperty;
+use DrdPlus\Properties\Partials\AbstractIntegerProperty;
 
 /**
  * @method static Charisma getIt(int $value)

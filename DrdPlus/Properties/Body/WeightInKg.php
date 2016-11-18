@@ -2,7 +2,7 @@
 namespace DrdPlus\Properties\Body;
 
 use DrdPlus\Codes\PropertyCode;
-use DrdPlus\Properties\AbstractFloatProperty;
+use DrdPlus\Properties\Partials\AbstractFloatProperty;
 
 /**
  * @method static WeightInKg getIt(float $value)

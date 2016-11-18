@@ -1,7 +1,7 @@
 <?php
 namespace DrdPlus\Properties\RemarkableSenses;
 
-use DrdPlus\Properties\AbstractStringProperty;
+use DrdPlus\Properties\Partials\AbstractStringProperty;
 
 /**
  * @method static RemarkableSenseProperty getIt()
