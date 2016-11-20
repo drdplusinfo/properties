@@ -21,7 +21,7 @@ class FightNumberTest extends CombatGameCharacteristicTest
     /**
      * @return array|string[]
      */
-    protected function getExpectedChangeBy()
+    protected function getExpectedInitialChangeBy()
     {
         return [
             'name' => 'create sut',

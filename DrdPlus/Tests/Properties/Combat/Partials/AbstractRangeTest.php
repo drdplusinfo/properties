@@ -28,7 +28,7 @@ abstract class AbstractRangeTest extends PositiveNumberCombatGameCharacteristics
     /**
      * @return array|string[]
      */
-    protected function getExpectedChangeBy()
+    protected function getExpectedInitialChangeBy()
     {
         return [
             'name' => 'create range sut',

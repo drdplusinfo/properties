@@ -39,7 +39,7 @@ abstract class CombatGameCharacteristicTest extends TestWithMockery
         $combatGameCharacteristic = $this->createSut();
         $expectedPropertyHistory = [
             [
-                'changeBy' => $this->getExpectedChangeBy(),
+                'changeBy' => $this->getExpectedInitialChangeBy(),
                 'result' => $combatGameCharacteristic->getValue(),
             ],
         ];
@@ -54,7 +54,6 @@ abstract class CombatGameCharacteristicTest extends TestWithMockery
         ];
         self::assertEquals($expectedPropertyHistory, $increased->getHistory());
 
-
         $double = $increased->add($increased);
         self::assertSame($increased->getValue() * 2, $double->getValue());
         $expectedPropertyHistory[] = [
@@ -67,7 +66,7 @@ abstract class CombatGameCharacteristicTest extends TestWithMockery
     /**
      * @return array|string[]
      */
-    protected function getExpectedChangeBy()
+    protected function getExpectedInitialChangeBy()
     {
         return ['name' => 'create sut', 'arguments' => ''];
     }
@@ -78,10 +77,31 @@ abstract class CombatGameCharacteristicTest extends TestWithMockery
     public function I_can_subtract_value()
     {
         $combatGameCharacteristic = $this->createSut();
+        $expectedPropertyHistory = [
+            [
+                'changeBy' => $this->getExpectedInitialChangeBy(),
+                'result' => $combatGameCharacteristic->getValue(),
+            ],
+        ];
+        self::assertEquals($expectedPropertyHistory, $combatGameCharacteristic->getHistory());
+
         $decreased = $combatGameCharacteristic->sub(1);
         self::assertNotEquals($combatGameCharacteristic, $decreased);
         self::assertSame($combatGameCharacteristic->getValue() - 1, $decreased->getValue());
+        $expectedDecreasedHistory = $expectedPropertyHistory;
+        $expectedDecreasedHistory[] = [
+            'changeBy' => ['name' => 'i can subtract value', 'arguments' => ''],
+            'result' => $decreased->getValue(),
+        ];
+        self::assertEquals($expectedDecreasedHistory, $decreased->getHistory());
+
         $zeroed = $decreased->sub($decreased);
         self::assertSame(0, $zeroed->getValue());
+        $expectedZeroedHistory = $expectedDecreasedHistory;
+        $expectedZeroedHistory[] = [
+            'changeBy' => ['name' => 'i can subtract value', 'arguments' => ''],
+            'result' => $zeroed->getValue(),
+        ];
+        self::assertEquals($expectedZeroedHistory, $zeroed->getHistory());
     }
 }
