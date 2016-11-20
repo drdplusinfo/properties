@@ -12,10 +12,18 @@ class Speed extends AbstractDerivedProperty
 {
     const SPEED = PropertyCode::SPEED;
 
+    /**
+     * @param Strength $strength
+     * @param Agility $agility
+     * @param Height $height
+     */
     public function __construct(Strength $strength, Agility $agility, Height $height)
     {
-        $this->value = SumAndRound::average($strength->getValue(), $agility->getValue())
-            + SumAndRound::ceil($height->getValue() / 3) - 2; // 1 - 3 = -1; 4 - 6 = 0; 7 - 9 = +1 ...
+        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
+        parent::__construct(
+            SumAndRound::average($strength->getValue(), $agility->getValue())
+            + SumAndRound::ceil($height->getValue() / 3) - 2 // 1 - 3 = -1; 4 - 6 = 0; 7 - 9 = +1 ...
+        );
     }
 
     public function getCode()

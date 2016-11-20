@@ -7,21 +7,21 @@ use DrdPlus\Codes\SubRaceCode;
 use DrdPlus\Properties\Base\Knack;
 use DrdPlus\Properties\Derived\Partials\AbstractDerivedProperty;
 use DrdPlus\Tables\Races\RacesTable;
-use Granam\Integer\Tools\ToInteger;
 
 class Senses extends AbstractDerivedProperty
 {
     const SENSES = PropertyCode::SENSES;
 
-    public function __construct(
-        Knack $knack,
-        RaceCode $raceCode,
-        SubRaceCode $subRaceCode,
-        RacesTable $racesTable
-    )
+    /**
+     * @param Knack $knack
+     * @param RaceCode $raceCode
+     * @param SubRaceCode $subRaceCode
+     * @param RacesTable $racesTable
+     */
+    public function __construct(Knack $knack, RaceCode $raceCode, SubRaceCode $subRaceCode, RacesTable $racesTable)
     {
-        $this->value = $knack->getValue()
-            + ToInteger::toInteger($racesTable->getSenses($raceCode->getValue(), $subRaceCode->getValue()));
+        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
+        parent::__construct($knack->getValue() + $racesTable->getSenses($raceCode->getValue(), $subRaceCode->getValue()));
     }
 
     public function getCode()

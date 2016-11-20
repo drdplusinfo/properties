@@ -11,6 +11,11 @@ class Dangerousness extends AbstractAspectOfVisage
 {
     const DANGEROUSNESS = PropertyCode::DANGEROUSNESS;
 
+    /**
+     * @param Strength $strength
+     * @param Will $will
+     * @param Charisma $charisma
+     */
     public function __construct(Strength $strength, Will $will, Charisma $charisma)
     {
         parent::__construct($strength, $will, $charisma);

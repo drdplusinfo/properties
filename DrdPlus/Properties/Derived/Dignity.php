@@ -11,6 +11,11 @@ class Dignity extends AbstractAspectOfVisage
 {
     const DIGNITY = PropertyCode::DIGNITY;
 
+    /**
+     * @param Intelligence $intelligence
+     * @param Will $will
+     * @param Charisma $charisma
+     */
     public function __construct(Intelligence $intelligence, Will $will, Charisma $charisma)
     {
         parent::__construct($intelligence, $will, $charisma);

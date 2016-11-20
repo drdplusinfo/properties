@@ -11,6 +11,11 @@ class Beauty extends AbstractAspectOfVisage
 {
     const BEAUTY = PropertyCode::BEAUTY;
 
+    /**
+     * @param Agility $agility
+     * @param Knack $knack
+     * @param Charisma $charisma
+     */
     public function __construct(Agility $agility, Knack $knack, Charisma $charisma)
     {
         parent::__construct($agility, $knack, $charisma);

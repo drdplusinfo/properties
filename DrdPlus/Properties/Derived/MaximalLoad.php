@@ -9,9 +9,14 @@ class MaximalLoad extends AbstractDerivedProperty
 {
     const MAXIMAL_LOAD = PropertyCode::MAXIMAL_LOAD;
 
+    /**
+     * @param Strength $strength
+     * @param Athletics $athletics
+     */
     public function __construct(Strength $strength, Athletics $athletics)
     {
-        $this->value = $strength->getValue() + 21 + $athletics->getAthleticsBonus()->getValue();
+        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
+        parent::__construct($strength->getValue() + 21 + $athletics->getAthleticsBonus()->getValue());
     }
 
     /**

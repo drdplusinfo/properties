@@ -11,9 +11,14 @@ class Endurance extends AbstractDerivedProperty
 {
     const ENDURANCE = PropertyCode::ENDURANCE;
 
+    /**
+     * @param Strength $strength
+     * @param Will $will
+     */
     public function __construct(Strength $strength, Will $will)
     {
-        $this->value = SumAndRound::average($strength->getValue(), $will->getValue());
+        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
+        parent::__construct(SumAndRound::average($strength->getValue(), $will->getValue()));
     }
 
     public function getCode()

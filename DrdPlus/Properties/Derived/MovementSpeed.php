@@ -17,9 +17,13 @@ class MovementSpeed extends AbstractDerivedProperty
 {
     const MOVEMENT_SPEED = PropertyCode::MOVEMENT_SPEED;
 
+    /**
+     * @param Speed $speed
+     */
     public function __construct(Speed $speed)
     {
-        $this->value = SumAndRound::half($speed->getValue());
+        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
+        parent::__construct(SumAndRound::half($speed->getValue()));
     }
 
     /**
@@ -28,6 +32,7 @@ class MovementSpeed extends AbstractDerivedProperty
      */
     public function getSpeedBonus(SpeedTable $speedTable)
     {
+        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new SpeedBonus($this->getValue(), $speedTable);
     }
 
@@ -59,6 +64,7 @@ class MovementSpeed extends AbstractDerivedProperty
             $terrainDifficultyPercents
         );
 
+        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new SpeedBonus(
             $this->getValue() + $movementTypeBonus->getValue() + $terrainMalus->getValue(),
             $speedTable

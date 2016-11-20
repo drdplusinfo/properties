@@ -10,10 +10,17 @@ class WoundBoundary extends AbstractDerivedProperty
 {
     const WOUND_BOUNDARY = PropertyCode::WOUND_BOUNDARY;
 
+    /**
+     * @param Toughness $toughness
+     * @param WoundsTable $woundsTable
+     */
     public function __construct(Toughness $toughness, WoundsTable $woundsTable)
     {
-        $wounds = $woundsTable->toWounds(new WoundsBonus($toughness->getValue() + 10, $woundsTable));
-        $this->value = $wounds->getValue();
+        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
+        parent::__construct(
+            $woundsTable->toWounds(new WoundsBonus($toughness->getValue() + 10, $woundsTable))
+                ->getValue()
+        );
     }
 
     /**
