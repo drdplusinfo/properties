@@ -27,7 +27,6 @@ abstract class AbstractIntegerPropertyTest extends AbstractTestOfStoredProperty
         $propertyClass = $this->getSutClass();
         /** @var AbstractIntegerProperty $property */
         $property = $propertyClass::getIt(123);
-        $propertyHistory = $property->getHistory();
         $expectedChangeBy = [
             'name' => 'i can add value',
             'arguments' => implode(
@@ -41,7 +40,7 @@ abstract class AbstractIntegerPropertyTest extends AbstractTestOfStoredProperty
                 'result' => $property->getValue(),
             ],
         ];
-        self::assertEquals($expectedPropertyHistory, $propertyHistory);
+        self::assertEquals($expectedPropertyHistory, $property->getHistory());
         /** @var AbstractIntegerProperty $anotherProperty */
         $anotherProperty = $propertyClass::getIt(123);
         self::assertNotSame($property, $anotherProperty, 'New instance should be created to avoid history share');
@@ -49,26 +48,24 @@ abstract class AbstractIntegerPropertyTest extends AbstractTestOfStoredProperty
         self::assertNotEquals($property->getHistory(), $changedAnotherProperty->getHistory(), 'History should not be shared');
 
         $greater = $property->add(456);
-        $greaterHistory = $greater->getHistory();
         $expectedGreaterHistory = $expectedPropertyHistory;
         $expectedGreaterHistory[] = [
             'changeBy' => $expectedChangeBy,
             'result' => $greater->getValue(),
         ];
-        self::assertEquals($expectedGreaterHistory, $greaterHistory);
+        self::assertEquals($expectedGreaterHistory, $greater->getHistory());
         self::assertSame(123, $property->getValue());
         self::assertNotEquals($property, $greater);
         self::assertSame(579, $greater->getValue());
 
         $double = $greater->add($greater);
-        $doubleHistory = $double->getHistory();
         $expectedDoubleHistoryChange = [
             'changeBy' => $expectedChangeBy,
             'result' => $double->getValue(),
         ];
         $expectedDoubleHistory = $expectedGreaterHistory;
         $expectedDoubleHistory[] = $expectedDoubleHistoryChange;
-        self::assertEquals($expectedDoubleHistory, $doubleHistory);
+        self::assertEquals($expectedDoubleHistory, $double->getHistory());
         self::assertSame(1158, $double->getValue());
     }
 

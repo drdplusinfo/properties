@@ -6,16 +6,15 @@ use DrdPlus\Properties\Property;
 use Granam\Integer\IntegerInterface;
 use Granam\Integer\Tools\ToInteger;
 
+/** @noinspection SingletonFactoryPatternViolationInspection */
 abstract class AbstractIntegerProperty extends IntegerEnum implements Property
 {
 
     use WithHistoryTrait;
 
     /**
-     * Will give clone.
-     *
-     * @param int $value
-     * @return IntegerEnum|AbstractIntegerProperty
+     * @param int|IntegerInterface $value
+     * @return AbstractIntegerProperty
      */
     public static function getIt($value)
     {
@@ -23,27 +22,24 @@ abstract class AbstractIntegerProperty extends IntegerEnum implements Property
     }
 
     /**
-     * Will give clone.
-     *
-     * @param int $enumValue
-     * @return IntegerEnum|AbstractIntegerProperty
+     * @param int|IntegerInterface $value
+     * @return AbstractIntegerProperty
      */
-    public static function getEnum($enumValue)
+    public static function getEnum($value)
     {
-        /** @var AbstractIntegerProperty $integerProperty */
-        $integerProperty = clone parent::getEnum($enumValue); // cloned to get unique history
-        $integerProperty->noticeChange();
-
-        return $integerProperty;
+        return new static($value);
     }
 
     /**
-     * History will be cleaned - use @see WithHistoryTrait::adoptHistory internally to follow parent history.
+     * Does NOT gives same instance for same value.
+     *
+     * @param int|IntegerInterface $enumValue
      */
-    public function __clone()
+    protected function __construct($enumValue)
     {
-        // overloaded parent to allow cloning (to get clean property WITHOUT history)
-        $this->history = []; // clear history, because it should be simply new property, just of same class and value
+        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
+        parent::__construct($enumValue);
+        $this->noticeChange();
     }
 
     /**

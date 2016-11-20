@@ -40,9 +40,9 @@ trait WithHistoryTrait
     {
         /** @var array $call */
         foreach ($backtrace as $call) {
-            if (!array_key_exists('class', $call)
-                || (!in_array($call['class'], [__CLASS__, get_class(), get_class($this)], true)
-                    && (!array_key_exists('object', $call) || $call['object'] !== $this)
+            if ((!array_key_exists('object', $call) || $call['object'] !== $this)
+                && (!array_key_exists('class', $call)
+                    || (!in_array($call['class'], [__CLASS__, get_class($this)], true))
                 )
             ) {
                 return $call;
