@@ -12,15 +12,11 @@ class FightNumber extends CombatGameCharacteristic
 
     /**
      * @param ProfessionCode $professionCode
-     * @param BasePropertiesInterface $baseProperties
+     * @param BaseProperties $baseProperties
      * @param Height $height
      * @throws \DrdPlus\Properties\Combat\Exceptions\UnknownProfession
      */
-    public function __construct(
-        ProfessionCode $professionCode,
-        BasePropertiesInterface $baseProperties,
-        Height $height
-    )
+    public function __construct(ProfessionCode $professionCode, BaseProperties $baseProperties, Height $height)
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         parent::__construct($this->calculateValue($professionCode, $baseProperties, $height));
@@ -28,12 +24,12 @@ class FightNumber extends CombatGameCharacteristic
 
     /**
      * @param ProfessionCode $professionCode
-     * @param BasePropertiesInterface $baseProperties
+     * @param BaseProperties $baseProperties
      * @param Height $height
      * @return int
      * @throws \DrdPlus\Properties\Combat\Exceptions\UnknownProfession
      */
-    private function calculateValue(ProfessionCode $professionCode, BasePropertiesInterface $baseProperties, Height $height)
+    private function calculateValue(ProfessionCode $professionCode, BaseProperties $baseProperties, Height $height)
     {
         $modifierByHeight = SumAndRound::ceiledThird($height->getValue()) - 2;
         switch ($professionCode->getValue()) {

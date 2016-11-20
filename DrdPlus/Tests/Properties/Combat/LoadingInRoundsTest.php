@@ -6,9 +6,11 @@ use DrdPlus\Tests\Properties\Combat\Partials\PositiveNumberCombatGameCharacteris
 
 class LoadingInRoundsTest extends PositiveNumberCombatGameCharacteristicsTest
 {
+    /**
+     * @return LoadingInRounds
+     */
     protected function createSut()
     {
         return new LoadingInRounds(123);
     }
-
 }

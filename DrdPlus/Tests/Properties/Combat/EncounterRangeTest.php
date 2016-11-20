@@ -15,5 +15,4 @@ class EncounterRangeTest extends AbstractRangeTest
     {
         return new EncounterRange($value);
     }
-
 }

@@ -26,6 +26,17 @@ abstract class AbstractRangeTest extends PositiveNumberCombatGameCharacteristics
     abstract protected function createRangeSut($value);
 
     /**
+     * @return array|string[]
+     */
+    protected function getExpectedChangeBy()
+    {
+        return [
+            'name' => 'create range sut',
+            'arguments' => '123',
+        ];
+    }
+
+    /**
      * @test
      */
     public function I_can_get_its_value_in_meters()

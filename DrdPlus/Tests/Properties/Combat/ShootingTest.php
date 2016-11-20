@@ -3,10 +3,13 @@ namespace DrdPlus\Tests\Properties\Combat;
 
 use DrdPlus\Properties\Combat\Shooting;
 use DrdPlus\Properties\Base\Knack;
-use DrdPlus\Tests\Properties\Combat\Partials\CombatGameCharacteristicTest;
+use DrdPlus\Tests\Properties\Combat\Partials\PositiveNumberCombatGameCharacteristicsTest;
 
-class ShootingTest extends CombatGameCharacteristicTest
+class ShootingTest extends PositiveNumberCombatGameCharacteristicsTest
 {
+    /**
+     * @return Shooting
+     */
     protected function createSut()
     {
         return new Shooting($this->createKnack(123));

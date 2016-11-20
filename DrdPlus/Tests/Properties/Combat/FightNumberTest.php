@@ -3,7 +3,7 @@ namespace DrdPlus\Tests\Properties\Combat;
 
 use DrdPlus\Codes\ProfessionCode;
 use DrdPlus\Properties\Body\Height;
-use DrdPlus\Properties\Combat\BasePropertiesInterface;
+use DrdPlus\Properties\Combat\BaseProperties;
 use DrdPlus\Properties\Combat\FightNumber;
 use DrdPlus\Properties\Base\Agility;
 use DrdPlus\Properties\Base\Charisma;
@@ -19,8 +19,19 @@ class FightNumberTest extends CombatGameCharacteristicTest
     }
 
     /**
+     * @return array|string[]
+     */
+    protected function getExpectedChangeBy()
+    {
+        return [
+            'name' => 'create sut',
+            'arguments' => ''
+        ];
+    }
+
+    /**
      * @param ProfessionCode $professionCode
-     * @param BasePropertiesInterface $baseProperties
+     * @param BaseProperties $baseProperties
      * @param Height $height
      * @param int $expectedFightNumber
      *
@@ -29,7 +40,7 @@ class FightNumberTest extends CombatGameCharacteristicTest
      */
     public function I_can_get_fight_number_for_every_profession(
         ProfessionCode $professionCode,
-        BasePropertiesInterface $baseProperties,
+        BaseProperties $baseProperties,
         Height $height,
         $expectedFightNumber
     )
@@ -122,11 +133,11 @@ class FightNumberTest extends CombatGameCharacteristicTest
      * @param $knack
      * @param $intelligence
      * @param $charisma
-     * @return BasePropertiesInterface
+     * @return BaseProperties
      */
     private function createBaseProperties($agility, $knack = 0, $intelligence = 0, $charisma = 0)
     {
-        $properties = \Mockery::mock(BasePropertiesInterface::class);
+        $properties = \Mockery::mock(BaseProperties::class);
         $properties->shouldReceive('getAgility')
             ->andReturn(Agility::getIt($agility));
         $properties->shouldReceive('getKnack')

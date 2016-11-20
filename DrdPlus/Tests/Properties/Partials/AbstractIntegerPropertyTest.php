@@ -42,15 +42,19 @@ abstract class AbstractIntegerPropertyTest extends AbstractTestOfStoredProperty
             ],
         ];
         self::assertEquals($expectedPropertyHistory, $propertyHistory);
+        /** @var AbstractIntegerProperty $anotherProperty */
+        $anotherProperty = $propertyClass::getIt(123);
+        self::assertNotSame($property, $anotherProperty, 'New instance should be created to avoid history share');
+        $changedAnotherProperty = $anotherProperty->add(112233);
+        self::assertNotEquals($property->getHistory(), $changedAnotherProperty->getHistory(), 'History should not be shared');
 
         $greater = $property->add(456);
         $greaterHistory = $greater->getHistory();
-        $expectedGreaterHistoryChange = [
+        $expectedGreaterHistory = $expectedPropertyHistory;
+        $expectedGreaterHistory[] = [
             'changeBy' => $expectedChangeBy,
             'result' => $greater->getValue(),
         ];
-        $expectedGreaterHistory = $expectedPropertyHistory;
-        $expectedGreaterHistory[] = $expectedGreaterHistoryChange;
         self::assertEquals($expectedGreaterHistory, $greaterHistory);
         self::assertSame(123, $property->getValue());
         self::assertNotEquals($property, $greater);
@@ -86,7 +90,6 @@ abstract class AbstractIntegerPropertyTest extends AbstractTestOfStoredProperty
         $propertyClass = $this->getSutClass();
         /** @var AbstractIntegerProperty $property */
         $property = $propertyClass::getIt(123);
-        $propertyHistory = $property->getHistory();
         $expectedChangeBy = [
             'name' => 'i can subtract value',
             'arguments' => implode(
@@ -100,30 +103,28 @@ abstract class AbstractIntegerPropertyTest extends AbstractTestOfStoredProperty
                 'result' => $property->getValue(),
             ],
         ];
-        self::assertEquals($expectedPropertyHistory, $propertyHistory);
+        self::assertEquals($expectedPropertyHistory, $property->getHistory());
 
         $lesser = $property->sub(456);
         self::assertSame(123, $property->getValue());
         self::assertNotEquals($property, $lesser);
         self::assertSame(-333, $lesser->getValue());
-        $lesserHistory = $lesser->getHistory();
         $expectedLesserHistoryChange = [
             'changeBy' => $expectedChangeBy,
             'result' => $lesser->getValue(),
         ];
         $expectedLesserHistory = $expectedPropertyHistory;
         $expectedLesserHistory[] = $expectedLesserHistoryChange;
-        self::assertEquals($expectedLesserHistory, $lesserHistory);
+        self::assertEquals($expectedLesserHistory, $lesser->getHistory());
 
         $zero = $lesser->sub($lesser);
-        $zeroHistory = $zero->getHistory();
         $expectedLesserHistoryChange = [
             'changeBy' => $expectedChangeBy,
             'result' => $zero->getValue(),
         ];
         $expectedZeroHistory = $expectedLesserHistory;
         $expectedZeroHistory[] = $expectedLesserHistoryChange;
-        self::assertEquals($expectedZeroHistory, $zeroHistory);
+        self::assertEquals($expectedZeroHistory, $zero->getHistory());
         self::assertSame(0, $zero->getValue());
     }
 

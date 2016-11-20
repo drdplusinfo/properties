@@ -8,7 +8,7 @@ use DrdPlus\Properties\Base\Knack;
 use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Base\Will;
 
-interface BasePropertiesInterface
+interface BaseProperties
 {
     /**
      * @return Strength

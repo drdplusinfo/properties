@@ -9,7 +9,8 @@ abstract class NativeProperty extends BooleanEnum implements Property
 
     /**
      * @param bool $value
-     * @return static
+     * @return NativeProperty
+     * @throws \Doctrineum\Boolean\Exceptions\UnexpectedValueToConvert
      */
     public static function getIt($value)
     {

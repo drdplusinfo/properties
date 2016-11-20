@@ -14,6 +14,17 @@ class DefenseNumberAgainstShootingTest extends CombatGameCharacteristicTest
     }
 
     /**
+     * @return array|string[]
+     */
+    protected function getExpectedChangeBy()
+    {
+        return [
+            'name' => 'create sut',
+             'arguments' => ''
+        ];
+    }
+
+    /**
      * @test
      */
     public function My_shooting_defense_depends_on_agility_and_size()

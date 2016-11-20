@@ -28,6 +28,14 @@ class AttackNumberTest extends CombatGameCharacteristicTest
     }
 
     /**
+     * @return array|string[]
+     */
+    protected function getExpectedChangeBy()
+    {
+        return ['name' => 'create sut', 'arguments' => ''];
+    }
+
+    /**
      * @test
      */
     public function I_can_create_it_from_attack()

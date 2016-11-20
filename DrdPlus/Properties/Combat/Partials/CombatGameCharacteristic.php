@@ -1,12 +1,16 @@
 <?php
 namespace DrdPlus\Properties\Combat\Partials;
 
+use DrdPlus\Properties\Partials\WithHistoryTrait;
 use Granam\Integer\IntegerInterface;
 use Granam\Integer\Tools\ToInteger;
 use Granam\Strict\Object\StrictObject;
 
+/** @noinspection SingletonFactoryPatternViolationInspection */
 abstract class CombatGameCharacteristic extends StrictObject implements IntegerInterface
 {
+    use WithHistoryTrait;
+
     /**
      * @param int
      * @throws \Granam\Integer\Tools\Exceptions\WrongParameterType
@@ -15,6 +19,7 @@ abstract class CombatGameCharacteristic extends StrictObject implements IntegerI
     protected function __construct($value)
     {
         $this->value = $this->sanitizeValue($value);
+        $this->noticeChange();
     }
 
     /**
@@ -47,32 +52,32 @@ abstract class CombatGameCharacteristic extends StrictObject implements IntegerI
     }
 
     /**
-     * @param int|static|CombatGameCharacteristic $value
-     * @return static
+     * @param int|CombatGameCharacteristic $value
+     * @return CombatGameCharacteristic
      * @throws \Granam\Integer\Tools\Exceptions\WrongParameterType
      * @throws \Granam\Integer\Tools\Exceptions\ValueLostOnCast
      */
     public function add($value)
     {
-        $added = clone $this;
-        $expectedNewValue = $added->getValue() + $this->sanitizeValue($value);
-        $added->value = $this->sanitizeValue($expectedNewValue);
+        $increased = clone $this;
+        $increased->value += $this->sanitizeValue($value);
+        $increased->noticeChange();
 
-        return $added;
+        return $increased;
     }
 
     /**
-     * @param int|static|CombatGameCharacteristic $value
-     * @return static
+     * @param int|CombatGameCharacteristic $value
+     * @return CombatGameCharacteristic
      * @throws \Granam\Integer\Tools\Exceptions\WrongParameterType
      * @throws \Granam\Integer\Tools\Exceptions\ValueLostOnCast
      */
     public function sub($value)
     {
-        $subtracted = clone $this;
-        $expectedNewValue = $subtracted->getValue() - $this->sanitizeValue($value);
-        $subtracted->value = $this->sanitizeValue($expectedNewValue);
+        $decreased = clone $this;
+        $decreased->value -= $this->sanitizeValue($value);
+        $decreased->noticeChange();
 
-        return $subtracted;
+        return $decreased;
     }
 }

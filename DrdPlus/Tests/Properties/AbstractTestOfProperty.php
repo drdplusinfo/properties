@@ -6,7 +6,6 @@ use DrdPlus\Properties\Base\BaseProperty;
 use DrdPlus\Properties\Body\BodyProperty;
 use DrdPlus\Properties\Native\NativeProperty;
 use DrdPlus\Properties\Property;
-use Granam\Scalar\Scalar;
 use Granam\Tests\Tools\TestWithMockery;
 
 abstract class AbstractTestOfProperty extends TestWithMockery
@@ -23,7 +22,7 @@ abstract class AbstractTestOfProperty extends TestWithMockery
         foreach ($this->getValuesForTest() as $value) {
             $property = $propertyClass::getIt($value);
             self::assertInstanceOf($propertyClass, $property);
-            /** @var Scalar $property */
+            /** @var Property $property */
             self::assertSame("$value", "{$property->getValue()}");
         }
 
@@ -31,7 +30,7 @@ abstract class AbstractTestOfProperty extends TestWithMockery
     }
 
     /**
-     * @return string|ScalarEnum|BaseProperty|BodyProperty|NativeProperty
+     * @return ScalarEnum|BaseProperty|BodyProperty|NativeProperty
      */
     protected function getSutClass()
     {
@@ -39,7 +38,7 @@ abstract class AbstractTestOfProperty extends TestWithMockery
     }
 
     /**
-     * @return []
+     * @return array|int[]|float[]|string[]
      */
     abstract protected function getValuesForTest();
 
