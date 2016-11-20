@@ -13,7 +13,7 @@ class Beauty extends AbstractAspectOfVisage
 
     public function __construct(Agility $agility, Knack $knack, Charisma $charisma)
     {
-        $this->value = $this->calculateVisageValue($agility, $knack, $charisma);
+        parent::__construct($agility, $knack, $charisma);
     }
 
     public function getCode()

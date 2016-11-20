@@ -13,7 +13,7 @@ class Dangerousness extends AbstractAspectOfVisage
 
     public function __construct(Strength $strength, Will $will, Charisma $charisma)
     {
-        $this->value = $this->calculateVisageValue($strength, $will, $charisma);
+        parent::__construct($strength, $will, $charisma);
     }
 
     public function getCode()

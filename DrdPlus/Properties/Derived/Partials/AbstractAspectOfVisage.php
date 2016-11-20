@@ -7,15 +7,9 @@ use Granam\Integer\IntegerInterface;
 
 abstract class AbstractAspectOfVisage extends AbstractDerivedProperty
 {
-    /**
-     * @param IntegerInterface $firstProperty
-     * @param IntegerInterface $secondProperty
-     * @param Charisma $charisma
-     *
-     * @return int
-     */
-    protected function calculateVisageValue(IntegerInterface $firstProperty, IntegerInterface $secondProperty, Charisma $charisma)
+    protected function __construct(IntegerInterface $firstProperty, IntegerInterface $secondProperty, Charisma $charisma)
     {
-        return SumAndRound::average($firstProperty->getValue(), $secondProperty->getValue()) + SumAndRound::half($charisma->getValue());
+        $this->value = SumAndRound::average($firstProperty->getValue(), $secondProperty->getValue())
+            + SumAndRound::half($charisma->getValue());
     }
 }

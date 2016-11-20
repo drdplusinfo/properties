@@ -13,7 +13,7 @@ class Dignity extends AbstractAspectOfVisage
 
     public function __construct(Intelligence $intelligence, Will $will, Charisma $charisma)
     {
-        $this->value = $this->calculateVisageValue($intelligence, $will, $charisma);
+        parent::__construct($intelligence, $will, $charisma);
     }
 
     public function getCode()
