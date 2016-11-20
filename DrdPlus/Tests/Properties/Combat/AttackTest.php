@@ -19,7 +19,7 @@ class AttackTest extends CombatGameCharacteristicTest
     {
         return [
             'name' => 'create sut',
-            'arguments' => '',
+            'with' => '',
         ];
     }
 

@@ -49,7 +49,7 @@ abstract class CombatGameCharacteristicTest extends TestWithMockery
         self::assertNotEquals($combatGameCharacteristic, $increased);
         self::assertSame($combatGameCharacteristic->getValue() + 456, $increased->getValue());
         $expectedPropertyHistory[] = [
-            'changeBy' => ['name' => 'i can add value', 'arguments' => ''],
+            'changeBy' => ['name' => 'i can add value', 'with' => ''],
             'result' => $increased->getValue(),
         ];
         self::assertEquals($expectedPropertyHistory, $increased->getHistory());
@@ -57,7 +57,7 @@ abstract class CombatGameCharacteristicTest extends TestWithMockery
         $double = $increased->add($increased);
         self::assertSame($increased->getValue() * 2, $double->getValue());
         $expectedPropertyHistory[] = [
-            'changeBy' => ['name' => 'i can add value', 'arguments' => ''],
+            'changeBy' => ['name' => 'i can add value', 'with' => ''],
             'result' => $double->getValue(),
         ];
         self::assertEquals($expectedPropertyHistory, $double->getHistory());
@@ -68,7 +68,7 @@ abstract class CombatGameCharacteristicTest extends TestWithMockery
      */
     protected function getExpectedInitialChangeBy()
     {
-        return ['name' => 'create sut', 'arguments' => ''];
+        return ['name' => 'create sut', 'with' => ''];
     }
 
     /**
@@ -90,7 +90,7 @@ abstract class CombatGameCharacteristicTest extends TestWithMockery
         self::assertSame($combatGameCharacteristic->getValue() - 1, $decreased->getValue());
         $expectedDecreasedHistory = $expectedPropertyHistory;
         $expectedDecreasedHistory[] = [
-            'changeBy' => ['name' => 'i can subtract value', 'arguments' => ''],
+            'changeBy' => ['name' => 'i can subtract value', 'with' => ''],
             'result' => $decreased->getValue(),
         ];
         self::assertEquals($expectedDecreasedHistory, $decreased->getHistory());
@@ -99,7 +99,7 @@ abstract class CombatGameCharacteristicTest extends TestWithMockery
         self::assertSame(0, $zeroed->getValue());
         $expectedZeroedHistory = $expectedDecreasedHistory;
         $expectedZeroedHistory[] = [
-            'changeBy' => ['name' => 'i can subtract value', 'arguments' => ''],
+            'changeBy' => ['name' => 'i can subtract value', 'with' => ''],
             'result' => $zeroed->getValue(),
         ];
         self::assertEquals($expectedZeroedHistory, $zeroed->getHistory());

@@ -32,7 +32,7 @@ class AttackNumberTest extends CombatGameCharacteristicTest
      */
     protected function getExpectedInitialChangeBy()
     {
-        return ['name' => 'create sut', 'arguments' => ''];
+        return ['name' => 'create sut', 'with' => ''];
     }
 
     /**

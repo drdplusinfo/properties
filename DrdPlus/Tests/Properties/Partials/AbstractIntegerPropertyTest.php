@@ -29,7 +29,7 @@ abstract class AbstractIntegerPropertyTest extends AbstractTestOfStoredProperty
         $property = $propertyClass::getIt(123);
         $expectedChangeBy = [
             'name' => 'i can add value',
-            'arguments' => implode(
+            'with' => implode(
                 ',',
                 [ValueDescriber::describe($justSomeArgument), ValueDescriber::describe($justAnotherArgument)]
             ),
@@ -89,7 +89,7 @@ abstract class AbstractIntegerPropertyTest extends AbstractTestOfStoredProperty
         $property = $propertyClass::getIt(123);
         $expectedChangeBy = [
             'name' => 'i can subtract value',
-            'arguments' => implode(
+            'with' => implode(
                 ',',
                 [ValueDescriber::describe($justSomeArgument), ValueDescriber::describe($justAnotherArgument)]
             ),

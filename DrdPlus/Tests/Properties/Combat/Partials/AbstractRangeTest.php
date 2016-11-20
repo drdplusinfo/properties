@@ -32,7 +32,7 @@ abstract class AbstractRangeTest extends PositiveNumberCombatGameCharacteristics
     {
         return [
             'name' => 'create range sut',
-            'arguments' => '123',
+            'with' => '123',
         ];
     }
 

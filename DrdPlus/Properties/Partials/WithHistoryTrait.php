@@ -26,7 +26,7 @@ trait WithHistoryTrait
         $this->history[] = [
             'changeBy' => [
                 'name' => $this->formatToSentence($changingCall['function']),
-                'arguments' => $this->extractArgumentsDescription($changingCall['args']),
+                'with' => $this->extractArgumentsDescription($changingCall['args']),
             ],
             'result' => $this->getValue(),
         ];
