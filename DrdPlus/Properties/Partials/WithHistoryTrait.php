@@ -21,8 +21,7 @@ trait WithHistoryTrait
 
     protected function noticeChange()
     {
-        $backtrace = debug_backtrace();
-        $changingCall = $this->findChangingCall($backtrace); // find a last call outside of this class (that causing current change)
+        $changingCall = $this->findChangingCall(); // find a last call outside of this class (that causing current change)
         $this->history[] = [
             'changeBy' => [
                 'name' => $this->formatToSentence($changingCall['function']),
@@ -33,13 +32,12 @@ trait WithHistoryTrait
     }
 
     /**
-     * @param array $backtrace
      * @return array
      */
-    protected function findChangingCall(array $backtrace)
+    protected function findChangingCall()
     {
         /** @var array $call */
-        foreach ($backtrace as $call) {
+        foreach (debug_backtrace() as $call) {
             if ((!array_key_exists('object', $call) || $call['object'] !== $this)
                 && (!array_key_exists('class', $call)
                     || (!in_array($call['class'], [__CLASS__, get_class($this)], true))
@@ -49,7 +47,9 @@ trait WithHistoryTrait
             }
         }
 
-        return ['function' => '?', 'args' => []];
+        // @codeCoverageIgnoreStart
+        return ['function' => '', 'args' => []];
+        // @codeCoverageIgnoreEnd
     }
 
     /**
