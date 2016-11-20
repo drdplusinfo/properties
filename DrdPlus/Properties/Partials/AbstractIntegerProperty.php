@@ -9,7 +9,7 @@ use Granam\Integer\Tools\ToInteger;
 abstract class AbstractIntegerProperty extends IntegerEnum implements Property
 {
 
-    use NumberWithHistoryTrait;
+    use WithHistoryTrait;
 
     /**
      * Will give clone.
@@ -37,9 +37,13 @@ abstract class AbstractIntegerProperty extends IntegerEnum implements Property
         return $integerProperty;
     }
 
+    /**
+     * History will be cleaned - use @see WithHistoryTrait::adoptHistory internally to follow parent history.
+     */
     public function __clone()
     {
         // overloaded parent to allow cloning (to get clean property WITHOUT history)
+        $this->history = []; // clear history, because it should be simply new property, just of same class and value
     }
 
     /**
@@ -51,7 +55,7 @@ abstract class AbstractIntegerProperty extends IntegerEnum implements Property
     public function add($value)
     {
         $increased = static::getIt($this->getValue() + ToInteger::toInteger($value));
-        $increased->adoptHistory($this);
+        $increased->adoptHistory($this); // prepends history of predecessor
 
         return $increased;
     }
@@ -65,7 +69,7 @@ abstract class AbstractIntegerProperty extends IntegerEnum implements Property
     public function sub($value)
     {
         $decreased = static::getIt($this->getValue() - ToInteger::toInteger($value));
-        $decreased->adoptHistory($this);
+        $decreased->adoptHistory($this); // prepends history of predecessor
 
         return $decreased;
     }

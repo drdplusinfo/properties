@@ -3,7 +3,7 @@ namespace DrdPlus\Properties\Partials;
 
 use Granam\Tools\ValueDescriber;
 
-trait NumberWithHistoryTrait
+trait WithHistoryTrait
 {
     protected $history = [];
 
@@ -22,7 +22,7 @@ trait NumberWithHistoryTrait
     protected function noticeChange()
     {
         $backtrace = debug_backtrace();
-        $changingCall = $this->findChangingCall($backtrace); // penultimate step (that before calling noticeChange)
+        $changingCall = $this->findChangingCall($backtrace); // find a last call outside of this class (that causing current change)
         $this->history[] = [
             'changeBy' => [
                 'name' => $this->formatToSentence($changingCall['function']),
@@ -40,14 +40,13 @@ trait NumberWithHistoryTrait
     {
         /** @var array $call */
         foreach ($backtrace as $call) {
-            if (array_key_exists('class', $call) && $call['class'] === __CLASS__) {
-                continue;
+            if (!array_key_exists('class', $call)
+                || (!in_array($call['class'], [__CLASS__, get_class(), get_class($this)], true)
+                    && (!array_key_exists('object', $call) || $call['object'] !== $this)
+                )
+            ) {
+                return $call;
             }
-            if (array_key_exists('object', $call) && $call['object'] === $this) {
-                continue;
-            }
-
-            return $call;
         }
 
         return ['function' => '?', 'args' => []];
@@ -89,9 +88,10 @@ trait NumberWithHistoryTrait
         return implode(',', $descriptions);
     }
 
-    protected function adoptHistory(AbstractIntegerProperty $integerProperty)
+    protected function adoptHistory($numberWithHistory)
     {
+        /** @var WithHistoryTrait $numberWithHistory */
         // previous history FIRST, current after
-        $this->history = array_merge($integerProperty->getHistory(), $this->getHistory());
+        $this->history = array_merge($numberWithHistory->getHistory(), $this->getHistory());
     }
 }
