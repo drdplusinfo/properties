@@ -18,9 +18,9 @@ class SensesTest extends AbstractDerivedPropertyTest
     {
         $senses = new Senses(
             $this->createKnack($knackValue = 123),
-            $this->createRaceCode('foo'),
-            $this->createSubRaceCode('bar'),
-            $this->createRacesTable('foo', 'bar', $raceGenderSenses = 456)
+            $raceCode = $this->createRaceCode('foo'),
+            $subraceCode = $this->createSubRaceCode('bar'),
+            $this->createRacesTable($raceCode, $subraceCode, $raceGenderSenses = 456)
         );
         self::assertSame('senses', $senses->getCode());
         self::assertSame('senses', Senses::SENSES);

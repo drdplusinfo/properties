@@ -21,7 +21,7 @@ class Senses extends AbstractDerivedProperty
     public function __construct(Knack $knack, RaceCode $raceCode, SubRaceCode $subRaceCode, RacesTable $racesTable)
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        parent::__construct($knack->getValue() + $racesTable->getSenses($raceCode->getValue(), $subRaceCode->getValue()));
+        parent::__construct($knack->getValue() + $racesTable->getSenses($raceCode, $subRaceCode));
     }
 
     public function getCode()

@@ -17,8 +17,8 @@ class ToughnessTest extends AbstractDerivedPropertyTest
     {
         $toughness = new Toughness(
             $this->getStrength($strengthValue = 123),
-            RaceCode::DWARF,
-            SubRaceCode::WOOD,
+            RaceCode::getIt(RaceCode::DWARF),
+            SubRaceCode::getIt(SubRaceCode::WOOD),
             new RacesTable()
         );
         self::assertSame('toughness', $toughness->getCode());

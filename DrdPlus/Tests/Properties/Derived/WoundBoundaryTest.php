@@ -23,8 +23,8 @@ class WoundBoundaryTest extends AbstractDerivedPropertyTest
         $woundsLimit = new WoundBoundary(
             new Toughness(
                 Strength::getIt($strength = 6),
-                RaceCode::DWARF,
-                SubRaceCode::MOUNTAIN,
+                RaceCode::getIt(RaceCode::DWARF),
+                SubRaceCode::getIt(SubRaceCode::MOUNTAIN),
                 new RacesTable()
             ),
             new WoundsTable()
