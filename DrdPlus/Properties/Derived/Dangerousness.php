@@ -21,6 +21,9 @@ class Dangerousness extends AbstractAspectOfVisage
         parent::__construct($strength, $will, $charisma);
     }
 
+    /**
+     * @return string
+     */
     public function getCode()
     {
         return self::DANGEROUSNESS;

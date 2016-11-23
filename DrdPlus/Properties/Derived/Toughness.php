@@ -24,6 +24,9 @@ class Toughness extends AbstractDerivedProperty
         parent::__construct($strength->getValue() + $racesTable->getToughness($raceCode, $subraceCode));
     }
 
+    /**
+     * @return string
+     */
     public function getCode()
     {
         return self::TOUGHNESS;

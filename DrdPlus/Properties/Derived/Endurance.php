@@ -21,6 +21,9 @@ class Endurance extends AbstractDerivedProperty
         parent::__construct(SumAndRound::average($strength->getValue(), $will->getValue()));
     }
 
+    /**
+     * @return string
+     */
     public function getCode()
     {
         return self::ENDURANCE;

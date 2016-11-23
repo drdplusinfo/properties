@@ -24,6 +24,9 @@ class Senses extends AbstractDerivedProperty
         parent::__construct($knack->getValue() + $racesTable->getSenses($raceCode, $subRaceCode));
     }
 
+    /**
+     * @return string
+     */
     public function getCode()
     {
         return self::SENSES;

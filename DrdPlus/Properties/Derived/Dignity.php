@@ -21,6 +21,9 @@ class Dignity extends AbstractAspectOfVisage
         parent::__construct($intelligence, $will, $charisma);
     }
 
+    /**
+     * @return string
+     */
     public function getCode()
     {
         return self::DIGNITY;

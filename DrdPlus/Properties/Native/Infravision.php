@@ -7,6 +7,9 @@ class Infravision extends NativeProperty
 {
     const INFRAVISION = PropertyCode::INFRAVISION;
 
+    /**
+     * @return string
+     */
     public function getCode()
     {
         return self::INFRAVISION;

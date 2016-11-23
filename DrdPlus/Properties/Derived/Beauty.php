@@ -21,6 +21,9 @@ class Beauty extends AbstractAspectOfVisage
         parent::__construct($agility, $knack, $charisma);
     }
 
+    /**
+     * @return string
+     */
     public function getCode()
     {
         return self::BEAUTY;

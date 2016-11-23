@@ -24,6 +24,9 @@ class FatigueBoundary extends AbstractDerivedProperty
         );
     }
 
+    /**
+     * @return string
+     */
     public function getCode()
     {
         return self::FATIGUE_BOUNDARY;

@@ -26,6 +26,9 @@ class Speed extends AbstractDerivedProperty
         );
     }
 
+    /**
+     * @return string
+     */
     public function getCode()
     {
         return self::SPEED;
