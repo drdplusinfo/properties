@@ -104,4 +104,21 @@ abstract class CombatGameCharacteristicTest extends TestWithMockery
         ];
         self::assertEquals($expectedZeroedHistory, $zeroed->getHistory());
     }
+
+
+    /**
+     * @test
+     */
+    public function Has_modifying_methods_return_value_annotated()
+    {
+        $reflectionClass = new \ReflectionClass($this->getSutClass());
+        $classBasename = str_replace($reflectionClass->getNamespaceName() . '\\', '', $reflectionClass->getName());
+        self::assertSame(<<<COMMENT
+/**
+ * @method {$classBasename} add(int|IntegerInterface \$value)
+ * @method {$classBasename} sub(int|IntegerInterface \$value)
+ */
+COMMENT
+            , $reflectionClass->getDocComment());
+    }
 }

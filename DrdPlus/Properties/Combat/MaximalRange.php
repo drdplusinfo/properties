@@ -3,6 +3,10 @@ namespace DrdPlus\Properties\Combat;
 
 use DrdPlus\Properties\Combat\Partials\AbstractRange;
 
+/**
+ * @method MaximalRange add(int|IntegerInterface $value)
+ * @method MaximalRange sub(int|IntegerInterface $value)
+ */
 class MaximalRange extends AbstractRange
 {
     /**

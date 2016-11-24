@@ -5,6 +5,10 @@ use DrdPlus\Properties\Base\Agility;
 use DrdPlus\Properties\Combat\Partials\CombatGameCharacteristic;
 use DrdPlus\Tools\Calculations\SumAndRound;
 
+/**
+ * @method DefenseNumber add(int|IntegerInterface $value)
+ * @method DefenseNumber sub(int|IntegerInterface $value)
+ */
 class DefenseNumber extends CombatGameCharacteristic
 {
 

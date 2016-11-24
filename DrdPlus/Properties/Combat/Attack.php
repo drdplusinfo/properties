@@ -4,7 +4,12 @@ namespace DrdPlus\Properties\Combat;
 use DrdPlus\Properties\Base\Agility;
 use DrdPlus\Properties\Combat\Partials\CombatGameCharacteristic;
 use DrdPlus\Tools\Calculations\SumAndRound;
+use Granam\Integer\IntegerInterface;
 
+/**
+ * @method Attack add(int|IntegerInterface $value)
+ * @method Attack sub(int|IntegerInterface $value)
+ */
 class Attack extends CombatGameCharacteristic
 {
 
