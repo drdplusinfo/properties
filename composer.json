@@ -16,7 +16,8 @@
     "granam/string": "dev-master",
     "granam/strict-object": "dev-master",
     "drd-plus/tools": "dev-master",
-    "drd-plus/tables": "dev-master"
+    "drd-plus/tables": "dev-master",
+    "roave/security-advisories": "dev-master"
   },
   "require-dev": {
     "phpunit/phpunit": ">=4.4",
