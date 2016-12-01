@@ -3,9 +3,10 @@ namespace DrdPlus\Properties\Body;
 
 use DrdPlus\Codes\PropertyCode;
 use DrdPlus\Properties\Partials\AbstractFloatProperty;
+use Granam\Number\NumberInterface;
 
 /**
- * @method static WeightInKg getIt(float $value)
+ * @method static WeightInKg getIt(float|NumberInterface $value)
  */
 class WeightInKg extends AbstractFloatProperty implements BodyProperty
 {

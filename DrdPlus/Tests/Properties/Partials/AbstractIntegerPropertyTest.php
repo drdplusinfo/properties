@@ -125,4 +125,18 @@ abstract class AbstractIntegerPropertyTest extends AbstractTestOfStoredProperty
         self::assertSame(0, $zero->getValue());
     }
 
+    /**
+     * @test
+     */
+    public function Has_modifying_methods_return_value_annotated()
+    {
+        $reflectionClass = new \ReflectionClass($this->getSutClass());
+        $classBasename = str_replace($reflectionClass->getNamespaceName() . '\\', '', $reflectionClass->getName());
+        self::assertContains(<<<COMMENT
+ * @method static {$classBasename} getIt(int|IntegerInterface \$value)
+ * @method {$classBasename} add(int|IntegerInterface \$value)
+ * @method {$classBasename} sub(int|IntegerInterface \$value)
+COMMENT
+            , $reflectionClass->getDocComment());
+    }
 }

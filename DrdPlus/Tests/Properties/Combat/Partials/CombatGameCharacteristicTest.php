@@ -105,7 +105,6 @@ abstract class CombatGameCharacteristicTest extends TestWithMockery
         self::assertEquals($expectedZeroedHistory, $zeroed->getHistory());
     }
 
-
     /**
      * @test
      */

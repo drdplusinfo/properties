@@ -3,9 +3,10 @@ namespace DrdPlus\Properties\Body;
 
 use DrdPlus\Codes\PropertyCode;
 use DrdPlus\Properties\Partials\AbstractFloatProperty;
+use Granam\Number\NumberInterface;
 
 /**
- * @method static HeightInCm getIt(float $value)
+ * @method static HeightInCm getIt(float|NumberInterface $value)
  */
 class HeightInCm extends AbstractFloatProperty implements BodyProperty
 {

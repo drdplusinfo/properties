@@ -3,6 +3,7 @@ namespace DrdPlus\Properties\Body;
 
 use DrdPlus\Codes\PropertyCode;
 use DrdPlus\Properties\Partials\AbstractIntegerProperty;
+use Granam\Integer\IntegerInterface;
 
 /**
  * Note: Size does not need to be persisted and therefore does not need enum type.
@@ -11,7 +12,9 @@ use DrdPlus\Properties\Partials\AbstractIntegerProperty;
  * @see PPH page 33 left column
  */
 /**
- * @method static Size getIt(int $value)
+ * @method static Size getIt(int|IntegerInterface $value)
+ * @method Size add(int|IntegerInterface $value)
+ * @method Size sub(int|IntegerInterface $value)
  */
 class Size extends AbstractIntegerProperty implements BodyProperty
 {
