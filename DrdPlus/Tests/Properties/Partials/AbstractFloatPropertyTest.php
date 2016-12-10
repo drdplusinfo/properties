@@ -1,9 +1,9 @@
 <?php
 namespace DrdPlus\Tests\Properties\Partials;
 
-use DrdPlus\Tests\Properties\AbstractTestOfStoredProperty;
+use DrdPlus\Tests\Properties\AbstractStoredPropertyTest;
 
-abstract class AbstractFloatPropertyTest extends AbstractTestOfStoredProperty
+abstract class AbstractFloatPropertyTest extends AbstractStoredPropertyTest
 {
 
     protected function getValuesForTest()
@@ -16,7 +16,7 @@ abstract class AbstractFloatPropertyTest extends AbstractTestOfStoredProperty
      */
     public function Has_modifying_methods_return_value_annotated()
     {
-        $reflectionClass = new \ReflectionClass($this->getSutClass());
+        $reflectionClass = new \ReflectionClass(self::getSutClass());
         $classBasename = str_replace($reflectionClass->getNamespaceName() . '\\', '', $reflectionClass->getName());
         self::assertContains(<<<COMMENT
  * @method static {$classBasename} getIt(float|NumberInterface \$value)

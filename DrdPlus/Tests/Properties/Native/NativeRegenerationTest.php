@@ -1,9 +1,9 @@
 <?php
 namespace DrdPlus\Tests\Properties\Native;
 
-use DrdPlus\Tests\Properties\AbstractTestOfBooleanStoredProperty;
+use DrdPlus\Tests\Properties\AbstractBooleanStoredPropertyTest;
 
-class NativeRegenerationTest extends AbstractTestOfBooleanStoredProperty
+class NativeRegenerationTest extends AbstractBooleanStoredPropertyTest
 {
 
 }

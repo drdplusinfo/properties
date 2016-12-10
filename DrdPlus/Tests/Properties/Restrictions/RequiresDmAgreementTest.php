@@ -1,8 +1,8 @@
 <?php
 namespace DrdPlus\Tests\Properties\Restrictions;
 
-use DrdPlus\Tests\Properties\AbstractTestOfBooleanStoredProperty;
+use DrdPlus\Tests\Properties\AbstractBooleanStoredPropertyTest;
 
-class RequiresDmAgreementTest extends AbstractTestOfBooleanStoredProperty
+class RequiresDmAgreementTest extends AbstractBooleanStoredPropertyTest
 {
 }

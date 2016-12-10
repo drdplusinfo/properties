@@ -1,14 +1,11 @@
 <?php
 namespace DrdPlus\Tests\Properties;
 
-use Doctrineum\Scalar\ScalarEnum;
-use DrdPlus\Properties\Base\BaseProperty;
-use DrdPlus\Properties\Body\BodyProperty;
 use DrdPlus\Properties\Native\NativeProperty;
 use DrdPlus\Properties\Property;
 use Granam\Tests\Tools\TestWithMockery;
 
-abstract class AbstractTestOfProperty extends TestWithMockery
+abstract class PropertyTest extends TestWithMockery
 {
 
     /**
@@ -17,7 +14,8 @@ abstract class AbstractTestOfProperty extends TestWithMockery
      */
     public function I_can_get_property_easily()
     {
-        $propertyClass = $this->getSutClass();
+        /** @var NativeProperty $propertyClass */
+        $propertyClass = self::getSutClass();
         $property = false;
         foreach ($this->getValuesForTest() as $value) {
             $property = $propertyClass::getIt($value);
@@ -27,14 +25,6 @@ abstract class AbstractTestOfProperty extends TestWithMockery
         }
 
         return $property;
-    }
-
-    /**
-     * @return ScalarEnum|BaseProperty|BodyProperty|NativeProperty
-     */
-    protected function getSutClass()
-    {
-        return preg_replace('~Tests\\\(.+)Test$~', '$1', static::class);
     }
 
     /**
@@ -69,9 +59,9 @@ abstract class AbstractTestOfProperty extends TestWithMockery
      */
     protected function getPropertyBaseName()
     {
-        $propertyClass = $this->getSutClass();
+        $propertyClass = self::getSutClass();
 
-        return preg_replace('~^[\\\]?(\w+\\\)*(\w+)$~', '$2', $propertyClass);
+        return preg_replace('~^[\\\]?(\w+\\\){0,5}(\w+)$~', '$2', $propertyClass);
     }
 
     /**
@@ -79,7 +69,7 @@ abstract class AbstractTestOfProperty extends TestWithMockery
      */
     public function I_can_use_it_as_generic_group_property()
     {
-        $propertyClass = $this->getSutClass();
+        $propertyClass = self::getSutClass();
         self::assertTrue(
             is_a($propertyClass, $this->getGenericGroupPropertyClassName(), true),
             $propertyClass . ' does not belongs into ' . $this->getGenericGroupPropertyClassName()
@@ -89,7 +79,7 @@ abstract class AbstractTestOfProperty extends TestWithMockery
     private function getGenericGroupPropertyClassName()
     {
         $propertyNamespace = $this->getPropertyNamespace();
-        $namespaceBaseName = preg_replace('~^[\\\]?(\w+\\\)*(\w+)$~', '$2', $propertyNamespace);
+        $namespaceBaseName = preg_replace('~^[\\\]?(\w+\\\){0,5}(\w+)$~', '$2', $propertyNamespace);
         $groupPropertyClassBaseName = preg_replace('~s$~', '', $namespaceBaseName) . 'Property';
 
         return $propertyNamespace . '\\' . $groupPropertyClassBaseName;
@@ -97,7 +87,7 @@ abstract class AbstractTestOfProperty extends TestWithMockery
 
     protected function getPropertyNamespace()
     {
-        $propertyClass = $this->getSutClass();
+        $propertyClass = self::getSutClass();
 
         return preg_replace('~[\\\]\w+$~', '', $propertyClass);
     }

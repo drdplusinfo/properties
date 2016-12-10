@@ -3,9 +3,9 @@ namespace DrdPlus\Tests\Properties\RemarkableSenses;
 
 use DrdPlus\Properties\RemarkableSenses\EnumTypes\RemarkableSenseType;
 use DrdPlus\Properties\RemarkableSenses\RemarkableSenseProperty;
-use DrdPlus\Tests\Properties\AbstractTestOfStoredProperty;
+use DrdPlus\Tests\Properties\AbstractStoredPropertyTest;
 
-abstract class AbstractTestOfRemarkableSense extends AbstractTestOfStoredProperty
+abstract class AbstractTestOfRemarkableSense extends AbstractStoredPropertyTest
 {
 
     /**
@@ -14,7 +14,7 @@ abstract class AbstractTestOfRemarkableSense extends AbstractTestOfStoredPropert
      */
     public function I_can_get_property_easily()
     {
-        $propertyClass = $this->getSutClass();
+        $propertyClass = self::getSutClass();
         /** @var RemarkableSenseProperty $propertyClass */
         $property = $propertyClass::getIt();
         self::assertInstanceOf($propertyClass, $property);
@@ -34,6 +34,6 @@ abstract class AbstractTestOfRemarkableSense extends AbstractTestOfStoredPropert
     public function I_can_register_it_as_enum()
     {
         RemarkableSenseType::registerSenses();
-        self::assertTrue(RemarkableSenseType::hasSubTypeEnum($this->getSutClass()));
+        self::assertTrue(RemarkableSenseType::hasSubTypeEnum(self::getSutClass()));
     }
 }

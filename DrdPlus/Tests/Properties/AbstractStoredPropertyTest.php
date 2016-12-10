@@ -3,7 +3,7 @@ namespace DrdPlus\Tests\Properties;
 
 use Doctrineum\Scalar\ScalarEnumType;
 
-abstract class AbstractTestOfStoredProperty extends AbstractTestOfProperty
+abstract class AbstractStoredPropertyTest extends PropertyTest
 {
     /**
      * @test

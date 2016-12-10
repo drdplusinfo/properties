@@ -2,9 +2,9 @@
 namespace DrdPlus\Tests\Properties\Derived\Partials;
 
 use DrdPlus\Properties\Derived\Partials\AbstractDerivedProperty;
-use DrdPlus\Tests\Properties\AbstractTestOfProperty;
+use DrdPlus\Tests\Properties\PropertyTest;
 
-abstract class AbstractDerivedPropertyTest extends AbstractTestOfProperty
+abstract class AbstractDerivedPropertyTest extends PropertyTest
 {
 
     protected function getValuesForTest()

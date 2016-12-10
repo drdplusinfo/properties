@@ -1,7 +1,6 @@
 <?php
 namespace DrdPlus\Tests\Properties\Combat\Partials;
 
-use DrdPlus\Properties\Combat\Attack;
 use DrdPlus\Properties\Combat\Partials\CombatGameCharacteristic;
 use Granam\Integer\IntegerInterface;
 use Granam\Tests\Tools\TestWithMockery;
@@ -22,14 +21,6 @@ abstract class CombatGameCharacteristicTest extends TestWithMockery
      * @return CombatGameCharacteristic
      */
     abstract protected function createSut();
-
-    /**
-     * @return Attack|CombatGameCharacteristic|string
-     */
-    protected function getSutClass()
-    {
-        return preg_replace('~[\\\]Tests([\\\].+)Test$~', '$1', static::class);
-    }
 
     /**
      * @test
@@ -110,7 +101,7 @@ abstract class CombatGameCharacteristicTest extends TestWithMockery
      */
     public function Has_modifying_methods_return_value_annotated()
     {
-        $reflectionClass = new \ReflectionClass($this->getSutClass());
+        $reflectionClass = new \ReflectionClass(self::getSutClass());
         $classBasename = str_replace($reflectionClass->getNamespaceName() . '\\', '', $reflectionClass->getName());
         self::assertSame(<<<COMMENT
 /**

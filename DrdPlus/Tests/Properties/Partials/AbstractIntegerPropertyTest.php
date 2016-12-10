@@ -2,10 +2,10 @@
 namespace DrdPlus\Tests\Properties\Partials;
 
 use DrdPlus\Properties\Partials\AbstractIntegerProperty;
-use DrdPlus\Tests\Properties\AbstractTestOfStoredProperty;
+use DrdPlus\Tests\Properties\AbstractStoredPropertyTest;
 use Granam\Tools\ValueDescriber;
 
-abstract class AbstractIntegerPropertyTest extends AbstractTestOfStoredProperty
+abstract class AbstractIntegerPropertyTest extends AbstractStoredPropertyTest
 {
 
     /**
@@ -24,7 +24,8 @@ abstract class AbstractIntegerPropertyTest extends AbstractTestOfStoredProperty
      */
     public function I_can_add_value($justSomeArgument, $justAnotherArgument)
     {
-        $propertyClass = $this->getSutClass();
+        /** @var AbstractIntegerProperty $propertyClass */
+        $propertyClass = self::getSutClass();
         /** @var AbstractIntegerProperty $property */
         $property = $propertyClass::getIt(123);
         $expectedChangeBy = [
@@ -84,7 +85,8 @@ abstract class AbstractIntegerPropertyTest extends AbstractTestOfStoredProperty
      */
     public function I_can_subtract_value($justSomeArgument, $justAnotherArgument)
     {
-        $propertyClass = $this->getSutClass();
+        /** @var AbstractIntegerProperty $propertyClass */
+        $propertyClass = self::getSutClass();
         /** @var AbstractIntegerProperty $property */
         $property = $propertyClass::getIt(123);
         $expectedChangeBy = [
@@ -130,7 +132,7 @@ abstract class AbstractIntegerPropertyTest extends AbstractTestOfStoredProperty
      */
     public function Has_modifying_methods_return_value_annotated()
     {
-        $reflectionClass = new \ReflectionClass($this->getSutClass());
+        $reflectionClass = new \ReflectionClass(self::getSutClass());
         $classBasename = str_replace($reflectionClass->getNamespaceName() . '\\', '', $reflectionClass->getName());
         self::assertContains(<<<COMMENT
  * @method static {$classBasename} getIt(int|IntegerInterface \$value)

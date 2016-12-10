@@ -3,7 +3,7 @@ namespace DrdPlus\Tests\Properties;
 
 use DrdPlus\Properties\Native\NativeProperty;
 
-abstract class AbstractTestOfBooleanStoredProperty extends AbstractTestOfStoredProperty
+abstract class AbstractBooleanStoredPropertyTest extends AbstractStoredPropertyTest
 {
 
     /**
@@ -19,7 +19,8 @@ abstract class AbstractTestOfBooleanStoredProperty extends AbstractTestOfStoredP
      */
     public function I_can_get_history_of_its_creation()
     {
-        $propertyClass = $this->getSutClass();
+        /** @var NativeProperty $propertyClass */
+        $propertyClass = self::getSutClass();
         $property = false;
         foreach ($this->getValuesForTest() as $value) {
             /** @var NativeProperty $property */
