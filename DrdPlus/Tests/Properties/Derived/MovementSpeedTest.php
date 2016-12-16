@@ -1,7 +1,7 @@
 <?php
 namespace DrdPlus\Tests\Properties\Derived;
 
-use DrdPlus\Codes\TerrainCode;
+use DrdPlus\Codes\Environment\TerrainCode;
 use DrdPlus\Properties\Derived\MovementSpeed;
 use DrdPlus\Properties\Derived\Speed;
 use DrdPlus\Tables\Body\MovementTypes\MovementTypesTable;
