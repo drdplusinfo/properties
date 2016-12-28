@@ -1,4 +1,4 @@
-# Person properties for DrD+
+# Properties of a being for [DrD+](http://www.altar.cz/drdplus/)
 
 [![Build Status](https://travis-ci.org/jaroslavtyc/drd-plus-properties.svg?branch=master)](https://travis-ci.org/jaroslavtyc/drd-plus-properties)
 [![Test Coverage](https://codeclimate.com/github/jaroslavtyc/drd-plus-properties/badges/coverage.svg)](https://codeclimate.com/github/jaroslavtyc/drd-plus-properties/coverage)
