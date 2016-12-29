@@ -3,7 +3,7 @@ namespace DrdPlus\Properties\Combat;
 
 use DrdPlus\Properties\Base\Agility;
 use DrdPlus\Properties\Combat\Partials\CombatGameCharacteristic;
-use DrdPlus\Tools\Calculations\SumAndRound;
+use DrdPlus\Calculations\SumAndRound;
 use Granam\Integer\IntegerInterface;
 
 /**

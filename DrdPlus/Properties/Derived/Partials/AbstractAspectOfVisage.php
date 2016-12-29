@@ -2,7 +2,7 @@
 namespace DrdPlus\Properties\Derived\Partials;
 
 use DrdPlus\Properties\Base\Charisma;
-use DrdPlus\Tools\Calculations\SumAndRound;
+use DrdPlus\Calculations\SumAndRound;
 use Granam\Integer\IntegerInterface;
 
 /** @noinspection SingletonFactoryPatternViolationInspection */

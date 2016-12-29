@@ -3,7 +3,7 @@ namespace DrdPlus\Properties\Combat;
 
 use DrdPlus\Properties\Body\Size;
 use DrdPlus\Properties\Combat\Partials\CombatGameCharacteristic;
-use DrdPlus\Tools\Calculations\SumAndRound;
+use DrdPlus\Calculations\SumAndRound;
 
 /**
  * @method DefenseNumberAgainstShooting add(int|IntegerInterface $value)

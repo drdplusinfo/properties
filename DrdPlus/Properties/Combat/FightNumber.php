@@ -4,7 +4,7 @@ namespace DrdPlus\Properties\Combat;
 use DrdPlus\Codes\ProfessionCode;
 use DrdPlus\Properties\Body\Height;
 use DrdPlus\Properties\Combat\Partials\CombatGameCharacteristic;
-use DrdPlus\Tools\Calculations\SumAndRound;
+use DrdPlus\Calculations\SumAndRound;
 use Granam\Integer\IntegerInterface;
 use Granam\Tools\ValueDescriber;
 
