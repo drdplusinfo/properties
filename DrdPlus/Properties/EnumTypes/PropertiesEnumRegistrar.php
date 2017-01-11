@@ -20,13 +20,13 @@ class PropertiesEnumRegistrar extends StrictObject
 {
     public static function registerAll()
     {
-        static::registerBase();
-        static::registerBody();
+        static::registerBaseProperties();
+        static::registerBodyProperties();
         static::registerRemarkableSenses();
-        static::registerNative();
+        static::registerNativeProperties();
     }
 
-    protected static function registerBase()
+    public static function registerBaseProperties()
     {
         StrengthType::registerSelf();
         AgilityType::registerSelf();
@@ -36,7 +36,7 @@ class PropertiesEnumRegistrar extends StrictObject
         CharismaType::registerSelf();
     }
 
-    protected static function registerBody()
+    public static function registerBodyProperties()
     {
         HeightInCmType::registerSelf();
         SizeType::registerSelf();
@@ -44,12 +44,12 @@ class PropertiesEnumRegistrar extends StrictObject
         AgeType::registerSelf();
     }
 
-    protected static function registerRemarkableSenses()
+    public static function registerRemarkableSenses()
     {
         RemarkableSenseType::registerSenses();
     }
 
-    protected static function registerNative()
+    public static function registerNativeProperties()
     {
         InfravisionType::registerSelf();
         NativeRegenerationType::registerSelf();
