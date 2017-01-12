@@ -6,22 +6,19 @@ use DrdPlus\Codes\PropertyCode;
 class Taste extends RemarkableSenseProperty
 {
 
-    const TASTE = PropertyCode::TASTE;
-
     /**
-     * @return Taste
+     * @return Taste|RemarkableSenseProperty
      */
     public static function getIt()
     {
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        return static::getEnum(self::TASTE);
+        return static::getEnum(PropertyCode::TASTE);
     }
 
     /**
-     * @return string
+     * @return PropertyCode
      */
     public function getCode()
     {
-        return self::TASTE;
+        return PropertyCode::getIt(PropertyCode::TASTE);
     }
 }

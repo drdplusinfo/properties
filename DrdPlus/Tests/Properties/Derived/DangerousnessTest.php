@@ -1,6 +1,7 @@
 <?php
 namespace DrdPlus\Tests\Properties\Derived;
 
+use DrdPlus\Codes\PropertyCode;
 use DrdPlus\Properties\Base\Charisma;
 use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Base\Will;
@@ -16,8 +17,7 @@ class DangerousnessTest extends AbstractAspectOfVisageTest
     public function I_can_get_property_easily()
     {
         $dangerousness = new Dangerousness($this->getStrength($strengthValue = 123), $this->getWill($willValue = 456), $this->getCharisma($charismaValue = 789));
-        self::assertSame('dangerousness', $dangerousness->getCode());
-        self::assertSame('dangerousness', Dangerousness::DANGEROUSNESS);
+        self::assertSame(PropertyCode::getIt(PropertyCode::DANGEROUSNESS), $dangerousness->getCode());
         self::assertSame($this->calculateValue($strengthValue, $willValue, $charismaValue), $dangerousness->getValue());
         self::assertSame((string)$this->calculateValue($strengthValue, $willValue, $charismaValue), "$dangerousness");
 

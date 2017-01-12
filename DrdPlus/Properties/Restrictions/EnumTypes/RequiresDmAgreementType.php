@@ -2,11 +2,11 @@
 namespace DrdPlus\Properties\Restrictions\EnumTypes;
 
 use Doctrineum\Boolean\BooleanEnumType;
-use DrdPlus\Properties\Restrictions\RequiresDmAgreement;
+use DrdPlus\Codes\PropertyCode;
 
 class RequiresDmAgreementType extends BooleanEnumType
 {
-    const REQUIRES_DM_AGREEMENT = RequiresDmAgreement::REQUIRES_DM_AGREEMENT;
+    const REQUIRES_DM_AGREEMENT = PropertyCode::REQUIRES_DM_AGREEMENT;
 
     /**
      * @return string

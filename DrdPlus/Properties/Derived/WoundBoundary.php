@@ -24,10 +24,10 @@ class WoundBoundary extends AbstractDerivedProperty
     }
 
     /**
-     * @return string
+     * @return PropertyCode
      */
     public function getCode()
     {
-        return self::WOUND_BOUNDARY;
+        return PropertyCode::getIt(PropertyCode::WOUND_BOUNDARY);
     }
 }

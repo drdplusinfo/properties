@@ -49,9 +49,10 @@ abstract class AbstractTestOfPropertyType extends AbstractSelfRegisteringTypeTes
         $propertyClass = $this->getRegisteredClass();
         /** @var Property $property */
         $property = (new \ReflectionClass($propertyClass))->newInstanceWithoutConstructor();
-        self::assertSame($this->getExpectedTypeName(), $property->getCode());
+        self::assertInstanceOf(PropertyCode::class, $property->getCode());
+        self::assertSame($this->getExpectedTypeName(), $property->getCode()->getValue());
         $constantName = strtoupper($this->getExpectedTypeName());
         self::assertTrue(defined(PropertyCode::class . '::' . $constantName));
-        self::assertSame(constant(PropertyCode::class . '::' . $constantName), $property->getCode());
+        self::assertSame(constant(PropertyCode::class . '::' . $constantName), $property->getCode()->getValue());
     }
 }

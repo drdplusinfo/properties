@@ -6,22 +6,19 @@ use DrdPlus\Codes\PropertyCode;
 class Touch extends RemarkableSenseProperty
 {
 
-    const TOUCH = PropertyCode::TOUCH;
-
     /**
-     * @return Touch
+     * @return Touch|RemarkableSenseProperty
      */
     public static function getIt()
     {
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        return static::getEnum(self::TOUCH);
+        return static::getEnum(PropertyCode::TOUCH);
     }
 
     /**
-     * @return string
+     * @return PropertyCode
      */
     public function getCode()
     {
-        return self::TOUCH;
+        return PropertyCode::getIt(PropertyCode::TOUCH);
     }
 }

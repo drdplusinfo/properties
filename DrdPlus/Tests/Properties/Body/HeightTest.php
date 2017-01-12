@@ -1,6 +1,7 @@
 <?php
 namespace DrdPlus\Properties\Body;
 
+use DrdPlus\Codes\PropertyCode;
 use DrdPlus\Tables\Measurements\Distance\Distance;
 use DrdPlus\Tables\Measurements\Distance\DistanceBonus;
 use DrdPlus\Tables\Measurements\Distance\DistanceTable;
@@ -24,7 +25,7 @@ class HeightTest extends TestWithMockery
 
         self::assertSame(456, $height->getValue());
         self::assertSame('456', (string)$height);
-        self::assertSame('height', $height->getCode());
+        self::assertSame(PropertyCode::getIt(PropertyCode::HEIGHT), $height->getCode());
     }
 
     /**

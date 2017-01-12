@@ -19,8 +19,6 @@ class SpeedTest extends AbstractDerivedPropertyTest
             $this->getAgility($agilityValue = 456),
             $this->getHeight($heightValue = 789)
         );
-        self::assertSame('speed', $speed->getCode());
-        self::assertSame('speed', Speed::SPEED);
         self::assertSame((int)round(($strengthValue + $agilityValue) / 2) + ($heightValue / 3 - 2), $speed->getValue());
         self::assertSame((string)(round(($strengthValue + $agilityValue) / 2) + ($heightValue / 3 - 2)), "$speed");
 

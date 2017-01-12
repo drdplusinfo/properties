@@ -1,6 +1,7 @@
 <?php
 namespace DrdPlus\Tests\Properties;
 
+use DrdPlus\Codes\PropertyCode;
 use DrdPlus\Properties\Native\NativeProperty;
 use DrdPlus\Properties\Property;
 use Granam\Tests\Tools\TestWithMockery;
@@ -22,25 +23,10 @@ abstract class PropertyTest extends TestWithMockery
             self::assertInstanceOf($propertyClass, $property);
             /** @var Property $property */
             self::assertSame("$value", "{$property->getValue()}");
+            self::assertSame(PropertyCode::getIt($this->getExpectedPropertyCode()), $property->getCode());
         }
 
         return $property;
-    }
-
-    /**
-     * @return array|int[]|float[]|string[]
-     */
-    abstract protected function getValuesForTest();
-
-    /**
-     * @param Property $property
-     *
-     * @test
-     * @depends I_can_get_property_easily
-     */
-    public function I_can_get_property_code(Property $property)
-    {
-        self::assertSame($this->getExpectedPropertyCode(), $property->getCode());
     }
 
     /**
@@ -55,6 +41,11 @@ abstract class PropertyTest extends TestWithMockery
     }
 
     /**
+     * @return array|int[]|float[]|string[]
+     */
+    abstract protected function getValuesForTest();
+
+    /**
      * @return string
      */
     protected function getPropertyBaseName()
@@ -62,6 +53,21 @@ abstract class PropertyTest extends TestWithMockery
         $propertyClass = self::getSutClass();
 
         return preg_replace('~^[\\\]?(\w+\\\){0,5}(\w+)$~', '$2', $propertyClass);
+    }
+
+    /**
+     * @test
+     */
+    public function Code_getter_is_properly_annotated()
+    {
+        $getter = new \ReflectionMethod(self::getSutClass(), 'getCode');
+        self::assertRegExp(<<<'REGEXP'
+~^/\*\*
+(\s+)\* @return PropertyCode
+\1\*/$~
+REGEXP
+            , $getter->getDocComment()
+        );
     }
 
     /**

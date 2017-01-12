@@ -1,6 +1,7 @@
 <?php
 namespace DrdPlus\Tests\Properties\Derived;
 
+use DrdPlus\Codes\PropertyCode;
 use DrdPlus\Properties\Base\Agility;
 use DrdPlus\Properties\Base\Charisma;
 use DrdPlus\Properties\Base\Knack;
@@ -16,8 +17,7 @@ class BeautyTest extends AbstractAspectOfVisageTest
     public function I_can_get_property_easily()
     {
         $beauty = new Beauty($this->getAgility($agilityValue = 123), $this->getKnack($knackValue = 456), $this->getCharisma($charismaValue = 789));
-        self::assertSame('beauty', $beauty->getCode());
-        self::assertSame('beauty', Beauty::BEAUTY);
+        self::assertSame(PropertyCode::getIt(PropertyCode::BEAUTY), $beauty->getCode());
         self::assertSame($this->calculateValue($agilityValue, $knackValue, $charismaValue), $beauty->getValue());
         self::assertSame((string)$this->calculateValue($agilityValue, $knackValue, $charismaValue), "$beauty");
 

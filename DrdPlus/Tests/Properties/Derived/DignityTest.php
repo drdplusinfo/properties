@@ -1,6 +1,7 @@
 <?php
 namespace DrdPlus\Tests\Properties\Derived;
 
+use DrdPlus\Codes\PropertyCode;
 use DrdPlus\Properties\Base\Intelligence;
 use DrdPlus\Properties\Base\Charisma;
 use DrdPlus\Properties\Base\Will;
@@ -16,8 +17,7 @@ class DignityTest extends AbstractAspectOfVisageTest
     public function I_can_get_property_easily()
     {
         $dignity = new Dignity($this->getIntelligence($agilityValue = 123), $this->getWill($knackValue = 456), $this->getCharisma($charismaValue = 789));
-        self::assertSame('dignity', $dignity->getCode());
-        self::assertSame('dignity', Dignity::DIGNITY);
+        self::assertSame(PropertyCode::getIt(PropertyCode::DIGNITY), $dignity->getCode());
         self::assertSame($this->calculateValue($agilityValue, $knackValue, $charismaValue), $dignity->getValue());
         self::assertSame((string)$this->calculateValue($agilityValue, $knackValue, $charismaValue), "$dignity");
 

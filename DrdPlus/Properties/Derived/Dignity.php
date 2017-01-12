@@ -9,8 +9,6 @@ use DrdPlus\Properties\Base\Will;
 
 class Dignity extends AbstractAspectOfVisage
 {
-    const DIGNITY = PropertyCode::DIGNITY;
-
     /**
      * @param Intelligence $intelligence
      * @param Will $will
@@ -22,10 +20,10 @@ class Dignity extends AbstractAspectOfVisage
     }
 
     /**
-     * @return string
+     * @return PropertyCode
      */
     public function getCode()
     {
-        return self::DIGNITY;
+        return PropertyCode::getIt(PropertyCode::DIGNITY);
     }
 }

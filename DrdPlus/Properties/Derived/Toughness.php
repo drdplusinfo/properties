@@ -25,10 +25,10 @@ class Toughness extends AbstractDerivedProperty
     }
 
     /**
-     * @return string
+     * @return PropertyCode
      */
     public function getCode()
     {
-        return self::TOUGHNESS;
+        return PropertyCode::getIt(PropertyCode::TOUGHNESS);
     }
 }

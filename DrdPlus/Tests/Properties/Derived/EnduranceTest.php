@@ -1,6 +1,7 @@
 <?php
 namespace DrdPlus\Tests\Properties\Derived;
 
+use DrdPlus\Codes\PropertyCode;
 use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Base\Will;
 use DrdPlus\Properties\Derived\Endurance;
@@ -14,8 +15,7 @@ class EnduranceTest extends AbstractDerivedPropertyTest
     public function I_can_get_property_easily()
     {
         $endurance = new Endurance($this->getStrength($agilityValue = 123), $this->getWill($knackValue = 456));
-        self::assertSame('endurance', $endurance->getCode());
-        self::assertSame('endurance', Endurance::ENDURANCE);
+        self::assertSame(PropertyCode::getIt(PropertyCode::ENDURANCE), $endurance->getCode());
         self::assertSame((int)round(($agilityValue + $knackValue) / 2), $endurance->getValue());
         self::assertSame((string)round(($agilityValue + $knackValue) / 2), "$endurance");
 

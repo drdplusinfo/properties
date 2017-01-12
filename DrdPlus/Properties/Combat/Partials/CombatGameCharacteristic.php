@@ -38,6 +38,9 @@ abstract class CombatGameCharacteristic extends StrictObject implements IntegerI
      */
     private $value;
 
+    /**
+     * @return int
+     */
     public function getValue()
     {
         return $this->value;

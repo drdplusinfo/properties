@@ -6,8 +6,8 @@ use DrdPlus\Properties\Combat\Partials\CombatGameCharacteristic;
 use DrdPlus\Calculations\SumAndRound;
 
 /**
- * @method DefenseNumberAgainstShooting add(int|IntegerInterface $value)
- * @method DefenseNumberAgainstShooting sub(int|IntegerInterface $value)
+ * @method DefenseNumberAgainstShooting add(int | IntegerInterface $value)
+ * @method DefenseNumberAgainstShooting sub(int | IntegerInterface $value)
  */
 class DefenseNumberAgainstShooting extends CombatGameCharacteristic
 {

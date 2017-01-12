@@ -6,23 +6,20 @@ use DrdPlus\Codes\PropertyCode;
 class Sight extends RemarkableSenseProperty
 {
 
-    const SIGHT = PropertyCode::SIGHT;
-
     /**
-     * @return Sight
+     * @return Sight|RemarkableSenseProperty
      */
     public static function getIt()
     {
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        return static::getEnum(self::SIGHT);
+        return static::getEnum(PropertyCode::SIGHT);
     }
 
     /**
-     * @return string
+     * @return PropertyCode
      */
     public function getCode()
     {
-        return self::SIGHT;
+        return PropertyCode::getIt(PropertyCode::SIGHT);
     }
 
 }

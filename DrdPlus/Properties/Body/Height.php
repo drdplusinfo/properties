@@ -1,6 +1,7 @@
 <?php
 namespace DrdPlus\Properties\Body;
 
+use DrdPlus\Codes\PropertyCode;
 use DrdPlus\Properties\Property;
 use DrdPlus\Tables\Measurements\Distance\Distance;
 use DrdPlus\Tables\Measurements\Distance\DistanceTable;
@@ -12,13 +13,15 @@ use Granam\Strict\Object\StrictObject;
  */
 class Height extends StrictObject implements Property, BodyProperty, IntegerInterface
 {
-    const HEIGHT = 'height';
-
     /**
      * @var int
      */
     private $value;
 
+    /**
+     * @param HeightInCm $heightInCm
+     * @param DistanceTable $distanceTable
+     */
     public function __construct(HeightInCm $heightInCm, DistanceTable $distanceTable)
     {
         $heightInMeters = $heightInCm->getValue() / 100;
@@ -29,11 +32,11 @@ class Height extends StrictObject implements Property, BodyProperty, IntegerInte
     }
 
     /**
-     * @return string
+     * @return PropertyCode
      */
     public function getCode()
     {
-        return self::HEIGHT;
+        return PropertyCode::getIt(PropertyCode::HEIGHT);
     }
 
     /**

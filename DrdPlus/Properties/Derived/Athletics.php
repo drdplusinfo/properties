@@ -1,15 +1,15 @@
 <?php
 namespace DrdPlus\Properties\Derived;
 
-use Granam\Integer\IntegerInterface;
+use Granam\Integer\PositiveInteger;
 
 /**
- * Just an interface to cover requirements. It is not implemented here.
+ * Just an interface to cover requirements. It is not implemented int this library.
  */
 interface Athletics
 {
     /**
-     * @return IntegerInterface
+     * @return PositiveInteger
      */
     public function getAthleticsBonus();
 }

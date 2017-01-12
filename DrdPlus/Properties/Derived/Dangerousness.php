@@ -9,8 +9,6 @@ use DrdPlus\Properties\Base\Will;
 
 class Dangerousness extends AbstractAspectOfVisage
 {
-    const DANGEROUSNESS = PropertyCode::DANGEROUSNESS;
-
     /**
      * @param Strength $strength
      * @param Will $will
@@ -22,10 +20,10 @@ class Dangerousness extends AbstractAspectOfVisage
     }
 
     /**
-     * @return string
+     * @return PropertyCode
      */
     public function getCode()
     {
-        return self::DANGEROUSNESS;
+        return PropertyCode::getIt(PropertyCode::DANGEROUSNESS);
     }
 }

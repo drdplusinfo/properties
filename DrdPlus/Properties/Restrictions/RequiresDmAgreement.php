@@ -8,8 +8,6 @@ use Granam\Boolean\BooleanInterface;
 
 class RequiresDmAgreement extends BooleanEnum implements RestrictionProperty
 {
-    const REQUIRES_DM_AGREEMENT = PropertyCode::REQUIRES_DM_AGREEMENT;
-
     use WithHistoryTrait;
 
     /**
@@ -34,11 +32,11 @@ class RequiresDmAgreement extends BooleanEnum implements RestrictionProperty
     }
 
     /**
-     * @return string
+     * @return PropertyCode
      */
     public function getCode()
     {
-        return self::REQUIRES_DM_AGREEMENT;
+        return PropertyCode::getIt(PropertyCode::REQUIRES_DM_AGREEMENT);
     }
 
 }

@@ -25,10 +25,10 @@ class Senses extends AbstractDerivedProperty
     }
 
     /**
-     * @return string
+     * @return PropertyCode
      */
     public function getCode()
     {
-        return self::SENSES;
+        return PropertyCode::getIt(PropertyCode::SENSES);
     }
 }

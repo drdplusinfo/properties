@@ -27,10 +27,10 @@ class Speed extends AbstractDerivedProperty
     }
 
     /**
-     * @return string
+     * @return PropertyCode
      */
     public function getCode()
     {
-        return self::SPEED;
+        return PropertyCode::getIt(PropertyCode::SPEED);
     }
 }

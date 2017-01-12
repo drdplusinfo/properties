@@ -9,8 +9,6 @@ use DrdPlus\Properties\Base\Knack;
 
 class Beauty extends AbstractAspectOfVisage
 {
-    const BEAUTY = PropertyCode::BEAUTY;
-
     /**
      * @param Agility $agility
      * @param Knack $knack
@@ -22,10 +20,10 @@ class Beauty extends AbstractAspectOfVisage
     }
 
     /**
-     * @return string
+     * @return PropertyCode
      */
     public function getCode()
     {
-        return self::BEAUTY;
+        return PropertyCode::getIt(PropertyCode::BEAUTY);
     }
 }

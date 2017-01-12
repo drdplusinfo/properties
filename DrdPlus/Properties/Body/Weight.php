@@ -7,21 +7,18 @@ use Granam\Integer\IntegerInterface;
 
 /**
  * In fact bonus of weight in kg, @see \DrdPlus\Tables\Measurements\Weight\WeightBonus
- *
- * @method static Weight getIt(int|IntegerInterface $value)
- * @method Weight add(int|IntegerInterface $value)
- * @method Weight sub(int|IntegerInterface $value)
+ * @method static Weight getIt(int | IntegerInterface $value)
+ * @method Weight add(int | IntegerInterface $value)
+ * @method Weight sub(int | IntegerInterface $value)
  */
 class Weight extends AbstractIntegerProperty implements BodyProperty
 {
-    const WEIGHT = PropertyCode::WEIGHT;
-
     /**
-     * @return string
+     * @return PropertyCode
      */
     public function getCode()
     {
-        return self::WEIGHT;
+        return PropertyCode::getIt(PropertyCode::WEIGHT);
     }
 
 }

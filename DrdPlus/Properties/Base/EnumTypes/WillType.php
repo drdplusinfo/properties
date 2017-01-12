@@ -2,14 +2,11 @@
 namespace DrdPlus\Properties\Base\EnumTypes;
 
 use Doctrineum\Integer\IntegerEnumType;
+use DrdPlus\Codes\PropertyCode;
 
 class WillType extends IntegerEnumType
 {
-    /**
-     * should be the same as @see \DrdPlus\Codes\PropertyCode::WILL
-     * and can not be just linked to give direct return value and provide PhpStorm to-definition link support
-     */
-    const WILL = 'will';
+    const WILL = PropertyCode::WILL;
 
     /**
      * @return string

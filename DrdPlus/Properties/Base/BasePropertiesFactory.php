@@ -1,6 +1,7 @@
 <?php
 namespace DrdPlus\Properties\Base;
 
+use DrdPlus\Codes\PropertyCode;
 use Granam\Integer\IntegerInterface;
 use Granam\Scalar\Tools\ToString;
 use Granam\String\StringInterface;
@@ -73,17 +74,17 @@ class BasePropertiesFactory extends StrictObject
     public function createProperty($propertyValue, $propertyCode)
     {
         switch (ToString::toString($propertyCode)) {
-            case Strength::STRENGTH :
+            case PropertyCode::STRENGTH :
                 return $this->createStrength($propertyValue);
-            case Agility::AGILITY :
+            case PropertyCode::AGILITY :
                 return $this->createAgility($propertyValue);
-            case Knack::KNACK :
+            case PropertyCode::KNACK :
                 return $this->createKnack($propertyValue);
-            case Will::WILL :
+            case PropertyCode::WILL :
                 return $this->createWill($propertyValue);
-            case Intelligence::INTELLIGENCE :
+            case PropertyCode::INTELLIGENCE :
                 return $this->createIntelligence($propertyValue);
-            case Charisma::CHARISMA :
+            case PropertyCode::CHARISMA :
                 return $this->createCharisma($propertyValue);
             default :
                 throw new Exceptions\UnknownBasePropertyCode(

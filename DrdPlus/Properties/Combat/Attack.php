@@ -7,8 +7,8 @@ use DrdPlus\Calculations\SumAndRound;
 use Granam\Integer\IntegerInterface;
 
 /**
- * @method Attack add(int|IntegerInterface $value)
- * @method Attack sub(int|IntegerInterface $value)
+ * @method Attack add(int | IntegerInterface $value)
+ * @method Attack sub(int | IntegerInterface $value)
  */
 class Attack extends CombatGameCharacteristic
 {

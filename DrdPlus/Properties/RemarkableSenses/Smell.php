@@ -6,23 +6,20 @@ use DrdPlus\Codes\PropertyCode;
 class Smell extends RemarkableSenseProperty
 {
 
-    const SMELL = PropertyCode::SMELL;
-
     /**
-     * @return Smell
+     * @return Smell|RemarkableSenseProperty
      */
     public static function getIt()
     {
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        return static::getEnum(self::SMELL);
+        return static::getEnum(PropertyCode::SMELL);
     }
 
     /**
-     * @return string
+     * @return PropertyCode
      */
     public function getCode()
     {
-        return self::SMELL;
+        return PropertyCode::getIt(PropertyCode::SMELL);
     }
 
 }

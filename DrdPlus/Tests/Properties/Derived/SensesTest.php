@@ -22,8 +22,6 @@ class SensesTest extends AbstractDerivedPropertyTest
             $subraceCode = $this->createSubRaceCode('bar'),
             $this->createRacesTable($raceCode, $subraceCode, $raceGenderSenses = 456)
         );
-        self::assertSame('senses', $senses->getCode());
-        self::assertSame('senses', Senses::SENSES);
         self::assertSame($knackValue + $raceGenderSenses, $senses->getValue());
         self::assertSame((string)($knackValue + $raceGenderSenses), "$senses");
 

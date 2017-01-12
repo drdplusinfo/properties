@@ -3,19 +3,8 @@ namespace DrdPlus\Tests\Properties\EnumTypes;
 
 use Doctrine\DBAL\Types\Type;
 use Doctrineum\Scalar\ScalarEnumType;
-use DrdPlus\Properties\Base\Agility;
-use DrdPlus\Properties\Base\Charisma;
-use DrdPlus\Properties\Base\Intelligence;
-use DrdPlus\Properties\Base\Knack;
-use DrdPlus\Properties\Base\Strength;
-use DrdPlus\Properties\Base\Will;
-use DrdPlus\Properties\Body\Age;
-use DrdPlus\Properties\Body\HeightInCm;
-use DrdPlus\Properties\Body\Size;
-use DrdPlus\Properties\Body\WeightInKg;
+use DrdPlus\Codes\PropertyCode;
 use DrdPlus\Properties\EnumTypes\PropertiesEnumRegistrar;
-use DrdPlus\Properties\Native\Infravision;
-use DrdPlus\Properties\Native\NativeRegeneration;
 use DrdPlus\Properties\RemarkableSenses\EnumTypes\RemarkableSenseType;
 use DrdPlus\Properties\RemarkableSenses\Hearing;
 use DrdPlus\Properties\RemarkableSenses\Sight;
@@ -47,27 +36,27 @@ class PropertiesEnumRegistrarTest extends TestWithMockery
     {
         PropertiesEnumRegistrar::registerAll();
 
-        self::assertTrue(Type::hasType(Strength::STRENGTH));
-        self::assertTrue(Type::hasType(Agility::AGILITY));
-        self::assertTrue(Type::hasType(Knack::KNACK));
-        self::assertTrue(Type::hasType(Will::WILL));
-        self::assertTrue(Type::hasType(Intelligence::INTELLIGENCE));
-        self::assertTrue(Type::hasType(Charisma::CHARISMA));
+        self::assertTrue(Type::hasType(PropertyCode::STRENGTH));
+        self::assertTrue(Type::hasType(PropertyCode::AGILITY));
+        self::assertTrue(Type::hasType(PropertyCode::KNACK));
+        self::assertTrue(Type::hasType(PropertyCode::WILL));
+        self::assertTrue(Type::hasType(PropertyCode::INTELLIGENCE));
+        self::assertTrue(Type::hasType(PropertyCode::CHARISMA));
 
-        self::assertTrue(Type::hasType(HeightInCm::HEIGHT_IN_CM));
-        self::assertTrue(Type::hasType(Size::SIZE));
-        self::assertTrue(Type::hasType(WeightInKg::WEIGHT_IN_KG));
-        self::assertTrue(Type::hasType(Age::AGE));
+        self::assertTrue(Type::hasType(PropertyCode::HEIGHT_IN_CM));
+        self::assertTrue(Type::hasType(PropertyCode::SIZE));
+        self::assertTrue(Type::hasType(PropertyCode::WEIGHT_IN_KG));
+        self::assertTrue(Type::hasType(PropertyCode::AGE));
 
-        self::assertTrue(Type::hasType(RemarkableSenseType::REMARKABLE_SENSE));
+        self::assertTrue(Type::hasType(PropertyCode::REMARKABLE_SENSE));
         self::assertTrue(RemarkableSenseType::hasSubTypeEnum(Hearing::class));
         self::assertTrue(RemarkableSenseType::hasSubTypeEnum(Sight::class));
         self::assertTrue(RemarkableSenseType::hasSubTypeEnum(Smell::class));
         self::assertTrue(RemarkableSenseType::hasSubTypeEnum(Taste::class));
         self::assertTrue(RemarkableSenseType::hasSubTypeEnum(Touch::class));
 
-        self::assertTrue(Type::hasType(Infravision::INFRAVISION));
-        self::assertTrue(Type::hasType(NativeRegeneration::NATIVE_REGENERATION));
+        self::assertTrue(Type::hasType(PropertyCode::INFRAVISION));
+        self::assertTrue(Type::hasType(PropertyCode::NATIVE_REGENERATION));
     }
 
     /**
@@ -77,27 +66,27 @@ class PropertiesEnumRegistrarTest extends TestWithMockery
     {
         PropertiesEnumRegistrar::registerBaseProperties();
 
-        self::assertTrue(Type::hasType(Strength::STRENGTH));
-        self::assertTrue(Type::hasType(Agility::AGILITY));
-        self::assertTrue(Type::hasType(Knack::KNACK));
-        self::assertTrue(Type::hasType(Will::WILL));
-        self::assertTrue(Type::hasType(Intelligence::INTELLIGENCE));
-        self::assertTrue(Type::hasType(Charisma::CHARISMA));
+        self::assertTrue(Type::hasType(PropertyCode::STRENGTH));
+        self::assertTrue(Type::hasType(PropertyCode::AGILITY));
+        self::assertTrue(Type::hasType(PropertyCode::KNACK));
+        self::assertTrue(Type::hasType(PropertyCode::WILL));
+        self::assertTrue(Type::hasType(PropertyCode::INTELLIGENCE));
+        self::assertTrue(Type::hasType(PropertyCode::CHARISMA));
 
-        self::assertFalse(Type::hasType(HeightInCm::HEIGHT_IN_CM));
-        self::assertFalse(Type::hasType(Size::SIZE));
-        self::assertFalse(Type::hasType(WeightInKg::WEIGHT_IN_KG));
-        self::assertFalse(Type::hasType(Age::AGE));
+        self::assertFalse(Type::hasType(PropertyCode::HEIGHT_IN_CM));
+        self::assertFalse(Type::hasType(PropertyCode::SIZE));
+        self::assertFalse(Type::hasType(PropertyCode::WEIGHT_IN_KG));
+        self::assertFalse(Type::hasType(PropertyCode::AGE));
 
-        self::assertFalse(Type::hasType(RemarkableSenseType::REMARKABLE_SENSE));
+        self::assertFalse(Type::hasType(PropertyCode::REMARKABLE_SENSE));
         self::assertFalse(RemarkableSenseType::hasSubTypeEnum(Hearing::class));
         self::assertFalse(RemarkableSenseType::hasSubTypeEnum(Sight::class));
         self::assertFalse(RemarkableSenseType::hasSubTypeEnum(Smell::class));
         self::assertFalse(RemarkableSenseType::hasSubTypeEnum(Taste::class));
         self::assertFalse(RemarkableSenseType::hasSubTypeEnum(Touch::class));
 
-        self::assertFalse(Type::hasType(Infravision::INFRAVISION));
-        self::assertFalse(Type::hasType(NativeRegeneration::NATIVE_REGENERATION));
+        self::assertFalse(Type::hasType(PropertyCode::INFRAVISION));
+        self::assertFalse(Type::hasType(PropertyCode::NATIVE_REGENERATION));
     }
 
     /**
@@ -107,27 +96,27 @@ class PropertiesEnumRegistrarTest extends TestWithMockery
     {
         PropertiesEnumRegistrar::registerBodyProperties();
 
-        self::assertFalse(Type::hasType(Strength::STRENGTH));
-        self::assertFalse(Type::hasType(Agility::AGILITY));
-        self::assertFalse(Type::hasType(Knack::KNACK));
-        self::assertFalse(Type::hasType(Will::WILL));
-        self::assertFalse(Type::hasType(Intelligence::INTELLIGENCE));
-        self::assertFalse(Type::hasType(Charisma::CHARISMA));
+        self::assertFalse(Type::hasType(PropertyCode::STRENGTH));
+        self::assertFalse(Type::hasType(PropertyCode::AGILITY));
+        self::assertFalse(Type::hasType(PropertyCode::KNACK));
+        self::assertFalse(Type::hasType(PropertyCode::WILL));
+        self::assertFalse(Type::hasType(PropertyCode::INTELLIGENCE));
+        self::assertFalse(Type::hasType(PropertyCode::CHARISMA));
 
-        self::assertTrue(Type::hasType(HeightInCm::HEIGHT_IN_CM));
-        self::assertTrue(Type::hasType(Size::SIZE));
-        self::assertTrue(Type::hasType(WeightInKg::WEIGHT_IN_KG));
-        self::assertTrue(Type::hasType(Age::AGE));
+        self::assertTrue(Type::hasType(PropertyCode::HEIGHT_IN_CM));
+        self::assertTrue(Type::hasType(PropertyCode::SIZE));
+        self::assertTrue(Type::hasType(PropertyCode::WEIGHT_IN_KG));
+        self::assertTrue(Type::hasType(PropertyCode::AGE));
 
-        self::assertFalse(Type::hasType(RemarkableSenseType::REMARKABLE_SENSE));
+        self::assertFalse(Type::hasType(PropertyCode::REMARKABLE_SENSE));
         self::assertFalse(RemarkableSenseType::hasSubTypeEnum(Hearing::class));
         self::assertFalse(RemarkableSenseType::hasSubTypeEnum(Sight::class));
         self::assertFalse(RemarkableSenseType::hasSubTypeEnum(Smell::class));
         self::assertFalse(RemarkableSenseType::hasSubTypeEnum(Taste::class));
         self::assertFalse(RemarkableSenseType::hasSubTypeEnum(Touch::class));
 
-        self::assertFalse(Type::hasType(Infravision::INFRAVISION));
-        self::assertFalse(Type::hasType(NativeRegeneration::NATIVE_REGENERATION));
+        self::assertFalse(Type::hasType(PropertyCode::INFRAVISION));
+        self::assertFalse(Type::hasType(PropertyCode::NATIVE_REGENERATION));
     }
 
     /**
@@ -137,27 +126,27 @@ class PropertiesEnumRegistrarTest extends TestWithMockery
     {
         PropertiesEnumRegistrar::registerRemarkableSenses();
 
-        self::assertFalse(Type::hasType(Strength::STRENGTH));
-        self::assertFalse(Type::hasType(Agility::AGILITY));
-        self::assertFalse(Type::hasType(Knack::KNACK));
-        self::assertFalse(Type::hasType(Will::WILL));
-        self::assertFalse(Type::hasType(Intelligence::INTELLIGENCE));
-        self::assertFalse(Type::hasType(Charisma::CHARISMA));
+        self::assertFalse(Type::hasType(PropertyCode::STRENGTH));
+        self::assertFalse(Type::hasType(PropertyCode::AGILITY));
+        self::assertFalse(Type::hasType(PropertyCode::KNACK));
+        self::assertFalse(Type::hasType(PropertyCode::WILL));
+        self::assertFalse(Type::hasType(PropertyCode::INTELLIGENCE));
+        self::assertFalse(Type::hasType(PropertyCode::CHARISMA));
 
-        self::assertFalse(Type::hasType(HeightInCm::HEIGHT_IN_CM));
-        self::assertFalse(Type::hasType(Size::SIZE));
-        self::assertFalse(Type::hasType(WeightInKg::WEIGHT_IN_KG));
-        self::assertFalse(Type::hasType(Age::AGE));
+        self::assertFalse(Type::hasType(PropertyCode::HEIGHT_IN_CM));
+        self::assertFalse(Type::hasType(PropertyCode::SIZE));
+        self::assertFalse(Type::hasType(PropertyCode::WEIGHT_IN_KG));
+        self::assertFalse(Type::hasType(PropertyCode::AGE));
 
-        self::assertTrue(Type::hasType(RemarkableSenseType::REMARKABLE_SENSE));
+        self::assertTrue(Type::hasType(PropertyCode::REMARKABLE_SENSE));
         self::assertTrue(RemarkableSenseType::hasSubTypeEnum(Hearing::class));
         self::assertTrue(RemarkableSenseType::hasSubTypeEnum(Sight::class));
         self::assertTrue(RemarkableSenseType::hasSubTypeEnum(Smell::class));
         self::assertTrue(RemarkableSenseType::hasSubTypeEnum(Taste::class));
         self::assertTrue(RemarkableSenseType::hasSubTypeEnum(Touch::class));
 
-        self::assertFalse(Type::hasType(Infravision::INFRAVISION));
-        self::assertFalse(Type::hasType(NativeRegeneration::NATIVE_REGENERATION));
+        self::assertFalse(Type::hasType(PropertyCode::INFRAVISION));
+        self::assertFalse(Type::hasType(PropertyCode::NATIVE_REGENERATION));
     }
 
     /**
@@ -167,26 +156,26 @@ class PropertiesEnumRegistrarTest extends TestWithMockery
     {
         PropertiesEnumRegistrar::registerNativeProperties();
 
-        self::assertFalse(Type::hasType(Strength::STRENGTH));
-        self::assertFalse(Type::hasType(Agility::AGILITY));
-        self::assertFalse(Type::hasType(Knack::KNACK));
-        self::assertFalse(Type::hasType(Will::WILL));
-        self::assertFalse(Type::hasType(Intelligence::INTELLIGENCE));
-        self::assertFalse(Type::hasType(Charisma::CHARISMA));
+        self::assertFalse(Type::hasType(PropertyCode::STRENGTH));
+        self::assertFalse(Type::hasType(PropertyCode::AGILITY));
+        self::assertFalse(Type::hasType(PropertyCode::KNACK));
+        self::assertFalse(Type::hasType(PropertyCode::WILL));
+        self::assertFalse(Type::hasType(PropertyCode::INTELLIGENCE));
+        self::assertFalse(Type::hasType(PropertyCode::CHARISMA));
 
-        self::assertFalse(Type::hasType(HeightInCm::HEIGHT_IN_CM));
-        self::assertFalse(Type::hasType(Size::SIZE));
-        self::assertFalse(Type::hasType(WeightInKg::WEIGHT_IN_KG));
-        self::assertFalse(Type::hasType(Age::AGE));
+        self::assertFalse(Type::hasType(PropertyCode::HEIGHT_IN_CM));
+        self::assertFalse(Type::hasType(PropertyCode::SIZE));
+        self::assertFalse(Type::hasType(PropertyCode::WEIGHT_IN_KG));
+        self::assertFalse(Type::hasType(PropertyCode::AGE));
 
-        self::assertFalse(Type::hasType(RemarkableSenseType::REMARKABLE_SENSE));
+        self::assertFalse(Type::hasType(PropertyCode::REMARKABLE_SENSE));
         self::assertFalse(RemarkableSenseType::hasSubTypeEnum(Hearing::class));
         self::assertFalse(RemarkableSenseType::hasSubTypeEnum(Sight::class));
         self::assertFalse(RemarkableSenseType::hasSubTypeEnum(Smell::class));
         self::assertFalse(RemarkableSenseType::hasSubTypeEnum(Taste::class));
         self::assertFalse(RemarkableSenseType::hasSubTypeEnum(Touch::class));
 
-        self::assertTrue(Type::hasType(Infravision::INFRAVISION));
-        self::assertTrue(Type::hasType(NativeRegeneration::NATIVE_REGENERATION));
+        self::assertTrue(Type::hasType(PropertyCode::INFRAVISION));
+        self::assertTrue(Type::hasType(PropertyCode::NATIVE_REGENERATION));
     }
 }

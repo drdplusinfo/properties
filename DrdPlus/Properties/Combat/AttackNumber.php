@@ -4,8 +4,8 @@ namespace DrdPlus\Properties\Combat;
 use DrdPlus\Properties\Combat\Partials\CombatGameCharacteristic;
 
 /**
- * @method AttackNumber add(int|IntegerInterface $value)
- * @method AttackNumber sub(int|IntegerInterface $value)
+ * @method AttackNumber add(int | IntegerInterface $value)
+ * @method AttackNumber sub(int | IntegerInterface $value)
  */
 class AttackNumber extends CombatGameCharacteristic
 {

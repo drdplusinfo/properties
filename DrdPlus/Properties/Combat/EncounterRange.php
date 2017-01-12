@@ -4,8 +4,8 @@ namespace DrdPlus\Properties\Combat;
 use DrdPlus\Properties\Combat\Partials\AbstractRange;
 
 /**
- * @method EncounterRange add(int|IntegerInterface $value)
- * @method EncounterRange sub(int|IntegerInterface $value)
+ * @method EncounterRange add(int | IntegerInterface $value)
+ * @method EncounterRange sub(int | IntegerInterface $value)
  */
 class EncounterRange extends AbstractRange
 {

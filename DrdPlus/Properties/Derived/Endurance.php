@@ -9,8 +9,6 @@ use DrdPlus\Calculations\SumAndRound;
 
 class Endurance extends AbstractDerivedProperty
 {
-    const ENDURANCE = PropertyCode::ENDURANCE;
-
     /**
      * @param Strength $strength
      * @param Will $will
@@ -22,10 +20,10 @@ class Endurance extends AbstractDerivedProperty
     }
 
     /**
-     * @return string
+     * @return PropertyCode
      */
     public function getCode()
     {
-        return self::ENDURANCE;
+        return PropertyCode::getIt(PropertyCode::ENDURANCE);
     }
 }

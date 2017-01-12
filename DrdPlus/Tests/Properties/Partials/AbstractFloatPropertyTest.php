@@ -18,9 +18,9 @@ abstract class AbstractFloatPropertyTest extends AbstractStoredPropertyTest
     {
         $reflectionClass = new \ReflectionClass(self::getSutClass());
         $classBasename = str_replace($reflectionClass->getNamespaceName() . '\\', '', $reflectionClass->getName());
-        self::assertContains(<<<COMMENT
- * @method static {$classBasename} getIt(float|NumberInterface \$value)
-COMMENT
+        self::assertContains(<<<ANNOTATION
+ * @method static {$classBasename} getIt(float | NumberInterface \$value)
+ANNOTATION
             , $reflectionClass->getDocComment());
     }
 }

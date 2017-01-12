@@ -1,13 +1,14 @@
 <?php
 namespace DrdPlus\Properties;
 
+use DrdPlus\Codes\PropertyCode;
 use Granam\Scalar\ScalarInterface;
 
 interface Property extends ScalarInterface
 {
 
     /**
-     * @return string
+     * @return PropertyCode
      */
     public function getCode();
 

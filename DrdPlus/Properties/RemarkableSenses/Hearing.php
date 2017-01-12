@@ -6,22 +6,20 @@ use DrdPlus\Codes\PropertyCode;
 class Hearing extends RemarkableSenseProperty
 {
 
-    const HEARING = PropertyCode::HEARING;
-
     /**
-     * @return Hearing
+     * @return Hearing|RemarkableSenseProperty
      */
     public static function getIt()
     {
-        return static::getEnum(self::HEARING);
+        return static::getEnum(PropertyCode::HEARING);
     }
 
     /**
-     * @return string
+     * @return PropertyCode
      */
     public function getCode()
     {
-        return self::HEARING;
+        return PropertyCode::getIt(PropertyCode::HEARING);
     }
 
 }

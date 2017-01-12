@@ -2,14 +2,11 @@
 namespace DrdPlus\Properties\Base\EnumTypes;
 
 use Doctrineum\Integer\IntegerEnumType;
+use DrdPlus\Codes\PropertyCode;
 
 class KnackType extends IntegerEnumType
 {
-    /**
-     * should be the same as @see \DrdPlus\Codes\PropertyCode::KNACK
-     * and can not be just linked to give direct return value and provide PhpStorm to-definition link support
-     */
-    const KNACK = 'knack';
+    const KNACK = PropertyCode::KNACK;
 
     /**
      * @return string

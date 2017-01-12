@@ -9,8 +9,8 @@ use Granam\Integer\IntegerInterface;
 use Granam\Tools\ValueDescriber;
 
 /**
- * @method FightNumber add(int|IntegerInterface $value)
- * @method FightNumber sub(int|IntegerInterface $value)
+ * @method FightNumber add(int | IntegerInterface $value)
+ * @method FightNumber sub(int | IntegerInterface $value)
  */
 class FightNumber extends CombatGameCharacteristic
 {
