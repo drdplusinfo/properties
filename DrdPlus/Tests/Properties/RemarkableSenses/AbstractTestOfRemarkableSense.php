@@ -1,6 +1,7 @@
 <?php
 namespace DrdPlus\Tests\Properties\RemarkableSenses;
 
+use DrdPlus\Codes\PropertyCode;
 use DrdPlus\Properties\RemarkableSenses\EnumTypes\RemarkableSenseType;
 use DrdPlus\Properties\RemarkableSenses\RemarkableSenseProperty;
 use DrdPlus\Tests\Properties\AbstractStoredPropertyTest;
@@ -19,6 +20,7 @@ abstract class AbstractTestOfRemarkableSense extends AbstractStoredPropertyTest
         $property = $propertyClass::getIt();
         self::assertInstanceOf($propertyClass, $property);
         self::assertSame(strtolower($this->getPropertyBaseName()), $property->getValue());
+        self::assertSame(PropertyCode::getIt(strtolower($this->getPropertyBaseName())), $property->getCode());
 
         return $property;
     }

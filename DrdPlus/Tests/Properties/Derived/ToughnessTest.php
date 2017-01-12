@@ -1,6 +1,7 @@
 <?php
 namespace DrdPlus\Tests\Properties\Derived;
 
+use DrdPlus\Codes\PropertyCode;
 use DrdPlus\Codes\RaceCode;
 use DrdPlus\Codes\SubRaceCode;
 use DrdPlus\Properties\Base\Strength;
@@ -23,6 +24,7 @@ class ToughnessTest extends AbstractDerivedPropertyTest
         );
         self::assertSame($strengthValue + 1, $toughness->getValue());
         self::assertSame((string)($strengthValue + 1), "$toughness");
+        self::assertSame(PropertyCode::getIt(PropertyCode::TOUGHNESS), $toughness->getCode());
 
         return $toughness;
     }

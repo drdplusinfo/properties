@@ -1,6 +1,7 @@
 <?php
 namespace DrdPlus\Tests\Properties\Derived;
 
+use DrdPlus\Codes\PropertyCode;
 use DrdPlus\Codes\RaceCode;
 use DrdPlus\Codes\SubRaceCode;
 use DrdPlus\Properties\Base\Knack;
@@ -24,6 +25,7 @@ class SensesTest extends AbstractDerivedPropertyTest
         );
         self::assertSame($knackValue + $raceGenderSenses, $senses->getValue());
         self::assertSame((string)($knackValue + $raceGenderSenses), "$senses");
+        self::assertSame(PropertyCode::getIt(PropertyCode::SENSES), $senses->getCode());
 
         return $senses;
     }

@@ -1,6 +1,7 @@
 <?php
 namespace DrdPlus\Tests\Properties\Derived;
 
+use DrdPlus\Codes\PropertyCode;
 use DrdPlus\Properties\Base\Agility;
 use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Body\Height;
@@ -21,6 +22,7 @@ class SpeedTest extends AbstractDerivedPropertyTest
         );
         self::assertSame((int)round(($strengthValue + $agilityValue) / 2) + ($heightValue / 3 - 2), $speed->getValue());
         self::assertSame((string)(round(($strengthValue + $agilityValue) / 2) + ($heightValue / 3 - 2)), "$speed");
+        self::assertSame(PropertyCode::getIt(PropertyCode::SPEED), $speed->getCode());
 
         return $speed;
     }

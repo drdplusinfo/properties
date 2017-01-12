@@ -1,6 +1,7 @@
 <?php
 namespace DrdPlus\Tests\Properties\Derived;
 
+use DrdPlus\Codes\PropertyCode;
 use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Base\Will;
 use DrdPlus\Properties\Derived\Endurance;
@@ -19,15 +20,16 @@ class FatigueBoundaryTest extends AbstractDerivedPropertyTest
     public function I_can_get_property_easily()
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        $fatigueLimit = new FatigueBoundary(
+        $fatigueBoundary = new FatigueBoundary(
             new Endurance(Strength::getIt($strength = 1), Will::getIt($will = 2)),
             new FatigueTable(new WoundsTable())
         );
         self::assertSame(
             (int)round(($strength + $will) / 2) + 10, // simplified; bonus of wound 12 = wound of 12
-            $fatigueLimit->getValue()
+            $fatigueBoundary->getValue()
         );
+        self::assertSame(PropertyCode::getIt(PropertyCode::FATIGUE_BOUNDARY), $fatigueBoundary->getCode());
 
-        return $fatigueLimit;
+        return $fatigueBoundary;
     }
 }
