@@ -14,6 +14,9 @@ class Attack extends CombatGameCharacteristic
 {
 
     /**
+     * See PPH page 34 left column
+     * , @link https://pph.drdplus.jaroslavtyc.com/?mode=dev&hide=covered#tabulka_bojovych_charakteristik
+     *
      * @param Agility $agility
      */
     public function __construct(Agility $agility)

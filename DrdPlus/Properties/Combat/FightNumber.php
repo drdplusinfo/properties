@@ -28,6 +28,8 @@ class FightNumber extends CombatGameCharacteristic
     }
 
     /**
+     * See PPH page 34 left column, @link https://pph.drdplus.jaroslavtyc.com/?mode=dev&hide=covered#tabulka_boje
+     *
      * @param ProfessionCode $professionCode
      * @param BaseProperties $baseProperties
      * @param Height $height

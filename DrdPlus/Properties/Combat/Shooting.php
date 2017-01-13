@@ -12,6 +12,8 @@ use DrdPlus\Calculations\SumAndRound;
 class Shooting extends CombatGameCharacteristic
 {
     /**
+     * See PPH page 34 left column, @link https://pph.drdplus.jaroslavtyc.com/?mode=dev&hide=covered#tabulka_bojovych_charakteristik
+     *
      * @param Knack $knack
      */
     public function __construct(Knack $knack)
