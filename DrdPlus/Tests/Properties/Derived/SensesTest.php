@@ -7,6 +7,7 @@ use DrdPlus\Codes\SubRaceCode;
 use DrdPlus\Properties\Base\Knack;
 use DrdPlus\Properties\Derived\Senses;
 use DrdPlus\Tables\Races\RacesTable;
+use DrdPlus\Tables\Tables;
 use DrdPlus\Tests\Properties\Derived\Partials\AbstractDerivedPropertyTest;
 
 class SensesTest extends AbstractDerivedPropertyTest
@@ -21,7 +22,7 @@ class SensesTest extends AbstractDerivedPropertyTest
             $this->createKnack($knackValue = 123),
             $raceCode = $this->createRaceCode('foo'),
             $subraceCode = $this->createSubRaceCode('bar'),
-            $this->createRacesTable($raceCode, $subraceCode, $raceGenderSenses = 456)
+            $this->createTablesWithRacesTable($raceCode, $subraceCode, $raceGenderSenses = 456)
         );
         self::assertSame($knackValue + $raceGenderSenses, $senses->getValue());
         self::assertSame((string)($knackValue + $raceGenderSenses), "$senses");
@@ -69,15 +70,17 @@ class SensesTest extends AbstractDerivedPropertyTest
      * @param $expectedRacesCode
      * @param $expectedSubRaceCode
      * @param $senses
-     * @return \Mockery\MockInterface|RacesTable
+     * @return \Mockery\MockInterface|Tables
      */
-    private function createRacesTable($expectedRacesCode, $expectedSubRaceCode, $senses)
+    private function createTablesWithRacesTable($expectedRacesCode, $expectedSubRaceCode, $senses)
     {
-        $racesTable = $this->mockery(RacesTable::class);
+        $tables = $this->mockery(Tables::class);
+        $tables->shouldReceive('getRacesTable')
+            ->andReturn($racesTable = $this->mockery(RacesTable::class));
         $racesTable->shouldReceive('getSenses')
             ->with($expectedRacesCode, $expectedSubRaceCode)
             ->andReturn($senses);
 
-        return $racesTable;
+        return $tables;
     }
 }

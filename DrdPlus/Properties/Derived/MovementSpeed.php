@@ -1,14 +1,14 @@
 <?php
 namespace DrdPlus\Properties\Derived;
 
+use DrdPlus\Codes\Environment\TerrainCode;
 use DrdPlus\Codes\PropertyCode;
+use DrdPlus\Codes\Transport\MovementTypeCode;
 use DrdPlus\Properties\Derived\Partials\AbstractDerivedProperty;
-use DrdPlus\Tables\Body\MovementTypes\MovementTypesTable;
-use DrdPlus\Tables\Environments\ImpassibilityOfTerrainTable;
 use DrdPlus\Tables\Environments\TerrainDifficultyPercents;
 use DrdPlus\Tables\Measurements\Speed\SpeedBonus;
-use DrdPlus\Tables\Measurements\Speed\SpeedTable;
 use DrdPlus\Calculations\SumAndRound;
+use DrdPlus\Tables\Tables;
 
 /**
  * See PPH page 112, right column, top
@@ -27,47 +27,43 @@ class MovementSpeed extends AbstractDerivedProperty
     }
 
     /**
-     * @param SpeedTable $speedTable
+     * @param Tables $tables
      * @return SpeedBonus
      */
-    public function getSpeedBonus(SpeedTable $speedTable)
+    public function getSpeedBonus(Tables $tables)
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        return new SpeedBonus($this->getValue(), $speedTable);
+        return new SpeedBonus($this->getValue(), $tables->getSpeedTable());
     }
 
     /**
-     * @param MovementTypesTable $movementTypesTable
-     * @param string $movementTypeCode
-     * @param SpeedTable $speedTable
-     * @param string $terrainCode
+     * @param MovementTypeCode $movementTypeCode
+     * @param TerrainCode $terrainCode
      * @param TerrainDifficultyPercents $terrainDifficultyPercents
-     * @param ImpassibilityOfTerrainTable $impassibilityOfTerrainTable
+     * @param Tables $tables
      * @return SpeedBonus
      * @throws \DrdPlus\Tables\Body\MovementTypes\Exceptions\UnknownMovementType
      * @throws \DrdPlus\Tables\Environments\Exceptions\UnknownTerrainCode
      * @throws \DrdPlus\Tables\Environments\Exceptions\InvalidTerrainCodeFormat
      */
     public function getCurrentSpeedBonus(
-        MovementTypesTable $movementTypesTable,
-        $movementTypeCode,
-        SpeedTable $speedTable,
-        $terrainCode,
+        MovementTypeCode $movementTypeCode,
+        TerrainCode $terrainCode,
         TerrainDifficultyPercents $terrainDifficultyPercents,
-        ImpassibilityOfTerrainTable $impassibilityOfTerrainTable
+        Tables $tables
     )
     {
-        $movementTypeBonus = $movementTypesTable->getSpeedBonus($movementTypeCode);
-        $terrainMalus = $impassibilityOfTerrainTable->getSpeedMalusOnTerrain(
+        $speedBonusFromMovementType = $tables->getMovementTypesTable()->getSpeedBonus($movementTypeCode);
+        $speedMalusFromTerrain = $tables->getImpassibilityOfTerrainTable()->getSpeedMalusOnTerrain(
             $terrainCode,
-            $speedTable,
+            $tables->getSpeedTable(),
             $terrainDifficultyPercents
         );
 
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new SpeedBonus(
-            $this->getValue() + $movementTypeBonus->getValue() + $terrainMalus->getValue(),
-            $speedTable
+            $this->getValue() + $speedBonusFromMovementType->getValue() + $speedMalusFromTerrain->getValue(),
+            $tables->getSpeedTable()
         );
     }
 

@@ -2,7 +2,7 @@
 namespace DrdPlus\Properties\Combat\Partials;
 
 use DrdPlus\Tables\Measurements\Distance\DistanceBonus;
-use DrdPlus\Tables\Measurements\Distance\DistanceTable;
+use DrdPlus\Tables\Tables;
 use Granam\Integer\PositiveInteger;
 use Granam\Integer\Tools\ToInteger;
 
@@ -21,13 +21,13 @@ abstract class AbstractRange extends CombatGameCharacteristic implements Positiv
     }
 
     /**
-     * @param DistanceTable $distanceTable
+     * @param Tables $tables
      * @return int
      */
-    public function getInMeters(DistanceTable $distanceTable)
+    public function getInMeters(Tables $tables)
     {
         // both encounter and maximal ranges are in fact distance bonus
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        return (new DistanceBonus($this->getValue(), $distanceTable))->getDistance()->getMeters();
+        return (new DistanceBonus($this->getValue(), $tables->getDistanceTable()))->getDistance()->getMeters();
     }
 }

@@ -7,6 +7,7 @@ use DrdPlus\Properties\Combat\Partials\AbstractRange;
 use DrdPlus\Tables\Measurements\Distance\Distance;
 use DrdPlus\Tables\Measurements\Distance\DistanceBonus;
 use DrdPlus\Tables\Measurements\Distance\DistanceTable;
+use DrdPlus\Tables\Tables;
 
 abstract class AbstractRangeTest extends PositiveNumberCombatGameCharacteristicsTest
 {
@@ -43,19 +44,34 @@ abstract class AbstractRangeTest extends PositiveNumberCombatGameCharacteristics
     {
         /** @var EncounterRange $range */
         $range = $this->createSut(123);
-        $distanceTable = $this->mockery(DistanceTable::class);
         $distanceValue = 456;
-        $distanceTable->shouldReceive('toDistance')
-            ->with(\Mockery::type(DistanceBonus::class))
-            ->andReturnUsing(function (DistanceBonus $distanceBonus) use ($distanceValue) {
+        $tables = $this->createTablesWithDistanceTable(
+            function (DistanceBonus $distanceBonus) use ($distanceValue) {
                 self::assertSame(123, $distanceBonus->getValue());
                 $distance = $this->mockery(Distance::class);
                 $distance->shouldReceive('getMeters')
                     ->andReturn($distanceValue);
 
                 return $distance;
-            });
+            }
+        );
 
-        self::assertSame($distanceValue, $range->getInMeters($distanceTable));
+        self::assertSame($distanceValue, $range->getInMeters($tables));
+    }
+
+    /**
+     * @param \Closure $toDistance
+     * @return \Mockery\MockInterface|Tables
+     */
+    private function createTablesWithDistanceTable(\Closure $toDistance)
+    {
+        $tables = $this->mockery(Tables::class);
+        $tables->shouldReceive('getDistanceTable')
+            ->andReturn($distanceTable = $this->mockery(DistanceTable::class));
+        $distanceTable->shouldReceive('toDistance')
+            ->with(\Mockery::type(DistanceBonus::class))
+            ->andReturnUsing($toDistance);
+
+        return $tables;
     }
 }

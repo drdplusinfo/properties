@@ -2,6 +2,7 @@
 namespace DrdPlus\Tests\Properties\Derived;
 
 use DrdPlus\Codes\Environment\TerrainCode;
+use DrdPlus\Codes\Transport\MovementTypeCode;
 use DrdPlus\Properties\Derived\MovementSpeed;
 use DrdPlus\Properties\Derived\Speed;
 use DrdPlus\Tables\Body\MovementTypes\MovementTypesTable;
@@ -9,6 +10,7 @@ use DrdPlus\Tables\Environments\ImpassibilityOfTerrainTable;
 use DrdPlus\Tables\Environments\TerrainDifficultyPercents;
 use DrdPlus\Tables\Measurements\Speed\SpeedBonus;
 use DrdPlus\Tables\Measurements\Speed\SpeedTable;
+use DrdPlus\Tables\Tables;
 use Granam\Tests\Tools\TestWithMockery;
 
 class MovementSpeedTest extends TestWithMockery
@@ -21,7 +23,7 @@ class MovementSpeedTest extends TestWithMockery
         $movementSpeed = new MovementSpeed($this->createSpeed(123));
         self::assertSame('movement_speed', $movementSpeed->getCode());
         self::assertSame('movement_speed', MovementSpeed::MOVEMENT_SPEED);
-        $speedBonus = $movementSpeed->getSpeedBonus($this->createSpeedTable());
+        $speedBonus = $movementSpeed->getSpeedBonus($this->createTables());
         self::assertInstanceOf(SpeedBonus::class, $speedBonus);
         self::assertSame(62, $speedBonus->getValue(), 'Expected half of movement speed as a speed bonus');
     }
@@ -40,37 +42,46 @@ class MovementSpeedTest extends TestWithMockery
     }
 
     /**
-     * @return \Mockery\MockInterface|SpeedTable
+     * @param MovementTypeCode $expectedMovementType
+     * @param $speedBonusValue
+     * @param TerrainCode $expectedTerrainCode = null
+     * @param TerrainDifficultyPercents $expectedTerrainDifficultyPercents
+     * @param $terrainMalusValue
+     * @return \Mockery\MockInterface|Tables
      */
-    private function createSpeedTable()
+    private function createTables(
+        MovementTypeCode $expectedMovementType = null,
+        $speedBonusValue = null,
+        TerrainCode $expectedTerrainCode = null,
+        TerrainDifficultyPercents $expectedTerrainDifficultyPercents = null,
+        $terrainMalusValue = null
+    )
     {
-        return $this->mockery(SpeedTable::class);
+        $tables = $this->mockery(Tables::class);
+        $tables->shouldReceive('getSpeedTable')
+            ->andReturn($this->mockery(SpeedTable::class));
+        if ($expectedMovementType !== null || $speedBonusValue !== null) {
+            $tables->shouldReceive('getMovementTypesTable')
+                ->andReturn($this->createMovementTypesTable($expectedMovementType, $speedBonusValue));
+        }
+        if ($expectedTerrainCode !== null || $expectedTerrainDifficultyPercents !== null) {
+            $tables->shouldReceive('getImpassibilityOfTerrainTable')
+                ->andReturn($this->createImpassibilityOfTerrainTable(
+                    $expectedTerrainCode,
+                    $expectedTerrainDifficultyPercents,
+                    $terrainMalusValue
+                ));
+        }
+
+        return $tables;
     }
 
     /**
-     * @test
-     */
-    public function I_can_get_current_speed_bonus()
-    {
-        $movementSpeed = new MovementSpeed($this->createSpeed(45));
-        $currentSpeedBonus = $movementSpeed->getCurrentSpeedBonus(
-            $this->createMovementTypesTable('foo movement', 123),
-            'foo movement',
-            $this->createSpeedTable(),
-            TerrainCode::DESERT,
-            $this->createDifficultyPercents(50),
-            new ImpassibilityOfTerrainTable()
-        );
-        self::assertInstanceOf(SpeedBonus::class, $currentSpeedBonus);
-        self::assertSame(23 /* round(45 / 2) */ + 123 + (-13 /* desert 50% malus */), $currentSpeedBonus->getValue());
-    }
-
-    /**
-     * @param $expectedMovementType
+     * @param MovementTypeCode $expectedMovementType
      * @param $speedBonusValue
      * @return \Mockery\MockInterface|MovementTypesTable
      */
-    private function createMovementTypesTable($expectedMovementType, $speedBonusValue)
+    private function createMovementTypesTable(MovementTypeCode $expectedMovementType, $speedBonusValue)
     {
         $movementTypesTable = $this->mockery(MovementTypesTable::class);
         $movementTypesTable->shouldReceive('getSpeedBonus')
@@ -80,6 +91,59 @@ class MovementSpeedTest extends TestWithMockery
             ->andReturn($speedBonusValue);
 
         return $movementTypesTable;
+    }
+
+    /**
+     * @param TerrainCode $expectedTerrainCode
+     * @param TerrainDifficultyPercents $expectedTerrainDifficultyPercents
+     * @param $speedMalusValue
+     * @return \Mockery\MockInterface|ImpassibilityOfTerrainTable
+     */
+    private function createImpassibilityOfTerrainTable(
+        TerrainCode $expectedTerrainCode,
+        TerrainDifficultyPercents $expectedTerrainDifficultyPercents,
+        $speedMalusValue
+    )
+    {
+        $impassibilityOfTerrainTable = $this->mockery(ImpassibilityOfTerrainTable::class);
+        $impassibilityOfTerrainTable->shouldReceive('getSpeedMalusOnTerrain')
+            ->with($expectedTerrainCode, $this->type(SpeedTable::class), $expectedTerrainDifficultyPercents)
+            ->andReturn($speedMalus = $this->mockery(SpeedBonus::class));
+        $speedMalus->shouldReceive('getValue')
+            ->andReturn($speedMalusValue);
+
+        return $impassibilityOfTerrainTable;
+    }
+
+    /**
+     * @test
+     */
+    public function I_can_get_current_speed_bonus()
+    {
+        $movementSpeed = new MovementSpeed($this->createSpeed(45));
+        $currentSpeedBonus = $movementSpeed->getCurrentSpeedBonus(
+            $movementTypeCode = $this->createMovementTypeCode('foo movement'),
+            $terrainCode = TerrainCode::getIt(TerrainCode::DESERT),
+            $terrainDifficultyPercents = $this->createDifficultyPercents(50),
+            $this->createTables($movementTypeCode, 123, $terrainCode, $terrainDifficultyPercents, -456)
+        );
+        self::assertInstanceOf(SpeedBonus::class, $currentSpeedBonus);
+        self::assertSame(23 /* 45/2 */ + 123 - 456, $currentSpeedBonus->getValue());
+    }
+
+    /**
+     * @param $value
+     * @return \Mockery\MockInterface|MovementTypeCode
+     */
+    private function createMovementTypeCode($value)
+    {
+        $movementTypeCode = $this->mockery(MovementTypeCode::class);
+        $movementTypeCode->shouldReceive('getValue')
+            ->andReturn($value);
+        $movementTypeCode->shouldReceive('__toString')
+            ->andReturn((string)$value);
+
+        return $movementTypeCode;
     }
 
     /**

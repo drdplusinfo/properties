@@ -6,7 +6,7 @@ use DrdPlus\Codes\RaceCode;
 use DrdPlus\Codes\SubRaceCode;
 use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Derived\Partials\AbstractDerivedProperty;
-use DrdPlus\Tables\Races\RacesTable;
+use DrdPlus\Tables\Tables;
 
 class Toughness extends AbstractDerivedProperty
 {
@@ -16,12 +16,12 @@ class Toughness extends AbstractDerivedProperty
      * @param Strength $strength
      * @param RaceCode $raceCode
      * @param SubRaceCode $subraceCode
-     * @param RacesTable $racesTable
+     * @param Tables $tables
      */
-    public function __construct(Strength $strength, RaceCode $raceCode, SubRaceCode $subraceCode, RacesTable $racesTable)
+    public function __construct(Strength $strength, RaceCode $raceCode, SubRaceCode $subraceCode, Tables $tables)
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        parent::__construct($strength->getValue() + $racesTable->getToughness($raceCode, $subraceCode));
+        parent::__construct($strength->getValue() + $tables->getRacesTable()->getToughness($raceCode, $subraceCode));
     }
 
     /**

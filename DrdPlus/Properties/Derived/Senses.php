@@ -6,7 +6,7 @@ use DrdPlus\Codes\RaceCode;
 use DrdPlus\Codes\SubRaceCode;
 use DrdPlus\Properties\Base\Knack;
 use DrdPlus\Properties\Derived\Partials\AbstractDerivedProperty;
-use DrdPlus\Tables\Races\RacesTable;
+use DrdPlus\Tables\Tables;
 
 class Senses extends AbstractDerivedProperty
 {
@@ -16,12 +16,12 @@ class Senses extends AbstractDerivedProperty
      * @param Knack $knack
      * @param RaceCode $raceCode
      * @param SubRaceCode $subRaceCode
-     * @param RacesTable $racesTable
+     * @param Tables $tables
      */
-    public function __construct(Knack $knack, RaceCode $raceCode, SubRaceCode $subRaceCode, RacesTable $racesTable)
+    public function __construct(Knack $knack, RaceCode $raceCode, SubRaceCode $subRaceCode, Tables $tables)
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        parent::__construct($knack->getValue() + $racesTable->getSenses($raceCode, $subRaceCode));
+        parent::__construct($knack->getValue() + $tables->getRacesTable()->getSenses($raceCode, $subRaceCode));
     }
 
     /**

@@ -5,6 +5,7 @@ use DrdPlus\Codes\PropertyCode;
 use DrdPlus\Tables\Measurements\Distance\Distance;
 use DrdPlus\Tables\Measurements\Distance\DistanceBonus;
 use DrdPlus\Tables\Measurements\Distance\DistanceTable;
+use DrdPlus\Tables\Tables;
 use Granam\Tests\Tools\TestWithMockery;
 
 class HeightTest extends TestWithMockery
@@ -14,15 +15,14 @@ class HeightTest extends TestWithMockery
      */
     public function I_can_use_it()
     {
-        $distanceTable = $this->createDistanceTable();
-        $distanceTable->shouldReceive('toBonus')
-            ->andReturnUsing(function (Distance $distance) {
+        $tables = $this->createTablesWithDistanceTable(
+            function (Distance $distance) {
                 self::assertSame(1.23, $distance->getValue());
 
                 return $this->createDistanceBonus(456);
-            });
-        $height = new Height($this->createHeightInCm(123), $distanceTable);
-
+            }
+        );
+        $height = new Height($this->createHeightInCm(123), $tables);
         self::assertSame(456, $height->getValue());
         self::assertSame('456', (string)$height);
         self::assertSame(PropertyCode::getIt(PropertyCode::HEIGHT), $height->getCode());
@@ -42,11 +42,18 @@ class HeightTest extends TestWithMockery
     }
 
     /**
-     * @return \Mockery\MockInterface|DistanceTable
+     * @param \Closure $toBonus
+     * @return \Mockery\MockInterface|Tables
      */
-    private function createDistanceTable()
+    private function createTablesWithDistanceTable(\Closure $toBonus)
     {
-        return $this->mockery(DistanceTable::class);
+        $tables = $this->mockery(Tables::class);
+        $tables->shouldReceive('getDistanceTable')
+            ->andReturn($distanceTable = $this->mockery(DistanceTable::class));
+        $distanceTable->shouldReceive('toBonus')
+            ->andReturnUsing($toBonus);
+
+        return $tables;
     }
 
     /**

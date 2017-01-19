@@ -10,17 +10,21 @@ use DrdPlus\Properties\Base\Charisma;
 use DrdPlus\Properties\Base\Intelligence;
 use DrdPlus\Properties\Base\Knack;
 use DrdPlus\Tables\Body\CorrectionByHeightTable;
+use DrdPlus\Tables\Tables;
 use DrdPlus\Tests\Properties\Combat\Partials\CombatGameCharacteristicTest;
 
 class FightNumberTest extends CombatGameCharacteristicTest
 {
+    /**
+     * @return FightNumber
+     */
     protected function createSut()
     {
         return new FightNumber(
             ProfessionCode::getIt(ProfessionCode::FIGHTER),
             $this->createBaseProperties(0, 0, 0, 0),
             $height = $this->createHeight(4),
-            $this->createCorrectionByHeightTable($height, 0)
+            $this->createTablesWithCorrectionByHeightTable($height, 0)
         );
     }
 
@@ -86,7 +90,7 @@ class FightNumberTest extends CombatGameCharacteristicTest
     )
     {
         $height = $this->createHeight(123);
-        $correctionByHeightTable = $this->createCorrectionByHeightTable($height, $correction = -5);
+        $correctionByHeightTable = $this->createTablesWithCorrectionByHeightTable($height, $correction = -5);
         $fightNumber = new FightNumber($professionCode, $baseProperties, $height, $correctionByHeightTable);
         self::assertSame($expectedFightNumber + $correction, $fightNumber->getValue(), "Unexpected fight number for {$professionCode}");
         self::assertSame((string)($expectedFightNumber + $correction), (string)$fightNumber);
@@ -131,16 +135,18 @@ class FightNumberTest extends CombatGameCharacteristicTest
     /**
      * @param Height $height
      * @param int $correction
-     * @return \Mockery\MockInterface|CorrectionByHeightTable
+     * @return \Mockery\MockInterface|Tables
      */
-    private function createCorrectionByHeightTable(Height $height, $correction)
+    private function createTablesWithCorrectionByHeightTable(Height $height, $correction)
     {
-        $correctionByHeightTable = $this->mockery(CorrectionByHeightTable::class);
+        $tables = $this->mockery(Tables::class);
+        $tables->shouldReceive('getCorrectionByHeightTable')
+            ->andReturn($correctionByHeightTable = $this->mockery(CorrectionByHeightTable::class));
         $correctionByHeightTable->shouldReceive('getCorrectionByHeight')
             ->with($height)
             ->andReturn($correction);
 
-        return $correctionByHeightTable;
+        return $tables;
     }
 
     /**
@@ -153,7 +159,7 @@ class FightNumberTest extends CombatGameCharacteristicTest
             $this->createProfessionCode('monk'),
             $this->createBaseProperties(0, 0, 0, 0),
             $height = $this->createHeight(0),
-            $this->createCorrectionByHeightTable($height, 0)
+            $this->createTablesWithCorrectionByHeightTable($height, 0)
         );
     }
 

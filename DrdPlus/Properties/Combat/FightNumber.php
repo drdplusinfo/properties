@@ -5,7 +5,7 @@ use DrdPlus\Codes\ProfessionCode;
 use DrdPlus\Properties\Body\Height;
 use DrdPlus\Properties\Combat\Partials\CombatGameCharacteristic;
 use DrdPlus\Calculations\SumAndRound;
-use DrdPlus\Tables\Body\CorrectionByHeightTable;
+use DrdPlus\Tables\Tables;
 use Granam\Tools\ValueDescriber;
 
 /**
@@ -19,18 +19,18 @@ class FightNumber extends CombatGameCharacteristic
      * @param ProfessionCode $professionCode
      * @param BaseProperties $baseProperties
      * @param Height $height
-     * @param CorrectionByHeightTable $correctionByHeightTable
+     * @param Tables $tables
      * @throws \DrdPlus\Properties\Combat\Exceptions\UnknownProfession
      */
     public function __construct(
         ProfessionCode $professionCode,
         BaseProperties $baseProperties,
         Height $height,
-        CorrectionByHeightTable $correctionByHeightTable
+        Tables $tables
     )
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        parent::__construct($this->calculateValue($professionCode, $baseProperties, $height, $correctionByHeightTable));
+        parent::__construct($this->calculateValue($professionCode, $baseProperties, $height, $tables));
     }
 
     /**
@@ -39,7 +39,7 @@ class FightNumber extends CombatGameCharacteristic
      * @param ProfessionCode $professionCode
      * @param BaseProperties $baseProperties
      * @param Height $height
-     * @param CorrectionByHeightTable $correctionByHeightTable
+     * @param Tables $tables
      * @return int
      * @throws \DrdPlus\Properties\Combat\Exceptions\UnknownProfession
      */
@@ -47,11 +47,11 @@ class FightNumber extends CombatGameCharacteristic
         ProfessionCode $professionCode,
         BaseProperties $baseProperties,
         Height $height,
-        CorrectionByHeightTable $correctionByHeightTable
+        Tables $tables
     )
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        $modifierByHeight = $correctionByHeightTable->getCorrectionByHeight($height);
+        $modifierByHeight = $tables->getCorrectionByHeightTable()->getCorrectionByHeight($height);
         switch ($professionCode->getValue()) {
             case ProfessionCode::FIGHTER :
                 return $baseProperties->getAgility()->getValue() + $modifierByHeight;
