@@ -9,123 +9,19 @@ use DrdPlus\Properties\Base\Agility;
 use DrdPlus\Properties\Base\Charisma;
 use DrdPlus\Properties\Base\Intelligence;
 use DrdPlus\Properties\Base\Knack;
+use DrdPlus\Tables\Body\CorrectionByHeightTable;
 use DrdPlus\Tests\Properties\Combat\Partials\CombatGameCharacteristicTest;
 
 class FightNumberTest extends CombatGameCharacteristicTest
 {
     protected function createSut()
     {
-        return new FightNumber(ProfessionCode::getIt(ProfessionCode::FIGHTER), $this->createBaseProperties(0, 0, 0, 0), $this->createHeight(0));
-    }
-
-    /**
-     * @return array|string[]
-     */
-    protected function getExpectedInitialChangeBy()
-    {
-        return [
-            'name' => 'create sut',
-            'with' => ''
-        ];
-    }
-
-    /**
-     * @param ProfessionCode $professionCode
-     * @param BaseProperties $baseProperties
-     * @param Height $height
-     * @param int $expectedFightNumber
-     *
-     * @test
-     * @dataProvider provideProfessionInfo
-     */
-    public function I_can_get_fight_number_for_every_profession(
-        ProfessionCode $professionCode,
-        BaseProperties $baseProperties,
-        Height $height,
-        $expectedFightNumber
-    )
-    {
-        $fightNumber = new FightNumber($professionCode, $baseProperties, $height);
-        self::assertSame($expectedFightNumber, $fightNumber->getValue(), "Unexpected fight number for {$professionCode}");
-        self::assertSame((string)$expectedFightNumber, (string)$fightNumber);
-    }
-
-    public function provideProfessionInfo()
-    {
-        return [
-            [
-                ProfessionCode::getIt(ProfessionCode::FIGHTER),
-                $this->createBaseProperties($agility = 123, 0, 0, 0),
-                $this->createHeight($height = -2),
-                (int)($agility + ceil($height / 3) - 2),
-            ],
-            [
-                ProfessionCode::getIt(ProfessionCode::FIGHTER),
-                $this->createBaseProperties($agility = 456, 0, 0, 0),
-                $this->createHeight($height = 7),
-                (int)($agility + ceil($height / 3) - 2),
-            ],
-            [
-                ProfessionCode::getIt(ProfessionCode::THIEF),
-                $this->createBaseProperties($agility = 123, $knack = 234, 0, 0),
-                $this->createHeight($height = -2),
-                (int)(round(($agility + $knack) / 2) + ceil($height / 3) - 2),
-            ],
-            [
-                ProfessionCode::getIt(ProfessionCode::THIEF),
-                $this->createBaseProperties($agility = 456, $knack = 567, 0, 0),
-                $this->createHeight($height = 7),
-                (int)(round(($agility + $knack) / 2) + ceil($height / 3) - 2),
-            ],
-            [
-                ProfessionCode::getIt(ProfessionCode::RANGER),
-                $this->createBaseProperties($agility = 123, $knack = 234, 0, 0),
-                $this->createHeight($height = -2),
-                (int)(round(($agility + $knack) / 2) + ceil($height / 3) - 2),
-            ],
-            [
-                ProfessionCode::getIt(ProfessionCode::RANGER),
-                $this->createBaseProperties($agility = 456, $knack = 567, 0, 0),
-                $this->createHeight($height = 7),
-                (int)(round(($agility + $knack) / 2) + ceil($height / 3) - 2),
-            ],
-            [
-                ProfessionCode::getIt(ProfessionCode::WIZARD),
-                $this->createBaseProperties($agility = 123, 0, $intelligence = 234, 0),
-                $this->createHeight($height = -2),
-                (int)(round(($agility + $intelligence) / 2) + ceil($height / 3) - 2),
-            ],
-            [
-                ProfessionCode::getIt(ProfessionCode::WIZARD),
-                $this->createBaseProperties($agility = 456, 0, $intelligence = 567, 0),
-                $this->createHeight($height = 7),
-                (int)(round(($agility + $intelligence) / 2) + ceil($height / 3) - 2),
-            ],
-            [
-                ProfessionCode::getIt(ProfessionCode::THEURGIST),
-                $this->createBaseProperties($agility = 123, 0, $intelligence = 234, 0),
-                $this->createHeight($height = -2),
-                (int)(round(($agility + $intelligence) / 2) + ceil($height / 3) - 2),
-            ],
-            [
-                ProfessionCode::getIt(ProfessionCode::THEURGIST),
-                $this->createBaseProperties($agility = 456, 0, $intelligence = 567, 0),
-                $this->createHeight($height = 7),
-                (int)(round(($agility + $intelligence) / 2) + ceil($height / 3) - 2),
-            ],
-            [
-                ProfessionCode::getIt(ProfessionCode::PRIEST),
-                $this->createBaseProperties($agility = 123, 0, 0, $charisma = 234),
-                $this->createHeight($height = -2),
-                (int)(round(($agility + $charisma) / 2) + ceil($height / 3) - 2),
-            ],
-            [
-                ProfessionCode::getIt(ProfessionCode::PRIEST),
-                $this->createBaseProperties($agility = 456, 0, 0, $charisma = 567),
-                $this->createHeight($height = 7),
-                (int)(round(($agility + $charisma) / 2) + ceil($height / 3) - 2),
-            ],
-        ];
+        return new FightNumber(
+            ProfessionCode::getIt(ProfessionCode::FIGHTER),
+            $this->createBaseProperties(0, 0, 0, 0),
+            $height = $this->createHeight(4),
+            $this->createCorrectionByHeightTable($height, 0)
+        );
     }
 
     /**
@@ -133,7 +29,7 @@ class FightNumberTest extends CombatGameCharacteristicTest
      * @param $knack
      * @param $intelligence
      * @param $charisma
-     * @return BaseProperties
+     * @return BaseProperties|\Mockery\MockInterface
      */
     private function createBaseProperties($agility, $knack = 0, $intelligence = 0, $charisma = 0)
     {
@@ -152,15 +48,99 @@ class FightNumberTest extends CombatGameCharacteristicTest
 
     /**
      * @param $value
-     * @return Height
+     * @return Height|\Mockery\MockInterface
      */
     private function createHeight($value)
     {
         $height = \Mockery::mock(Height::class);
         $height->shouldReceive('getValue')
             ->andReturn($value);
+        $height->shouldReceive('__toString')
+            ->andReturn((string)$value);
 
         return $height;
+    }
+
+    /**
+     * @return array|string[]
+     */
+    protected function getExpectedInitialChangeBy()
+    {
+        return [
+            'name' => 'create sut',
+            'with' => '',
+        ];
+    }
+
+    /**
+     * @param ProfessionCode $professionCode
+     * @param BaseProperties $baseProperties
+     * @param int $expectedFightNumber
+     * @test
+     * @dataProvider provideProfessionInfo
+     */
+    public function I_can_get_fight_number_for_every_profession(
+        ProfessionCode $professionCode,
+        BaseProperties $baseProperties,
+        $expectedFightNumber
+    )
+    {
+        $height = $this->createHeight(123);
+        $correctionByHeightTable = $this->createCorrectionByHeightTable($height, $correction = -5);
+        $fightNumber = new FightNumber($professionCode, $baseProperties, $height, $correctionByHeightTable);
+        self::assertSame($expectedFightNumber + $correction, $fightNumber->getValue(), "Unexpected fight number for {$professionCode}");
+        self::assertSame((string)($expectedFightNumber + $correction), (string)$fightNumber);
+    }
+
+    public function provideProfessionInfo()
+    {
+        return [
+            [
+                ProfessionCode::getIt(ProfessionCode::FIGHTER),
+                $this->createBaseProperties($agility = 123, 0, 0, 0),
+                $agility,
+            ],
+            [
+                ProfessionCode::getIt(ProfessionCode::THIEF),
+                $this->createBaseProperties($agility = 456, $knack = 567, 0, 0),
+                (int)round(($agility + $knack) / 2),
+            ],
+            [
+                ProfessionCode::getIt(ProfessionCode::RANGER),
+                $this->createBaseProperties($agility = 123, $knack = 234, 0, 0),
+                (int)round(($agility + $knack) / 2),
+            ],
+            [
+                ProfessionCode::getIt(ProfessionCode::WIZARD),
+                $this->createBaseProperties($agility = 456, 0, $intelligence = 567, 0),
+                (int)round(($agility + $intelligence) / 2),
+            ],
+            [
+                ProfessionCode::getIt(ProfessionCode::THEURGIST),
+                $this->createBaseProperties($agility = 123, 0, $intelligence = 234, 0),
+                (int)round(($agility + $intelligence) / 2),
+            ],
+            [
+                ProfessionCode::getIt(ProfessionCode::PRIEST),
+                $this->createBaseProperties($agility = 456, 0, 0, $charisma = 567),
+                (int)round(($agility + $charisma) / 2),
+            ],
+        ];
+    }
+
+    /**
+     * @param Height $height
+     * @param int $correction
+     * @return \Mockery\MockInterface|CorrectionByHeightTable
+     */
+    private function createCorrectionByHeightTable(Height $height, $correction)
+    {
+        $correctionByHeightTable = $this->mockery(CorrectionByHeightTable::class);
+        $correctionByHeightTable->shouldReceive('getCorrectionByHeight')
+            ->with($height)
+            ->andReturn($correction);
+
+        return $correctionByHeightTable;
     }
 
     /**
@@ -169,11 +149,26 @@ class FightNumberTest extends CombatGameCharacteristicTest
      */
     public function I_can_not_get_fight_for_unknown_profession()
     {
-        $monk = $this->mockery(ProfessionCode::class);
-        $monk->shouldReceive('getValue')
-            ->andReturn('monk');
-        /** @var ProfessionCode $monk */
+        new FightNumber(
+            $this->createProfessionCode('monk'),
+            $this->createBaseProperties(0, 0, 0, 0),
+            $height = $this->createHeight(0),
+            $this->createCorrectionByHeightTable($height, 0)
+        );
+    }
 
-        new FightNumber($monk, $this->createBaseProperties(0, 0, 0, 0), $this->createHeight(0));
+    /**
+     * @param $value
+     * @return ProfessionCode|\Mockery\MockInterface
+     */
+    private function createProfessionCode($value)
+    {
+        $professionCode = $this->mockery(ProfessionCode::class);
+        $professionCode->shouldReceive('getValue')
+            ->andReturn($value);
+        $professionCode->shouldReceive('__toString')
+            ->andReturn((string)$value);
+
+        return $professionCode;
     }
 }
