@@ -29,8 +29,11 @@ class FightNumber extends CombatGameCharacteristic
         Tables $tables
     )
     {
+        $fightNUmberValue = $this->getFightNumberByProfession($professionCode, $baseProperties);
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        parent::__construct($this->calculateValue($professionCode, $baseProperties, $height, $tables));
+        $fightNUmberValue += $tables->getCorrectionByHeightTable()->getCorrectionByHeight($height);
+        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
+        parent::__construct($fightNUmberValue);
     }
 
     /**
@@ -38,34 +41,25 @@ class FightNumber extends CombatGameCharacteristic
      *
      * @param ProfessionCode $professionCode
      * @param BaseProperties $baseProperties
-     * @param Height $height
-     * @param Tables $tables
      * @return int
      * @throws \DrdPlus\Properties\Combat\Exceptions\UnknownProfession
      */
-    private function calculateValue(
+    private function getFightNumberByProfession(
         ProfessionCode $professionCode,
-        BaseProperties $baseProperties,
-        Height $height,
-        Tables $tables
+        BaseProperties $baseProperties
     )
     {
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        $modifierByHeight = $tables->getCorrectionByHeightTable()->getCorrectionByHeight($height);
         switch ($professionCode->getValue()) {
             case ProfessionCode::FIGHTER :
-                return $baseProperties->getAgility()->getValue() + $modifierByHeight;
+                return $baseProperties->getAgility()->getValue();
             case ProfessionCode::THIEF :
             case ProfessionCode::RANGER : // same as a thief
-                return SumAndRound::average($baseProperties->getAgility()->getValue(), $baseProperties->getKnack()->getValue())
-                    + $modifierByHeight;
+                return SumAndRound::average($baseProperties->getAgility()->getValue(), $baseProperties->getKnack()->getValue());
             case ProfessionCode::WIZARD :
             case ProfessionCode::THEURGIST : // same as a wizard
-                return SumAndRound::average($baseProperties->getAgility()->getValue(), $baseProperties->getIntelligence()->getValue())
-                    + $modifierByHeight;
+                return SumAndRound::average($baseProperties->getAgility()->getValue(), $baseProperties->getIntelligence()->getValue());
             case ProfessionCode::PRIEST :
-                return SumAndRound::average($baseProperties->getAgility()->getValue(), $baseProperties->getCharisma()->getValue())
-                    + $modifierByHeight;
+                return SumAndRound::average($baseProperties->getAgility()->getValue(), $baseProperties->getCharisma()->getValue());
             default :
                 throw new Exceptions\UnknownProfession(
                     'Unknown profession of code ' . ValueDescriber::describe($professionCode->getValue())
