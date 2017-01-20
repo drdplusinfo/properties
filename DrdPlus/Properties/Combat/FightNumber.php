@@ -29,11 +29,11 @@ class FightNumber extends CombatGameCharacteristic
         Tables $tables
     )
     {
-        $fightNUmberValue = $this->getFightNumberByProfession($professionCode, $baseProperties);
+        $fightNumberValue = $this->getFightNumberByProfession($professionCode, $baseProperties);
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        $fightNUmberValue += $tables->getCorrectionByHeightTable()->getCorrectionByHeight($height);
+        $fightNumberValue += $tables->getCorrectionByHeightTable()->getCorrectionByHeight($height);
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        parent::__construct($fightNUmberValue);
+        parent::__construct($fightNumberValue);
     }
 
     /**
@@ -44,10 +44,7 @@ class FightNumber extends CombatGameCharacteristic
      * @return int
      * @throws \DrdPlus\Properties\Combat\Exceptions\UnknownProfession
      */
-    private function getFightNumberByProfession(
-        ProfessionCode $professionCode,
-        BaseProperties $baseProperties
-    )
+    private function getFightNumberByProfession(ProfessionCode $professionCode, BaseProperties $baseProperties)
     {
         switch ($professionCode->getValue()) {
             case ProfessionCode::FIGHTER :
