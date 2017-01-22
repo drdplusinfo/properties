@@ -1,7 +1,7 @@
 <?php
 namespace DrdPlus\Tests\Properties\Base;
 
-use DrdPlus\Codes\PropertyCode;
+use DrdPlus\Codes\Properties\PropertyCode;
 use DrdPlus\Properties\Base\Agility;
 use DrdPlus\Properties\Base\BasePropertiesFactory;
 use DrdPlus\Properties\Base\Charisma;

@@ -1,7 +1,7 @@
 <?php
 namespace DrdPlus\Tests\Properties;
 
-use DrdPlus\Codes\PropertyCode;
+use DrdPlus\Codes\Properties\PropertyCode;
 use DrdPlus\Properties\Native\NativeProperty;
 use DrdPlus\Properties\Property;
 use Granam\Tests\Tools\TestWithMockery;

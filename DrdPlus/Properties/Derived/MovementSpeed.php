@@ -2,7 +2,7 @@
 namespace DrdPlus\Properties\Derived;
 
 use DrdPlus\Codes\Environment\TerrainCode;
-use DrdPlus\Codes\PropertyCode;
+use DrdPlus\Codes\Properties\PropertyCode;
 use DrdPlus\Codes\Transport\MovementTypeCode;
 use DrdPlus\Properties\Derived\Partials\AbstractDerivedProperty;
 use DrdPlus\Tables\Environments\TerrainDifficultyPercents;

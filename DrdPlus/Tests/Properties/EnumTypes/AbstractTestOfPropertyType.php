@@ -4,7 +4,7 @@ namespace DrdPlus\Tests\Properties\EnumTypes;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 use Doctrineum\Tests\SelfRegisteringType\AbstractSelfRegisteringTypeTest;
-use DrdPlus\Codes\PropertyCode;
+use DrdPlus\Codes\Properties\PropertyCode;
 use DrdPlus\Properties\Property;
 
 abstract class AbstractTestOfPropertyType extends AbstractSelfRegisteringTypeTest

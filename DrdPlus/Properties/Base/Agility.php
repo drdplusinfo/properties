@@ -1,7 +1,7 @@
 <?php
 namespace DrdPlus\Properties\Base;
 
-use DrdPlus\Codes\PropertyCode;
+use DrdPlus\Codes\Properties\PropertyCode;
 use DrdPlus\Properties\Partials\AbstractIntegerProperty;
 use Granam\Integer\IntegerInterface;
 

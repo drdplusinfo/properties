@@ -1,7 +1,7 @@
 <?php
 namespace DrdPlus\Tests\Properties\RemarkableSenses;
 
-use DrdPlus\Codes\PropertyCode;
+use DrdPlus\Codes\Properties\PropertyCode;
 use DrdPlus\Properties\RemarkableSenses\EnumTypes\RemarkableSenseType;
 use DrdPlus\Properties\RemarkableSenses\RemarkableSenseProperty;
 use DrdPlus\Tests\Properties\AbstractStoredPropertyTest;

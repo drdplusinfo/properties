@@ -3,7 +3,7 @@ namespace DrdPlus\Tests\Properties\EnumTypes;
 
 use Doctrine\DBAL\Types\Type;
 use Doctrineum\Scalar\ScalarEnumType;
-use DrdPlus\Codes\PropertyCode;
+use DrdPlus\Codes\Properties\PropertyCode;
 use DrdPlus\Properties\EnumTypes\PropertiesEnumRegistrar;
 use DrdPlus\Properties\RemarkableSenses\EnumTypes\RemarkableSenseType;
 use DrdPlus\Properties\RemarkableSenses\Hearing;

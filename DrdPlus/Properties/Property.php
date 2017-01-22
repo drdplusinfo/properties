@@ -1,7 +1,7 @@
 <?php
 namespace DrdPlus\Properties;
 
-use DrdPlus\Codes\PropertyCode;
+use DrdPlus\Codes\Properties\PropertyCode;
 use Granam\Scalar\ScalarInterface;
 
 interface Property extends ScalarInterface

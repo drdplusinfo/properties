@@ -1,7 +1,7 @@
 <?php
 namespace DrdPlus\Properties\Native;
 
-use DrdPlus\Codes\PropertyCode;
+use DrdPlus\Codes\Properties\PropertyCode;
 
 class Infravision extends NativeProperty
 {

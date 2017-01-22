@@ -1,7 +1,7 @@
 <?php
 namespace DrdPlus\Tests\Properties\Derived;
 
-use DrdPlus\Codes\PropertyCode;
+use DrdPlus\Codes\Properties\PropertyCode;
 use DrdPlus\Properties\Base\Intelligence;
 use DrdPlus\Properties\Base\Charisma;
 use DrdPlus\Properties\Base\Will;

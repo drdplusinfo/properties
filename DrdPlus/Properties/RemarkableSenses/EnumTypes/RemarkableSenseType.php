@@ -2,7 +2,7 @@
 namespace DrdPlus\Properties\RemarkableSenses\EnumTypes;
 
 use Doctrineum\Scalar\ScalarEnumType;
-use DrdPlus\Codes\PropertyCode;
+use DrdPlus\Codes\Properties\PropertyCode;
 use DrdPlus\Properties\RemarkableSenses\Hearing;
 use DrdPlus\Properties\RemarkableSenses\Sight;
 use DrdPlus\Properties\RemarkableSenses\Smell;

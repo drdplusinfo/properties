@@ -2,7 +2,7 @@
 namespace DrdPlus\Properties\Restrictions\EnumTypes;
 
 use Doctrineum\Boolean\BooleanEnumType;
-use DrdPlus\Codes\PropertyCode;
+use DrdPlus\Codes\Properties\PropertyCode;
 
 class RequiresDmAgreementType extends BooleanEnumType
 {

@@ -2,7 +2,7 @@
 namespace DrdPlus\Properties\Restrictions;
 
 use Doctrineum\Boolean\BooleanEnum;
-use DrdPlus\Codes\PropertyCode;
+use DrdPlus\Codes\Properties\PropertyCode;
 use DrdPlus\Properties\Partials\WithHistoryTrait;
 use Granam\Boolean\BooleanInterface;
 
