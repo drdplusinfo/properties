@@ -3,9 +3,9 @@ namespace DrdPlus\Tests\Properties\Combat;
 
 use DrdPlus\Properties\Combat\Shooting;
 use DrdPlus\Properties\Base\Knack;
-use DrdPlus\Tests\Properties\Combat\Partials\PositiveNumberCombatGameCharacteristicsTest;
+use DrdPlus\Tests\Properties\Combat\Partials\PositiveNumberCombatCharacteristicsTest;
 
-class ShootingTest extends PositiveNumberCombatGameCharacteristicsTest
+class ShootingTest extends PositiveNumberCombatCharacteristicsTest
 {
     /**
      * @return Shooting

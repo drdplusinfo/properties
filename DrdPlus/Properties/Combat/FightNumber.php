@@ -3,7 +3,7 @@ namespace DrdPlus\Properties\Combat;
 
 use DrdPlus\Codes\ProfessionCode;
 use DrdPlus\Properties\Body\Height;
-use DrdPlus\Properties\Combat\Partials\CombatGameCharacteristic;
+use DrdPlus\Properties\Combat\Partials\CombatCharacteristic;
 use DrdPlus\Calculations\SumAndRound;
 use DrdPlus\Tables\Tables;
 use Granam\Tools\ValueDescriber;
@@ -12,7 +12,7 @@ use Granam\Tools\ValueDescriber;
  * @method FightNumber add(int | IntegerInterface $value)
  * @method FightNumber sub(int | IntegerInterface $value)
  */
-class FightNumber extends CombatGameCharacteristic
+class FightNumber extends CombatCharacteristic
 {
 
     /**

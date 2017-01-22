@@ -2,14 +2,14 @@
 namespace DrdPlus\Properties\Combat;
 
 use DrdPlus\Properties\Base\Agility;
-use DrdPlus\Properties\Combat\Partials\CombatGameCharacteristic;
+use DrdPlus\Properties\Combat\Partials\CombatCharacteristic;
 use DrdPlus\Calculations\SumAndRound;
 
 /**
  * @method DefenseNumber add(int | IntegerInterface $value)
  * @method DefenseNumber sub(int | IntegerInterface $value)
  */
-class DefenseNumber extends CombatGameCharacteristic
+class DefenseNumber extends CombatCharacteristic
 {
 
     /**

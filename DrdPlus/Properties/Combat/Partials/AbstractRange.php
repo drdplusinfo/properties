@@ -6,7 +6,7 @@ use DrdPlus\Tables\Tables;
 use Granam\Integer\PositiveInteger;
 use Granam\Integer\Tools\ToInteger;
 
-abstract class AbstractRange extends CombatGameCharacteristic implements PositiveInteger
+abstract class AbstractRange extends CombatCharacteristic implements PositiveInteger
 {
     /**
      * @param float|int|string $value

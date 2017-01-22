@@ -3,7 +3,7 @@ namespace DrdPlus\Tests\Properties\Combat;
 
 use DrdPlus\Properties\Combat\EncounterRange;
 use DrdPlus\Properties\Combat\MaximalRange;
-use DrdPlus\Properties\Combat\Partials\CombatGameCharacteristic;
+use DrdPlus\Properties\Combat\Partials\CombatCharacteristic;
 use DrdPlus\Tests\Properties\Combat\Partials\AbstractRangeTest;
 
 class MaximalRangeTest extends AbstractRangeTest
@@ -37,7 +37,7 @@ class MaximalRangeTest extends AbstractRangeTest
     {
         $maximalRange = MaximalRange::createForMeleeWeapon($this->createEncounterRange(123));
         self::assertInstanceOf(MaximalRange::class, $maximalRange);
-        self::assertInstanceOf(CombatGameCharacteristic::class, $maximalRange);
+        self::assertInstanceOf(CombatCharacteristic::class, $maximalRange);
         self::assertSame(123, $maximalRange->getValue(), 'Value should be without a change');
     }
 
@@ -48,7 +48,7 @@ class MaximalRangeTest extends AbstractRangeTest
     {
         $maximalRange = MaximalRange::createForRangedWeapon($this->createEncounterRange(123));
         self::assertInstanceOf(MaximalRange::class, $maximalRange);
-        self::assertInstanceOf(CombatGameCharacteristic::class, $maximalRange);
+        self::assertInstanceOf(CombatCharacteristic::class, $maximalRange);
         self::assertSame(135, $maximalRange->getValue(), 'Value should be increased by twelve');
     }
 

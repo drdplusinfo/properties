@@ -7,7 +7,7 @@ use Granam\Integer\Tools\ToInteger;
 use Granam\Strict\Object\StrictObject;
 
 /** @noinspection SingletonFactoryPatternViolationInspection */
-abstract class CombatGameCharacteristic extends StrictObject implements IntegerInterface
+abstract class CombatCharacteristic extends StrictObject implements IntegerInterface
 {
     use WithHistoryTrait;
 
@@ -55,8 +55,8 @@ abstract class CombatGameCharacteristic extends StrictObject implements IntegerI
     }
 
     /**
-     * @param int|CombatGameCharacteristic $value
-     * @return CombatGameCharacteristic
+     * @param int|CombatCharacteristic $value
+     * @return CombatCharacteristic
      * @throws \Granam\Integer\Tools\Exceptions\WrongParameterType
      * @throws \Granam\Integer\Tools\Exceptions\ValueLostOnCast
      */
@@ -70,8 +70,8 @@ abstract class CombatGameCharacteristic extends StrictObject implements IntegerI
     }
 
     /**
-     * @param int|CombatGameCharacteristic $value
-     * @return CombatGameCharacteristic
+     * @param int|CombatCharacteristic $value
+     * @return CombatCharacteristic
      * @throws \Granam\Integer\Tools\Exceptions\WrongParameterType
      * @throws \Granam\Integer\Tools\Exceptions\ValueLostOnCast
      */

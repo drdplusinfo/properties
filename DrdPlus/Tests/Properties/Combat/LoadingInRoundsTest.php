@@ -2,9 +2,9 @@
 namespace DrdPlus\Tests\Properties\Combat;
 
 use DrdPlus\Properties\Combat\LoadingInRounds;
-use DrdPlus\Tests\Properties\Combat\Partials\PositiveNumberCombatGameCharacteristicsTest;
+use DrdPlus\Tests\Properties\Combat\Partials\PositiveNumberCombatCharacteristicsTest;
 
-class LoadingInRoundsTest extends PositiveNumberCombatGameCharacteristicsTest
+class LoadingInRoundsTest extends PositiveNumberCombatCharacteristicsTest
 {
     /**
      * @return LoadingInRounds

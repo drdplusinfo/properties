@@ -1,11 +1,11 @@
 <?php
 namespace DrdPlus\Tests\Properties\Combat\Partials;
 
-use DrdPlus\Properties\Combat\Partials\CombatGameCharacteristic;
+use DrdPlus\Properties\Combat\Partials\CombatCharacteristic;
 use Granam\Integer\IntegerInterface;
 use Granam\Tests\Tools\TestWithMockery;
 
-abstract class CombatGameCharacteristicTest extends TestWithMockery
+abstract class CombatCharacteristicTest extends TestWithMockery
 {
     /**
      * @test
@@ -18,7 +18,7 @@ abstract class CombatGameCharacteristicTest extends TestWithMockery
     }
 
     /**
-     * @return CombatGameCharacteristic
+     * @return CombatCharacteristic
      */
     abstract protected function createSut();
 
@@ -27,18 +27,18 @@ abstract class CombatGameCharacteristicTest extends TestWithMockery
      */
     public function I_can_add_value()
     {
-        $combatGameCharacteristic = $this->createSut();
+        $combatCharacteristic = $this->createSut();
         $expectedPropertyHistory = [
             [
                 'changeBy' => $this->getExpectedInitialChangeBy(),
-                'result' => $combatGameCharacteristic->getValue(),
+                'result' => $combatCharacteristic->getValue(),
             ],
         ];
-        self::assertEquals($expectedPropertyHistory, $combatGameCharacteristic->getHistory());
+        self::assertEquals($expectedPropertyHistory, $combatCharacteristic->getHistory());
 
-        $increased = $combatGameCharacteristic->add(456);
-        self::assertNotEquals($combatGameCharacteristic, $increased);
-        self::assertSame($combatGameCharacteristic->getValue() + 456, $increased->getValue());
+        $increased = $combatCharacteristic->add(456);
+        self::assertNotEquals($combatCharacteristic, $increased);
+        self::assertSame($combatCharacteristic->getValue() + 456, $increased->getValue());
         $expectedPropertyHistory[] = [
             'changeBy' => ['name' => 'i can add value', 'with' => ''],
             'result' => $increased->getValue(),
@@ -67,18 +67,18 @@ abstract class CombatGameCharacteristicTest extends TestWithMockery
      */
     public function I_can_subtract_value()
     {
-        $combatGameCharacteristic = $this->createSut();
+        $combatCharacteristic = $this->createSut();
         $expectedPropertyHistory = [
             [
                 'changeBy' => $this->getExpectedInitialChangeBy(),
-                'result' => $combatGameCharacteristic->getValue(),
+                'result' => $combatCharacteristic->getValue(),
             ],
         ];
-        self::assertEquals($expectedPropertyHistory, $combatGameCharacteristic->getHistory());
+        self::assertEquals($expectedPropertyHistory, $combatCharacteristic->getHistory());
 
-        $decreased = $combatGameCharacteristic->sub(1);
-        self::assertNotEquals($combatGameCharacteristic, $decreased);
-        self::assertSame($combatGameCharacteristic->getValue() - 1, $decreased->getValue());
+        $decreased = $combatCharacteristic->sub(1);
+        self::assertNotEquals($combatCharacteristic, $decreased);
+        self::assertSame($combatCharacteristic->getValue() - 1, $decreased->getValue());
         $expectedDecreasedHistory = $expectedPropertyHistory;
         $expectedDecreasedHistory[] = [
             'changeBy' => ['name' => 'i can subtract value', 'with' => ''],

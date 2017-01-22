@@ -3,9 +3,9 @@ namespace DrdPlus\Tests\Properties\Combat;
 
 use DrdPlus\Properties\Combat\Attack;
 use DrdPlus\Properties\Base\Agility;
-use DrdPlus\Tests\Properties\Combat\Partials\CombatGameCharacteristicTest;
+use DrdPlus\Tests\Properties\Combat\Partials\CombatCharacteristicTest;
 
-class AttackTest extends CombatGameCharacteristicTest
+class AttackTest extends CombatCharacteristicTest
 {
     protected function createSut()
     {

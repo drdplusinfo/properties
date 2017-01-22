@@ -3,7 +3,7 @@ namespace DrdPlus\Properties\Combat\Partials;
 
 use Granam\Integer\Tools\ToInteger;
 
-abstract class PositiveNumberCombatGameCharacteristics extends CombatGameCharacteristic
+abstract class PositiveNumberCombatCharacteristics extends CombatCharacteristic
 {
     /**
      * @param $value

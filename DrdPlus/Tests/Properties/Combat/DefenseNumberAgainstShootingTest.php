@@ -4,9 +4,9 @@ namespace DrdPlus\Tests\Properties\Combat;
 use DrdPlus\Properties\Combat\DefenseNumber;
 use DrdPlus\Properties\Combat\DefenseNumberAgainstShooting;
 use DrdPlus\Properties\Body\Size;
-use DrdPlus\Tests\Properties\Combat\Partials\CombatGameCharacteristicTest;
+use DrdPlus\Tests\Properties\Combat\Partials\CombatCharacteristicTest;
 
-class DefenseNumberAgainstShootingTest extends CombatGameCharacteristicTest
+class DefenseNumberAgainstShootingTest extends CombatCharacteristicTest
 {
     protected function createSut()
     {

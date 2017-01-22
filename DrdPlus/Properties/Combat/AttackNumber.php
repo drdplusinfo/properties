@@ -1,13 +1,13 @@
 <?php
 namespace DrdPlus\Properties\Combat;
 
-use DrdPlus\Properties\Combat\Partials\CombatGameCharacteristic;
+use DrdPlus\Properties\Combat\Partials\CombatCharacteristic;
 
 /**
  * @method AttackNumber add(int | IntegerInterface $value)
  * @method AttackNumber sub(int | IntegerInterface $value)
  */
-class AttackNumber extends CombatGameCharacteristic
+class AttackNumber extends CombatCharacteristic
 {
     /**
      * @param Attack $attack

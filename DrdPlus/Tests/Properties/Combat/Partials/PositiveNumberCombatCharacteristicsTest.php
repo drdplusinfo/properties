@@ -1,7 +1,7 @@
 <?php
 namespace DrdPlus\Tests\Properties\Combat\Partials;
 
-abstract class PositiveNumberCombatGameCharacteristicsTest extends CombatGameCharacteristicTest
+abstract class PositiveNumberCombatCharacteristicsTest extends CombatCharacteristicTest
 {
     /**
      * @test

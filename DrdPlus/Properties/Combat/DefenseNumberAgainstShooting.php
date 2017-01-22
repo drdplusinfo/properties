@@ -2,14 +2,14 @@
 namespace DrdPlus\Properties\Combat;
 
 use DrdPlus\Properties\Body\Size;
-use DrdPlus\Properties\Combat\Partials\CombatGameCharacteristic;
+use DrdPlus\Properties\Combat\Partials\CombatCharacteristic;
 use DrdPlus\Calculations\SumAndRound;
 
 /**
  * @method DefenseNumberAgainstShooting add(int | IntegerInterface $value)
  * @method DefenseNumberAgainstShooting sub(int | IntegerInterface $value)
  */
-class DefenseNumberAgainstShooting extends CombatGameCharacteristic
+class DefenseNumberAgainstShooting extends CombatCharacteristic
 {
     /**
      * Despite rules this library deducts half of size from defense number, instead of adding to attack number,

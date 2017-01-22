@@ -3,11 +3,11 @@ namespace DrdPlus\Tests\Properties\Combat;
 
 use DrdPlus\Properties\Combat\Attack;
 use DrdPlus\Properties\Combat\AttackNumber;
-use DrdPlus\Properties\Combat\Partials\CombatGameCharacteristic;
+use DrdPlus\Properties\Combat\Partials\CombatCharacteristic;
 use DrdPlus\Properties\Combat\Shooting;
-use DrdPlus\Tests\Properties\Combat\Partials\CombatGameCharacteristicTest;
+use DrdPlus\Tests\Properties\Combat\Partials\CombatCharacteristicTest;
 
-class AttackNumberTest extends CombatGameCharacteristicTest
+class AttackNumberTest extends CombatCharacteristicTest
 {
     protected function createSut()
     {
@@ -42,7 +42,7 @@ class AttackNumberTest extends CombatGameCharacteristicTest
     {
         $attackNumber = AttackNumber::createFromAttack($this->createAttack(567));
         self::assertInstanceOf(AttackNumber::class, $attackNumber);
-        self::assertInstanceOf(CombatGameCharacteristic::class, $attackNumber);
+        self::assertInstanceOf(CombatCharacteristic::class, $attackNumber);
         self::assertSame(567, $attackNumber->getValue());
     }
 
@@ -53,7 +53,7 @@ class AttackNumberTest extends CombatGameCharacteristicTest
     {
         $attackNumber = AttackNumber::createFromShooting($this->createShooting(890));
         self::assertInstanceOf(AttackNumber::class, $attackNumber);
-        self::assertInstanceOf(CombatGameCharacteristic::class, $attackNumber);
+        self::assertInstanceOf(CombatCharacteristic::class, $attackNumber);
         self::assertSame(890, $attackNumber->getValue());
     }
 

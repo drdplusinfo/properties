@@ -11,9 +11,9 @@ use DrdPlus\Properties\Base\Intelligence;
 use DrdPlus\Properties\Base\Knack;
 use DrdPlus\Tables\Body\CorrectionByHeightTable;
 use DrdPlus\Tables\Tables;
-use DrdPlus\Tests\Properties\Combat\Partials\CombatGameCharacteristicTest;
+use DrdPlus\Tests\Properties\Combat\Partials\CombatCharacteristicTest;
 
-class FightNumberTest extends CombatGameCharacteristicTest
+class FightNumberTest extends CombatCharacteristicTest
 {
     /**
      * @return FightNumber
