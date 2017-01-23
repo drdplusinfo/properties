@@ -10,7 +10,6 @@ class FatigueBoundary extends AbstractDerivedProperty
 {
     const FATIGUE_BOUNDARY = PropertyCode::FATIGUE_BOUNDARY;
 
-    // TODO PPH page 117 left column little catty Mrrr and its less-than-one fatigue boundary...
     /**
      * @param Endurance $endurance
      * @param Tables $tables
