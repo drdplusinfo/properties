@@ -29,11 +29,11 @@ class Fight extends CombatCharacteristic
         Tables $tables
     )
     {
-        $fightNumberValue = $this->getFightNumberByProfession($professionCode, $baseProperties);
+        $fightValue = $this->getFightNumberByProfession($professionCode, $baseProperties);
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        $fightNumberValue += $tables->getCorrectionByHeightTable()->getCorrectionByHeight($height);
+        $fightValue += $tables->getCorrectionByHeightTable()->getCorrectionByHeight($height);
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        parent::__construct($fightNumberValue);
+        parent::__construct($fightValue);
     }
 
     /**
