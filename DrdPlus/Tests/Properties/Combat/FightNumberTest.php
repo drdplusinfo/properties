@@ -1,180 +1,75 @@
 <?php
 namespace DrdPlus\Tests\Properties\Combat;
 
-use DrdPlus\Codes\ProfessionCode;
-use DrdPlus\Properties\Body\Height;
-use DrdPlus\Properties\Combat\BaseProperties;
+use DrdPlus\Codes\Armaments\WeaponlikeCode;
+use DrdPlus\Properties\Combat\Fight;
 use DrdPlus\Properties\Combat\FightNumber;
-use DrdPlus\Properties\Base\Agility;
-use DrdPlus\Properties\Base\Charisma;
-use DrdPlus\Properties\Base\Intelligence;
-use DrdPlus\Properties\Base\Knack;
-use DrdPlus\Tables\Body\CorrectionByHeightTable;
+use DrdPlus\Tables\Armaments\Armourer;
 use DrdPlus\Tables\Tables;
 use DrdPlus\Tests\Properties\Combat\Partials\CombatCharacteristicTest;
 
 class FightNumberTest extends CombatCharacteristicTest
 {
-    /**
-     * @return FightNumber
-     */
     protected function createSut()
     {
         return new FightNumber(
-            ProfessionCode::getIt(ProfessionCode::FIGHTER),
-            $this->createBaseProperties(0, 0, 0, 0),
-            $height = $this->createHeight(4),
-            $this->createTablesWithCorrectionByHeightTable($height, 0)
+            $this->createFight(123),
+            $weaponlikeCode = $this->createWeaponlikeCode(),
+            $this->createTables($weaponlikeCode, 456)
         );
     }
 
     /**
-     * @param $agility
-     * @param $knack
-     * @param $intelligence
-     * @param $charisma
-     * @return BaseProperties|\Mockery\MockInterface
-     */
-    private function createBaseProperties($agility, $knack = 0, $intelligence = 0, $charisma = 0)
-    {
-        $properties = \Mockery::mock(BaseProperties::class);
-        $properties->shouldReceive('getAgility')
-            ->andReturn(Agility::getIt($agility));
-        $properties->shouldReceive('getKnack')
-            ->andReturn(Knack::getIt($knack));
-        $properties->shouldReceive('getIntelligence')
-            ->andReturn(Intelligence::getIt($intelligence));
-        $properties->shouldReceive('getCharisma')
-            ->andReturn(Charisma::getIt($charisma));
-
-        return $properties;
-    }
-
-    /**
      * @param $value
-     * @return Height|\Mockery\MockInterface
+     * @return \Mockery\MockInterface|Fight
      */
-    private function createHeight($value)
+    private function createFight($value)
     {
-        $height = \Mockery::mock(Height::class);
-        $height->shouldReceive('getValue')
+        $fight = $this->mockery(Fight::class);
+        $fight->shouldReceive('getValue')
             ->andReturn($value);
-        $height->shouldReceive('__toString')
+        $fight->shouldReceive('__toString')
             ->andReturn((string)$value);
 
-        return $height;
+        return $fight;
     }
 
     /**
-     * @return array|string[]
+     * @return \Mockery\MockInterface|WeaponlikeCode
      */
-    protected function getExpectedInitialChangeBy()
+    private function createWeaponlikeCode()
     {
-        return [
-            'name' => 'create sut',
-            'with' => '',
-        ];
+        return $this->mockery(WeaponlikeCode::class);
     }
 
     /**
-     * @param ProfessionCode $professionCode
-     * @param BaseProperties $baseProperties
-     * @param int $expectedFightNumber
-     * @test
-     * @dataProvider provideProfessionInfo
-     */
-    public function I_can_get_fight_number_for_every_profession(
-        ProfessionCode $professionCode,
-        BaseProperties $baseProperties,
-        $expectedFightNumber
-    )
-    {
-        $height = $this->createHeight(123);
-        $correctionByHeightTable = $this->createTablesWithCorrectionByHeightTable($height, $correction = -5);
-        $fightNumber = new FightNumber($professionCode, $baseProperties, $height, $correctionByHeightTable);
-        self::assertSame($expectedFightNumber + $correction, $fightNumber->getValue(), "Unexpected fight number for {$professionCode}");
-        self::assertSame((string)($expectedFightNumber + $correction), (string)$fightNumber);
-    }
-
-    public function provideProfessionInfo()
-    {
-        return [
-            [
-                ProfessionCode::getIt(ProfessionCode::FIGHTER),
-                $this->createBaseProperties($agility = 123, 0, 0, 0),
-                $agility,
-            ],
-            [
-                ProfessionCode::getIt(ProfessionCode::THIEF),
-                $this->createBaseProperties($agility = 456, $knack = 567, 0, 0),
-                (int)round(($agility + $knack) / 2),
-            ],
-            [
-                ProfessionCode::getIt(ProfessionCode::RANGER),
-                $this->createBaseProperties($agility = 123, $knack = 234, 0, 0),
-                (int)round(($agility + $knack) / 2),
-            ],
-            [
-                ProfessionCode::getIt(ProfessionCode::WIZARD),
-                $this->createBaseProperties($agility = 456, 0, $intelligence = 567, 0),
-                (int)round(($agility + $intelligence) / 2),
-            ],
-            [
-                ProfessionCode::getIt(ProfessionCode::THEURGIST),
-                $this->createBaseProperties($agility = 123, 0, $intelligence = 234, 0),
-                (int)round(($agility + $intelligence) / 2),
-            ],
-            [
-                ProfessionCode::getIt(ProfessionCode::PRIEST),
-                $this->createBaseProperties($agility = 456, 0, 0, $charisma = 567),
-                (int)round(($agility + $charisma) / 2),
-            ],
-        ];
-    }
-
-    /**
-     * @param Height $height
-     * @param int $correction
+     * @param WeaponlikeCode $weaponlikeCode
+     * @param int $length
      * @return \Mockery\MockInterface|Tables
      */
-    private function createTablesWithCorrectionByHeightTable(Height $height, $correction)
+    private function createTables(WeaponlikeCode $weaponlikeCode, $length)
     {
         $tables = $this->mockery(Tables::class);
-        $tables->shouldReceive('getCorrectionByHeightTable')
-            ->andReturn($correctionByHeightTable = $this->mockery(CorrectionByHeightTable::class));
-        $correctionByHeightTable->shouldReceive('getCorrectionByHeight')
-            ->with($height)
-            ->andReturn($correction);
+        $tables->shouldReceive('getArmourer')
+            ->andReturn($armourer = $this->mockery(Armourer::class));
+        $armourer->shouldReceive('getLengthOfWeaponOrShield')
+            ->with($weaponlikeCode)
+            ->andReturn($length);
 
         return $tables;
     }
 
     /**
      * @test
-     * @expectedException \DrdPlus\Properties\Combat\Exceptions\UnknownProfession
      */
-    public function I_can_not_get_fight_for_unknown_profession()
+    public function I_can_get_expected_fight_number()
     {
-        new FightNumber(
-            $this->createProfessionCode('monk'),
-            $this->createBaseProperties(0, 0, 0, 0),
-            $height = $this->createHeight(0),
-            $this->createTablesWithCorrectionByHeightTable($height, 0)
+        $fightNumber = new FightNumber(
+            $this->createFight(123),
+            $weaponlikeCode = $this->createWeaponlikeCode(),
+            $this->createTables($weaponlikeCode, 456)
         );
+        self::assertSame(579, $fightNumber->getValue());
     }
 
-    /**
-     * @param $value
-     * @return ProfessionCode|\Mockery\MockInterface
-     */
-    private function createProfessionCode($value)
-    {
-        $professionCode = $this->mockery(ProfessionCode::class);
-        $professionCode->shouldReceive('getValue')
-            ->andReturn($value);
-        $professionCode->shouldReceive('__toString')
-            ->andReturn((string)$value);
-
-        return $professionCode;
-    }
 }

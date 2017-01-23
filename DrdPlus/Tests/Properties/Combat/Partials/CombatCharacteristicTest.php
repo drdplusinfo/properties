@@ -102,12 +102,13 @@ abstract class CombatCharacteristicTest extends TestWithMockery
     public function Has_modifying_methods_return_value_annotated()
     {
         $reflectionClass = new \ReflectionClass(self::getSutClass());
-        self::assertRegExp(<<<'ANNOTATION'
-/\*\*
- \* @method {$classBasename} add\(int | IntegerInterface \$value\)
- \* @method {$classBasename} sub\(int | IntegerInterface \$value\)
- \*/
+        $classBasename = preg_replace('~^.+[\\\](\w+)$~', '$1', self::getSutClass());
+        self::assertSame(<<<ANNOTATION
+/**
+ * @method {$classBasename} add(int | IntegerInterface \$value)
+ * @method {$classBasename} sub(int | IntegerInterface \$value)
+ */
 ANNOTATION
-            , $reflectionClass->getDocComment());
+            , (string)$reflectionClass->getDocComment());
     }
 }
