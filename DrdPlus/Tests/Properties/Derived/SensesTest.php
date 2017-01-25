@@ -13,12 +13,12 @@ use DrdPlus\Tests\Properties\Derived\Partials\AbstractDerivedPropertyTest;
 class SensesTest extends AbstractDerivedPropertyTest
 {
     /**
-     * #@test
+     * @test
      * @return Senses
      */
-    public function I_can_get_property_easily()
+    public function I_can_use_it()
     {
-        $senses = new Senses(
+        $senses = Senses::getIt(
             $this->createKnack($knackValue = 123),
             $raceCode = $this->createRaceCode('foo'),
             $subraceCode = $this->createSubRaceCode('bar'),

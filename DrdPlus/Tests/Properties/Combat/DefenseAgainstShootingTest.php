@@ -1,36 +1,25 @@
 <?php
 namespace DrdPlus\Tests\Properties\Combat;
 
-use DrdPlus\Properties\Combat\DefenseNumber;
-use DrdPlus\Properties\Combat\DefenseNumberAgainstShooting;
+use DrdPlus\Properties\Combat\Defense;
+use DrdPlus\Properties\Combat\DefenseAgainstShooting;
 use DrdPlus\Properties\Body\Size;
-use DrdPlus\Tests\Properties\Combat\Partials\CombatCharacteristicTest;
+use DrdPlus\Tests\Properties\Combat\Partials\CharacteristicForGameTest;
 
-class DefenseNumberAgainstShootingTest extends CombatCharacteristicTest
+class DefenseAgainstShootingTest extends CharacteristicForGameTest
 {
     protected function createSut()
     {
-        return new DefenseNumberAgainstShooting($this->createDefense(123), $this->createSize(1));
-    }
-
-    /**
-     * @return array|string[]
-     */
-    protected function getExpectedInitialChangeBy()
-    {
-        return [
-            'name' => 'create sut',
-             'with' => ''
-        ];
+        return DefenseAgainstShooting::getIt($this->createDefense(123), $this->createSize(1));
     }
 
     /**
      * @test
      */
-    public function My_shooting_defense_depends_on_agility_and_size()
+    public function I_can_get_property_easily()
     {
         for ($sizeValue = -5; $sizeValue < 5; $sizeValue++) {
-            $defenseAgainstShooting = new DefenseNumberAgainstShooting(
+            $defenseAgainstShooting = DefenseAgainstShooting::getIt(
                 $this->createDefense($defenseValue = 123),
                 $this->createSize($sizeValue)
             );
@@ -43,11 +32,11 @@ class DefenseNumberAgainstShootingTest extends CombatCharacteristicTest
 
     /**
      * @param $value
-     * @return \Mockery\MockInterface|DefenseNumber
+     * @return \Mockery\MockInterface|Defense
      */
     private function createDefense($value)
     {
-        $agility = \Mockery::mock(DefenseNumber::class);
+        $agility = \Mockery::mock(Defense::class);
         $agility->shouldReceive('getValue')
             ->andReturn($value);
 

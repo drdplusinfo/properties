@@ -10,18 +10,17 @@ use DrdPlus\Tables\Tables;
 
 class Toughness extends AbstractDerivedProperty
 {
-    const TOUGHNESS = PropertyCode::TOUGHNESS;
-
     /**
      * @param Strength $strength
      * @param RaceCode $raceCode
      * @param SubRaceCode $subraceCode
      * @param Tables $tables
+     * @return Toughness
      */
-    public function __construct(Strength $strength, RaceCode $raceCode, SubRaceCode $subraceCode, Tables $tables)
+    public static function getIt(Strength $strength, RaceCode $raceCode, SubRaceCode $subraceCode, Tables $tables)
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        parent::__construct($strength->getValue() + $tables->getRacesTable()->getToughness($raceCode, $subraceCode));
+        return new static($strength->getValue() + $tables->getRacesTable()->getToughness($raceCode, $subraceCode));
     }
 
     /**

@@ -3,7 +3,7 @@ namespace DrdPlus\Tests\Properties\Combat;
 
 use DrdPlus\Properties\Combat\EncounterRange;
 use DrdPlus\Properties\Combat\MaximalRange;
-use DrdPlus\Properties\Combat\Partials\CombatCharacteristic;
+use DrdPlus\Properties\Combat\Partials\CharacteristicForGame;
 use DrdPlus\Tests\Properties\Combat\Partials\AbstractRangeTest;
 
 class MaximalRangeTest extends AbstractRangeTest
@@ -14,7 +14,7 @@ class MaximalRangeTest extends AbstractRangeTest
      */
     protected function createRangeSut($value)
     {
-        return MaximalRange::createForMeleeWeapon($this->createEncounterRange($value));
+        return MaximalRange::getItForMeleeWeapon($this->createEncounterRange($value));
     }
 
     /**
@@ -33,22 +33,25 @@ class MaximalRangeTest extends AbstractRangeTest
     /**
      * @test
      */
-    public function I_can_create_it_for_melee_weapon()
+    public function I_can_get_property_easily()
     {
-        $maximalRange = MaximalRange::createForMeleeWeapon($this->createEncounterRange(123));
+        $this->I_can_create_it_for_melee_weapon();
+        $this->I_can_create_it_for_range_weapon();
+    }
+
+    private function I_can_create_it_for_melee_weapon()
+    {
+        $maximalRange = MaximalRange::getItForMeleeWeapon($this->createEncounterRange(123));
         self::assertInstanceOf(MaximalRange::class, $maximalRange);
-        self::assertInstanceOf(CombatCharacteristic::class, $maximalRange);
+        self::assertInstanceOf(CharacteristicForGame::class, $maximalRange);
         self::assertSame(123, $maximalRange->getValue(), 'Value should be without a change');
     }
 
-    /**
-     * @test
-     */
-    public function I_can_create_it_for_range_weapon()
+    private function I_can_create_it_for_range_weapon()
     {
-        $maximalRange = MaximalRange::createForRangedWeapon($this->createEncounterRange(123));
+        $maximalRange = MaximalRange::getItForRangedWeapon($this->createEncounterRange(123));
         self::assertInstanceOf(MaximalRange::class, $maximalRange);
-        self::assertInstanceOf(CombatCharacteristic::class, $maximalRange);
+        self::assertInstanceOf(CharacteristicForGame::class, $maximalRange);
         self::assertSame(135, $maximalRange->getValue(), 'Value should be increased by twelve');
     }
 

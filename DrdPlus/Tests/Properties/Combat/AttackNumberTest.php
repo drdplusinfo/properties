@@ -3,15 +3,15 @@ namespace DrdPlus\Tests\Properties\Combat;
 
 use DrdPlus\Properties\Combat\Attack;
 use DrdPlus\Properties\Combat\AttackNumber;
-use DrdPlus\Properties\Combat\Partials\CombatCharacteristic;
+use DrdPlus\Properties\Combat\Partials\CharacteristicForGame;
 use DrdPlus\Properties\Combat\Shooting;
-use DrdPlus\Tests\Properties\Combat\Partials\CombatCharacteristicTest;
+use DrdPlus\Tests\Properties\Combat\Partials\CharacteristicForGameTest;
 
-class AttackNumberTest extends CombatCharacteristicTest
+class AttackNumberTest extends CharacteristicForGameTest
 {
     protected function createSut()
     {
-        return AttackNumber::createFromAttack($this->createAttack(123));
+        return AttackNumber::getItFromAttack($this->createAttack(123));
     }
 
     /**
@@ -28,32 +28,27 @@ class AttackNumberTest extends CombatCharacteristicTest
     }
 
     /**
-     * @return array|string[]
-     */
-    protected function getExpectedInitialChangeBy()
-    {
-        return ['name' => 'create sut', 'with' => ''];
-    }
-
-    /**
      * @test
      */
-    public function I_can_create_it_from_attack()
+    public function I_can_get_property_easily()
     {
-        $attackNumber = AttackNumber::createFromAttack($this->createAttack(567));
+        $this->I_can_create_it_from_attack();
+        $this->I_can_create_it_from_shooting();
+    }
+
+    private function I_can_create_it_from_attack()
+    {
+        $attackNumber = AttackNumber::getItFromAttack($this->createAttack(567));
         self::assertInstanceOf(AttackNumber::class, $attackNumber);
-        self::assertInstanceOf(CombatCharacteristic::class, $attackNumber);
+        self::assertInstanceOf(CharacteristicForGame::class, $attackNumber);
         self::assertSame(567, $attackNumber->getValue());
     }
 
-    /**
-     * @test
-     */
-    public function I_can_create_it_from_shooting()
+    private function I_can_create_it_from_shooting()
     {
-        $attackNumber = AttackNumber::createFromShooting($this->createShooting(890));
+        $attackNumber = AttackNumber::getItFromShooting($this->createShooting(890));
         self::assertInstanceOf(AttackNumber::class, $attackNumber);
-        self::assertInstanceOf(CombatCharacteristic::class, $attackNumber);
+        self::assertInstanceOf(CharacteristicForGame::class, $attackNumber);
         self::assertSame(890, $attackNumber->getValue());
     }
 

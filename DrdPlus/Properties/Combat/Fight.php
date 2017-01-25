@@ -2,8 +2,9 @@
 namespace DrdPlus\Properties\Combat;
 
 use DrdPlus\Codes\ProfessionCode;
+use DrdPlus\Codes\Properties\CharacteristicForGameCode;
 use DrdPlus\Properties\Body\Height;
-use DrdPlus\Properties\Combat\Partials\CombatCharacteristic;
+use DrdPlus\Properties\Combat\Partials\CharacteristicForGame;
 use DrdPlus\Calculations\SumAndRound;
 use DrdPlus\Tables\Tables;
 use Granam\Tools\ValueDescriber;
@@ -12,7 +13,7 @@ use Granam\Tools\ValueDescriber;
  * @method Fight add(int | IntegerInterface $value)
  * @method Fight sub(int | IntegerInterface $value)
  */
-class Fight extends CombatCharacteristic
+class Fight extends CharacteristicForGame
 {
 
     /**
@@ -20,20 +21,22 @@ class Fight extends CombatCharacteristic
      * @param BaseProperties $baseProperties
      * @param Height $height
      * @param Tables $tables
+     * @return Fight
      * @throws \DrdPlus\Properties\Combat\Exceptions\UnknownProfession
      */
-    public function __construct(
+    public static function getIt(
         ProfessionCode $professionCode,
         BaseProperties $baseProperties,
         Height $height,
         Tables $tables
     )
     {
-        $fightValue = $this->getFightNumberByProfession($professionCode, $baseProperties);
+        $fightValue = self::getFightNumberByProfession($professionCode, $baseProperties);
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         $fightValue += $tables->getCorrectionByHeightTable()->getCorrectionByHeight($height);
+
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        parent::__construct($fightValue);
+        return new static($fightValue);
     }
 
     /**
@@ -44,7 +47,7 @@ class Fight extends CombatCharacteristic
      * @return int
      * @throws \DrdPlus\Properties\Combat\Exceptions\UnknownProfession
      */
-    private function getFightNumberByProfession(ProfessionCode $professionCode, BaseProperties $baseProperties)
+    private static function getFightNumberByProfession(ProfessionCode $professionCode, BaseProperties $baseProperties)
     {
         switch ($professionCode->getValue()) {
             case ProfessionCode::FIGHTER :
@@ -62,5 +65,13 @@ class Fight extends CombatCharacteristic
                     'Unknown profession of code ' . ValueDescriber::describe($professionCode->getValue())
                 );
         }
+    }
+
+    /**
+     * @return CharacteristicForGameCode
+     */
+    public function getCode()
+    {
+        return CharacteristicForGameCode::getIt(CharacteristicForGameCode::FIGHT);
     }
 }

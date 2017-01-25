@@ -12,11 +12,16 @@ class DignityTest extends AspectOfVisageTest
 {
 
     /**
-     * #@test
+     * @test
+     * @return Dignity
      */
-    public function I_can_get_property_easily()
+    public function I_can_use_it()
     {
-        $dignity = new Dignity($this->getIntelligence($agilityValue = 123), $this->getWill($knackValue = 456), $this->getCharisma($charismaValue = 789));
+        $dignity = Dignity::getIt(
+            $this->getIntelligence($agilityValue = 123),
+            $this->getWill($knackValue = 456),
+            $this->getCharisma($charismaValue = 789)
+        );
         self::assertSame(PropertyCode::getIt(PropertyCode::DIGNITY), $dignity->getCode());
         self::assertSame($this->calculateValue($agilityValue, $knackValue, $charismaValue), $dignity->getValue());
         self::assertSame((string)$this->calculateValue($agilityValue, $knackValue, $charismaValue), "$dignity");

@@ -8,16 +8,15 @@ use DrdPlus\Tables\Tables;
 
 class WoundBoundary extends AbstractDerivedProperty
 {
-    const WOUND_BOUNDARY = PropertyCode::WOUND_BOUNDARY;
-
     /**
      * @param Toughness $toughness
      * @param Tables $tables
+     * @return WoundBoundary
      */
-    public function __construct(Toughness $toughness, Tables $tables)
+    public static function getIt(Toughness $toughness, Tables $tables)
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        parent::__construct(
+        return new static(
             $tables->getWoundsTable()->toWounds(
                 new WoundsBonus(
                     $toughness->getValue() + 10,

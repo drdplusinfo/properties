@@ -8,16 +8,15 @@ use DrdPlus\Tables\Tables;
 
 class FatigueBoundary extends AbstractDerivedProperty
 {
-    const FATIGUE_BOUNDARY = PropertyCode::FATIGUE_BOUNDARY;
-
     /**
      * @param Endurance $endurance
      * @param Tables $tables
+     * @return FatigueBoundary
      */
-    public function __construct(Endurance $endurance, Tables $tables)
+    public static function getIt(Endurance $endurance, Tables $tables)
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        parent::__construct(
+        return new static(
             $tables->getFatigueTable()->toFatigue(
                 new FatigueBonus(
                     $endurance->getValue() + 10,

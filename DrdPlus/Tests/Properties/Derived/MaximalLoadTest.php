@@ -4,11 +4,24 @@ namespace DrdPlus\Tests\Properties\Derived;
 use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Derived\MaximalLoad;
 use DrdPlus\Properties\Derived\Athletics;
+use DrdPlus\Tests\Properties\Derived\Partials\AbstractDerivedPropertyTest;
 use Granam\Integer\IntegerInterface;
-use Granam\Tests\Tools\TestWithMockery;
 
-class MaximalLoadTest extends TestWithMockery
+class MaximalLoadTest extends AbstractDerivedPropertyTest
 {
+    /**
+     * @test
+     * @return MaximalLoad
+     */
+    public function I_can_use_it()
+    {
+        $maximalLoad = MaximalLoad::getIt($this->createStrength(123), $this->createAthletics(456));
+        self::assertInstanceOf(MaximalLoad::class, $maximalLoad);
+        self::assertSame(600, $maximalLoad->getValue());
+
+        return $maximalLoad;
+    }
+
     /**
      * @test
      * @dataProvider provideStrengthAthleticsAndExpectedMaximalLoad
@@ -16,12 +29,10 @@ class MaximalLoadTest extends TestWithMockery
      * @param $athletics
      * @param MaximalLoad
      */
-    public function I_can_get_property_easily($strength, $athletics, $expectedMaximalLoad)
+    public function I_can_get_expected_maximal_load($strength, $athletics, $expectedMaximalLoad)
     {
-        $maximalLoad = new MaximalLoad($this->createStrength($strength), $this->createAthletics($athletics));
+        $maximalLoad = MaximalLoad::getIt($this->createStrength($strength), $this->createAthletics($athletics));
         self::assertSame($expectedMaximalLoad, $maximalLoad->getValue());
-        self::assertSame('maximal_load', $maximalLoad->getCode());
-        self::assertSame('maximal_load', MaximalLoad::MAXIMAL_LOAD);
     }
 
     public function provideStrengthAthleticsAndExpectedMaximalLoad()

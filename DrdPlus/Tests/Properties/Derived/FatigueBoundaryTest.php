@@ -17,10 +17,10 @@ class FatigueBoundaryTest extends AbstractDerivedPropertyTest
      * @test
      * @return FatigueBoundary
      */
-    public function I_can_get_property_easily()
+    public function I_can_use_it()
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        $fatigueBoundary = new FatigueBoundary(
+        $fatigueBoundary = FatigueBoundary::getIt(
             $this->createEndurance(123),
             $this->createTablesWithFatigueTable(133, 456)
         );

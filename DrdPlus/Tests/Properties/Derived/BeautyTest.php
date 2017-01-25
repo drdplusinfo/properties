@@ -10,13 +10,17 @@ use DrdPlus\Tests\Properties\Derived\Partials\AspectOfVisageTest;
 
 class BeautyTest extends AspectOfVisageTest
 {
-
     /**
-     * #@test
+     * @test
+     * @return Beauty
      */
-    public function I_can_get_property_easily()
+    public function I_can_use_it()
     {
-        $beauty = new Beauty($this->getAgility($agilityValue = 123), $this->getKnack($knackValue = 456), $this->getCharisma($charismaValue = 789));
+        $beauty = Beauty::getIt(
+            $this->getAgility($agilityValue = 123),
+            $this->getKnack($knackValue = 456),
+            $this->getCharisma($charismaValue = 789)
+        );
         self::assertSame(PropertyCode::getIt(PropertyCode::BEAUTY), $beauty->getCode());
         self::assertSame($this->calculateValue($agilityValue, $knackValue, $charismaValue), $beauty->getValue());
         self::assertSame((string)$this->calculateValue($agilityValue, $knackValue, $charismaValue), "$beauty");

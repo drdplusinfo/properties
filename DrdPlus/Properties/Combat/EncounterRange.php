@@ -1,7 +1,9 @@
 <?php
 namespace DrdPlus\Properties\Combat;
 
+use DrdPlus\Codes\Properties\CharacteristicForGameCode;
 use DrdPlus\Properties\Combat\Partials\AbstractRange;
+use Granam\Integer\PositiveInteger;
 
 /**
  * @method EncounterRange add(int | IntegerInterface $value)
@@ -10,12 +12,22 @@ use DrdPlus\Properties\Combat\Partials\AbstractRange;
 class EncounterRange extends AbstractRange
 {
     /**
-     * @param $value
+     * @param int|PositiveInteger $value
      * @throws \Granam\Integer\Tools\Exceptions\WrongParameterType
      * @throws \Granam\Integer\Tools\Exceptions\ValueLostOnCast
+     * @throws \Granam\Integer\Tools\Exceptions\PositiveIntegerCanNotBeNegative
+     * @return EncounterRange
      */
-    public function __construct($value)
+    public static function getIt($value)
     {
-        parent::__construct($value);
+        return new static($value);
+    }
+
+    /**
+     * @return CharacteristicForGameCode
+     */
+    public function getCode()
+    {
+        return CharacteristicForGameCode::getIt(CharacteristicForGameCode::ENCOUNTER_RANGE);
     }
 }

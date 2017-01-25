@@ -3,16 +3,26 @@ namespace DrdPlus\Tests\Properties\Combat;
 
 use DrdPlus\Properties\Combat\Shooting;
 use DrdPlus\Properties\Base\Knack;
-use DrdPlus\Tests\Properties\Combat\Partials\PositiveNumberCombatCharacteristicsTest;
+use DrdPlus\Tests\Properties\Combat\Partials\CombatCharacteristicTest;
 
-class ShootingTest extends PositiveNumberCombatCharacteristicsTest
+class ShootingTest extends CombatCharacteristicTest
 {
+    /**
+     * @test
+     */
+    public function I_can_get_property_easily()
+    {
+        $shooting = Shooting::getIt($this->createKnack(5));
+        self::assertInstanceOf(Shooting::class, $shooting);
+        self::assertSame(2, $shooting->getValue());
+    }
+
     /**
      * @return Shooting
      */
     protected function createSut()
     {
-        return new Shooting($this->createKnack(123));
+        return Shooting::getIt($this->createKnack(123));
     }
 
     /**
@@ -23,7 +33,7 @@ class ShootingTest extends PositiveNumberCombatCharacteristicsTest
      */
     public function I_can_get_shooting($knack, $shootingValue)
     {
-        $shooting = new Shooting($this->createKnack($knack));
+        $shooting = Shooting::getIt($this->createKnack($knack));
         self::assertSame($shootingValue, $shooting->getValue());
     }
 

@@ -12,11 +12,16 @@ class DangerousnessTest extends AspectOfVisageTest
 {
 
     /**
-     * #@test
+     * @test
+     * @return Dangerousness
      */
-    public function I_can_get_property_easily()
+    public function I_can_use_it()
     {
-        $dangerousness = new Dangerousness($this->getStrength($strengthValue = 123), $this->getWill($willValue = 456), $this->getCharisma($charismaValue = 789));
+        $dangerousness = Dangerousness::getIt(
+            $this->getStrength($strengthValue = 123),
+            $this->getWill($willValue = 456),
+            $this->getCharisma($charismaValue = 789)
+        );
         self::assertSame(PropertyCode::getIt(PropertyCode::DANGEROUSNESS), $dangerousness->getCode());
         self::assertSame($this->calculateValue($strengthValue, $willValue, $charismaValue), $dangerousness->getValue());
         self::assertSame((string)$this->calculateValue($strengthValue, $willValue, $charismaValue), "$dangerousness");
@@ -26,7 +31,6 @@ class DangerousnessTest extends AspectOfVisageTest
 
     /**
      * @param $value
-     *
      * @return \Mockery\MockInterface|Strength
      */
     private function getStrength($value)
@@ -36,7 +40,6 @@ class DangerousnessTest extends AspectOfVisageTest
 
     /**
      * @param $value
-     *
      * @return \Mockery\MockInterface|Will
      */
     private function getWill($value)
@@ -46,7 +49,6 @@ class DangerousnessTest extends AspectOfVisageTest
 
     /**
      * @param $value
-     *
      * @return \Mockery\MockInterface|Charisma
      */
     private function getCharisma($value)

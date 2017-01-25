@@ -5,7 +5,6 @@ use DrdPlus\Tests\Properties\AbstractStoredPropertyTest;
 
 abstract class AbstractFloatPropertyTest extends AbstractStoredPropertyTest
 {
-
     protected function getValuesForTest()
     {
         return [0.01, 123.456];

@@ -13,10 +13,11 @@ class Beauty extends AspectOfVisage
      * @param Agility $agility
      * @param Knack $knack
      * @param Charisma $charisma
+     * @return Beauty
      */
-    public function __construct(Agility $agility, Knack $knack, Charisma $charisma)
+    public static function getIt(Agility $agility, Knack $knack, Charisma $charisma)
     {
-        parent::__construct($agility, $knack, $charisma);
+        return new static($agility, $knack, $charisma);
     }
 
     /**

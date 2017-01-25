@@ -2,7 +2,6 @@
 namespace DrdPlus\Properties\Body;
 
 use DrdPlus\Codes\Properties\PropertyCode;
-use DrdPlus\Properties\Property;
 use DrdPlus\Tables\Measurements\Distance\Distance;
 use DrdPlus\Tables\Tables;
 use Granam\Integer\IntegerInterface;
@@ -11,7 +10,7 @@ use Granam\Strict\Object\StrictObject;
 /**
  * In fact bonus of a distance, @see \DrdPlus\Tables\Measurements\Distance\DistanceBonus
  */
-class Height extends StrictObject implements Property, BodyProperty, IntegerInterface
+class Height extends StrictObject implements BodyProperty, IntegerInterface
 {
     /**
      * @var int
@@ -21,8 +20,18 @@ class Height extends StrictObject implements Property, BodyProperty, IntegerInte
     /**
      * @param HeightInCm $heightInCm
      * @param Tables $tables
+     * @return Height
      */
-    public function __construct(HeightInCm $heightInCm, Tables $tables)
+    public static function getIt(HeightInCm $heightInCm, Tables $tables)
+    {
+        return new static($heightInCm, $tables);
+    }
+
+    /**
+     * @param HeightInCm $heightInCm
+     * @param Tables $tables
+     */
+    private function __construct(HeightInCm $heightInCm, Tables $tables)
     {
         $heightInMeters = $heightInCm->getValue() / 100;
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */

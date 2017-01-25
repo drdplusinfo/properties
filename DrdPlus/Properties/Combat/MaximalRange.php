@@ -1,6 +1,7 @@
 <?php
 namespace DrdPlus\Properties\Combat;
 
+use DrdPlus\Codes\Properties\CharacteristicForGameCode;
 use DrdPlus\Properties\Combat\Partials\AbstractRange;
 
 /**
@@ -15,7 +16,7 @@ class MaximalRange extends AbstractRange
      * @param EncounterRange $encounterRange
      * @return MaximalRange
      */
-    public static function createForMeleeWeapon(EncounterRange $encounterRange)
+    public static function getItForMeleeWeapon(EncounterRange $encounterRange)
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new static($encounterRange->getValue());
@@ -27,9 +28,17 @@ class MaximalRange extends AbstractRange
      * @param EncounterRange $encounterRange
      * @return MaximalRange
      */
-    public static function createForRangedWeapon(EncounterRange $encounterRange)
+    public static function getItForRangedWeapon(EncounterRange $encounterRange)
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new static($encounterRange->getValue() + 12);
+    }
+
+    /**
+     * @return CharacteristicForGameCode
+     */
+    public function getCode()
+    {
+        return CharacteristicForGameCode::getIt(CharacteristicForGameCode::MAXIMAL_RANGE);
     }
 }

@@ -7,24 +7,23 @@ use DrdPlus\Properties\Derived\Partials\AbstractDerivedProperty;
 
 class MaximalLoad extends AbstractDerivedProperty
 {
-    const MAXIMAL_LOAD = PropertyCode::MAXIMAL_LOAD;
-
     /**
      * @param Strength $strength
      * @param Athletics $athletics
+     * @return MaximalLoad
      */
-    public function __construct(Strength $strength, Athletics $athletics)
+    public static function getIt(Strength $strength, Athletics $athletics)
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        parent::__construct($strength->getValue() + 21 + $athletics->getAthleticsBonus()->getValue());
+        return new static($strength->getValue() + 21 + $athletics->getAthleticsBonus()->getValue());
     }
 
     /**
-     * @return string
+     * @return PropertyCode
      */
     public function getCode()
     {
-        return self::MAXIMAL_LOAD;
+        return PropertyCode::getIt(PropertyCode::MAXIMAL_LOAD);
     }
 
 }

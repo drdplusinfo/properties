@@ -1,31 +1,54 @@
 <?php
-namespace DrdPlus\Properties\Body;
+namespace DrdPlus\Tests\Properties\Body;
 
 use DrdPlus\Codes\Properties\PropertyCode;
+use DrdPlus\Properties\Body\Height;
+use DrdPlus\Properties\Body\HeightInCm;
 use DrdPlus\Tables\Measurements\Distance\Distance;
 use DrdPlus\Tables\Measurements\Distance\DistanceBonus;
 use DrdPlus\Tables\Measurements\Distance\DistanceTable;
 use DrdPlus\Tables\Tables;
-use Granam\Tests\Tools\TestWithMockery;
+use DrdPlus\Tests\Properties\PropertyTest;
 
-class HeightTest extends TestWithMockery
+class HeightTest extends PropertyTest
 {
+    use BodyPropertyTest;
+
+    /**
+     * @return string
+     */
+    protected function getExpectedCodeClass()
+    {
+        return PropertyCode::class;
+    }
+
     /**
      * @test
      */
-    public function I_can_use_it()
+    public function I_can_get_property_easily()
     {
         $tables = $this->createTablesWithDistanceTable(
             function (Distance $distance) {
                 self::assertSame(1.23, $distance->getValue());
+                self::assertSame(Distance::M, $distance->getUnit());
 
                 return $this->createDistanceBonus(456);
             }
         );
-        $height = new Height($this->createHeightInCm(123), $tables);
+        $height = Height::getIt($this->createHeightInCm(123), $tables);
+        self::assertInstanceOf(Height::class, $height);
         self::assertSame(456, $height->getValue());
         self::assertSame('456', (string)$height);
-        self::assertSame(PropertyCode::getIt(PropertyCode::HEIGHT), $height->getCode());
+        self::assertSame(PropertyCode::getIt($this->getExpectedPropertyCode()), $height->getCode());
+    }
+
+    /**
+     * @param int $value
+     * @return HeightInCm|\Mockery\MockInterface
+     */
+    protected function createValueForProperty($value)
+    {
+        return $this->createHeightInCm($value);
     }
 
     /**

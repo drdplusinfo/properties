@@ -10,18 +10,17 @@ use DrdPlus\Tables\Tables;
 
 class Senses extends AbstractDerivedProperty
 {
-    const SENSES = PropertyCode::SENSES;
-
     /**
      * @param Knack $knack
      * @param RaceCode $raceCode
      * @param SubRaceCode $subRaceCode
      * @param Tables $tables
+     * @return Senses
      */
-    public function __construct(Knack $knack, RaceCode $raceCode, SubRaceCode $subRaceCode, Tables $tables)
+    public static function getIt(Knack $knack, RaceCode $raceCode, SubRaceCode $subRaceCode, Tables $tables)
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        parent::__construct($knack->getValue() + $tables->getRacesTable()->getSenses($raceCode, $subRaceCode));
+        return new static($knack->getValue() + $tables->getRacesTable()->getSenses($raceCode, $subRaceCode));
     }
 
     /**

@@ -12,10 +12,11 @@ class SpeedTest extends AbstractDerivedPropertyTest
 {
     /**
      * @test
+     * @return Speed
      */
-    public function I_can_get_property_easily()
+    public function I_can_use_it()
     {
-        $speed = new Speed(
+        $speed = Speed::getIt(
             $this->getStrength($strengthValue = 123),
             $this->getAgility($agilityValue = 456),
             $this->getHeight($heightValue = 789)
@@ -38,7 +39,7 @@ class SpeedTest extends AbstractDerivedPropertyTest
      */
     public function I_can_get_speed_for_any_size($size, $speedModifier)
     {
-        $speed = new Speed(
+        $speed = Speed::getIt(
             $this->getStrength($strengthValue = 123),
             $this->getAgility($agilityValue = 456),
             $this->getHeight($size)

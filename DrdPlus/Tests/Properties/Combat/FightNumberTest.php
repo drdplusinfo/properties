@@ -6,13 +6,13 @@ use DrdPlus\Properties\Combat\Fight;
 use DrdPlus\Properties\Combat\FightNumber;
 use DrdPlus\Tables\Armaments\Armourer;
 use DrdPlus\Tables\Tables;
-use DrdPlus\Tests\Properties\Combat\Partials\CombatCharacteristicTest;
+use DrdPlus\Tests\Properties\Combat\Partials\CharacteristicForGameTest;
 
-class FightNumberTest extends CombatCharacteristicTest
+class FightNumberTest extends CharacteristicForGameTest
 {
     protected function createSut()
     {
-        return new FightNumber(
+        return FightNumber::getIt(
             $this->createFight(123),
             $weaponlikeCode = $this->createWeaponlikeCode(),
             $this->createTables($weaponlikeCode, 456)
@@ -62,9 +62,9 @@ class FightNumberTest extends CombatCharacteristicTest
     /**
      * @test
      */
-    public function I_can_get_expected_fight_number()
+    public function I_can_get_property_easily()
     {
-        $fightNumber = new FightNumber(
+        $fightNumber = FightNumber::getIt(
             $this->createFight(123),
             $weaponlikeCode = $this->createWeaponlikeCode(),
             $this->createTables($weaponlikeCode, 456)

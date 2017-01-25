@@ -12,11 +12,12 @@ class Endurance extends AbstractDerivedProperty
     /**
      * @param Strength $strength
      * @param Will $will
+     * @return Endurance
      */
-    public function __construct(Strength $strength, Will $will)
+    public static function getIt(Strength $strength, Will $will)
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        parent::__construct(SumAndRound::average($strength->getValue(), $will->getValue()));
+        return new static(SumAndRound::average($strength->getValue(), $will->getValue()));
     }
 
     /**

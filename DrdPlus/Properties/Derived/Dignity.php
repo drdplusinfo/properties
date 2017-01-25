@@ -13,10 +13,11 @@ class Dignity extends AspectOfVisage
      * @param Intelligence $intelligence
      * @param Will $will
      * @param Charisma $charisma
+     * @return Dignity
      */
-    public function __construct(Intelligence $intelligence, Will $will, Charisma $charisma)
+    public static function getIt(Intelligence $intelligence, Will $will, Charisma $charisma)
     {
-        parent::__construct($intelligence, $will, $charisma);
+        return new static($intelligence, $will, $charisma);
     }
 
     /**

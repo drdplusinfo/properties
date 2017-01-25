@@ -13,11 +13,12 @@ use DrdPlus\Tests\Properties\Derived\Partials\AbstractDerivedPropertyTest;
 class ToughnessTest extends AbstractDerivedPropertyTest
 {
     /**
-     * #@test
+     * @test
+     * @return Toughness
      */
-    public function I_can_get_property_easily()
+    public function I_can_use_it()
     {
-        $toughness = new Toughness(
+        $toughness = Toughness::getIt(
             $this->createStrength($strengthValue = 123),
             $raceCode = RaceCode::getIt(RaceCode::DWARF),
             $subRaceCode = SubRaceCode::getIt(SubRaceCode::WOOD),

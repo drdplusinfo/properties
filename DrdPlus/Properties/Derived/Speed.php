@@ -10,19 +10,18 @@ use DrdPlus\Calculations\SumAndRound;
 
 class Speed extends AbstractDerivedProperty
 {
-    const SPEED = PropertyCode::SPEED;
-
     /**
      * @param Strength $strength
      * @param Agility $agility
      * @param Height $height
+     * @return Speed
      */
-    public function __construct(Strength $strength, Agility $agility, Height $height)
+    public static function getIt(Strength $strength, Agility $agility, Height $height)
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        parent::__construct(
+        return new static(
             SumAndRound::average($strength->getValue(), $agility->getValue())
-            + SumAndRound::ceil($height->getValue() / 3) - 2 // 1 - 3 = -1; 4 - 6 = 0; 7 - 9 = +1 ...
+            + SumAndRound::ceil($height->getValue() / 3) - 2 // 1 -> 3 = -1; 4 -> 6 = 0; 7 -> 9 = +1 ...
         );
     }
 

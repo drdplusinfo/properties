@@ -1,16 +1,41 @@
 <?php
 namespace DrdPlus\Tests\Properties\Derived\Partials;
 
+use DrdPlus\Codes\Properties\PropertyCode;
 use DrdPlus\Properties\Derived\Partials\AbstractDerivedProperty;
 use DrdPlus\Tests\Properties\PropertyTest;
 
 abstract class AbstractDerivedPropertyTest extends PropertyTest
 {
-
-    protected function getValuesForTest()
+    /**
+     * @return string
+     */
+    protected function getExpectedCodeClass()
     {
-        throw new \LogicException('Should not be called');
+        return PropertyCode::class;
     }
+
+    /**
+     * @test
+     */
+    public function I_can_get_property_easily()
+    {
+        $reflectionClass = new \ReflectionClass(self::getSutClass());
+        self::assertTrue(
+            $reflectionClass->hasMethod('getIt'),
+            self::getSutClass() . ' does not have getIt factory method'
+        );
+        $getIt = $reflectionClass->getMethod('getIt');
+        self::assertTrue($getIt->isStatic());
+        $sutBaseName = preg_replace('~.*[\\\]([^\\\]+)$~', '$1', self::getSutClass());
+        self::assertContains(" * @return $sutBaseName", $getIt->getDocComment());
+    }
+
+    /**
+     * @test
+     * @return AbstractDerivedProperty
+     */
+    abstract public function I_can_use_it();
 
     /**
      * @param $className
@@ -29,7 +54,7 @@ abstract class AbstractDerivedPropertyTest extends PropertyTest
 
     /**
      * @test
-     * @depends I_can_get_property_easily
+     * @depends I_can_use_it
      * @param AbstractDerivedProperty $derivedProperty
      */
     public function I_can_add_and_remove_value_from_property(AbstractDerivedProperty $derivedProperty)

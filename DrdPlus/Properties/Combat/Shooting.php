@@ -1,24 +1,30 @@
 <?php
 namespace DrdPlus\Properties\Combat;
 
+use DrdPlus\Codes\CombatCharacteristicCode;
 use DrdPlus\Properties\Base\Knack;
-use DrdPlus\Properties\Combat\Partials\CombatCharacteristic;
 use DrdPlus\Calculations\SumAndRound;
+use DrdPlus\Properties\Combat\Partials\CombatCharacteristic;
 
-/**
- * @method Shooting add(int | IntegerInterface $value)
- * @method Shooting sub(int | IntegerInterface $value)
- */
 class Shooting extends CombatCharacteristic
 {
     /**
      * See PPH page 34 left column, @link https://pph.drdplus.jaroslavtyc.com/#tabulka_bojovych_charakteristik
      *
      * @param Knack $knack
+     * @return Shooting
      */
-    public function __construct(Knack $knack)
+    public static function getIt(Knack $knack)
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        parent::__construct(SumAndRound::flooredHalf($knack->getValue()));
+        return new static(SumAndRound::flooredHalf($knack->getValue()));
+    }
+
+    /**
+     * @return CombatCharacteristicCode
+     */
+    public function getCode()
+    {
+        return CombatCharacteristicCode::getIt(CombatCharacteristicCode::SHOOTING);
     }
 }

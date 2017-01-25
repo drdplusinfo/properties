@@ -11,21 +11,22 @@ use DrdPlus\Tables\Environments\TerrainDifficultyPercents;
 use DrdPlus\Tables\Measurements\Speed\SpeedBonus;
 use DrdPlus\Tables\Measurements\Speed\SpeedTable;
 use DrdPlus\Tables\Tables;
-use Granam\Tests\Tools\TestWithMockery;
+use DrdPlus\Tests\Properties\Derived\Partials\AbstractDerivedPropertyTest;
 
-class MovementSpeedTest extends TestWithMockery
+class MovementSpeedTest extends AbstractDerivedPropertyTest
 {
     /**
      * @test
+     * @return MovementSpeed
      */
     public function I_can_use_it()
     {
-        $movementSpeed = new MovementSpeed($this->createSpeed(123));
-        self::assertSame('movement_speed', $movementSpeed->getCode());
-        self::assertSame('movement_speed', MovementSpeed::MOVEMENT_SPEED);
+        $movementSpeed = MovementSpeed::getIt($this->createSpeed(123));
         $speedBonus = $movementSpeed->getSpeedBonus($this->createTables());
         self::assertInstanceOf(SpeedBonus::class, $speedBonus);
         self::assertSame(62, $speedBonus->getValue(), 'Expected half of movement speed as a speed bonus');
+
+        return $movementSpeed;
     }
 
     /**
@@ -120,7 +121,7 @@ class MovementSpeedTest extends TestWithMockery
      */
     public function I_can_get_current_speed_bonus()
     {
-        $movementSpeed = new MovementSpeed($this->createSpeed(45));
+        $movementSpeed = MovementSpeed::getIt($this->createSpeed(45));
         $currentSpeedBonus = $movementSpeed->getCurrentSpeedBonus(
             $movementTypeCode = $this->createMovementTypeCode('foo movement'),
             $terrainCode = TerrainCode::getIt(TerrainCode::DESERT),

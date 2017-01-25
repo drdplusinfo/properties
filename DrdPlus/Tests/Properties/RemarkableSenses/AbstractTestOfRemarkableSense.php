@@ -8,7 +8,6 @@ use DrdPlus\Tests\Properties\AbstractStoredPropertyTest;
 
 abstract class AbstractTestOfRemarkableSense extends AbstractStoredPropertyTest
 {
-
     /**
      * @test
      * @return RemarkableSenseProperty
@@ -19,8 +18,8 @@ abstract class AbstractTestOfRemarkableSense extends AbstractStoredPropertyTest
         /** @var RemarkableSenseProperty $propertyClass */
         $property = $propertyClass::getIt();
         self::assertInstanceOf($propertyClass, $property);
-        self::assertSame(strtolower($this->getPropertyBaseName()), $property->getValue());
-        self::assertSame(PropertyCode::getIt(strtolower($this->getPropertyBaseName())), $property->getCode());
+        self::assertSame(strtolower($this->getSutBaseName()), $property->getValue());
+        self::assertSame(PropertyCode::getIt(strtolower($this->getSutBaseName())), $property->getCode());
 
         return $property;
     }

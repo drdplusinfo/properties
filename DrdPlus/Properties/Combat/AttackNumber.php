@@ -1,19 +1,20 @@
 <?php
 namespace DrdPlus\Properties\Combat;
 
-use DrdPlus\Properties\Combat\Partials\CombatCharacteristic;
+use DrdPlus\Codes\Properties\CharacteristicForGameCode;
+use DrdPlus\Properties\Combat\Partials\CharacteristicForGame;
 
 /**
  * @method AttackNumber add(int | IntegerInterface $value)
  * @method AttackNumber sub(int | IntegerInterface $value)
  */
-class AttackNumber extends CombatCharacteristic
+class AttackNumber extends CharacteristicForGame
 {
     /**
      * @param Attack $attack
      * @return AttackNumber
      */
-    public static function createFromAttack(Attack $attack)
+    public static function getItFromAttack(Attack $attack)
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new static($attack->getValue());
@@ -23,9 +24,17 @@ class AttackNumber extends CombatCharacteristic
      * @param Shooting $shooting
      * @return AttackNumber
      */
-    public static function createFromShooting(Shooting $shooting)
+    public static function getItFromShooting(Shooting $shooting)
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new static($shooting->getValue());
+    }
+
+    /**
+     * @return CharacteristicForGameCode
+     */
+    public function getCode()
+    {
+        return CharacteristicForGameCode::getIt(CharacteristicForGameCode::ATTACK_NUMBER);
     }
 }

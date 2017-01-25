@@ -1,15 +1,18 @@
 <?php
 namespace DrdPlus\Properties\Combat\Partials;
 
-use DrdPlus\Properties\Partials\WithHistoryTrait;
+use DrdPlus\Properties\Combat\CombatProperty;
 use Granam\Integer\IntegerInterface;
 use Granam\Integer\Tools\ToInteger;
 use Granam\Strict\Object\StrictObject;
 
 /** @noinspection SingletonFactoryPatternViolationInspection */
-abstract class CombatCharacteristic extends StrictObject implements IntegerInterface
+abstract class CombatCharacteristic extends StrictObject implements IntegerInterface, CombatProperty
 {
-    use WithHistoryTrait;
+    /**
+     * @var int
+     */
+    protected $value;
 
     /**
      * @param int
@@ -19,7 +22,6 @@ abstract class CombatCharacteristic extends StrictObject implements IntegerInter
     protected function __construct($value)
     {
         $this->value = $this->sanitizeValue($value);
-        $this->noticeChange();
     }
 
     /**
@@ -32,11 +34,6 @@ abstract class CombatCharacteristic extends StrictObject implements IntegerInter
     {
         return ToInteger::toInteger($value);
     }
-
-    /**
-     * @var int
-     */
-    private $value;
 
     /**
      * @return int
@@ -52,35 +49,5 @@ abstract class CombatCharacteristic extends StrictObject implements IntegerInter
     public function __toString()
     {
         return (string)$this->getValue();
-    }
-
-    /**
-     * @param int|CombatCharacteristic $value
-     * @return CombatCharacteristic
-     * @throws \Granam\Integer\Tools\Exceptions\WrongParameterType
-     * @throws \Granam\Integer\Tools\Exceptions\ValueLostOnCast
-     */
-    public function add($value)
-    {
-        $increased = clone $this;
-        $increased->value += $this->sanitizeValue($value);
-        $increased->noticeChange();
-
-        return $increased;
-    }
-
-    /**
-     * @param int|CombatCharacteristic $value
-     * @return CombatCharacteristic
-     * @throws \Granam\Integer\Tools\Exceptions\WrongParameterType
-     * @throws \Granam\Integer\Tools\Exceptions\ValueLostOnCast
-     */
-    public function sub($value)
-    {
-        $decreased = clone $this;
-        $decreased->value -= $this->sanitizeValue($value);
-        $decreased->noticeChange();
-
-        return $decreased;
     }
 }

@@ -10,11 +10,15 @@ use DrdPlus\Tests\Properties\Derived\Partials\AbstractDerivedPropertyTest;
 class EnduranceTest extends AbstractDerivedPropertyTest
 {
     /**
-     * #@test
+     * @test
+     * @return Endurance
      */
-    public function I_can_get_property_easily()
+    public function I_can_use_it()
     {
-        $endurance = new Endurance($this->getStrength($agilityValue = 123), $this->getWill($knackValue = 456));
+        $endurance = Endurance::getIt(
+            $this->getStrength($agilityValue = 123),
+            $this->getWill($knackValue = 456)
+        );
         self::assertSame(PropertyCode::getIt(PropertyCode::ENDURANCE), $endurance->getCode());
         self::assertSame((int)round(($agilityValue + $knackValue) / 2), $endurance->getValue());
         self::assertSame((string)round(($agilityValue + $knackValue) / 2), "$endurance");
@@ -24,7 +28,6 @@ class EnduranceTest extends AbstractDerivedPropertyTest
 
     /**
      * @param $value
-     *
      * @return \Mockery\MockInterface|Strength
      */
     private function getStrength($value)
@@ -34,7 +37,6 @@ class EnduranceTest extends AbstractDerivedPropertyTest
 
     /**
      * @param $value
-     *
      * @return \Mockery\MockInterface|Will
      */
     private function getWill($value)

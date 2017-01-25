@@ -10,8 +10,6 @@ use Granam\Number\NumberInterface;
  */
 class WeightInKg extends AbstractFloatProperty implements BodyProperty
 {
-    const WEIGHT_IN_KG = PropertyCode::WEIGHT_IN_KG;
-
     /**
      * @return PropertyCode
      */

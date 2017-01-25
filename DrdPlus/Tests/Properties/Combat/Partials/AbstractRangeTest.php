@@ -9,7 +9,7 @@ use DrdPlus\Tables\Measurements\Distance\DistanceBonus;
 use DrdPlus\Tables\Measurements\Distance\DistanceTable;
 use DrdPlus\Tables\Tables;
 
-abstract class AbstractRangeTest extends PositiveNumberCombatCharacteristicsTest
+abstract class AbstractRangeTest extends PositiveIntegerCharacteristicForGameTest
 {
     /**
      * @param int $value

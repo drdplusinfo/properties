@@ -21,11 +21,11 @@ class WoundBoundaryTest extends AbstractDerivedPropertyTest
      * @test
      * @return WoundBoundary
      */
-    public function I_can_get_property_easily()
+    public function I_can_use_it()
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        $woundsLimit = new WoundBoundary(
-            new Toughness(
+        $woundsLimit = WoundBoundary::getIt(
+            Toughness::getIt(
                 Strength::getIt(6),
                 $raceCode = RaceCode::getIt(RaceCode::DWARF),
                 $subRaceCode = SubRaceCode::getIt(SubRaceCode::MOUNTAIN),

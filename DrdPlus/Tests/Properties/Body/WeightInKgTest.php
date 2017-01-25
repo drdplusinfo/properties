@@ -5,5 +5,5 @@ use DrdPlus\Tests\Properties\Partials\AbstractFloatPropertyTest;
 
 class WeightInKgTest extends AbstractFloatPropertyTest
 {
-
+    use BodyPropertyTest;
 }

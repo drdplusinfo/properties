@@ -11,16 +11,31 @@ use DrdPlus\Properties\Base\Intelligence;
 use DrdPlus\Properties\Base\Knack;
 use DrdPlus\Tables\Body\CorrectionByHeightTable;
 use DrdPlus\Tables\Tables;
-use DrdPlus\Tests\Properties\Combat\Partials\CombatCharacteristicTest;
+use DrdPlus\Tests\Properties\Combat\Partials\CharacteristicForGameTest;
 
-class FightTest extends CombatCharacteristicTest
+class FightTest extends CharacteristicForGameTest
 {
+    /**
+     * @test
+     */
+    public function I_can_get_property_easily()
+    {
+        $fight = Fight::getIt(
+            $this->createProfessionCode(ProfessionCode::FIGHTER),
+            $this->createBaseProperties(0),
+            $height = $this->createHeight(0),
+            $this->createTablesWithCorrectionByHeightTable($height, 123)
+        );
+        self::assertInstanceOf(Fight::class, $fight);
+        self::assertSame(123, $fight->getValue());
+    }
+
     /**
      * @return Fight
      */
     protected function createSut()
     {
-        return new Fight(
+        return Fight::getIt(
             ProfessionCode::getIt(ProfessionCode::FIGHTER),
             $this->createBaseProperties(0, 0, 0, 0),
             $height = $this->createHeight(4),
@@ -66,17 +81,6 @@ class FightTest extends CombatCharacteristicTest
     }
 
     /**
-     * @return array|string[]
-     */
-    protected function getExpectedInitialChangeBy()
-    {
-        return [
-            'name' => 'create sut',
-            'with' => '',
-        ];
-    }
-
-    /**
      * @param ProfessionCode $professionCode
      * @param BaseProperties $baseProperties
      * @param int $expectedFightNumber
@@ -91,7 +95,7 @@ class FightTest extends CombatCharacteristicTest
     {
         $height = $this->createHeight(123);
         $correctionByHeightTable = $this->createTablesWithCorrectionByHeightTable($height, $correction = -5);
-        $fightNumber = new Fight($professionCode, $baseProperties, $height, $correctionByHeightTable);
+        $fightNumber = Fight::getIt($professionCode, $baseProperties, $height, $correctionByHeightTable);
         self::assertSame($expectedFightNumber + $correction, $fightNumber->getValue(), "Unexpected fight number for {$professionCode}");
         self::assertSame((string)($expectedFightNumber + $correction), (string)$fightNumber);
     }
@@ -155,7 +159,7 @@ class FightTest extends CombatCharacteristicTest
      */
     public function I_can_not_get_fight_for_unknown_profession()
     {
-        new Fight(
+        Fight::getIt(
             $this->createProfessionCode('monk'),
             $this->createBaseProperties(0, 0, 0, 0),
             $height = $this->createHeight(0),

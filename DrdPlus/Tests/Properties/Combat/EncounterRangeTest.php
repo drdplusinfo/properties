@@ -6,6 +6,15 @@ use DrdPlus\Tests\Properties\Combat\Partials\AbstractRangeTest;
 
 class EncounterRangeTest extends AbstractRangeTest
 {
+    /**
+     * @test
+     */
+    public function I_can_get_property_easily()
+    {
+        $encounterRange = EncounterRange::getIt(1234);
+        self::assertInstanceOf(EncounterRange::class, $encounterRange);
+        self::assertSame(1234, $encounterRange->getValue());
+    }
 
     /**
      * @param int $value
@@ -13,6 +22,6 @@ class EncounterRangeTest extends AbstractRangeTest
      */
     protected function createRangeSut($value)
     {
-        return new EncounterRange($value);
+        return EncounterRange::getIt($value);
     }
 }

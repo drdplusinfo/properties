@@ -5,5 +5,5 @@ use DrdPlus\Tests\Properties\Partials\AbstractIntegerPropertyTest;
 
 class SizeTest extends AbstractIntegerPropertyTest
 {
-
+    use BodyPropertyTest;
 }

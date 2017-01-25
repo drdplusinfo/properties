@@ -5,7 +5,6 @@ use DrdPlus\Properties\Native\NativeProperty;
 
 abstract class AbstractBooleanStoredPropertyTest extends AbstractStoredPropertyTest
 {
-
     /**
      * @return bool[]
      */

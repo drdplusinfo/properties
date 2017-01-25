@@ -3,23 +3,9 @@ namespace DrdPlus\Properties\Combat\Partials;
 
 use DrdPlus\Tables\Measurements\Distance\DistanceBonus;
 use DrdPlus\Tables\Tables;
-use Granam\Integer\PositiveInteger;
-use Granam\Integer\Tools\ToInteger;
 
-abstract class AbstractRange extends CombatCharacteristic implements PositiveInteger
+abstract class AbstractRange extends PositiveIntegerCharacteristicForGame
 {
-    /**
-     * @param float|int|string $value
-     * @return int
-     * @throws \Granam\Integer\Tools\Exceptions\WrongParameterType
-     * @throws \Granam\Integer\Tools\Exceptions\ValueLostOnCast
-     * @throws \Granam\Integer\Tools\Exceptions\PositiveIntegerCanNotBeNegative
-     */
-    protected function sanitizeValue($value)
-    {
-        return ToInteger::toPositiveInteger($value);
-    }
-
     /**
      * @param Tables $tables
      * @return int

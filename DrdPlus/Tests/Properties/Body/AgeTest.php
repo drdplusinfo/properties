@@ -5,5 +5,5 @@ use DrdPlus\Tests\Properties\Partials\AbstractIntegerPropertyTest;
 
 class AgeTest extends AbstractIntegerPropertyTest
 {
-
+    use BodyPropertyTest;
 }

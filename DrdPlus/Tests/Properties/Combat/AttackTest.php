@@ -9,27 +9,16 @@ class AttackTest extends CombatCharacteristicTest
 {
     protected function createSut()
     {
-        return new Attack($this->createAgility(123));
-    }
-
-    /**
-     * @return array|string[]
-     */
-    protected function getExpectedInitialChangeBy()
-    {
-        return [
-            'name' => 'create sut',
-            'with' => '',
-        ];
+        return Attack::getIt($this->createAgility(123));
     }
 
     /**
      * @test
      */
-    public function My_attack_depends_on_agility()
+    public function I_can_get_property_easily()
     {
         for ($value = -5; $value < 10; $value++) {
-            $attack = new Attack($this->createAgility($value));
+            $attack = Attack::getIt($this->createAgility($value));
             self::assertSame((int)floor($value / 2), $attack->getValue());
         }
     }

@@ -1,35 +1,24 @@
 <?php
 namespace DrdPlus\Tests\Properties\Combat;
 
-use DrdPlus\Properties\Combat\DefenseNumber;
 use DrdPlus\Properties\Base\Agility;
+use DrdPlus\Properties\Combat\Defense;
 use DrdPlus\Tests\Properties\Combat\Partials\CombatCharacteristicTest;
 
-class DefenseNumberTest extends CombatCharacteristicTest
+class DefenseTest extends CombatCharacteristicTest
 {
     protected function createSut()
     {
-        return new DefenseNumber($this->createAgility(123));
-    }
-
-    /**
-     * @return array|string[]
-     */
-    protected function getExpectedInitialChangeBy()
-    {
-        return [
-            'name' => 'create sut',
-            'with' => ''
-        ];
+        return Defense::getIt($this->createAgility(123));
     }
 
     /**
      * @test
      */
-    public function My_defense_depends_on_agility()
+    public function I_can_get_property_easily()
     {
         for ($value = -5; $value < 10; $value++) {
-            $attack = new DefenseNumber($this->createAgility($value));
+            $attack = Defense::getIt($this->createAgility($value));
             self::assertSame((int)ceil($value / 2), $attack->getValue());
         }
     }

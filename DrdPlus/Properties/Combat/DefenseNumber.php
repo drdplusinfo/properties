@@ -1,27 +1,33 @@
 <?php
 namespace DrdPlus\Properties\Combat;
 
-use DrdPlus\Properties\Base\Agility;
-use DrdPlus\Properties\Combat\Partials\CombatCharacteristic;
-use DrdPlus\Calculations\SumAndRound;
+use DrdPlus\Codes\Properties\CharacteristicForGameCode;
+use DrdPlus\Properties\Combat\Partials\CharacteristicForGame;
 
 /**
  * @method DefenseNumber add(int | IntegerInterface $value)
  * @method DefenseNumber sub(int | IntegerInterface $value)
  */
-class DefenseNumber extends CombatCharacteristic
+class DefenseNumber extends CharacteristicForGame
 {
-
     /**
      * See PPH page 34 left column
      * , @link https://pph.drdplus.jaroslavtyc.com/#tabulka_bojovych_charakteristik
      *
-     * @param Agility $agility
+     * @param Defense $defense
+     * @return DefenseNumber
      */
-    public function __construct(Agility $agility)
+    public static function getIt(Defense $defense)
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        parent::__construct(SumAndRound::ceiledHalf($agility->getValue()));
+        return new static($defense->getValue());
     }
 
+    /**
+     * @return CharacteristicForGameCode
+     */
+    public function getCode()
+    {
+        return CharacteristicForGameCode::getIt(CharacteristicForGameCode::DEFENSE_NUMBER);
+    }
 }

@@ -15,15 +15,14 @@ use DrdPlus\Tables\Tables;
  */
 class MovementSpeed extends AbstractDerivedProperty
 {
-    const MOVEMENT_SPEED = PropertyCode::MOVEMENT_SPEED;
-
     /**
      * @param Speed $speed
+     * @return MovementSpeed
      */
-    public function __construct(Speed $speed)
+    public static function getIt(Speed $speed)
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        parent::__construct(SumAndRound::half($speed->getValue()));
+        return new static(SumAndRound::half($speed->getValue()));
     }
 
     /**
@@ -68,11 +67,11 @@ class MovementSpeed extends AbstractDerivedProperty
     }
 
     /**
-     * @return string
+     * @return PropertyCode
      */
     public function getCode()
     {
-        return self::MOVEMENT_SPEED;
+        return PropertyCode::getIt(PropertyCode::MOVEMENT_SPEED);
     }
 
 }

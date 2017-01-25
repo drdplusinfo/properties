@@ -6,20 +6,19 @@ use DrdPlus\Properties\Base\Agility;
 use DrdPlus\Calculations\SumAndRound;
 use DrdPlus\Properties\Combat\Partials\CombatCharacteristic;
 
-class Attack extends CombatCharacteristic
+class Defense extends CombatCharacteristic
 {
-
     /**
      * See PPH page 34 left column
      * , @link https://pph.drdplus.jaroslavtyc.com/#tabulka_bojovych_charakteristik
      *
      * @param Agility $agility
-     * @return Attack
+     * @return Defense
      */
     public static function getIt(Agility $agility)
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        return new static(SumAndRound::flooredHalf($agility->getValue()));
+        return new static(SumAndRound::ceiledHalf($agility->getValue()));
     }
 
     /**
@@ -27,7 +26,6 @@ class Attack extends CombatCharacteristic
      */
     public function getCode()
     {
-        return CombatCharacteristicCode::getIt(CombatCharacteristicCode::ATTACK);
+        return CombatCharacteristicCode::getIt(CombatCharacteristicCode::DEFENSE);
     }
-
 }

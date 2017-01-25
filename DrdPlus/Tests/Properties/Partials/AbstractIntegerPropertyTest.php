@@ -7,7 +7,6 @@ use Granam\Tools\ValueDescriber;
 
 abstract class AbstractIntegerPropertyTest extends AbstractStoredPropertyTest
 {
-
     /**
      * @return int[]
      */

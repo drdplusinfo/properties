@@ -5,8 +5,6 @@ use DrdPlus\Codes\Properties\PropertyCode;
 
 class NativeRegeneration extends NativeProperty
 {
-    const NATIVE_REGENERATION = PropertyCode::NATIVE_REGENERATION;
-
     /**
      * @return PropertyCode
      */

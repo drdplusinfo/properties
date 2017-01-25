@@ -2,23 +2,33 @@
 namespace DrdPlus\Properties\Combat;
 
 use DrdPlus\Codes\Armaments\WeaponlikeCode;
-use DrdPlus\Properties\Combat\Partials\CombatCharacteristic;
+use DrdPlus\Codes\Properties\CharacteristicForGameCode;
+use DrdPlus\Properties\Combat\Partials\CharacteristicForGame;
 use DrdPlus\Tables\Tables;
 
 /**
  * @method FightNumber add(int | IntegerInterface $value)
  * @method FightNumber sub(int | IntegerInterface $value)
  */
-class FightNumber extends CombatCharacteristic
+class FightNumber extends CharacteristicForGame
 {
     /**
      * @param Fight $fight
      * @param WeaponlikeCode $weaponlikeCode
      * @param Tables $tables
+     * @return FightNumber
      */
-    public function __construct(Fight $fight, WeaponlikeCode $weaponlikeCode, Tables $tables)
+    public static function getIt(Fight $fight, WeaponlikeCode $weaponlikeCode, Tables $tables)
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        parent::__construct($fight->getValue() + $tables->getArmourer()->getLengthOfWeaponOrShield($weaponlikeCode));
+        return new static($fight->getValue() + $tables->getArmourer()->getLengthOfWeaponOrShield($weaponlikeCode));
+    }
+
+    /**
+     * @return CharacteristicForGameCode
+     */
+    public function getCode()
+    {
+        return CharacteristicForGameCode::getIt(CharacteristicForGameCode::FIGHT_NUMBER);
     }
 }
