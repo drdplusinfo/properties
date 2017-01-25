@@ -6,7 +6,7 @@ use DrdPlus\Calculations\SumAndRound;
 use Granam\Integer\IntegerInterface;
 
 /** @noinspection SingletonFactoryPatternViolationInspection */
-abstract class AbstractAspectOfVisage extends AbstractDerivedProperty
+abstract class AspectOfVisage extends AbstractDerivedProperty
 {
     /**
      * @param IntegerInterface $firstProperty
@@ -17,8 +17,7 @@ abstract class AbstractAspectOfVisage extends AbstractDerivedProperty
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         parent::__construct(
-            SumAndRound::average($firstProperty->getValue(), $secondProperty->getValue())
-            + SumAndRound::half($charisma->getValue())
+            SumAndRound::round(($firstProperty->getValue() + $secondProperty->getValue()) / 2 + $charisma->getValue() / 2)
         );
     }
 }

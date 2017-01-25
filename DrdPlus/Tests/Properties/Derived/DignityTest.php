@@ -6,9 +6,9 @@ use DrdPlus\Properties\Base\Intelligence;
 use DrdPlus\Properties\Base\Charisma;
 use DrdPlus\Properties\Base\Will;
 use DrdPlus\Properties\Derived\Dignity;
-use DrdPlus\Tests\Properties\Derived\Partials\AbstractAspectOfVisageTest;
+use DrdPlus\Tests\Properties\Derived\Partials\AspectOfVisageTest;
 
-class DignityTest extends AbstractAspectOfVisageTest
+class DignityTest extends AspectOfVisageTest
 {
 
     /**

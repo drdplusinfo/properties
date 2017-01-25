@@ -6,9 +6,9 @@ use DrdPlus\Properties\Base\Charisma;
 use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Base\Will;
 use DrdPlus\Properties\Derived\Dangerousness;
-use DrdPlus\Tests\Properties\Derived\Partials\AbstractAspectOfVisageTest;
+use DrdPlus\Tests\Properties\Derived\Partials\AspectOfVisageTest;
 
-class DangerousnessTest extends AbstractAspectOfVisageTest
+class DangerousnessTest extends AspectOfVisageTest
 {
 
     /**
