@@ -4,8 +4,6 @@
 [![Test Coverage](https://codeclimate.com/github/jaroslavtyc/drd-plus-properties/badges/coverage.svg)](https://codeclimate.com/github/jaroslavtyc/drd-plus-properties/coverage)
 [![License](https://poser.pugx.org/drd-plus/properties/license)](https://packagist.org/packages/drd-plus/properties)
 
-*Properties **CAN NOT** use [tables](https://github.com/jaroslavtyc/drd-plus-tables)*
-
 All properties for DrD+ character from base as strength across derived as beauty to native as infravision.
 
 Base and body properties are ready for persistence by Doctrine as an enum.

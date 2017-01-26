@@ -17,6 +17,7 @@
     "granam/string": "dev-master",
     "granam/strict-object": "dev-master",
     "drd-plus/calculations": "dev-master",
+    "drd-plus/codes": "dev-master",
     "drd-plus/tables": "dev-master"
   },
   "require-dev": {
