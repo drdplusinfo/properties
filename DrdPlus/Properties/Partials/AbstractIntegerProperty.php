@@ -2,11 +2,14 @@
 namespace DrdPlus\Properties\Partials;
 
 use Doctrineum\Integer\IntegerEnum;
+use DrdPlus\Codes\Properties\PropertyCode;
 use DrdPlus\Properties\Property;
 use Granam\Integer\IntegerInterface;
 use Granam\Integer\Tools\ToInteger;
 
-/** @noinspection SingletonFactoryPatternViolationInspection */
+/**
+ * @method PropertyCode getCode()
+ */
 abstract class AbstractIntegerProperty extends IntegerEnum implements Property
 {
 

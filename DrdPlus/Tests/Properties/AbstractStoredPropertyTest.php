@@ -6,6 +6,8 @@ use DrdPlus\Codes\Properties\PropertyCode;
 
 abstract class AbstractStoredPropertyTest extends SimplePropertyTest
 {
+    use ItHasProperlyAnnotatedCodeGetter;
+
     /**
      * @return string
      */
