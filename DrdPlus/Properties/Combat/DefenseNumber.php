@@ -5,15 +5,15 @@ use DrdPlus\Codes\Properties\CharacteristicForGameCode;
 use DrdPlus\Properties\Combat\Partials\CharacteristicForGame;
 
 /**
+ * See PPH page 92 right column, @link https://pph.drdplus.jaroslavtyc.com/#obranne_cislo_oc
+ * Defense number can be affected by many ways unlike Defense.
+ *
  * @method DefenseNumber add(int | IntegerInterface $value)
  * @method DefenseNumber sub(int | IntegerInterface $value)
  */
 class DefenseNumber extends CharacteristicForGame
 {
     /**
-     * See PPH page 34 left column
-     * , @link https://pph.drdplus.jaroslavtyc.com/#tabulka_bojovych_charakteristik
-     *
      * @param Defense $defense
      * @return DefenseNumber
      */

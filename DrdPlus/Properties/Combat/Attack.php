@@ -6,13 +6,14 @@ use DrdPlus\Properties\Base\Agility;
 use DrdPlus\Calculations\SumAndRound;
 use DrdPlus\Properties\Combat\Partials\CombatCharacteristic;
 
+/**
+ * See PPH page 34 left column , @link https://pph.drdplus.jaroslavtyc.com/#tabulka_bojovych_charakteristik
+ * Attack can change only with Agility.
+ */
 class Attack extends CombatCharacteristic
 {
 
     /**
-     * See PPH page 34 left column
-     * , @link https://pph.drdplus.jaroslavtyc.com/#tabulka_bojovych_charakteristik
-     *
      * @param Agility $agility
      * @return Attack
      */

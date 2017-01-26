@@ -5,6 +5,9 @@ use DrdPlus\Codes\Properties\CharacteristicForGameCode;
 use DrdPlus\Properties\Combat\Partials\CharacteristicForGame;
 
 /**
+ * See PPH page 92 right column, @link https://pph.drdplus.jaroslavtyc.com/#utocne_cislo_uc
+ * Attack number can be affected by many ways unlike Attack.
+ *
  * @method AttackNumber add(int | IntegerInterface $value)
  * @method AttackNumber sub(int | IntegerInterface $value)
  */

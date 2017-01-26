@@ -90,15 +90,13 @@ abstract class CharacteristicForGameTest extends CombatCharacteristicTest
     /**
      * @test
      */
-    public function Has_modifying_methods_return_value_annotated()
+    public function Its_modifying_methods_have_return_value_annotated()
     {
         $reflectionClass = new \ReflectionClass(self::getSutClass());
         $classBasename = preg_replace('~^.+[\\\](\w+)$~', '$1', self::getSutClass());
-        self::assertSame(<<<ANNOTATION
-/**
+        self::assertContains(<<<ANNOTATION
  * @method {$classBasename} add(int | IntegerInterface \$value)
  * @method {$classBasename} sub(int | IntegerInterface \$value)
- */
 ANNOTATION
             , (string)$reflectionClass->getDocComment());
     }
