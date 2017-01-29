@@ -11,7 +11,7 @@ use DrdPlus\Calculations\SumAndRound;
 use DrdPlus\Tables\Tables;
 
 /**
- * See PPH page 112, right column, top
+ * See PPH page 112, right column, top, @link https://pph.drdplus.jaroslavtyc.com/#pohybova_rychlost
  */
 class MovementSpeed extends AbstractDerivedProperty
 {
@@ -40,6 +40,7 @@ class MovementSpeed extends AbstractDerivedProperty
      * @param TerrainCode $terrainCode
      * @param TerrainDifficultyPercents $terrainDifficultyPercents
      * @param Tables $tables
+     * @param Athletics $athletics
      * @return SpeedBonus
      * @throws \DrdPlus\Tables\Body\MovementTypes\Exceptions\UnknownMovementType
      * @throws \DrdPlus\Tables\Environments\Exceptions\UnknownTerrainCode
@@ -49,10 +50,15 @@ class MovementSpeed extends AbstractDerivedProperty
         MovementTypeCode $movementTypeCode,
         TerrainCode $terrainCode,
         TerrainDifficultyPercents $terrainDifficultyPercents,
+        Athletics $athletics,
         Tables $tables
     )
     {
         $speedBonusFromMovementType = $tables->getMovementTypesTable()->getSpeedBonus($movementTypeCode);
+        $athleticsBonus = 0;
+        if (in_array($movementTypeCode->getValue(), [MovementTypeCode::RUN, MovementTypeCode::SPRINT], true)) {
+            $athleticsBonus = $athletics->getAthleticsBonus()->getValue();
+        }
         $speedMalusFromTerrain = $tables->getImpassibilityOfTerrainTable()->getSpeedMalusOnTerrain(
             $terrainCode,
             $tables->getSpeedTable(),
@@ -61,7 +67,7 @@ class MovementSpeed extends AbstractDerivedProperty
 
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new SpeedBonus(
-            $this->getValue() + $speedBonusFromMovementType->getValue() + $speedMalusFromTerrain->getValue(),
+            $this->getValue() + $speedBonusFromMovementType->getValue() + $athleticsBonus + $speedMalusFromTerrain->getValue(),
             $tables->getSpeedTable()
         );
     }

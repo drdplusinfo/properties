@@ -3,6 +3,7 @@ namespace DrdPlus\Tests\Properties\Derived;
 
 use DrdPlus\Codes\Environment\TerrainCode;
 use DrdPlus\Codes\Transport\MovementTypeCode;
+use DrdPlus\Properties\Derived\Athletics;
 use DrdPlus\Properties\Derived\MovementSpeed;
 use DrdPlus\Properties\Derived\Speed;
 use DrdPlus\Tables\Body\MovementTypes\MovementTypesTable;
@@ -12,6 +13,7 @@ use DrdPlus\Tables\Measurements\Speed\SpeedBonus;
 use DrdPlus\Tables\Measurements\Speed\SpeedTable;
 use DrdPlus\Tables\Tables;
 use DrdPlus\Tests\Properties\Derived\Partials\AbstractDerivedPropertyTest;
+use Granam\Integer\IntegerInterface;
 
 class MovementSpeedTest extends AbstractDerivedPropertyTest
 {
@@ -118,18 +120,34 @@ class MovementSpeedTest extends AbstractDerivedPropertyTest
 
     /**
      * @test
+     * @dataProvider provideMovementTypeAndAthleticsCounting
+     * @param string $movementTypeName
+     * @param bool $athleticsCountedIn
      */
-    public function I_can_get_current_speed_bonus()
+    public function I_can_get_current_speed_bonus($movementTypeName, $athleticsCountedIn)
     {
         $movementSpeed = MovementSpeed::getIt($this->createSpeed(45));
         $currentSpeedBonus = $movementSpeed->getCurrentSpeedBonus(
-            $movementTypeCode = $this->createMovementTypeCode('foo movement'),
+            $movementTypeCode = $this->createMovementTypeCode($movementTypeName),
             $terrainCode = TerrainCode::getIt(TerrainCode::DESERT),
             $terrainDifficultyPercents = $this->createDifficultyPercents(50),
+            $this->createAthletics(987),
             $this->createTables($movementTypeCode, 123, $terrainCode, $terrainDifficultyPercents, -456)
         );
         self::assertInstanceOf(SpeedBonus::class, $currentSpeedBonus);
-        self::assertSame(23 /* 45/2 */ + 123 - 456, $currentSpeedBonus->getValue());
+        self::assertSame(23 /* 45/2 */ + 123 - 456 + ($athleticsCountedIn ? 987 : 0), $currentSpeedBonus->getValue());
+    }
+
+    public function provideMovementTypeAndAthleticsCounting()
+    {
+        return [
+            ['just some movement', false],
+            [MovementTypeCode::WAITING, false],
+            [MovementTypeCode::WALK, false],
+            [MovementTypeCode::RUSH, false],
+            [MovementTypeCode::RUN, true],
+            [MovementTypeCode::SPRINT, true],
+        ];
     }
 
     /**
@@ -158,5 +176,20 @@ class MovementSpeedTest extends AbstractDerivedPropertyTest
             ->andReturn($percents / 100);
 
         return $difficultyPercents;
+    }
+
+    /**
+     * @param int $value
+     * @return \Mockery\MockInterface|Athletics
+     */
+    private function createAthletics($value)
+    {
+        $athletics = $this->mockery(Athletics::class);
+        $athletics->shouldReceive('getAthleticsBonus')
+            ->andReturn($athleticsBonus = $this->mockery(IntegerInterface::class));
+        $athleticsBonus->shouldReceive('getValue')
+            ->andReturn($value);
+
+        return $athletics;
     }
 }
