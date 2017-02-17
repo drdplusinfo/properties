@@ -3,9 +3,9 @@ namespace DrdPlus\Tests\Properties\Combat;
 
 use DrdPlus\Properties\Combat\Fight;
 use DrdPlus\Properties\Property;
-use Granam\Tests\Exceptions\Tools\AbstractExceptionsHierarchyTest;
+use Granam\Tests\ExceptionsHierarchy\Exceptions\AbstractExceptionsHierarchyTest;
 
-class ExceptionsHierarchyTest extends AbstractExceptionsHierarchyTest
+class CombatPropertiesExceptionsHierarchyTest extends AbstractExceptionsHierarchyTest
 {
     protected function getTestedNamespace()
     {
