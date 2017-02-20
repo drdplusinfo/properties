@@ -9,8 +9,9 @@ use DrdPlus\Properties\Base\Intelligence;
 use DrdPlus\Properties\Base\Knack;
 use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Base\Will;
+use PHPUnit\Framework\TestCase;
 
-class BasePropertiesFactoryTest extends \PHPUnit_Framework_TestCase
+class BasePropertiesFactoryTest extends TestCase
 {
     /**
      * @test
