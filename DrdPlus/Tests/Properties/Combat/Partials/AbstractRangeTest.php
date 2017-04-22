@@ -56,7 +56,7 @@ abstract class AbstractRangeTest extends PositiveIntegerCharacteristicForGameTes
             }
         );
 
-        self::assertSame($distanceValue, $range->getInMeters($tables));
+        self::assertSame((float)$distanceValue, $range->getInMeters($tables));
     }
 
     /**

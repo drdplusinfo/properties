@@ -1,6 +1,7 @@
 <?php
 namespace DrdPlus\Tests\Properties\Body;
 
+use DrdPlus\Codes\DistanceCode;
 use DrdPlus\Codes\Properties\PropertyCode;
 use DrdPlus\Properties\Body\Height;
 use DrdPlus\Properties\Body\HeightInCm;
@@ -30,7 +31,7 @@ class HeightTest extends PropertyTest
         $tables = $this->createTablesWithDistanceTable(
             function (Distance $distance) {
                 self::assertSame(1.23, $distance->getValue());
-                self::assertSame(Distance::M, $distance->getUnit());
+                self::assertSame(DistanceCode::M, $distance->getUnit());
 
                 return $this->createDistanceBonus(456);
             }

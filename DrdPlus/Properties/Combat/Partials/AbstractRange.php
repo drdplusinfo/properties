@@ -8,9 +8,9 @@ abstract class AbstractRange extends PositiveIntegerCharacteristicForGame
 {
     /**
      * @param Tables $tables
-     * @return int
+     * @return float
      */
-    public function getInMeters(Tables $tables)
+    public function getInMeters(Tables $tables): float
     {
         // both encounter and maximal ranges are in fact distance bonus
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
