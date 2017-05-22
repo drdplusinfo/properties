@@ -1,7 +1,7 @@
 <?php
 namespace DrdPlus\Properties\Body;
 
-use DrdPlus\Codes\DistanceCode;
+use DrdPlus\Codes\DistanceUnitCode;
 use DrdPlus\Codes\Properties\PropertyCode;
 use DrdPlus\Tables\Measurements\Distance\Distance;
 use DrdPlus\Tables\Tables;
@@ -36,7 +36,7 @@ class Height extends StrictObject implements BodyProperty, IntegerInterface
     {
         $heightInMeters = $heightInCm->getValue() / 100;
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        $distance = new Distance($heightInMeters, DistanceCode::METER, $tables->getDistanceTable());
+        $distance = new Distance($heightInMeters, DistanceUnitCode::METER, $tables->getDistanceTable());
         // height is bonus of distance in fact
         $this->value = $distance->getBonus()->getValue();
     }
