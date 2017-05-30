@@ -7,6 +7,7 @@ use DrdPlus\Properties\Body\Height;
 use DrdPlus\Properties\Combat\Partials\CharacteristicForGame;
 use DrdPlus\Calculations\SumAndRound;
 use DrdPlus\Tables\Tables;
+use Granam\Integer\IntegerInterface;
 use Granam\Tools\ValueDescriber;
 
 /**
@@ -29,7 +30,7 @@ class Fight extends CharacteristicForGame
         BaseProperties $baseProperties,
         Height $height,
         Tables $tables
-    )
+    ): Fight
     {
         $fightValue = self::getFightNumberByProfession($professionCode, $baseProperties);
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
@@ -47,7 +48,7 @@ class Fight extends CharacteristicForGame
      * @return int
      * @throws \DrdPlus\Properties\Combat\Exceptions\UnknownProfession
      */
-    private static function getFightNumberByProfession(ProfessionCode $professionCode, BaseProperties $baseProperties)
+    private static function getFightNumberByProfession(ProfessionCode $professionCode, BaseProperties $baseProperties): int
     {
         switch ($professionCode->getValue()) {
             case ProfessionCode::FIGHTER :
@@ -60,6 +61,8 @@ class Fight extends CharacteristicForGame
                 return SumAndRound::average($baseProperties->getAgility()->getValue(), $baseProperties->getIntelligence()->getValue());
             case ProfessionCode::PRIEST :
                 return SumAndRound::average($baseProperties->getAgility()->getValue(), $baseProperties->getCharisma()->getValue());
+            case ProfessionCode::COMMONER :
+                return 0;
             default :
                 throw new Exceptions\UnknownProfession(
                     'Unknown profession of code ' . ValueDescriber::describe($professionCode->getValue())
@@ -70,7 +73,7 @@ class Fight extends CharacteristicForGame
     /**
      * @return CharacteristicForGameCode
      */
-    public function getCode()
+    public function getCode(): CharacteristicForGameCode
     {
         return CharacteristicForGameCode::getIt(CharacteristicForGameCode::FIGHT);
     }

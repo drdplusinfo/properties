@@ -100,7 +100,7 @@ class FightTest extends CharacteristicForGameTest
         self::assertSame((string)($expectedFightNumber + $correction), (string)$fightNumber);
     }
 
-    public function provideProfessionInfo()
+    public function provideProfessionInfo(): array
     {
         return [
             [
@@ -132,6 +132,11 @@ class FightTest extends CharacteristicForGameTest
                 ProfessionCode::getIt(ProfessionCode::PRIEST),
                 $this->createBaseProperties($agility = 456, 0, 0, $charisma = 567),
                 (int)round(($agility + $charisma) / 2),
+            ],
+            [
+                ProfessionCode::getIt(ProfessionCode::COMMONER),
+                $this->createBaseProperties($agility = 456, 0, 0, $charisma = 567),
+                0, // whatever properties commoner has, its fight is still zero
             ],
         ];
     }
