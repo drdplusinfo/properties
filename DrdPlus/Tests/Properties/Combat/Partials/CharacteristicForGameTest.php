@@ -95,8 +95,8 @@ abstract class CharacteristicForGameTest extends CombatCharacteristicTest
         $reflectionClass = new \ReflectionClass(self::getSutClass());
         $classBasename = preg_replace('~^.+[\\\](\w+)$~', '$1', self::getSutClass());
         self::assertContains(<<<ANNOTATION
- * @method {$classBasename} add(int | IntegerInterface \$value)
- * @method {$classBasename} sub(int | IntegerInterface \$value)
+ * @method {$classBasename} add(int | \\Granam\\Integer\\IntegerInterface \$value)
+ * @method {$classBasename} sub(int | \\Granam\\Integer\\IntegerInterface \$value)
 ANNOTATION
             , (string)$reflectionClass->getDocComment());
     }

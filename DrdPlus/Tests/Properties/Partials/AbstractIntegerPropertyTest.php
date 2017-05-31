@@ -134,9 +134,9 @@ abstract class AbstractIntegerPropertyTest extends AbstractStoredPropertyTest
         $reflectionClass = new \ReflectionClass(self::getSutClass());
         $classBasename = str_replace($reflectionClass->getNamespaceName() . '\\', '', $reflectionClass->getName());
         self::assertContains(<<<ANNOTATION
- * @method static {$classBasename} getIt(int | IntegerInterface \$value)
- * @method {$classBasename} add(int | IntegerInterface \$value)
- * @method {$classBasename} sub(int | IntegerInterface \$value)
+ * @method static {$classBasename} getIt(int | \\Granam\\Integer\\IntegerInterface \$value)
+ * @method {$classBasename} add(int | \\Granam\\Integer\\IntegerInterface \$value)
+ * @method {$classBasename} sub(int | \\Granam\\Integer\\IntegerInterface \$value)
 ANNOTATION
             , $reflectionClass->getDocComment());
     }
