@@ -6,8 +6,8 @@ use DrdPlus\Properties\Combat\Partials\AbstractRange;
 use Granam\Integer\PositiveInteger;
 
 /**
- * @method EncounterRange add(int | IntegerInterface $value)
- * @method EncounterRange sub(int | IntegerInterface $value)
+ * @method EncounterRange add(int | \Granam\Integer\IntegerInterface $value)
+ * @method EncounterRange sub(int | \Granam\Integer\IntegerInterface $value)
  */
 class EncounterRange extends AbstractRange
 {
@@ -18,7 +18,7 @@ class EncounterRange extends AbstractRange
      * @throws \Granam\Integer\Tools\Exceptions\PositiveIntegerCanNotBeNegative
      * @return EncounterRange
      */
-    public static function getIt($value)
+    public static function getIt($value): EncounterRange
     {
         return new static($value);
     }
@@ -26,7 +26,7 @@ class EncounterRange extends AbstractRange
     /**
      * @return CharacteristicForGameCode
      */
-    public function getCode()
+    public function getCode(): CharacteristicForGameCode
     {
         return CharacteristicForGameCode::getIt(CharacteristicForGameCode::ENCOUNTER_RANGE);
     }

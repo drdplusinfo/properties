@@ -5,11 +5,11 @@ use DrdPlus\Codes\Properties\CharacteristicForGameCode;
 use DrdPlus\Properties\Combat\Partials\CharacteristicForGame;
 
 /**
- * See PPH page 92 right column, @link https://pph.drdplus.jaroslavtyc.com/#obranne_cislo_oc
+ * See PPH page 92 right column, @link https://pph.drdplus.info/#obranne_cislo_oc
  * Defense number can be affected by many ways unlike Defense.
  *
- * @method DefenseNumber add(int | IntegerInterface $value)
- * @method DefenseNumber sub(int | IntegerInterface $value)
+ * @method DefenseNumber add(int | \Granam\Integer\IntegerInterface $value)
+ * @method DefenseNumber sub(int | \Granam\Integer\IntegerInterface $value)
  */
 class DefenseNumber extends CharacteristicForGame
 {
@@ -17,7 +17,7 @@ class DefenseNumber extends CharacteristicForGame
      * @param Defense $defense
      * @return DefenseNumber
      */
-    public static function getIt(Defense $defense)
+    public static function getIt(Defense $defense): DefenseNumber
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new static($defense->getValue());
@@ -26,7 +26,7 @@ class DefenseNumber extends CharacteristicForGame
     /**
      * @return CharacteristicForGameCode
      */
-    public function getCode()
+    public function getCode(): CharacteristicForGameCode
     {
         return CharacteristicForGameCode::getIt(CharacteristicForGameCode::DEFENSE_NUMBER);
     }

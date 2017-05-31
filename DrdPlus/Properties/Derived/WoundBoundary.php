@@ -13,7 +13,7 @@ class WoundBoundary extends AbstractDerivedProperty
      * @param Tables $tables
      * @return WoundBoundary
      */
-    public static function getIt(Toughness $toughness, Tables $tables)
+    public static function getIt(Toughness $toughness, Tables $tables): WoundBoundary
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new static(
@@ -29,7 +29,7 @@ class WoundBoundary extends AbstractDerivedProperty
     /**
      * @return PropertyCode
      */
-    public function getCode()
+    public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::WOUND_BOUNDARY);
     }

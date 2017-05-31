@@ -15,7 +15,7 @@ class Dignity extends AspectOfVisage
      * @param Charisma $charisma
      * @return Dignity
      */
-    public static function getIt(Intelligence $intelligence, Will $will, Charisma $charisma)
+    public static function getIt(Intelligence $intelligence, Will $will, Charisma $charisma): Dignity
     {
         return new static($intelligence, $will, $charisma);
     }
@@ -23,7 +23,7 @@ class Dignity extends AspectOfVisage
     /**
      * @return PropertyCode
      */
-    public function getCode()
+    public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::DIGNITY);
     }

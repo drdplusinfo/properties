@@ -11,7 +11,7 @@ use DrdPlus\Calculations\SumAndRound;
 use DrdPlus\Tables\Tables;
 
 /**
- * See PPH page 112, right column, top, @link https://pph.drdplus.jaroslavtyc.com/#pohybova_rychlost
+ * See PPH page 112, right column, top, @link https://pph.drdplus.info/#pohybova_rychlost
  */
 class MovementSpeed extends AbstractDerivedProperty
 {

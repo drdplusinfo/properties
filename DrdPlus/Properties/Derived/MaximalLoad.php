@@ -6,7 +6,7 @@ use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Derived\Partials\AbstractDerivedProperty;
 
 /**
- * See PPH page 114 left column, @link https://pph.drdplus.jaroslavtyc.com/#nalozeni
+ * See PPH page 114 left column, @link https://pph.drdplus.info/#nalozeni
  */
 class MaximalLoad extends AbstractDerivedProperty
 {

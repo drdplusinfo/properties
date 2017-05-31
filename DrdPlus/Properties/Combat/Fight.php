@@ -11,8 +11,8 @@ use Granam\Integer\IntegerInterface;
 use Granam\Tools\ValueDescriber;
 
 /**
- * @method Fight add(int | IntegerInterface $value)
- * @method Fight sub(int | IntegerInterface $value)
+ * @method Fight add(int | \Granam\Integer\IntegerInterface $value)
+ * @method Fight sub(int | \Granam\Integer\IntegerInterface $value)
  */
 class Fight extends CharacteristicForGame
 {
@@ -41,7 +41,7 @@ class Fight extends CharacteristicForGame
     }
 
     /**
-     * See PPH page 34 left column, @link https://pph.drdplus.jaroslavtyc.com/#tabulka_boje
+     * See PPH page 34 left column, @link https://pph.drdplus.info/#tabulka_boje
      *
      * @param ProfessionCode $professionCode
      * @param BaseProperties $baseProperties

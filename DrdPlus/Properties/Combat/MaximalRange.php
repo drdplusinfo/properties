@@ -5,8 +5,8 @@ use DrdPlus\Codes\Properties\CharacteristicForGameCode;
 use DrdPlus\Properties\Combat\Partials\AbstractRange;
 
 /**
- * @method MaximalRange add(int | IntegerInterface $value)
- * @method MaximalRange sub(int | IntegerInterface $value)
+ * @method MaximalRange add(int | \Granam\Integer\IntegerInterface $value)
+ * @method MaximalRange sub(int | \Granam\Integer\IntegerInterface $value)
  */
 class MaximalRange extends AbstractRange
 {
@@ -16,7 +16,7 @@ class MaximalRange extends AbstractRange
      * @param EncounterRange $encounterRange
      * @return MaximalRange
      */
-    public static function getItForMeleeWeapon(EncounterRange $encounterRange)
+    public static function getItForMeleeWeapon(EncounterRange $encounterRange): MaximalRange
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new static($encounterRange->getValue());
@@ -28,7 +28,7 @@ class MaximalRange extends AbstractRange
      * @param EncounterRange $encounterRange
      * @return MaximalRange
      */
-    public static function getItForRangedWeapon(EncounterRange $encounterRange)
+    public static function getItForRangedWeapon(EncounterRange $encounterRange): MaximalRange
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new static($encounterRange->getValue() + 12);
@@ -37,7 +37,7 @@ class MaximalRange extends AbstractRange
     /**
      * @return CharacteristicForGameCode
      */
-    public function getCode()
+    public function getCode(): CharacteristicForGameCode
     {
         return CharacteristicForGameCode::getIt(CharacteristicForGameCode::MAXIMAL_RANGE);
     }

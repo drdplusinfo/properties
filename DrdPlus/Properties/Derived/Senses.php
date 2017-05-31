@@ -17,7 +17,7 @@ class Senses extends AbstractDerivedProperty
      * @param Tables $tables
      * @return Senses
      */
-    public static function getIt(Knack $knack, RaceCode $raceCode, SubRaceCode $subRaceCode, Tables $tables)
+    public static function getIt(Knack $knack, RaceCode $raceCode, SubRaceCode $subRaceCode, Tables $tables): Senses
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new static($knack->getValue() + $tables->getRacesTable()->getSenses($raceCode, $subRaceCode));
@@ -26,7 +26,7 @@ class Senses extends AbstractDerivedProperty
     /**
      * @return PropertyCode
      */
-    public function getCode()
+    public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::SENSES);
     }

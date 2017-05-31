@@ -17,7 +17,7 @@ class Toughness extends AbstractDerivedProperty
      * @param Tables $tables
      * @return Toughness
      */
-    public static function getIt(Strength $strength, RaceCode $raceCode, SubRaceCode $subraceCode, Tables $tables)
+    public static function getIt(Strength $strength, RaceCode $raceCode, SubRaceCode $subraceCode, Tables $tables): Toughness
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new static($strength->getValue() + $tables->getRacesTable()->getToughness($raceCode, $subraceCode));
@@ -26,7 +26,7 @@ class Toughness extends AbstractDerivedProperty
     /**
      * @return PropertyCode
      */
-    public function getCode()
+    public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::TOUGHNESS);
     }

@@ -13,7 +13,7 @@ class FatigueBoundary extends AbstractDerivedProperty
      * @param Tables $tables
      * @return FatigueBoundary
      */
-    public static function getIt(Endurance $endurance, Tables $tables)
+    public static function getIt(Endurance $endurance, Tables $tables): FatigueBoundary
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new static(
@@ -29,7 +29,7 @@ class FatigueBoundary extends AbstractDerivedProperty
     /**
      * @return PropertyCode
      */
-    public function getCode()
+    public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::FATIGUE_BOUNDARY);
     }

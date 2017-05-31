@@ -7,8 +7,8 @@ use DrdPlus\Properties\Combat\Partials\CharacteristicForGame;
 use DrdPlus\Tables\Tables;
 
 /**
- * @method FightNumber add(int | IntegerInterface $value)
- * @method FightNumber sub(int | IntegerInterface $value)
+ * @method FightNumber add(int | \Granam\Integer\IntegerInterface $value)
+ * @method FightNumber sub(int | \Granam\Integer\IntegerInterface $value)
  */
 class FightNumber extends CharacteristicForGame
 {
@@ -18,7 +18,7 @@ class FightNumber extends CharacteristicForGame
      * @param Tables $tables
      * @return FightNumber
      */
-    public static function getIt(Fight $fight, WeaponlikeCode $weaponlikeCode, Tables $tables)
+    public static function getIt(Fight $fight, WeaponlikeCode $weaponlikeCode, Tables $tables): FightNumber
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new static($fight->getValue() + $tables->getArmourer()->getLengthOfWeaponOrShield($weaponlikeCode));
@@ -27,7 +27,7 @@ class FightNumber extends CharacteristicForGame
     /**
      * @return CharacteristicForGameCode
      */
-    public function getCode()
+    public function getCode(): CharacteristicForGameCode
     {
         return CharacteristicForGameCode::getIt(CharacteristicForGameCode::FIGHT_NUMBER);
     }

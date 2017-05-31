@@ -14,7 +14,7 @@ class Endurance extends AbstractDerivedProperty
      * @param Will $will
      * @return Endurance
      */
-    public static function getIt(Strength $strength, Will $will)
+    public static function getIt(Strength $strength, Will $will): Endurance
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new static(SumAndRound::average($strength->getValue(), $will->getValue()));
@@ -23,7 +23,7 @@ class Endurance extends AbstractDerivedProperty
     /**
      * @return PropertyCode
      */
-    public function getCode()
+    public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::ENDURANCE);
     }

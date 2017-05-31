@@ -30,7 +30,7 @@ abstract class CombatCharacteristic extends StrictObject implements IntegerInter
      * @throws \Granam\Integer\Tools\Exceptions\WrongParameterType
      * @throws \Granam\Integer\Tools\Exceptions\ValueLostOnCast
      */
-    protected function sanitizeValue($value)
+    protected function sanitizeValue($value): int
     {
         return ToInteger::toInteger($value);
     }
@@ -38,7 +38,7 @@ abstract class CombatCharacteristic extends StrictObject implements IntegerInter
     /**
      * @return int
      */
-    public function getValue()
+    public function getValue(): int
     {
         return $this->value;
     }

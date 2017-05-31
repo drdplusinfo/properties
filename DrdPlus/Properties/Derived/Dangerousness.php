@@ -15,7 +15,7 @@ class Dangerousness extends AspectOfVisage
      * @param Charisma $charisma
      * @return Dangerousness
      */
-    public static function getIt(Strength $strength, Will $will, Charisma $charisma)
+    public static function getIt(Strength $strength, Will $will, Charisma $charisma): Dangerousness
     {
         return new static($strength, $will, $charisma);
     }
@@ -23,7 +23,7 @@ class Dangerousness extends AspectOfVisage
     /**
      * @return PropertyCode
      */
-    public function getCode()
+    public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::DANGEROUSNESS);
     }

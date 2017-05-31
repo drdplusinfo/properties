@@ -16,7 +16,7 @@ class Speed extends AbstractDerivedProperty
      * @param Height $height
      * @return Speed
      */
-    public static function getIt(Strength $strength, Agility $agility, Height $height)
+    public static function getIt(Strength $strength, Agility $agility, Height $height): Speed
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new static(
@@ -28,7 +28,7 @@ class Speed extends AbstractDerivedProperty
     /**
      * @return PropertyCode
      */
-    public function getCode()
+    public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::SPEED);
     }

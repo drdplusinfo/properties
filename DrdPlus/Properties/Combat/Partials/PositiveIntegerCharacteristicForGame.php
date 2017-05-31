@@ -13,7 +13,7 @@ abstract class PositiveIntegerCharacteristicForGame extends CharacteristicForGam
      * @throws \Granam\Integer\Tools\Exceptions\ValueLostOnCast
      * @throws \Granam\Integer\Tools\Exceptions\PositiveIntegerCanNotBeNegative
      */
-    protected function sanitizeValue($value)
+    protected function sanitizeValue($value): int
     {
         return ToInteger::toPositiveInteger($value);
     }

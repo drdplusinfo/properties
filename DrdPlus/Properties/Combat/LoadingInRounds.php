@@ -3,12 +3,11 @@ namespace DrdPlus\Properties\Combat;
 
 use DrdPlus\Codes\Properties\CharacteristicForGameCode;
 use DrdPlus\Properties\Combat\Partials\PositiveIntegerCharacteristicForGame;
-use Granam\Integer\IntegerInterface;
 use Granam\Integer\PositiveInteger;
 
 /**
- * @method LoadingInRounds add(int | IntegerInterface $value)
- * @method LoadingInRounds sub(int | IntegerInterface $value)
+ * @method LoadingInRounds add(int | \Granam\Integer\IntegerInterface $value)
+ * @method LoadingInRounds sub(int | \Granam\Integer\IntegerInterface $value)
  */
 class LoadingInRounds extends PositiveIntegerCharacteristicForGame
 {
@@ -19,7 +18,7 @@ class LoadingInRounds extends PositiveIntegerCharacteristicForGame
      * @throws \Granam\Integer\Tools\Exceptions\ValueLostOnCast
      * @throws \Granam\Integer\Tools\Exceptions\PositiveIntegerCanNotBeNegative
      */
-    public static function getIt($value)
+    public static function getIt($value): LoadingInRounds
     {
         return new static($value);
     }
@@ -27,7 +26,7 @@ class LoadingInRounds extends PositiveIntegerCharacteristicForGame
     /**
      * @return CharacteristicForGameCode
      */
-    public function getCode()
+    public function getCode(): CharacteristicForGameCode
     {
         return CharacteristicForGameCode::getIt(CharacteristicForGameCode::LOADING_IN_ROUNDS);
     }

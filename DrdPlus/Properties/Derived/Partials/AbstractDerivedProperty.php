@@ -44,7 +44,7 @@ abstract class AbstractDerivedProperty extends StrictObject implements DerivedPr
     /**
      * @return int
      */
-    public function getValue()
+    public function getValue(): int
     {
         return $this->value;
     }

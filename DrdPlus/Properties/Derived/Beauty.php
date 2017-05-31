@@ -15,7 +15,7 @@ class Beauty extends AspectOfVisage
      * @param Charisma $charisma
      * @return Beauty
      */
-    public static function getIt(Agility $agility, Knack $knack, Charisma $charisma)
+    public static function getIt(Agility $agility, Knack $knack, Charisma $charisma): Beauty
     {
         return new static($agility, $knack, $charisma);
     }
@@ -23,7 +23,7 @@ class Beauty extends AspectOfVisage
     /**
      * @return PropertyCode
      */
-    public function getCode()
+    public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::BEAUTY);
     }
