@@ -13,7 +13,7 @@ class WeightInKg extends AbstractFloatProperty implements BodyProperty
     /**
      * @return PropertyCode
      */
-    public function getCode()
+    public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::WEIGHT_IN_KG);
     }

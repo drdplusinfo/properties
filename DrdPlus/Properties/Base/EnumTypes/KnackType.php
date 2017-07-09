@@ -11,7 +11,7 @@ class KnackType extends IntegerEnumType
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return self::KNACK;
     }

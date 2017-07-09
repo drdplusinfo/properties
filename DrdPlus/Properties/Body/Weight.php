@@ -19,7 +19,7 @@ class Weight extends StrictObject implements BodyProperty, IntegerInterface
      * @param Tables $tables
      * @return Weight
      */
-    public static function getIt(WeightInKg $weightInKg, Tables $tables)
+    public static function getIt(WeightInKg $weightInKg, Tables $tables): Weight
     {
         return new static($weightInKg, $tables);
     }
@@ -46,7 +46,7 @@ class Weight extends StrictObject implements BodyProperty, IntegerInterface
     /**
      * @return int
      */
-    public function getValue()
+    public function getValue(): int
     {
         return $this->value;
     }
@@ -54,7 +54,7 @@ class Weight extends StrictObject implements BodyProperty, IntegerInterface
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return (string)$this->value;
     }
@@ -62,7 +62,7 @@ class Weight extends StrictObject implements BodyProperty, IntegerInterface
     /**
      * @return PropertyCode
      */
-    public function getCode()
+    public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::WEIGHT);
     }

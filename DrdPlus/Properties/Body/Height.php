@@ -23,7 +23,7 @@ class Height extends StrictObject implements BodyProperty, IntegerInterface
      * @param Tables $tables
      * @return Height
      */
-    public static function getIt(HeightInCm $heightInCm, Tables $tables)
+    public static function getIt(HeightInCm $heightInCm, Tables $tables): Height
     {
         return new static($heightInCm, $tables);
     }
@@ -44,7 +44,7 @@ class Height extends StrictObject implements BodyProperty, IntegerInterface
     /**
      * @return PropertyCode
      */
-    public function getCode()
+    public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::HEIGHT);
     }
@@ -54,7 +54,7 @@ class Height extends StrictObject implements BodyProperty, IntegerInterface
      *
      * @return int
      */
-    public function getValue()
+    public function getValue(): int
     {
         return $this->value;
     }
@@ -62,7 +62,7 @@ class Height extends StrictObject implements BodyProperty, IntegerInterface
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return (string)$this->value;
     }

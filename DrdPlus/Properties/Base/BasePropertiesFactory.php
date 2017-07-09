@@ -14,7 +14,7 @@ class BasePropertiesFactory extends StrictObject
      * @param int|IntegerInterface $strengthValue
      * @return Strength
      */
-    public function createStrength($strengthValue)
+    public function createStrength($strengthValue): Strength
     {
         return Strength::getIt($strengthValue);
     }
@@ -23,7 +23,7 @@ class BasePropertiesFactory extends StrictObject
      * @param int|IntegerInterface $agilityValue
      * @return Agility
      */
-    public function createAgility($agilityValue)
+    public function createAgility($agilityValue): Agility
     {
         return Agility::getIt($agilityValue);
     }
@@ -32,7 +32,7 @@ class BasePropertiesFactory extends StrictObject
      * @param int|IntegerInterface $knackValue
      * @return Knack
      */
-    public function createKnack($knackValue)
+    public function createKnack($knackValue): Knack
     {
         return Knack::getIt($knackValue);
     }
@@ -41,7 +41,7 @@ class BasePropertiesFactory extends StrictObject
      * @param int|IntegerInterface $willValue
      * @return Will
      */
-    public function createWill($willValue)
+    public function createWill($willValue): Will
     {
         return Will::getIt($willValue);
     }
@@ -50,7 +50,7 @@ class BasePropertiesFactory extends StrictObject
      * @param int|IntegerInterface $intelligenceValue
      * @return Intelligence
      */
-    public function createIntelligence($intelligenceValue)
+    public function createIntelligence($intelligenceValue): Intelligence
     {
         return Intelligence::getIt($intelligenceValue);
     }
@@ -59,7 +59,7 @@ class BasePropertiesFactory extends StrictObject
      * @param int|IntegerInterface $charismaValue
      * @return Charisma
      */
-    public function createCharisma($charismaValue)
+    public function createCharisma($charismaValue): Charisma
     {
         return Charisma::getIt($charismaValue);
     }
@@ -67,11 +67,11 @@ class BasePropertiesFactory extends StrictObject
     /**
      * @param $propertyValue
      * @param string|StringInterface $propertyCode
-     * @return Agility|Charisma|Intelligence|Knack|Strength|Will
+     * @return Agility|Charisma|Intelligence|Knack|Strength|Will|BaseProperty
      * @throws \DrdPlus\Properties\Base\Exceptions\UnknownBasePropertyCode
      * @throws \Granam\Scalar\Tools\Exceptions\WrongParameterType
      */
-    public function createProperty($propertyValue, $propertyCode)
+    public function createProperty($propertyValue, $propertyCode): BaseProperty
     {
         switch (ToString::toString($propertyCode)) {
             case PropertyCode::STRENGTH :
