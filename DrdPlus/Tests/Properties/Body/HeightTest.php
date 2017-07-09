@@ -1,7 +1,7 @@
 <?php
 namespace DrdPlus\Tests\Properties\Body;
 
-use DrdPlus\Codes\DistanceUnitCode;
+use DrdPlus\Codes\Units\DistanceUnitCode;
 use DrdPlus\Codes\Properties\PropertyCode;
 use DrdPlus\Properties\Body\Height;
 use DrdPlus\Properties\Body\HeightInCm;

@@ -1,7 +1,7 @@
 <?php
 namespace DrdPlus\Properties\Body;
 
-use DrdPlus\Codes\DistanceUnitCode;
+use DrdPlus\Codes\Units\DistanceUnitCode;
 use DrdPlus\Codes\Properties\PropertyCode;
 use DrdPlus\Tables\Measurements\Distance\Distance;
 use DrdPlus\Tables\Tables;
