@@ -11,7 +11,7 @@ class RequiresDmAgreementType extends BooleanEnumType
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return self::REQUIRES_DM_AGREEMENT;
     }

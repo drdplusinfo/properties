@@ -14,7 +14,7 @@ class NativeRegenerationType extends BooleanEnumType
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return self::NATIVE_REGENERATION;
     }

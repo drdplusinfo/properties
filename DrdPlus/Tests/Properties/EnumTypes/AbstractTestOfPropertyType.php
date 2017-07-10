@@ -13,7 +13,7 @@ abstract class AbstractTestOfPropertyType extends AbstractSelfRegisteringTypeTes
     /**
      * @test
      */
-    public function Type_can_be_converted_to_PHP_value()
+    public function Type_can_be_converted_to_PHP_value(): void
     {
         $propertyTypeClass = $this->getTypeClass();
         $propertyTypeClass::registerSelf();
@@ -44,7 +44,7 @@ abstract class AbstractTestOfPropertyType extends AbstractSelfRegisteringTypeTes
     /**
      * @test
      */
-    public function I_get_same_type_name_as_property_code()
+    public function I_get_same_type_name_as_property_code(): void
     {
         $propertyClass = $this->getRegisteredClass();
         /** @var Property $property */
