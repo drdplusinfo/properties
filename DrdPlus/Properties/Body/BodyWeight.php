@@ -46,7 +46,7 @@ class BodyWeight extends StrictObject implements BodyProperty, IntegerInterface
     /**
      * @return string
      */
-    public function __toString(): string
+    public function __toString()
     {
         return (string)$this->value;
     }
