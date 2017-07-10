@@ -19,7 +19,7 @@ class MovementSpeed extends AbstractDerivedProperty
      * @param Speed $speed
      * @return MovementSpeed
      */
-    public static function getIt(Speed $speed)
+    public static function getIt(Speed $speed): MovementSpeed
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new static(SumAndRound::half($speed->getValue()));
@@ -29,7 +29,7 @@ class MovementSpeed extends AbstractDerivedProperty
      * @param Tables $tables
      * @return SpeedBonus
      */
-    public function getSpeedBonus(Tables $tables)
+    public function getSpeedBonus(Tables $tables): SpeedBonus
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new SpeedBonus($this->getValue(), $tables->getSpeedTable());
@@ -52,7 +52,7 @@ class MovementSpeed extends AbstractDerivedProperty
         TerrainDifficultyPercents $terrainDifficultyPercents,
         Athletics $athletics,
         Tables $tables
-    )
+    ): SpeedBonus
     {
         $speedBonusFromMovementType = $tables->getMovementTypesTable()->getSpeedBonus($movementTypeCode);
         $athleticsBonus = 0;
@@ -75,7 +75,7 @@ class MovementSpeed extends AbstractDerivedProperty
     /**
      * @return PropertyCode
      */
-    public function getCode()
+    public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::MOVEMENT_SPEED);
     }

@@ -15,7 +15,7 @@ class MaximalLoad extends AbstractDerivedProperty
      * @param Athletics $athletics
      * @return MaximalLoad
      */
-    public static function getIt(Strength $strength, Athletics $athletics)
+    public static function getIt(Strength $strength, Athletics $athletics): MaximalLoad
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new static($strength->getValue() + 21 + $athletics->getAthleticsBonus()->getValue());
@@ -24,7 +24,7 @@ class MaximalLoad extends AbstractDerivedProperty
     /**
      * @return PropertyCode
      */
-    public function getCode()
+    public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::MAXIMAL_LOAD);
     }

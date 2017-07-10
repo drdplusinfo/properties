@@ -13,7 +13,7 @@ use DrdPlus\Tables\Measurements\Speed\SpeedBonus;
 use DrdPlus\Tables\Measurements\Speed\SpeedTable;
 use DrdPlus\Tables\Tables;
 use DrdPlus\Tests\Properties\Derived\Partials\AbstractDerivedPropertyTest;
-use Granam\Integer\IntegerInterface;
+use Granam\Integer\PositiveInteger;
 
 class MovementSpeedTest extends AbstractDerivedPropertyTest
 {
@@ -21,7 +21,7 @@ class MovementSpeedTest extends AbstractDerivedPropertyTest
      * @test
      * @return MovementSpeed
      */
-    public function I_can_use_it()
+    public function I_can_use_it(): MovementSpeed
     {
         $movementSpeed = MovementSpeed::getIt($this->createSpeed(123));
         $speedBonus = $movementSpeed->getSpeedBonus($this->createTables());
@@ -35,7 +35,7 @@ class MovementSpeedTest extends AbstractDerivedPropertyTest
      * @param int $value
      * @return \Mockery\MockInterface|Speed
      */
-    private function createSpeed($value)
+    private function createSpeed($value): Speed
     {
         $speed = $this->mockery(Speed::class);
         $speed->shouldReceive('getValue')
@@ -58,7 +58,7 @@ class MovementSpeedTest extends AbstractDerivedPropertyTest
         TerrainCode $expectedTerrainCode = null,
         TerrainDifficultyPercents $expectedTerrainDifficultyPercents = null,
         $terrainMalusValue = null
-    )
+    ): Tables
     {
         $tables = $this->mockery(Tables::class);
         $tables->shouldReceive('getSpeedTable')
@@ -81,10 +81,10 @@ class MovementSpeedTest extends AbstractDerivedPropertyTest
 
     /**
      * @param MovementTypeCode $expectedMovementType
-     * @param $speedBonusValue
+     * @param int $speedBonusValue
      * @return \Mockery\MockInterface|MovementTypesTable
      */
-    private function createMovementTypesTable(MovementTypeCode $expectedMovementType, $speedBonusValue)
+    private function createMovementTypesTable(MovementTypeCode $expectedMovementType, int $speedBonusValue): MovementTypesTable
     {
         $movementTypesTable = $this->mockery(MovementTypesTable::class);
         $movementTypesTable->shouldReceive('getSpeedBonus')
@@ -105,8 +105,8 @@ class MovementSpeedTest extends AbstractDerivedPropertyTest
     private function createImpassibilityOfTerrainTable(
         TerrainCode $expectedTerrainCode,
         TerrainDifficultyPercents $expectedTerrainDifficultyPercents,
-        $speedMalusValue
-    )
+        int $speedMalusValue
+    ): ImpassibilityOfTerrainTable
     {
         $impassibilityOfTerrainTable = $this->mockery(ImpassibilityOfTerrainTable::class);
         $impassibilityOfTerrainTable->shouldReceive('getSpeedMalusOnTerrain')
@@ -124,7 +124,7 @@ class MovementSpeedTest extends AbstractDerivedPropertyTest
      * @param string $movementTypeName
      * @param bool $athleticsCountedIn
      */
-    public function I_can_get_current_speed_bonus($movementTypeName, $athleticsCountedIn)
+    public function I_can_get_current_speed_bonus(string $movementTypeName, bool $athleticsCountedIn): void
     {
         $movementSpeed = MovementSpeed::getIt($this->createSpeed(45));
         $currentSpeedBonus = $movementSpeed->getCurrentSpeedBonus(
@@ -138,7 +138,7 @@ class MovementSpeedTest extends AbstractDerivedPropertyTest
         self::assertSame(23 /* 45/2 */ + 123 - 456 + ($athleticsCountedIn ? 987 : 0), $currentSpeedBonus->getValue());
     }
 
-    public function provideMovementTypeAndAthleticsCounting()
+    public function provideMovementTypeAndAthleticsCounting(): array
     {
         return [
             ['just some movement', false],
@@ -154,7 +154,7 @@ class MovementSpeedTest extends AbstractDerivedPropertyTest
      * @param $value
      * @return \Mockery\MockInterface|MovementTypeCode
      */
-    private function createMovementTypeCode($value)
+    private function createMovementTypeCode($value): MovementTypeCode
     {
         $movementTypeCode = $this->mockery(MovementTypeCode::class);
         $movementTypeCode->shouldReceive('getValue')
@@ -166,10 +166,10 @@ class MovementSpeedTest extends AbstractDerivedPropertyTest
     }
 
     /**
-     * @param $percents
+     * @param int $percents
      * @return \Mockery\MockInterface|TerrainDifficultyPercents
      */
-    private function createDifficultyPercents($percents)
+    private function createDifficultyPercents(int $percents): TerrainDifficultyPercents
     {
         $difficultyPercents = $this->mockery(TerrainDifficultyPercents::class);
         $difficultyPercents->shouldReceive('getRate')
@@ -182,11 +182,11 @@ class MovementSpeedTest extends AbstractDerivedPropertyTest
      * @param int $value
      * @return \Mockery\MockInterface|Athletics
      */
-    private function createAthletics($value)
+    private function createAthletics(int $value): Athletics
     {
         $athletics = $this->mockery(Athletics::class);
         $athletics->shouldReceive('getAthleticsBonus')
-            ->andReturn($athleticsBonus = $this->mockery(IntegerInterface::class));
+            ->andReturn($athleticsBonus = $this->mockery(PositiveInteger::class));
         $athleticsBonus->shouldReceive('getValue')
             ->andReturn($value);
 

@@ -5,7 +5,7 @@ use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Derived\MaximalLoad;
 use DrdPlus\Properties\Derived\Athletics;
 use DrdPlus\Tests\Properties\Derived\Partials\AbstractDerivedPropertyTest;
-use Granam\Integer\IntegerInterface;
+use Granam\Integer\PositiveInteger;
 
 class MaximalLoadTest extends AbstractDerivedPropertyTest
 {
@@ -13,7 +13,7 @@ class MaximalLoadTest extends AbstractDerivedPropertyTest
      * @test
      * @return MaximalLoad
      */
-    public function I_can_use_it()
+    public function I_can_use_it(): MaximalLoad
     {
         $maximalLoad = MaximalLoad::getIt($this->createStrength(123), $this->createAthletics(456));
         self::assertInstanceOf(MaximalLoad::class, $maximalLoad);
@@ -27,15 +27,15 @@ class MaximalLoadTest extends AbstractDerivedPropertyTest
      * @dataProvider provideStrengthAthleticsAndExpectedMaximalLoad
      * @param $strength
      * @param $athletics
-     * @param MaximalLoad
+     * @param $expectedMaximalLoad
      */
-    public function I_can_get_expected_maximal_load($strength, $athletics, $expectedMaximalLoad)
+    public function I_can_get_expected_maximal_load(int $strength, int $athletics, int $expectedMaximalLoad): void
     {
         $maximalLoad = MaximalLoad::getIt($this->createStrength($strength), $this->createAthletics($athletics));
         self::assertSame($expectedMaximalLoad, $maximalLoad->getValue());
     }
 
-    public function provideStrengthAthleticsAndExpectedMaximalLoad()
+    public function provideStrengthAthleticsAndExpectedMaximalLoad(): array
     {
         return [
             [0, 0, 21],
@@ -47,7 +47,7 @@ class MaximalLoadTest extends AbstractDerivedPropertyTest
      * @param int $value
      * @return \Mockery\MockInterface|Strength
      */
-    private function createStrength($value)
+    private function createStrength($value): Strength
     {
         $strength = $this->mockery(Strength::class);
         $strength->shouldReceive('getValue')
@@ -60,11 +60,11 @@ class MaximalLoadTest extends AbstractDerivedPropertyTest
      * @param $bonusValue
      * @return \Mockery\MockInterface|Athletics
      */
-    private function createAthletics($bonusValue)
+    private function createAthletics($bonusValue): Athletics
     {
         $athletics = $this->mockery(Athletics::class);
         $athletics->shouldReceive('getAthleticsBonus')
-            ->andReturn($athleticsBonus = $this->mockery(IntegerInterface::class));
+            ->andReturn($athleticsBonus = $this->mockery(PositiveInteger::class));
         $athleticsBonus->shouldReceive('getValue')
             ->andReturn($bonusValue);
 
