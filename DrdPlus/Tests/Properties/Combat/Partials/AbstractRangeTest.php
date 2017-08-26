@@ -9,7 +9,7 @@ use DrdPlus\Tables\Measurements\Distance\DistanceBonus;
 use DrdPlus\Tables\Measurements\Distance\DistanceTable;
 use DrdPlus\Tables\Tables;
 
-abstract class AbstractRangeTest extends PositiveIntegerCharacteristicForGameTest
+abstract class AbstractRangeTest extends CharacteristicForGameTest
 {
     /**
      * @param int $value
@@ -29,7 +29,7 @@ abstract class AbstractRangeTest extends PositiveIntegerCharacteristicForGameTes
     /**
      * @return array|string[]
      */
-    protected function getExpectedInitialChangeBy()
+    protected function getExpectedInitialChangeBy(): array
     {
         return [
             'name' => 'create range sut',
@@ -39,15 +39,17 @@ abstract class AbstractRangeTest extends PositiveIntegerCharacteristicForGameTes
 
     /**
      * @test
+     * @dataProvider provideSomeDistanceBonus
+     * @param int $distanceBonusValue
      */
-    public function I_can_get_its_value_in_meters()
+    public function I_can_get_its_value_in_meters(int $distanceBonusValue)
     {
         /** @var EncounterRange $range */
-        $range = $this->createSut(123);
+        $range = $this->createSut($distanceBonusValue);
         $distanceValue = 456;
         $tables = $this->createTablesWithDistanceTable(
-            function (DistanceBonus $distanceBonus) use ($distanceValue) {
-                self::assertSame(123, $distanceBonus->getValue());
+            function (DistanceBonus $distanceBonus) use ($distanceValue, $distanceBonusValue) {
+                self::assertSame($distanceBonusValue, $distanceBonus->getValue());
                 $distance = $this->mockery(Distance::class);
                 $distance->shouldReceive('getMeters')
                     ->andReturn($distanceValue);
@@ -57,6 +59,14 @@ abstract class AbstractRangeTest extends PositiveIntegerCharacteristicForGameTes
         );
 
         self::assertSame((float)$distanceValue, $range->getInMeters($tables));
+    }
+
+    public function provideSomeDistanceBonus()
+    {
+        return [
+            [123],
+            [-9], // distance bonus -9 = 1 meter
+        ];
     }
 
     /**

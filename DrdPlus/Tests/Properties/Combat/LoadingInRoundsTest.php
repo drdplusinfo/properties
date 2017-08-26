@@ -19,7 +19,7 @@ class LoadingInRoundsTest extends PositiveIntegerCharacteristicForGameTest
     /**
      * @return LoadingInRounds
      */
-    protected function createSut()
+    protected function createSut(): LoadingInRounds
     {
         return LoadingInRounds::getIt(123);
     }

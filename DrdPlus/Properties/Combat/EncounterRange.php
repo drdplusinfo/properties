@@ -3,7 +3,7 @@ namespace DrdPlus\Properties\Combat;
 
 use DrdPlus\Codes\Properties\CharacteristicForGameCode;
 use DrdPlus\Properties\Combat\Partials\AbstractRange;
-use Granam\Integer\PositiveInteger;
+use Granam\Integer\IntegerInterface;
 
 /**
  * @method EncounterRange add(int | \Granam\Integer\IntegerInterface $value)
@@ -12,7 +12,7 @@ use Granam\Integer\PositiveInteger;
 class EncounterRange extends AbstractRange
 {
     /**
-     * @param int|PositiveInteger $value
+     * @param int|IntegerInterface $value
      * @throws \Granam\Integer\Tools\Exceptions\WrongParameterType
      * @throws \Granam\Integer\Tools\Exceptions\ValueLostOnCast
      * @throws \Granam\Integer\Tools\Exceptions\PositiveIntegerCanNotBeNegative

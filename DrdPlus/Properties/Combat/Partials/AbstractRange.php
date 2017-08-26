@@ -4,7 +4,7 @@ namespace DrdPlus\Properties\Combat\Partials;
 use DrdPlus\Tables\Measurements\Distance\DistanceBonus;
 use DrdPlus\Tables\Tables;
 
-abstract class AbstractRange extends PositiveIntegerCharacteristicForGame
+abstract class AbstractRange extends CharacteristicForGame
 {
     /**
      * @param Tables $tables
@@ -12,7 +12,7 @@ abstract class AbstractRange extends PositiveIntegerCharacteristicForGame
      */
     public function getInMeters(Tables $tables): float
     {
-        // both encounter and maximal ranges are in fact distance bonus
+        // both encounter and maximal ranges are in fact distance bonuses
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return (new DistanceBonus($this->getValue(), $tables->getDistanceTable()))->getDistance()->getMeters();
     }

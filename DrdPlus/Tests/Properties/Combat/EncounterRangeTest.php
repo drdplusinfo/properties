@@ -20,7 +20,7 @@ class EncounterRangeTest extends AbstractRangeTest
      * @param int $value
      * @return EncounterRange
      */
-    protected function createRangeSut($value)
+    protected function createRangeSut($value): EncounterRange
     {
         return EncounterRange::getIt($value);
     }
