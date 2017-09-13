@@ -10,7 +10,7 @@ use DrdPlus\Properties\Base\EnumTypes\WillType;
 use DrdPlus\Properties\Body\EnumTypes\AgeType;
 use DrdPlus\Properties\Body\EnumTypes\HeightInCmType;
 use DrdPlus\Properties\Body\EnumTypes\SizeType;
-use DrdPlus\Properties\Body\EnumTypes\WeightInKgType;
+use DrdPlus\Properties\Body\EnumTypes\BodyWeightInKgType;
 use DrdPlus\Properties\Native\EnumTypes\InfravisionType;
 use DrdPlus\Properties\Native\EnumTypes\NativeRegenerationType;
 use DrdPlus\Properties\RemarkableSenses\EnumTypes\RemarkableSenseType;
@@ -40,7 +40,7 @@ class PropertiesEnumRegistrar extends StrictObject
     {
         HeightInCmType::registerSelf();
         SizeType::registerSelf();
-        WeightInKgType::registerSelf();
+        BodyWeightInKgType::registerSelf();
         AgeType::registerSelf();
     }
 

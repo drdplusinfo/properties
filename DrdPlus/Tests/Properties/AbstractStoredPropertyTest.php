@@ -11,7 +11,7 @@ abstract class AbstractStoredPropertyTest extends SimplePropertyTest
     /**
      * @return string
      */
-    protected function getExpectedCodeClass()
+    protected function getExpectedCodeClass(): string
     {
         return PropertyCode::class;
     }
@@ -23,9 +23,11 @@ abstract class AbstractStoredPropertyTest extends SimplePropertyTest
     {
         $basename = $this->getSutBaseName();
         $namespace = $this->getPropertyNamespace();
+        $typeClass = $namespace . '\\EnumTypes\\' . $basename . 'Type';
+        self::assertTrue(class_exists($typeClass), "Missing enum type class {$typeClass}");
         self::assertTrue(
             is_a($namespace . '\\EnumTypes\\' . $basename . 'Type', ScalarEnumType::class, true),
-            'Not an enum type: ' . $namespace . '\\EnumTypes\\' . $basename . 'Type'
+            $namespace . '\\EnumTypes\\' . $basename . 'Type should be a descendant of ' . ScalarEnumType::class
         );
     }
 }

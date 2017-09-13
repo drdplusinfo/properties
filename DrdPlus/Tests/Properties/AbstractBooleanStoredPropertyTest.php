@@ -8,7 +8,7 @@ abstract class AbstractBooleanStoredPropertyTest extends AbstractStoredPropertyT
     /**
      * @return bool[]
      */
-    protected function getValuesForTest()
+    protected function getValuesForTest(): array
     {
         return [true, false];
     }
@@ -25,9 +25,7 @@ abstract class AbstractBooleanStoredPropertyTest extends AbstractStoredPropertyT
             /** @var NativeProperty $property */
             $property = $propertyClass::getIt($value);
             self::assertEquals(
-                [
-                    ['changeBy' => ['name' => 'i can get history of its creation', 'with' => ''], 'result' => $value],
-                ],
+                [['changeBy' => ['name' => 'i can get history of its creation', 'with' => ''], 'result' => $value]],
                 $property->getHistory()
             );
         }

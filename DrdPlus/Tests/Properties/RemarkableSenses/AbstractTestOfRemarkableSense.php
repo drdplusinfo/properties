@@ -24,7 +24,7 @@ abstract class AbstractTestOfRemarkableSense extends AbstractStoredPropertyTest
         return $property;
     }
 
-    protected function getValuesForTest()
+    protected function getValuesForTest(): array
     {
         throw new \LogicException('Should not be called');
     }

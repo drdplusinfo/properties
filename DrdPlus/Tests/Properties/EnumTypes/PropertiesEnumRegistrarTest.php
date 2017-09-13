@@ -45,7 +45,7 @@ class PropertiesEnumRegistrarTest extends TestWithMockery
 
         self::assertTrue(Type::hasType(PropertyCode::HEIGHT_IN_CM));
         self::assertTrue(Type::hasType(PropertyCode::SIZE));
-        self::assertTrue(Type::hasType(PropertyCode::WEIGHT_IN_KG));
+        self::assertTrue(Type::hasType(PropertyCode::BODY_WEIGHT_IN_KG));
         self::assertTrue(Type::hasType(PropertyCode::AGE));
 
         self::assertTrue(Type::hasType(PropertyCode::REMARKABLE_SENSE));
@@ -75,7 +75,7 @@ class PropertiesEnumRegistrarTest extends TestWithMockery
 
         self::assertFalse(Type::hasType(PropertyCode::HEIGHT_IN_CM));
         self::assertFalse(Type::hasType(PropertyCode::SIZE));
-        self::assertFalse(Type::hasType(PropertyCode::WEIGHT_IN_KG));
+        self::assertFalse(Type::hasType(PropertyCode::BODY_WEIGHT_IN_KG));
         self::assertFalse(Type::hasType(PropertyCode::AGE));
 
         self::assertFalse(Type::hasType(PropertyCode::REMARKABLE_SENSE));
@@ -105,7 +105,7 @@ class PropertiesEnumRegistrarTest extends TestWithMockery
 
         self::assertTrue(Type::hasType(PropertyCode::HEIGHT_IN_CM));
         self::assertTrue(Type::hasType(PropertyCode::SIZE));
-        self::assertTrue(Type::hasType(PropertyCode::WEIGHT_IN_KG));
+        self::assertTrue(Type::hasType(PropertyCode::BODY_WEIGHT_IN_KG));
         self::assertTrue(Type::hasType(PropertyCode::AGE));
 
         self::assertFalse(Type::hasType(PropertyCode::REMARKABLE_SENSE));
@@ -135,7 +135,7 @@ class PropertiesEnumRegistrarTest extends TestWithMockery
 
         self::assertFalse(Type::hasType(PropertyCode::HEIGHT_IN_CM));
         self::assertFalse(Type::hasType(PropertyCode::SIZE));
-        self::assertFalse(Type::hasType(PropertyCode::WEIGHT_IN_KG));
+        self::assertFalse(Type::hasType(PropertyCode::BODY_WEIGHT_IN_KG));
         self::assertFalse(Type::hasType(PropertyCode::AGE));
 
         self::assertTrue(Type::hasType(PropertyCode::REMARKABLE_SENSE));
@@ -165,7 +165,7 @@ class PropertiesEnumRegistrarTest extends TestWithMockery
 
         self::assertFalse(Type::hasType(PropertyCode::HEIGHT_IN_CM));
         self::assertFalse(Type::hasType(PropertyCode::SIZE));
-        self::assertFalse(Type::hasType(PropertyCode::WEIGHT_IN_KG));
+        self::assertFalse(Type::hasType(PropertyCode::BODY_WEIGHT_IN_KG));
         self::assertFalse(Type::hasType(PropertyCode::AGE));
 
         self::assertFalse(Type::hasType(PropertyCode::REMARKABLE_SENSE));

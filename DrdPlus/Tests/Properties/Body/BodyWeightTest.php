@@ -3,7 +3,7 @@ namespace DrdPlus\Tests\Properties\Body;
 
 use DrdPlus\Codes\Properties\PropertyCode;
 use DrdPlus\Properties\Body\BodyWeight;
-use DrdPlus\Properties\Body\WeightInKg;
+use DrdPlus\Properties\Body\BodyWeightInKg;
 use DrdPlus\Tables\Measurements\Weight\WeightBonus;
 use DrdPlus\Tests\Properties\PropertyTest;
 
@@ -33,7 +33,7 @@ class BodyWeightTest extends PropertyTest
 
     /**
      * @param int $value
-     * @return WeightInKg|\Mockery\MockInterface
+     * @return BodyWeightInKg|\Mockery\MockInterface
      */
     protected function createValueForProperty(int $value)
     {
@@ -42,11 +42,11 @@ class BodyWeightTest extends PropertyTest
 
     /**
      * @param $value
-     * @return \Mockery\MockInterface|WeightInKg
+     * @return \Mockery\MockInterface|BodyWeightInKg
      */
     private function createWeightInKg($value)
     {
-        $heightInCm = $this->mockery(WeightInKg::class);
+        $heightInCm = $this->mockery(BodyWeightInKg::class);
         $heightInCm->shouldReceive('getValue')
             ->andReturn($value);
 

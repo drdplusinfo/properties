@@ -10,7 +10,7 @@ abstract class AbstractIntegerPropertyTest extends AbstractStoredPropertyTest
     /**
      * @return int[]
      */
-    protected function getValuesForTest()
+    protected function getValuesForTest(): array
     {
         return [0, 123456];
     }

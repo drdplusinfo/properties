@@ -21,13 +21,18 @@ abstract class SimplePropertyTest extends PropertyTest
             /** @var Property $property */
             self::assertSame("$value", "{$property->getValue()}");
             self::assertSame("$value", "{$property}");
-            self::assertSame(PropertyCode::getIt($this->getExpectedPropertyCode()), $property->getCode());
+            self::assertSame(
+                PropertyCode::getIt($this->getExpectedPropertyCode()),
+                $property->getCode(),
+                'We expected ' . PropertyCode::class . " with value '{$this->getExpectedPropertyCode()}'"
+                . ', got ' . get_class($property->getCode()) . " with value '{$property->getCode()->getValue()}'"
+            );
         }
     }
 
     /**
      * @return array|int[]|float[]|string[]
      */
-    abstract protected function getValuesForTest();
+    abstract protected function getValuesForTest(): array;
 
 }

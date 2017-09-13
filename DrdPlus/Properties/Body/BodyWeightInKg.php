@@ -6,16 +6,16 @@ use DrdPlus\Properties\Partials\AbstractFloatProperty;
 use Granam\Number\NumberInterface;
 
 /**
- * @method static WeightInKg getIt(float | NumberInterface $value)
+ * @method static BodyWeightInKg getIt(float | NumberInterface $value)
  */
-class WeightInKg extends AbstractFloatProperty implements BodyProperty
+class BodyWeightInKg extends AbstractFloatProperty implements BodyProperty
 {
     /**
      * @return PropertyCode
      */
     public function getCode(): PropertyCode
     {
-        return PropertyCode::getIt(PropertyCode::WEIGHT_IN_KG);
+        return PropertyCode::getIt(PropertyCode::BODY_WEIGHT_IN_KG);
     }
 
 }
