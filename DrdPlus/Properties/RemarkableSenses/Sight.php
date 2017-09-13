@@ -9,7 +9,7 @@ class Sight extends RemarkableSenseProperty
     /**
      * @return Sight|RemarkableSenseProperty
      */
-    public static function getIt()
+    public static function getIt(): Sight
     {
         return static::getEnum(PropertyCode::SIGHT);
     }
@@ -17,7 +17,7 @@ class Sight extends RemarkableSenseProperty
     /**
      * @return PropertyCode
      */
-    public function getCode()
+    public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::SIGHT);
     }

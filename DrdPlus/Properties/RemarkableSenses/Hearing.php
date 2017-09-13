@@ -9,7 +9,7 @@ class Hearing extends RemarkableSenseProperty
     /**
      * @return Hearing|RemarkableSenseProperty
      */
-    public static function getIt()
+    public static function getIt(): Hearing
     {
         return static::getEnum(PropertyCode::HEARING);
     }
@@ -17,7 +17,7 @@ class Hearing extends RemarkableSenseProperty
     /**
      * @return PropertyCode
      */
-    public function getCode()
+    public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::HEARING);
     }

@@ -9,7 +9,7 @@ class Touch extends RemarkableSenseProperty
     /**
      * @return Touch|RemarkableSenseProperty
      */
-    public static function getIt()
+    public static function getIt(): Touch
     {
         return static::getEnum(PropertyCode::TOUCH);
     }
@@ -17,7 +17,7 @@ class Touch extends RemarkableSenseProperty
     /**
      * @return PropertyCode
      */
-    public function getCode()
+    public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::TOUCH);
     }

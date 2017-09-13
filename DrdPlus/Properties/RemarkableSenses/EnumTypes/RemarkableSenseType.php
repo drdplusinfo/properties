@@ -38,7 +38,7 @@ class RemarkableSenseType extends ScalarEnumType
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return self::REMARKABLE_SENSE;
     }
