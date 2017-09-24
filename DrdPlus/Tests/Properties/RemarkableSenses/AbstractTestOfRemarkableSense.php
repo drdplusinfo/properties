@@ -12,7 +12,7 @@ abstract class AbstractTestOfRemarkableSense extends AbstractStoredPropertyTest
      * @test
      * @return RemarkableSenseProperty
      */
-    public function I_can_get_property_easily()
+    public function I_can_get_property_easily(): RemarkableSenseProperty
     {
         $propertyClass = self::getSutClass();
         /** @var RemarkableSenseProperty $propertyClass */

@@ -55,7 +55,7 @@ abstract class AbstractDerivedProperty extends StrictObject implements DerivedPr
      * @throws \Granam\Integer\Tools\Exceptions\WrongParameterType
      * @throws \Granam\Integer\Tools\Exceptions\ValueLostOnCast
      */
-    public function add($value)
+    public function add($value): AbstractDerivedProperty
     {
         $increased = clone $this; // clones history as well
         $increased->value += ToInteger::toInteger($value);
@@ -70,7 +70,7 @@ abstract class AbstractDerivedProperty extends StrictObject implements DerivedPr
      * @throws \Granam\Integer\Tools\Exceptions\WrongParameterType
      * @throws \Granam\Integer\Tools\Exceptions\ValueLostOnCast
      */
-    public function sub($value)
+    public function sub($value): AbstractDerivedProperty
     {
         $decreased = clone $this; // clones history as well
         $decreased->value -= ToInteger::toInteger($value);

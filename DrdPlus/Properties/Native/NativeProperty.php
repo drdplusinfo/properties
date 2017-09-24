@@ -6,17 +6,16 @@ use DrdPlus\Properties\Partials\WithHistoryTrait;
 use DrdPlus\Properties\Property;
 use Granam\Boolean\BooleanInterface;
 
-/** @noinspection SingletonFactoryPatternViolationInspection */
 abstract class NativeProperty extends BooleanEnum implements Property
 {
     use WithHistoryTrait;
 
     /**
-     * @param bool $value
+     * @param bool|BooleanInterface $value
      * @return NativeProperty
      * @throws \Doctrineum\Boolean\Exceptions\UnexpectedValueToConvert
      */
-    public static function getIt($value)
+    public static function getIt($value): NativeProperty
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new static($value);

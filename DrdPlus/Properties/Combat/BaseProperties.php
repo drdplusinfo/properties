@@ -13,30 +13,30 @@ interface BaseProperties
     /**
      * @return Strength
      */
-    public function getStrength();
+    public function getStrength(): Strength;
 
     /**
      * @return Agility
      */
-    public function getAgility();
+    public function getAgility(): Agility;
 
     /**
      * @return Knack
      */
-    public function getKnack();
+    public function getKnack(): Knack;
 
     /**
      * @return Will
      */
-    public function getWill();
+    public function getWill(): Will;
 
     /**
      * @return Intelligence
      */
-    public function getIntelligence();
+    public function getIntelligence(): Intelligence;
 
     /**
      * @return Charisma
      */
-    public function getCharisma();
+    public function getCharisma(): Charisma;
 }

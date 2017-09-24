@@ -26,9 +26,9 @@ abstract class AbstractIntegerProperty extends IntegerEnum implements Property
 
     /**
      * @param int|IntegerInterface $value
-     * @return AbstractIntegerProperty
+     * @return AbstractIntegerProperty|IntegerEnum
      */
-    public static function getEnum($value)
+    public static function getEnum($value): IntegerEnum
     {
         return new static($value);
     }

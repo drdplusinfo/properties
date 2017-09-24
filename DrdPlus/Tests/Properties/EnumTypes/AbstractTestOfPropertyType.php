@@ -25,7 +25,7 @@ abstract class AbstractTestOfPropertyType extends AbstractSelfRegisteringTypeTes
 
     abstract protected function getValue();
 
-    protected function getRegisteredClass()
+    protected function getRegisteredClass(): string
     {
         $propertyTypeClass = $this->getTypeClass();
         $propertyClass = preg_replace('~\\\(\w+)\\\(\w+)Type$~', '\\\$2', $propertyTypeClass);

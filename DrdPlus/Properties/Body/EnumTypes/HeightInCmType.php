@@ -14,7 +14,7 @@ class HeightInCmType extends FloatEnumType
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return self::HEIGHT_IN_CM;
     }

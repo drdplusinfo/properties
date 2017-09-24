@@ -4,7 +4,6 @@ namespace DrdPlus\Properties\Combat\Partials;
 use DrdPlus\Properties\Partials\WithHistoryTrait;
 use Granam\Integer\Tools\ToInteger;
 
-/** @noinspection SingletonFactoryPatternViolationInspection */
 abstract class CharacteristicForGame extends CombatCharacteristic
 {
     use WithHistoryTrait;
@@ -26,7 +25,7 @@ abstract class CharacteristicForGame extends CombatCharacteristic
      * @throws \Granam\Integer\Tools\Exceptions\WrongParameterType
      * @throws \Granam\Integer\Tools\Exceptions\ValueLostOnCast
      */
-    public function add($value)
+    public function add($value): CharacteristicForGame
     {
         $increased = clone $this;
         $increased->value = $this->sanitizeValue($increased->value + ToInteger::toInteger($value));
@@ -41,7 +40,7 @@ abstract class CharacteristicForGame extends CombatCharacteristic
      * @throws \Granam\Integer\Tools\Exceptions\WrongParameterType
      * @throws \Granam\Integer\Tools\Exceptions\ValueLostOnCast
      */
-    public function sub($value)
+    public function sub($value): CharacteristicForGame
     {
         $decreased = clone $this;
         $decreased->value = $this->sanitizeValue($decreased->value - ToInteger::toInteger($value));

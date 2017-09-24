@@ -16,7 +16,7 @@ class Shooting extends CombatCharacteristic
      * @param Knack $knack
      * @return Shooting
      */
-    public static function getIt(Knack $knack)
+    public static function getIt(Knack $knack): Shooting
     {
         /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new static(SumAndRound::flooredHalf($knack->getValue()));
@@ -25,7 +25,7 @@ class Shooting extends CombatCharacteristic
     /**
      * @return CombatCharacteristicCode
      */
-    public function getCode()
+    public function getCode(): CombatCharacteristicCode
     {
         return CombatCharacteristicCode::getIt(CombatCharacteristicCode::SHOOTING);
     }

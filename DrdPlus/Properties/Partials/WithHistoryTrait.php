@@ -14,7 +14,7 @@ trait WithHistoryTrait
      *
      * @return array
      */
-    public function getHistory()
+    public function getHistory(): array
     {
         return $this->history;
     }
@@ -34,7 +34,7 @@ trait WithHistoryTrait
     /**
      * @return array
      */
-    protected function findChangingCall()
+    protected function findChangingCall(): array
     {
         /** @var array $call */
         foreach (debug_backtrace() as $call) {
@@ -56,7 +56,7 @@ trait WithHistoryTrait
      * @param string $string
      * @return string
      */
-    protected function formatToSentence($string)
+    protected function formatToSentence(string $string): string
     {
         preg_match_all('~[[:upper:]]?[[:lower:]]*~', $string, $matches);
         $captures = array_filter($matches[0], function ($capture) {
@@ -78,7 +78,7 @@ trait WithHistoryTrait
      * @param array $arguments
      * @return string
      */
-    private function extractArgumentsDescription(array $arguments)
+    private function extractArgumentsDescription(array $arguments): string
     {
         $descriptions = [];
         foreach ($arguments as $argument) {
