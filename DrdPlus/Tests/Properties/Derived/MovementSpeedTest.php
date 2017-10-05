@@ -88,6 +88,7 @@ class MovementSpeedTest extends AbstractDerivedPropertyTest
     {
         $movementTypesTable = $this->mockery(MovementTypesTable::class);
         $movementTypesTable->shouldReceive('getSpeedBonus')
+            ->atLeast()->once()
             ->with($expectedMovementType)
             ->andReturn($speedBonus = $this->mockery(SpeedBonus::class));
         $speedBonus->shouldReceive('getValue')
@@ -110,6 +111,7 @@ class MovementSpeedTest extends AbstractDerivedPropertyTest
     {
         $impassibilityOfTerrainTable = $this->mockery(ImpassibilityOfTerrainTable::class);
         $impassibilityOfTerrainTable->shouldReceive('getSpeedMalusOnTerrain')
+            ->atLeast()->once()
             ->with($expectedTerrainCode, $this->type(SpeedTable::class), $expectedTerrainDifficultyPercents)
             ->andReturn($speedMalus = $this->mockery(SpeedBonus::class));
         $speedMalus->shouldReceive('getValue')
