@@ -1,38 +1,43 @@
 <?php
+declare(strict_types=1);/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
 namespace DrdPlus\Properties\Body;
 
 use DrdPlus\Codes\Properties\PropertyCode;
+use DrdPlus\Tables\Measurements\Weight\Weight;
 use DrdPlus\Tables\Measurements\Weight\WeightBonus;
 use Granam\Integer\IntegerInterface;
 use Granam\Strict\Object\StrictObject;
 
 /**
- * In fact bonus of weight in kg, @see \DrdPlus\Tables\Measurements\Weight\WeightBonus
+ * In fact bonus of weight in kg minus 12, see @link https://pph.drdplus.info/#vypocet_hmotnosti_postavy
+ * and @see \DrdPlus\Tables\Measurements\Weight\WeightBonus
  * @method BodyWeight add(int | IntegerInterface $value)
  * @method BodyWeight sub(int | IntegerInterface $value)
  */
 class BodyWeight extends StrictObject implements BodyProperty, IntegerInterface
 {
     /**
-     * @param WeightBonus $weightBonus
+     * @param Weight $weight
      * @return BodyWeight
      */
-    public static function getIt(WeightBonus $weightBonus): BodyWeight
+    public static function getIt(Weight $weight): BodyWeight
     {
-        return new static($weightBonus);
+        return new static($weight);
     }
 
-    /**
-     * @var int
-     */
+    /** @var int */
     private $value;
+    /** @var Weight */
+    private $weight;
 
     /**
-     * @param WeightBonus $weightBonus
+     * @param Weight $weight
      */
-    private function __construct(WeightBonus $weightBonus)
+    private function __construct(Weight $weight)
     {
-        $this->value = $weightBonus->getValue();
+        /** @link https://pph.drdplus.info/#vypocet_hmotnosti_postavy */
+        $this->value = $weight->getBonus()->getValue() - 12;
+        $this->weight = $weight;
     }
 
     /**
@@ -59,4 +64,24 @@ class BodyWeight extends StrictObject implements BodyProperty, IntegerInterface
         return PropertyCode::getIt(PropertyCode::BODY_WEIGHT);
     }
 
+    /**
+     * @return Weight
+     */
+    public function getWeight(): Weight
+    {
+        return $this->weight;
+    }
+
+    /**
+     * @return WeightBonus
+     */
+    public function getWeightBonus(): WeightBonus
+    {
+        return $this->weight->getBonus();
+    }
+
+    public function getBodyWeightInKg(): BodyWeightInKg
+    {
+        return BodyWeightInKg::getIt($this->weight->getKilograms());
+    }
 }
