@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
 namespace DrdPlus\Tests\Properties\Derived;
 
 use DrdPlus\Codes\Properties\PropertyCode;
@@ -21,7 +22,7 @@ class EnduranceTest extends AbstractDerivedPropertyTest
         );
         self::assertSame(PropertyCode::getIt(PropertyCode::ENDURANCE), $endurance->getCode());
         self::assertSame((int)round(($agilityValue + $knackValue) / 2), $endurance->getValue());
-        self::assertSame((string)round(($agilityValue + $knackValue) / 2), "$endurance");
+        self::assertSame((string)round(($agilityValue + $knackValue) / 2), (string)$endurance);
 
         return $endurance;
     }

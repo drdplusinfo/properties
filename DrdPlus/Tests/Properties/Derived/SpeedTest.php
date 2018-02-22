@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
 namespace DrdPlus\Tests\Properties\Derived;
 
 use DrdPlus\Codes\Properties\PropertyCode;
@@ -22,7 +24,7 @@ class SpeedTest extends AbstractDerivedPropertyTest
             $this->getHeight($heightValue = 789)
         );
         self::assertSame((int)round(($strengthValue + $agilityValue) / 2) + ($heightValue / 3 - 2), $speed->getValue());
-        self::assertSame((string)(round(($strengthValue + $agilityValue) / 2) + ($heightValue / 3 - 2)), "$speed");
+        self::assertSame((string)(round(($strengthValue + $agilityValue) / 2) + ($heightValue / 3 - 2)), (string)$speed);
         self::assertSame(PropertyCode::getIt(PropertyCode::SPEED), $speed->getCode());
 
         return $speed;
@@ -45,12 +47,12 @@ class SpeedTest extends AbstractDerivedPropertyTest
             $this->getHeight($size)
         );
         self::assertSame((int)round(($strengthValue + $agilityValue) / 2) + $speedModifier, $speed->getValue());
-        self::assertSame((string)(round(($strengthValue + $agilityValue) / 2) + $speedModifier), "$speed");
+        self::assertSame((string)(round(($strengthValue + $agilityValue) / 2) + $speedModifier), (string)$speed);
 
         return $speed;
     }
 
-    public function sizesToSpeed()
+    public function sizesToSpeed(): array
     {
         return [
             [-6, -4],

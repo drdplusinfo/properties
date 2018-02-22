@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
 namespace DrdPlus\Properties\Combat;
 
 use DrdPlus\Codes\ProfessionCode;
@@ -7,7 +9,6 @@ use DrdPlus\Properties\Body\Height;
 use DrdPlus\Properties\Combat\Partials\CharacteristicForGame;
 use DrdPlus\Calculations\SumAndRound;
 use DrdPlus\Tables\Tables;
-use Granam\Integer\IntegerInterface;
 use Granam\Tools\ValueDescriber;
 
 /**

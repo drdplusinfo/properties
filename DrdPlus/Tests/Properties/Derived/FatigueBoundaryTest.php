@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
 namespace DrdPlus\Tests\Properties\Derived;
 
 use DrdPlus\Codes\Properties\PropertyCode;
@@ -54,6 +55,7 @@ class FatigueBoundaryTest extends AbstractDerivedPropertyTest
         $tables->shouldReceive('getFatigueTable')
             ->andReturn($fatigueTable = $this->mockery(FatigueTable::class));
         $fatigueTable->shouldReceive('toFatigue')
+            ->zeroOrMoreTimes()
             ->with($this->type(FatigueBonus::class))
             ->andReturnUsing(function (FatigueBonus $fatigueBonus) use ($expectedFatigueBonusValue, $fatigueValue) {
                 self::assertSame($expectedFatigueBonusValue, $fatigueBonus->getValue());

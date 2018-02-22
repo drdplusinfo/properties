@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
 namespace DrdPlus\Tests\Properties\Derived;
 
 use DrdPlus\Codes\Properties\PropertyCode;
@@ -25,7 +26,7 @@ class SensesTest extends AbstractDerivedPropertyTest
             $this->createTablesWithRacesTable($raceCode, $subraceCode, $raceGenderSenses = 456)
         );
         self::assertSame($knackValue + $raceGenderSenses, $senses->getValue());
-        self::assertSame((string)($knackValue + $raceGenderSenses), "$senses");
+        self::assertSame((string)($knackValue + $raceGenderSenses), (string)$senses);
         self::assertSame(PropertyCode::getIt(PropertyCode::SENSES), $senses->getCode());
 
         return $senses;
@@ -78,6 +79,7 @@ class SensesTest extends AbstractDerivedPropertyTest
         $tables->shouldReceive('getRacesTable')
             ->andReturn($racesTable = $this->mockery(RacesTable::class));
         $racesTable->shouldReceive('getSenses')
+            ->zeroOrMoreTimes()
             ->with($expectedRacesCode, $expectedSubRaceCode)
             ->andReturn($senses);
 

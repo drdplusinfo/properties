@@ -1,9 +1,10 @@
 <?php
+declare(strict_types=1);
+/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
 namespace DrdPlus\Properties\Body;
 
 use DrdPlus\Codes\Properties\PropertyCode;
 use DrdPlus\Properties\Partials\AbstractIntegerProperty;
-use Granam\Integer\IntegerInterface;
 
 /**
  * Note: Size does not need to be persisted and therefore does not need enum type.
@@ -11,6 +12,7 @@ use Granam\Integer\IntegerInterface;
  *
  * @see PPH page 33 left column, https://pph.drdplus.info/#velikost_vel_a_hmotnost_postavy_hmp
  */
+
 /**
  * @method static Size getIt(int | \Granam\Integer\IntegerInterface $value)
  * @method Size add(int | \Granam\Integer\IntegerInterface $value)

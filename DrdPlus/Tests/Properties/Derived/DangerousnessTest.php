@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
 namespace DrdPlus\Tests\Properties\Derived;
 
 use DrdPlus\Codes\Properties\PropertyCode;
@@ -24,7 +25,7 @@ class DangerousnessTest extends AspectOfVisageTest
         );
         self::assertSame(PropertyCode::getIt(PropertyCode::DANGEROUSNESS), $dangerousness->getCode());
         self::assertSame($this->calculateValue($strengthValue, $willValue, $charismaValue), $dangerousness->getValue());
-        self::assertSame((string)$this->calculateValue($strengthValue, $willValue, $charismaValue), "$dangerousness");
+        self::assertSame((string)$this->calculateValue($strengthValue, $willValue, $charismaValue), (string)$dangerousness);
 
         return $dangerousness;
     }

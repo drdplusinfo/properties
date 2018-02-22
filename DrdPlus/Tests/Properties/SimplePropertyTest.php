@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
 namespace DrdPlus\Tests\Properties;
 
 use DrdPlus\Codes\Properties\PropertyCode;
@@ -19,13 +20,13 @@ abstract class SimplePropertyTest extends PropertyTest
             $property = $sutClass::getIt($value);
             self::assertInstanceOf($sutClass, $property);
             /** @var Property $property */
-            self::assertSame("$value", "{$property->getValue()}");
-            self::assertSame("$value", "{$property}");
+            self::assertSame((string)$value, (string)$property->getValue());
+            self::assertSame((string)$value, (string)$property);
             self::assertSame(
                 PropertyCode::getIt($this->getExpectedPropertyCode()),
                 $property->getCode(),
                 'We expected ' . PropertyCode::class . " with value '{$this->getExpectedPropertyCode()}'"
-                . ', got ' . get_class($property->getCode()) . " with value '{$property->getCode()->getValue()}'"
+                . ', got ' . \get_class($property->getCode()) . " with value '{$property->getCode()->getValue()}'"
             );
         }
     }
