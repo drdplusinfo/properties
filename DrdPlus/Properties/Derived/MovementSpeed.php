@@ -1,5 +1,6 @@
 <?php
-declare(strict_types=1);/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
+declare(strict_types=1);
+/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
 namespace DrdPlus\Properties\Derived;
 
 use DrdPlus\Codes\Environment\TerrainCode;
@@ -9,6 +10,7 @@ use DrdPlus\Properties\Derived\Partials\AbstractDerivedProperty;
 use DrdPlus\Tables\Environments\TerrainDifficultyPercents;
 use DrdPlus\Tables\Measurements\Speed\SpeedBonus;
 use DrdPlus\Calculations\SumAndRound;
+use DrdPlus\Tables\Properties\AthleticsInterface;
 use DrdPlus\Tables\Tables;
 
 /**
@@ -22,7 +24,6 @@ class MovementSpeed extends AbstractDerivedProperty
      */
     public static function getIt(Speed $speed): MovementSpeed
     {
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new static(SumAndRound::half($speed->getValue()));
     }
 
@@ -32,7 +33,6 @@ class MovementSpeed extends AbstractDerivedProperty
      */
     public function getSpeedBonus(Tables $tables): SpeedBonus
     {
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new SpeedBonus($this->getValue(), $tables->getSpeedTable());
     }
 
@@ -41,7 +41,7 @@ class MovementSpeed extends AbstractDerivedProperty
      * @param TerrainCode $terrainCode
      * @param TerrainDifficultyPercents $terrainDifficultyPercents
      * @param Tables $tables
-     * @param Athletics $athletics
+     * @param AthleticsInterface $athletics
      * @return SpeedBonus
      * @throws \DrdPlus\Tables\Body\MovementTypes\Exceptions\UnknownMovementType
      * @throws \DrdPlus\Tables\Environments\Exceptions\UnknownTerrainCode
@@ -51,13 +51,13 @@ class MovementSpeed extends AbstractDerivedProperty
         MovementTypeCode $movementTypeCode,
         TerrainCode $terrainCode,
         TerrainDifficultyPercents $terrainDifficultyPercents,
-        Athletics $athletics,
+        AthleticsInterface $athletics,
         Tables $tables
     ): SpeedBonus
     {
         $speedBonusFromMovementType = $tables->getMovementTypesTable()->getSpeedBonus($movementTypeCode);
         $athleticsBonus = 0;
-        if (in_array($movementTypeCode->getValue(), [MovementTypeCode::RUN, MovementTypeCode::SPRINT], true)) {
+        if (\in_array($movementTypeCode->getValue(), [MovementTypeCode::RUN, MovementTypeCode::SPRINT], true)) {
             $athleticsBonus = $athletics->getAthleticsBonus()->getValue();
         }
         $speedMalusFromTerrain = $tables->getImpassibilityOfTerrainTable()->getSpeedMalusOnTerrain(
@@ -66,7 +66,6 @@ class MovementSpeed extends AbstractDerivedProperty
             $terrainDifficultyPercents
         );
 
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new SpeedBonus(
             $this->getValue() + $speedBonusFromMovementType->getValue() + $athleticsBonus + $speedMalusFromTerrain->getValue(),
             $tables->getSpeedTable()

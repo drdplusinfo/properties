@@ -7,8 +7,9 @@ use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Base\Will;
 use DrdPlus\Properties\Derived\Partials\AbstractDerivedProperty;
 use DrdPlus\Calculations\SumAndRound;
+use DrdPlus\Tables\Properties\EnduranceInterface;
 
-class Endurance extends AbstractDerivedProperty
+class Endurance extends AbstractDerivedProperty implements EnduranceInterface
 {
     /**
      * @param Strength $strength

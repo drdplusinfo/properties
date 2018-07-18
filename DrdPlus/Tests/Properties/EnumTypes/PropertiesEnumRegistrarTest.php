@@ -1,5 +1,6 @@
 <?php
-declare(strict_types=1);/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
+declare(strict_types=1);
+/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
 namespace DrdPlus\Tests\Properties\EnumTypes;
 
 use Doctrine\DBAL\Types\Type;
@@ -17,7 +18,10 @@ use Granam\Tests\Tools\TestWithMockery;
 class PropertiesEnumRegistrarTest extends TestWithMockery
 {
 
-    protected function setUp()
+    /**
+     * @throws \ReflectionException
+     */
+    protected function setUp(): void
     {
         $typeReflection = new \ReflectionClass(Type::class);
         $typesMap = $typeReflection->getProperty('_typesMap');
@@ -33,7 +37,7 @@ class PropertiesEnumRegistrarTest extends TestWithMockery
     /**
      * @test
      */
-    public function I_can_register_all_properties_as_doctrine_types()
+    public function I_can_register_all_properties_as_doctrine_types(): void
     {
         PropertiesEnumRegistrar::registerAll();
 
@@ -63,7 +67,7 @@ class PropertiesEnumRegistrarTest extends TestWithMockery
     /**
      * @test
      */
-    public function I_can_register_base_properties_as_doctrine_types()
+    public function I_can_register_base_properties_as_doctrine_types(): void
     {
         PropertiesEnumRegistrar::registerBaseProperties();
 
@@ -93,7 +97,7 @@ class PropertiesEnumRegistrarTest extends TestWithMockery
     /**
      * @test
      */
-    public function I_can_register_body_properties_as_doctrine_types()
+    public function I_can_register_body_properties_as_doctrine_types(): void
     {
         PropertiesEnumRegistrar::registerBodyProperties();
 
@@ -123,7 +127,7 @@ class PropertiesEnumRegistrarTest extends TestWithMockery
     /**
      * @test
      */
-    public function I_can_register_remarkable_senses_as_doctrine_type_and_enum_sub_types()
+    public function I_can_register_remarkable_senses_as_doctrine_type_and_enum_sub_types(): void
     {
         PropertiesEnumRegistrar::registerRemarkableSenses();
 
@@ -153,7 +157,7 @@ class PropertiesEnumRegistrarTest extends TestWithMockery
     /**
      * @test
      */
-    public function I_can_register_native_properties_as_doctrine_type()
+    public function I_can_register_native_properties_as_doctrine_type(): void
     {
         PropertiesEnumRegistrar::registerNativeProperties();
 

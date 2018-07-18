@@ -5,6 +5,7 @@ namespace DrdPlus\Properties\Body;
 use DrdPlus\Codes\Properties\PropertyCode;
 use DrdPlus\Tables\Measurements\Weight\Weight;
 use DrdPlus\Tables\Measurements\Weight\WeightBonus;
+use DrdPlus\Tables\Properties\BodyWeightInterface;
 use Granam\Integer\IntegerInterface;
 use Granam\Strict\Object\StrictObject;
 
@@ -14,7 +15,7 @@ use Granam\Strict\Object\StrictObject;
  * @method BodyWeight add(int | IntegerInterface $value)
  * @method BodyWeight sub(int | IntegerInterface $value)
  */
-class BodyWeight extends StrictObject implements BodyProperty, IntegerInterface
+class BodyWeight extends StrictObject implements BodyProperty, IntegerInterface, BodyWeightInterface
 {
     /**
      * @param Weight $weight

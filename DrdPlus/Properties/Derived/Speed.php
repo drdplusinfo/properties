@@ -1,5 +1,6 @@
 <?php
-declare(strict_types=1);/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
+declare(strict_types=1);
+/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
 namespace DrdPlus\Properties\Derived;
 
 use DrdPlus\Codes\Properties\PropertyCode;
@@ -8,8 +9,9 @@ use DrdPlus\Properties\Base\Strength;
 use DrdPlus\Properties\Body\Height;
 use DrdPlus\Properties\Derived\Partials\AbstractDerivedProperty;
 use DrdPlus\Calculations\SumAndRound;
+use DrdPlus\Tables\Properties\SpeedInterface;
 
-class Speed extends AbstractDerivedProperty
+class Speed extends AbstractDerivedProperty implements SpeedInterface
 {
     /**
      * @param Strength $strength

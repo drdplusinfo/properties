@@ -1,7 +1,9 @@
 <?php
-declare(strict_types=1);/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
+declare(strict_types=1);
+/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
 namespace DrdPlus\Properties\Combat;
 
+use DrdPlus\Codes\Armaments\MeleeWeaponlikeCode;
 use DrdPlus\Codes\Armaments\WeaponlikeCode;
 use DrdPlus\Codes\Properties\CharacteristicForGameCode;
 use DrdPlus\Properties\Combat\Partials\CharacteristicForGame;
@@ -18,11 +20,30 @@ class FightNumber extends CharacteristicForGame
      * @param WeaponlikeCode $weaponlikeCode
      * @param Tables $tables
      * @return FightNumber
+     * @throws \DrdPlus\Tables\Armaments\Exceptions\UnknownMeleeWeaponlike
      */
     public static function getIt(Fight $fight, WeaponlikeCode $weaponlikeCode, Tables $tables): FightNumber
     {
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
-        return new static($fight->getValue() + $tables->getArmourer()->getLengthOfWeaponOrShield($weaponlikeCode));
+        return new static($fight->getValue() + static::getLengthOfWeaponOrShield($weaponlikeCode, $tables));
+    }
+
+    /**
+     * Length of a weapon (or shield) increases fight number.
+     * Note about shield: every shield is considered as a weapon of length 0.
+     *
+     * @param WeaponlikeCode $weaponlikeCode
+     * @param Tables $tables
+     * @return int
+     * @throws \DrdPlus\Tables\Armaments\Exceptions\UnknownMeleeWeaponlike
+     */
+    protected static function getLengthOfWeaponOrShield(WeaponlikeCode $weaponlikeCode, Tables $tables): int
+    {
+        if ($weaponlikeCode instanceof MeleeWeaponlikeCode) {
+            return $tables->getMeleeWeaponlikeTableByMeleeWeaponlikeCode($weaponlikeCode)
+                ->getLengthOf($weaponlikeCode);
+        }
+
+        return 0; // ranged weapons do not have bonus to fight number for their length, surprisingly
     }
 
     /**

@@ -5,6 +5,7 @@ namespace DrdPlus\Properties\Body;
 use DrdPlus\Codes\Units\DistanceUnitCode;
 use DrdPlus\Codes\Properties\PropertyCode;
 use DrdPlus\Tables\Measurements\Distance\Distance;
+use DrdPlus\Tables\Properties\HeightInterface;
 use DrdPlus\Tables\Tables;
 use Granam\Integer\IntegerInterface;
 use Granam\Strict\Object\StrictObject;
@@ -12,7 +13,7 @@ use Granam\Strict\Object\StrictObject;
 /**
  * In fact bonus of a distance, @see \DrdPlus\Tables\Measurements\Distance\DistanceBonus
  */
-class Height extends StrictObject implements BodyProperty, IntegerInterface
+class Height extends StrictObject implements BodyProperty, IntegerInterface, HeightInterface
 {
     /**
      * @var int

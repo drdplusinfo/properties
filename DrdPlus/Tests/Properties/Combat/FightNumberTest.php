@@ -1,11 +1,13 @@
 <?php
-declare(strict_types=1);/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
+declare(strict_types=1);
+/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
 namespace DrdPlus\Tests\Properties\Combat;
 
+use DrdPlus\Codes\Armaments\MeleeWeaponlikeCode;
 use DrdPlus\Codes\Armaments\WeaponlikeCode;
 use DrdPlus\Properties\Combat\Fight;
 use DrdPlus\Properties\Combat\FightNumber;
-use DrdPlus\Tables\Armaments\Armourer;
+use DrdPlus\Tables\Armaments\Partials\MeleeWeaponlikesTable;
 use DrdPlus\Tables\Tables;
 use DrdPlus\Tests\Properties\Combat\Partials\CharacteristicForGameTest;
 
@@ -48,12 +50,12 @@ class FightNumberTest extends CharacteristicForGameTest
      * @param int $length
      * @return \Mockery\MockInterface|Tables
      */
-    private function createTables(WeaponlikeCode $weaponlikeCode, $length)
+    private function createTables(WeaponlikeCode $weaponlikeCode, int $length)
     {
         $tables = $this->mockery(Tables::class);
-        $tables->shouldReceive('getArmourer')
-            ->andReturn($armourer = $this->mockery(Armourer::class));
-        $armourer->shouldReceive('getLengthOfWeaponOrShield')
+        $tables->shouldReceive('getMeleeWeaponlikeTableByMeleeWeaponlikeCode')
+            ->andReturn($meleeWeaponlikesTable = $this->mockery(MeleeWeaponlikesTable::class));
+        $meleeWeaponlikesTable->shouldReceive('getLengthOf')
             ->zeroOrMoreTimes()
             ->with($weaponlikeCode)
             ->andReturn($length);
@@ -64,14 +66,30 @@ class FightNumberTest extends CharacteristicForGameTest
     /**
      * @test
      */
-    public function I_can_get_property_easily()
+    public function I_can_get_property_easily(): void
     {
-        $fightNumber = FightNumber::getIt(
+        $fightNumberWithNonMeleeWeapon = FightNumber::getIt(
             $this->createFight(123),
             $weaponlikeCode = $this->createWeaponlikeCode(),
             $this->createTables($weaponlikeCode, 456)
         );
-        self::assertSame(579, $fightNumber->getValue());
+        self::assertSame(
+            123,
+            $fightNumberWithNonMeleeWeapon->getValue(),
+            'Used weapon-like is not a ' . MeleeWeaponlikeCode::class . ' so its length should not be counted'
+        );
+        /** @var MeleeWeaponlikeCode $meleeWeaponlikeCode */
+        $meleeWeaponlikeCode = $this->mockery(MeleeWeaponlikeCode::class);
+        $fightNumberWithMeleeWeapon = FightNumber::getIt(
+            $this->createFight(123),
+            $meleeWeaponlikeCode,
+            $this->createTables($meleeWeaponlikeCode, 456)
+        );
+        self::assertSame(
+            579,
+            $fightNumberWithMeleeWeapon->getValue(),
+            'Used weapon-like is a ' . MeleeWeaponlikeCode::class . ' so its length should be counted'
+        );
     }
 
 }
