@@ -1,5 +1,5 @@
 {
-  "name": "drd-plus/properties",
+  "name": "drdplus/properties",
   "license": "MIT",
   "type": "project",
   "description": "Drd+ properties",
@@ -13,13 +13,13 @@
     "granam/string": "^3.0",
     "granam/strict-object": "^3.0",
     "doctrineum/scalar": "^3.1",
-    "drd-plus/codes": "^1.0",
+    "drdplus/codes": "^1.0",
     "doctrineum/integer": "^3.1",
     "doctrineum/float": "^3.1",
     "doctrineum/boolean": "^2.1",
-    "drd-plus/base-properties": "^1.0",
-    "drd-plus/tables": "^1.0",
-    "drd-plus/calculations": "^1.0"
+    "drdplus/base-properties": "^1.0",
+    "drdplus/tables": "^1.0",
+    "drdplus/calculations": "^1.0"
   },
   "require-dev": {
     "roave/security-advisories": "dev-master",
