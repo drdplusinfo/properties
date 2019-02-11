@@ -1,5 +1,6 @@
 <?php
-declare(strict_types=1);/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
+declare(strict_types=1);
+
 namespace DrdPlus\Tests\Properties;
 
 use DrdPlus\Codes\Partials\AbstractCode;
@@ -59,7 +60,7 @@ abstract class PropertyTest extends TestWithMockery
     /**
      * @return string
      */
-    protected function getExpectedPropertyCode()
+    protected function getExpectedPropertyCode(): string
     {
         $propertyBaseName = $this->getSutBaseName();
         $underScoredClassName = preg_replace('~(\w)([A-Z])~', '$1_$2', $propertyBaseName);
@@ -70,7 +71,7 @@ abstract class PropertyTest extends TestWithMockery
     /**
      * @return string
      */
-    protected function getSutBaseName()
+    protected function getSutBaseName(): string
     {
         return preg_replace('~^.*[\\\]([^\\\]+)$~', '$1', self::getSutClass());
     }
@@ -78,14 +79,18 @@ abstract class PropertyTest extends TestWithMockery
     /**
      * @test
      */
-    public function Code_getter_is_properly_annotated()
+    public function Code_getter_is_properly_annotated(): void
     {
         $getter = new \ReflectionMethod(self::getSutClass(), 'getCode');
         $codeClassBaseName = preg_replace('~^.*[\\\]([^\\\]+)$~', '$1', $this->getExpectedCodeClass());
-        self::assertSame("/**
+        self::assertSame(<<<PHPDOC
+/**
      * @return {$codeClassBaseName}
-     */",
-            $getter->getDocComment()
+     */
+PHPDOC
+            ,
+            $getter->getDocComment(),
+            \sprintf('Method %s::getCode does not have properly annotated code getter', self::getSutClass())
         );
     }
 

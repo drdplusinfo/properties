@@ -1,5 +1,6 @@
 <?php
-declare(strict_types=1);/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
+declare(strict_types=1);
+
 namespace DrdPlus\Tests\Properties\Body;
 
 use DrdPlus\Codes\Units\DistanceUnitCode;
@@ -16,10 +17,7 @@ class HeightTest extends PropertyTest
 {
     use BodyPropertyTest;
 
-    /**
-     * @return string
-     */
-    protected function getExpectedCodeClass()
+    protected function getExpectedCodeClass(): string
     {
         return PropertyCode::class;
     }
@@ -27,7 +25,7 @@ class HeightTest extends PropertyTest
     /**
      * @test
      */
-    public function I_can_get_property_easily()
+    public function I_can_get_property_easily(): void
     {
         $tables = $this->createTablesWithDistanceTable(
             function (Distance $distance) {
@@ -38,7 +36,6 @@ class HeightTest extends PropertyTest
             }
         );
         $height = Height::getIt($this->createHeightInCm(123), $tables);
-        self::assertInstanceOf(Height::class, $height);
         self::assertSame(456, $height->getValue());
         self::assertSame('456', (string)$height);
         self::assertSame(PropertyCode::getIt($this->getExpectedPropertyCode()), $height->getCode());
@@ -93,5 +90,15 @@ class HeightTest extends PropertyTest
             ->andReturn($value);
 
         return $distanceBonus;
+    }
+
+    /**
+     * @test
+     */
+    public function I_can_get_height_in_cm(): void
+    {
+        $heightInCm = HeightInCm::getIt(123.456);
+        $height = Height::getIt($heightInCm, Tables::getIt());
+        self::assertSame($heightInCm, $height->getHeightInCm());
     }
 }

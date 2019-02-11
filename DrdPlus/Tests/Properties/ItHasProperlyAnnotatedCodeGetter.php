@@ -12,12 +12,12 @@ trait ItHasProperlyAnnotatedCodeGetter
     /**
      * @test
      */
-    public function It_has_properly_annotated_code_getter()
+    public function It_has_properly_annotated_code_getter(): void
     {
         $sutReflection = new \ReflectionClass(self::getSutClass());
         $requiredAnnotation = ' * @return PropertyCode';
         if ($sutReflection->hasMethod('getCode')
-            && strpos($sutReflection->getMethod('getCode')->getDocComment(), $requiredAnnotation)
+            && \strpos($sutReflection->getMethod('getCode')->getDocComment() ?: '', $requiredAnnotation)
         ) {
             self::assertContains($requiredAnnotation, $sutReflection->getMethod('getCode')->getDocComment());
 
@@ -30,7 +30,7 @@ trait ItHasProperlyAnnotatedCodeGetter
             $newInterfaceReflections = [];
             /** @var \ReflectionClass $interfaceReflection */
             foreach ($interfaceReflections as $interfaceReflection) {
-                if (strpos($interfaceReflection->getDocComment(), $requiredAnnotation)) {
+                if (\strpos($interfaceReflection->getDocComment() ?: '', $requiredAnnotation)) {
                     self::assertContains($requiredAnnotation, $interfaceReflection->getDocComment());
 
                     return;
@@ -40,10 +40,10 @@ trait ItHasProperlyAnnotatedCodeGetter
                 }
             }
             $interfaceReflections = $newInterfaceReflections;
-        } while (count($interfaceReflections) > 0);
+        } while (\count($interfaceReflections) > 0);
 
         do {
-            if (strpos($sutReflection->getDocComment(), $requiredAnnotation)) {
+            if (\strpos($sutReflection->getDocComment() ?: '', $requiredAnnotation)) {
                 self::assertContains($requiredAnnotation, $sutReflection->getDocComment());
 
                 return;

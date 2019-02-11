@@ -1,5 +1,6 @@
 <?php
-declare(strict_types=1);/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
+declare(strict_types=1);
+
 namespace DrdPlus\Properties\Body;
 
 use DrdPlus\Codes\Units\DistanceUnitCode;
@@ -15,29 +16,20 @@ use Granam\Strict\Object\StrictObject;
  */
 class Height extends StrictObject implements BodyProperty, IntegerInterface, HeightInterface
 {
-    /**
-     * @var int
-     */
+    /** @var int */
     private $value;
+    /** @var HeightInCm */
+    private $heightInCm;
 
-    /**
-     * @param HeightInCm $heightInCm
-     * @param Tables $tables
-     * @return Height
-     */
     public static function getIt(HeightInCm $heightInCm, Tables $tables): Height
     {
         return new static($heightInCm, $tables);
     }
 
-    /**
-     * @param HeightInCm $heightInCm
-     * @param Tables $tables
-     */
     private function __construct(HeightInCm $heightInCm, Tables $tables)
     {
+        $this->heightInCm = $heightInCm;
         $heightInMeters = $heightInCm->getValue() / 100;
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         $distance = new Distance($heightInMeters, DistanceUnitCode::METER, $tables->getDistanceTable());
         // height is bonus of distance in fact
         $this->value = $distance->getBonus()->getValue();
@@ -51,6 +43,11 @@ class Height extends StrictObject implements BodyProperty, IntegerInterface, Hei
         return PropertyCode::getIt(PropertyCode::HEIGHT);
     }
 
+    public function getHeightInCm(): HeightInCm
+    {
+        return $this->heightInCm;
+    }
+
     /**
      * It is bonus of distance in fact
      *
@@ -61,9 +58,6 @@ class Height extends StrictObject implements BodyProperty, IntegerInterface, Hei
         return $this->value;
     }
 
-    /**
-     * @return string
-     */
     public function __toString()
     {
         return (string)$this->value;
