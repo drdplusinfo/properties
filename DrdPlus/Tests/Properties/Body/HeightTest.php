@@ -29,8 +29,8 @@ class HeightTest extends PropertyTest
     {
         $tables = $this->createTablesWithDistanceTable(
             function (Distance $distance) {
-                self::assertSame(1.23, $distance->getValue());
-                self::assertSame(DistanceUnitCode::METER, $distance->getUnit());
+                self::assertSame(DistanceUnitCode::DECIMETER, $distance->getUnit());
+                self::assertSame(12.3, $distance->getValue());
 
                 return $this->createDistanceBonus(456);
             }

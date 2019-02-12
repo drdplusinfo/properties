@@ -29,8 +29,8 @@ class Height extends StrictObject implements BodyProperty, IntegerInterface, Hei
     private function __construct(HeightInCm $heightInCm, Tables $tables)
     {
         $this->heightInCm = $heightInCm;
-        $heightInMeters = $heightInCm->getValue() / 100;
-        $distance = new Distance($heightInMeters, DistanceUnitCode::METER, $tables->getDistanceTable());
+        $heightInDecimeters = $heightInCm->getValue() / 10;
+        $distance = new Distance($heightInDecimeters, DistanceUnitCode::DECIMETER, $tables->getDistanceTable());
         // height is bonus of distance in fact
         $this->value = $distance->getBonus()->getValue();
     }
