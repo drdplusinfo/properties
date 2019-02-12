@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace DrdPlus\Tests\Properties\Combat\Partials;
 
 use DrdPlus\Codes\Properties\CharacteristicForGameCode;
@@ -87,6 +88,7 @@ abstract class CharacteristicForGameTest extends CombatCharacteristicTest
 
     /**
      * @test
+     * @throws \ReflectionException
      */
     public function Its_modifying_methods_have_return_value_annotated()
     {

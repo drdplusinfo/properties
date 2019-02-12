@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace DrdPlus\Properties\Restrictions;
 
 use Doctrineum\Boolean\BooleanEnum;
@@ -16,9 +17,8 @@ class RequiresDmAgreement extends BooleanEnum implements RestrictionProperty
      * @return RequiresDmAgreement
      * @throws \Doctrineum\Boolean\Exceptions\UnexpectedValueToConvert
      */
-    public static function getIt($value)
+    public static function getIt($value): RequiresDmAgreement
     {
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new static($value);
     }
 
@@ -32,10 +32,7 @@ class RequiresDmAgreement extends BooleanEnum implements RestrictionProperty
         $this->noticeChange();
     }
 
-    /**
-     * @return PropertyCode
-     */
-    public function getCode()
+    public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::REQUIRES_DM_AGREEMENT);
     }

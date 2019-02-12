@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace DrdPlus\Properties\RemarkableSenses;
 
 use DrdPlus\Codes\Properties\PropertyCode;
@@ -15,9 +16,6 @@ class Sight extends RemarkableSenseProperty
         return static::getEnum(PropertyCode::SIGHT);
     }
 
-    /**
-     * @return PropertyCode
-     */
     public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::SIGHT);

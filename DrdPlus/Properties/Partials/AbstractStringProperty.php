@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace DrdPlus\Properties\Partials;
 
 use Doctrineum\Scalar\ScalarEnum;
-use DrdPlus\Properties\Property;
+use DrdPlus\BaseProperties\Property;
 use Granam\String\StringInterface;
 
 /**

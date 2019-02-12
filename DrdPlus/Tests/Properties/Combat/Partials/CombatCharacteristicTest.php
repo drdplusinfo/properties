@@ -5,7 +5,7 @@ namespace DrdPlus\Tests\Properties\Combat\Partials;
 
 use DrdPlus\Codes\CombatCharacteristicCode;
 use DrdPlus\Properties\Combat\Partials\CharacteristicForGame;
-use DrdPlus\Tests\Properties\PropertyTest;
+use DrdPlus\Tests\BaseProperties\Partials\PropertyTest;
 use Granam\Integer\IntegerInterface;
 
 abstract class CombatCharacteristicTest extends PropertyTest

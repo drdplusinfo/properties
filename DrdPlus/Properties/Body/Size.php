@@ -20,9 +20,6 @@ use DrdPlus\Properties\Partials\AbstractIntegerProperty;
  */
 class Size extends AbstractIntegerProperty implements BodyProperty
 {
-    /**
-     * @return PropertyCode
-     */
     public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::SIZE);

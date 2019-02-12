@@ -1,8 +1,9 @@
 <?php
 declare(strict_types=1);
+
 namespace DrdPlus\Tests\Properties\Partials;
 
-use DrdPlus\Tests\Properties\AbstractStoredPropertyTest;
+use DrdPlus\Tests\BaseProperties\Partials\AbstractStoredPropertyTest;
 
 abstract class AbstractFloatPropertyTest extends AbstractStoredPropertyTest
 {
@@ -13,6 +14,7 @@ abstract class AbstractFloatPropertyTest extends AbstractStoredPropertyTest
 
     /**
      * @test
+     * @throws \ReflectionException
      */
     public function Has_modifying_methods_return_value_annotated()
     {

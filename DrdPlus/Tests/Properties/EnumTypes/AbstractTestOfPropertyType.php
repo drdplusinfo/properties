@@ -1,18 +1,20 @@
 <?php
 declare(strict_types=1);
+
 namespace DrdPlus\Tests\Properties\EnumTypes;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Type;
 use Doctrineum\Tests\SelfRegisteringType\AbstractSelfRegisteringTypeTest;
 use DrdPlus\Codes\Properties\PropertyCode;
-use DrdPlus\Properties\Property;
+use DrdPlus\BaseProperties\Property;
 
 abstract class AbstractTestOfPropertyType extends AbstractSelfRegisteringTypeTest
 {
 
     /**
      * @test
+     * @throws \Doctrine\DBAL\DBALException
      */
     public function Type_can_be_converted_to_PHP_value(): void
     {
@@ -44,6 +46,7 @@ abstract class AbstractTestOfPropertyType extends AbstractSelfRegisteringTypeTes
 
     /**
      * @test
+     * @throws \ReflectionException
      */
     public function I_get_same_type_name_as_property_code(): void
     {

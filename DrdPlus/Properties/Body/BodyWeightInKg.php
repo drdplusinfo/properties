@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace DrdPlus\Properties\Body;
 
 use DrdPlus\Codes\Properties\PropertyCode;
@@ -15,9 +16,6 @@ use Granam\Number\NumberInterface;
  */
 class BodyWeightInKg extends AbstractFloatProperty implements BodyProperty
 {
-    /**
-     * @return PropertyCode
-     */
     public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::BODY_WEIGHT_IN_KG);

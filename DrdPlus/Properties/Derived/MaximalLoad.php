@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace DrdPlus\Properties\Derived;
 
 use DrdPlus\Codes\Properties\PropertyCode;
-use DrdPlus\Properties\Base\Strength;
+use DrdPlus\BaseProperties\Strength;
 use DrdPlus\Properties\Derived\Partials\AbstractDerivedProperty;
 use DrdPlus\Tables\Properties\AthleticsInterface;
 
@@ -23,9 +23,6 @@ class MaximalLoad extends AbstractDerivedProperty
         return new static($strength->getValue() + 21 + $athletics->getAthleticsBonus()->getValue());
     }
 
-    /**
-     * @return PropertyCode
-     */
     public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::MAXIMAL_LOAD);

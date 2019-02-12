@@ -1,11 +1,12 @@
 <?php
 declare(strict_types=1);
+
 namespace DrdPlus\Properties\Derived;
 
 use DrdPlus\Codes\Properties\PropertyCode;
 use DrdPlus\Codes\RaceCode;
 use DrdPlus\Codes\SubRaceCode;
-use DrdPlus\Properties\Base\Strength;
+use DrdPlus\BaseProperties\Strength;
 use DrdPlus\Properties\Derived\Partials\AbstractDerivedProperty;
 use DrdPlus\Tables\Tables;
 
@@ -24,9 +25,6 @@ class Toughness extends AbstractDerivedProperty
         return new static($strength->getValue() + $tables->getRacesTable()->getToughness($raceCode, $subraceCode));
     }
 
-    /**
-     * @return PropertyCode
-     */
     public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::TOUGHNESS);

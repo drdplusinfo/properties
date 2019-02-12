@@ -1,10 +1,11 @@
 <?php
 declare(strict_types=1);
+
 namespace DrdPlus\Properties\Native;
 
 use Doctrineum\Boolean\BooleanEnum;
 use DrdPlus\Properties\Partials\WithHistoryTrait;
-use DrdPlus\Properties\Property;
+use DrdPlus\BaseProperties\Property;
 use Granam\Boolean\BooleanInterface;
 
 abstract class NativeProperty extends BooleanEnum implements Property

@@ -1,9 +1,10 @@
 <?php
 declare(strict_types=1);
+
 namespace DrdPlus\Properties\Combat;
 
 use DrdPlus\Codes\CombatCharacteristicCode;
-use DrdPlus\Properties\Base\Knack;
+use DrdPlus\BaseProperties\Knack;
 use DrdPlus\Calculations\SumAndRound;
 use DrdPlus\Properties\Combat\Partials\CombatCharacteristic;
 

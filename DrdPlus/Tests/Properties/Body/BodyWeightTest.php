@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace DrdPlus\Tests\Properties\Body;
 
 use DrdPlus\Codes\Properties\PropertyCode;
@@ -7,7 +8,7 @@ use DrdPlus\Properties\Body\BodyWeight;
 use DrdPlus\Properties\Body\BodyWeightInKg;
 use DrdPlus\Tables\Measurements\Weight\Weight;
 use DrdPlus\Tables\Measurements\Weight\WeightBonus;
-use DrdPlus\Tests\Properties\PropertyTest;
+use DrdPlus\Tests\BaseProperties\Partials\PropertyTest;
 
 class BodyWeightTest extends PropertyTest
 {

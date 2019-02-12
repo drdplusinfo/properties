@@ -35,9 +35,6 @@ class Height extends StrictObject implements BodyProperty, IntegerInterface, Hei
         $this->value = $distance->getBonus()->getValue();
     }
 
-    /**
-     * @return PropertyCode
-     */
     public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::HEIGHT);

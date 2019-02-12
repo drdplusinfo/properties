@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace DrdPlus\Tests\Properties\Combat;
 
 use DrdPlus\Properties\Combat\Defense;

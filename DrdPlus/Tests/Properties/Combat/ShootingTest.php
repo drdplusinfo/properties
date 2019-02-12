@@ -1,9 +1,10 @@
 <?php
 declare(strict_types=1);
+
 namespace DrdPlus\Tests\Properties\Combat;
 
 use DrdPlus\Properties\Combat\Shooting;
-use DrdPlus\Properties\Base\Knack;
+use DrdPlus\BaseProperties\Knack;
 use DrdPlus\Tests\Properties\Combat\Partials\CombatCharacteristicTest;
 
 class ShootingTest extends CombatCharacteristicTest

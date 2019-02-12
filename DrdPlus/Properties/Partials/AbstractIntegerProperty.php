@@ -1,10 +1,11 @@
 <?php
 declare(strict_types=1);
+
 namespace DrdPlus\Properties\Partials;
 
 use Doctrineum\Integer\IntegerEnum;
+use DrdPlus\BaseProperties\Property;
 use DrdPlus\Codes\Properties\PropertyCode;
-use DrdPlus\Properties\Property;
 use Granam\Integer\IntegerInterface;
 use Granam\Integer\Tools\ToInteger;
 
@@ -41,7 +42,6 @@ abstract class AbstractIntegerProperty extends IntegerEnum implements Property
      */
     protected function __construct($enumValue)
     {
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         parent::__construct($enumValue);
         $this->noticeChange();
     }

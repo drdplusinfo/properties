@@ -1,8 +1,10 @@
 <?php
 declare(strict_types=1);
+
 namespace DrdPlus\Tests\Properties;
 
 use DrdPlus\Properties\Native\NativeProperty;
+use DrdPlus\Tests\BaseProperties\Partials\AbstractStoredPropertyTest;
 
 abstract class AbstractBooleanStoredPropertyTest extends AbstractStoredPropertyTest
 {

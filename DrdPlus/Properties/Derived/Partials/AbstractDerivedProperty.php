@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace DrdPlus\Properties\Derived\Partials;
 
 use DrdPlus\Properties\Derived\DerivedProperty;

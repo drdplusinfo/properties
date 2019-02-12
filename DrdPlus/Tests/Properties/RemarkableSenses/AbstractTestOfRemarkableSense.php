@@ -1,11 +1,12 @@
 <?php
 declare(strict_types=1);
+
 namespace DrdPlus\Tests\Properties\RemarkableSenses;
 
 use DrdPlus\Codes\Properties\PropertyCode;
 use DrdPlus\Properties\RemarkableSenses\EnumTypes\RemarkableSenseType;
 use DrdPlus\Properties\RemarkableSenses\RemarkableSenseProperty;
-use DrdPlus\Tests\Properties\AbstractStoredPropertyTest;
+use DrdPlus\Tests\BaseProperties\Partials\AbstractStoredPropertyTest;
 
 abstract class AbstractTestOfRemarkableSense extends AbstractStoredPropertyTest
 {
@@ -33,7 +34,7 @@ abstract class AbstractTestOfRemarkableSense extends AbstractStoredPropertyTest
     /**
      * @test
      */
-    public function I_can_register_it_as_enum()
+    public function I_can_register_it_as_enum(): void
     {
         RemarkableSenseType::registerSenses();
         self::assertTrue(RemarkableSenseType::hasSubTypeEnum(self::getSutClass()));

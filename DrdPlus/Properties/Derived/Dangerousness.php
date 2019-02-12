@@ -1,12 +1,13 @@
 <?php
 declare(strict_types=1);
+
 namespace DrdPlus\Properties\Derived;
 
 use DrdPlus\Codes\Properties\PropertyCode;
-use DrdPlus\Properties\Base\Charisma;
+use DrdPlus\BaseProperties\Charisma;
 use DrdPlus\Properties\Derived\Partials\AspectOfVisage;
-use DrdPlus\Properties\Base\Strength;
-use DrdPlus\Properties\Base\Will;
+use DrdPlus\BaseProperties\Strength;
+use DrdPlus\BaseProperties\Will;
 
 class Dangerousness extends AspectOfVisage
 {
@@ -21,9 +22,6 @@ class Dangerousness extends AspectOfVisage
         return new static($strength, $will, $charisma);
     }
 
-    /**
-     * @return PropertyCode
-     */
     public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::DANGEROUSNESS);

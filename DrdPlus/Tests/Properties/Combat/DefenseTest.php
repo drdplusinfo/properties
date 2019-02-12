@@ -1,8 +1,9 @@
 <?php
 declare(strict_types=1);
+
 namespace DrdPlus\Tests\Properties\Combat;
 
-use DrdPlus\Properties\Base\Agility;
+use DrdPlus\BaseProperties\Agility;
 use DrdPlus\Properties\Combat\Defense;
 use DrdPlus\Tests\Properties\Combat\Partials\CombatCharacteristicTest;
 

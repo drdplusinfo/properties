@@ -13,9 +13,6 @@ use Granam\Number\NumberInterface;
  */
 class HeightInCm extends AbstractFloatProperty implements BodyProperty
 {
-    /**
-     * @return PropertyCode
-     */
     public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::HEIGHT_IN_CM);

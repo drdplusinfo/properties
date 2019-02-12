@@ -11,7 +11,7 @@ use DrdPlus\Tables\Measurements\Distance\Distance;
 use DrdPlus\Tables\Measurements\Distance\DistanceBonus;
 use DrdPlus\Tables\Measurements\Distance\DistanceTable;
 use DrdPlus\Tables\Tables;
-use DrdPlus\Tests\Properties\PropertyTest;
+use DrdPlus\Tests\BaseProperties\Partials\PropertyTest;
 
 class HeightTest extends PropertyTest
 {

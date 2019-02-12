@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace DrdPlus\Properties\Derived;
 
 use DrdPlus\Codes\Properties\PropertyCode;
@@ -27,9 +28,6 @@ class FatigueBoundary extends AbstractDerivedProperty
         );
     }
 
-    /**
-     * @return PropertyCode
-     */
     public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::FATIGUE_BOUNDARY);

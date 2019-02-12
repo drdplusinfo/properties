@@ -17,7 +17,7 @@
     "doctrineum/integer": "^3.1",
     "doctrineum/float": "^3.1",
     "doctrineum/boolean": "^2.1",
-    "drdplus/base-properties": "^1.0",
+    "drdplus/base-properties": "^1.1",
     "drdplus/tables": "^1.0",
     "drdplus/calculations": "^1.0"
   },

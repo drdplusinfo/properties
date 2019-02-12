@@ -1,8 +1,9 @@
 <?php
 declare(strict_types=1);
+
 namespace DrdPlus\Properties\Derived\Partials;
 
-use DrdPlus\Properties\Base\Charisma;
+use DrdPlus\BaseProperties\Charisma;
 use DrdPlus\Calculations\SumAndRound;
 use Granam\Integer\IntegerInterface;
 

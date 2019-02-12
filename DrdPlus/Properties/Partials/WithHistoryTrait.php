@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace DrdPlus\Properties\Partials;
 
 use Granam\Tools\ValueDescriber;
@@ -64,14 +65,9 @@ trait WithHistoryTrait
             return $capture !== '';
         });
 
-        return implode(
+        return \implode(
             ' ',
-            array_map(
-                function ($name) {
-                    return lcfirst($name);
-                },
-                $captures
-            )
+            \array_map('lcfirst', $captures)
         );
     }
 
@@ -86,7 +82,7 @@ trait WithHistoryTrait
             $descriptions[] = ValueDescriber::describe($argument);
         }
 
-        return implode(',', $descriptions);
+        return \implode(',', $descriptions);
     }
 
     protected function adoptHistory($numberWithHistory)

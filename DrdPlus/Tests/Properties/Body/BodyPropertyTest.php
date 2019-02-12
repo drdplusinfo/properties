@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace DrdPlus\Tests\Properties\Body;
 
 use DrdPlus\Properties\Body\BodyProperty;

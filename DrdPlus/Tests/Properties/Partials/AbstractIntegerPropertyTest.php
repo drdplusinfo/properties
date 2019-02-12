@@ -1,9 +1,10 @@
 <?php
 declare(strict_types=1);
+
 namespace DrdPlus\Tests\Properties\Partials;
 
 use DrdPlus\Properties\Partials\AbstractIntegerProperty;
-use DrdPlus\Tests\Properties\AbstractStoredPropertyTest;
+use DrdPlus\Tests\BaseProperties\Partials\AbstractStoredPropertyTest;
 use Granam\Tools\ValueDescriber;
 
 abstract class AbstractIntegerPropertyTest extends AbstractStoredPropertyTest
@@ -70,7 +71,11 @@ abstract class AbstractIntegerPropertyTest extends AbstractStoredPropertyTest
         self::assertSame(1158, $double->getValue());
     }
 
-    public function provideSomeArguments()
+    /**
+     * @return array
+     * @throws \Exception
+     */
+    public function provideSomeArguments(): array
     {
         return [
             ['foo', new \DateTime()],
@@ -129,6 +134,7 @@ abstract class AbstractIntegerPropertyTest extends AbstractStoredPropertyTest
 
     /**
      * @test
+     * @throws \ReflectionException
      */
     public function Has_modifying_methods_return_value_annotated()
     {

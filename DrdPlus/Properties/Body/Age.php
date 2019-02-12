@@ -13,12 +13,8 @@ use DrdPlus\Properties\Partials\AbstractIntegerProperty;
  */
 class Age extends AbstractIntegerProperty implements BodyProperty
 {
-    /**
-     * @return PropertyCode
-     */
     public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::AGE);
     }
-
 }

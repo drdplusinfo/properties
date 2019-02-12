@@ -1,13 +1,14 @@
 <?php
 declare(strict_types=1);
+
 namespace DrdPlus\Properties\EnumTypes;
 
-use DrdPlus\Properties\Base\EnumTypes\AgilityType;
-use DrdPlus\Properties\Base\EnumTypes\CharismaType;
-use DrdPlus\Properties\Base\EnumTypes\IntelligenceType;
-use DrdPlus\Properties\Base\EnumTypes\KnackType;
-use DrdPlus\Properties\Base\EnumTypes\StrengthType;
-use DrdPlus\Properties\Base\EnumTypes\WillType;
+use DrdPlus\BaseProperties\EnumTypes\AgilityType;
+use DrdPlus\BaseProperties\EnumTypes\CharismaType;
+use DrdPlus\BaseProperties\EnumTypes\IntelligenceType;
+use DrdPlus\BaseProperties\EnumTypes\KnackType;
+use DrdPlus\BaseProperties\EnumTypes\StrengthType;
+use DrdPlus\BaseProperties\EnumTypes\WillType;
 use DrdPlus\Properties\Body\EnumTypes\AgeType;
 use DrdPlus\Properties\Body\EnumTypes\HeightInCmType;
 use DrdPlus\Properties\Body\EnumTypes\SizeType;

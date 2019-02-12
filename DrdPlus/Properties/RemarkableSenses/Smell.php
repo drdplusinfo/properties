@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace DrdPlus\Properties\RemarkableSenses;
 
 use DrdPlus\Codes\Properties\PropertyCode;
@@ -15,9 +16,6 @@ class Smell extends RemarkableSenseProperty
         return static::getEnum(PropertyCode::SMELL);
     }
 
-    /**
-     * @return PropertyCode
-     */
     public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::SMELL);

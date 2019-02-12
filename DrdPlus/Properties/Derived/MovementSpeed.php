@@ -72,9 +72,6 @@ class MovementSpeed extends AbstractDerivedProperty
         );
     }
 
-    /**
-     * @return PropertyCode
-     */
     public function getCode(): PropertyCode
     {
         return PropertyCode::getIt(PropertyCode::MOVEMENT_SPEED);
