@@ -1,5 +1,6 @@
 <?php
-declare(strict_types=1);/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
+declare(strict_types=1);
+
 namespace DrdPlus\Tests\Properties\Combat\Partials;
 
 use DrdPlus\Codes\CombatCharacteristicCode;
@@ -9,10 +10,7 @@ use Granam\Integer\IntegerInterface;
 
 abstract class CombatCharacteristicTest extends PropertyTest
 {
-    /**
-     * @return string
-     */
-    protected function getExpectedCodeClass()
+    protected function getExpectedCodeClass(): string
     {
         return CombatCharacteristicCode::class;
     }
@@ -20,12 +18,12 @@ abstract class CombatCharacteristicTest extends PropertyTest
     /**
      * @test
      */
-    public function I_can_use_it_as_integer_object()
+    public function I_can_use_it_as_integer_object(): void
     {
         $sut = $this->createSut();
         self::assertInstanceOf(IntegerInterface::class, $sut);
         self::assertSame((string)$sut->getValue(), (string)$sut);
-        self::assertTrue(is_int($sut->getValue()));
+        self::assertIsInt($sut->getValue());
     }
 
     /**

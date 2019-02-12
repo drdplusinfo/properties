@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);/** be strict for parameter types, https://www.quora.com/Are-strict_types-in-PHP-7-not-a-bad-idea */
+declare(strict_types=1);
 namespace DrdPlus\Tests\Properties\Body;
 
 use DrdPlus\Codes\Properties\PropertyCode;
@@ -13,9 +13,6 @@ class BodyWeightTest extends PropertyTest
 {
     use BodyPropertyTest;
 
-    /**
-     * @return string
-     */
     protected function getExpectedCodeClass(): string
     {
         return PropertyCode::class;
@@ -28,13 +25,11 @@ class BodyWeightTest extends PropertyTest
     {
         $weight = $this->createWeight(123 /* weight bonus */, 456.789 /* weight in kg */);
         $bodyWeight = BodyWeight::getIt($weight);
-        self::assertInstanceOf(BodyWeight::class, $bodyWeight);
         self::assertSame(111, $bodyWeight->getValue());
         self::assertSame('111', (string)$bodyWeight);
         self::assertSame(PropertyCode::getIt(PropertyCode::BODY_WEIGHT), $bodyWeight->getCode());
         self::assertSame($weight, $bodyWeight->getWeight());
         $weightBonus = $bodyWeight->getWeightBonus();
-        self::assertInstanceOf(WeightBonus::class, $weightBonus);
         self::assertSame(123, $weightBonus->getValue());
         self::assertSame(BodyWeightInKg::getIt(456.789), $bodyWeight->getBodyWeightInKg());
     }

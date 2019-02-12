@@ -27,7 +27,7 @@ abstract class PropertyTest extends TestWithMockery
         );
     }
 
-    private function getGenericGroupPropertyClassName()
+    private function getGenericGroupPropertyClassName(): string
     {
         $propertyNamespace = $this->getPropertyNamespace();
         $namespaceBaseName = preg_replace('~^[\\\]?(\w+\\\){0,5}(\w+)$~', '$2', $propertyNamespace);
@@ -39,13 +39,14 @@ abstract class PropertyTest extends TestWithMockery
     /**
      * @return string
      */
-    protected function getPropertyNamespace()
+    protected function getPropertyNamespace(): string
     {
         return preg_replace('~[\\\]\w+$~', '', self::getSutClass());
     }
 
     /**
      * @test
+     * @throws \ReflectionException
      */
     public function I_can_get_code()
     {
@@ -78,6 +79,7 @@ abstract class PropertyTest extends TestWithMockery
 
     /**
      * @test
+     * @throws \ReflectionException
      */
     public function Code_getter_is_properly_annotated(): void
     {
@@ -94,8 +96,5 @@ PHPDOC
         );
     }
 
-    /**
-     * @return string
-     */
-    abstract protected function getExpectedCodeClass();
+    abstract protected function getExpectedCodeClass(): string;
 }
