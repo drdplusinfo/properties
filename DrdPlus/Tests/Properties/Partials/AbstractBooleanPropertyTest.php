@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace DrdPlus\Tests\Properties;
+namespace DrdPlus\Tests\Properties\Partials;
 
 use DrdPlus\Properties\Native\NativeProperty;
-use DrdPlus\Tests\BaseProperties\Partials\AbstractStoredPropertyTest;
+use DrdPlus\Tests\BaseProperties\Partials\AbstractSimplePropertyTest;
 
-abstract class AbstractBooleanStoredPropertyTest extends AbstractStoredPropertyTest
+abstract class AbstractBooleanPropertyTest extends AbstractSimplePropertyTest
 {
     /**
      * @return bool[]
@@ -27,10 +27,7 @@ abstract class AbstractBooleanStoredPropertyTest extends AbstractStoredPropertyT
         foreach ($this->getValuesForTest() as $value) {
             /** @var NativeProperty $property */
             $property = $propertyClass::getIt($value);
-            self::assertEquals(
-                [['changeBy' => ['name' => 'i can get history of its creation', 'with' => ''], 'result' => $value]],
-                $property->getHistory()
-            );
+            self::assertSame($value, $property->getValue());
         }
 
         return $property;

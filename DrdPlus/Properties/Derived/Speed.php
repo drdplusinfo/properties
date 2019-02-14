@@ -21,7 +21,6 @@ class Speed extends AbstractDerivedProperty implements SpeedInterface
      */
     public static function getIt(Strength $strength, Agility $agility, Height $height): Speed
     {
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new static(
             SumAndRound::average($strength->getValue(), $agility->getValue())
             + SumAndRound::ceil($height->getValue() / 3) - 2 // 1 -> 3 = -1; 4 -> 6 = 0; 7 -> 9 = +1 ...

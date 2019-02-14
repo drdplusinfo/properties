@@ -3,33 +3,19 @@ declare(strict_types=1);
 
 namespace DrdPlus\Properties\Restrictions;
 
-use Doctrineum\Boolean\BooleanEnum;
 use DrdPlus\Codes\Properties\PropertyCode;
-use DrdPlus\Properties\Partials\WithHistoryTrait;
-use Granam\Boolean\BooleanInterface;
+use Granam\BooleanEnum\BooleanEnum;
 
 class RequiresDmAgreement extends BooleanEnum implements RestrictionProperty
 {
-    use WithHistoryTrait;
-
     /**
      * @param bool $value
      * @return RequiresDmAgreement
-     * @throws \Doctrineum\Boolean\Exceptions\UnexpectedValueToConvert
+     * @throws \Granam\BooleanEnum\Exceptions\WrongValueForBooleanEnum
      */
     public static function getIt($value): RequiresDmAgreement
     {
         return new static($value);
-    }
-
-    /**
-     * @param bool|BooleanInterface $enumValue
-     * @throws \Doctrineum\Scalar\Exceptions\UnexpectedValueToEnum
-     */
-    protected function __construct($enumValue)
-    {
-        parent::__construct($enumValue);
-        $this->noticeChange();
     }
 
     public function getCode(): PropertyCode

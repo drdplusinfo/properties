@@ -10,16 +10,14 @@ use DrdPlus\Properties\Derived\Partials\AbstractDerivedProperty;
 use DrdPlus\Calculations\SumAndRound;
 use DrdPlus\Tables\Properties\EnduranceInterface;
 
+/**
+ * @method Endurance add(int | \Granam\Integer\IntegerInterface $value)
+ * @method Endurance sub(int | \Granam\Integer\IntegerInterface $value)
+ */
 class Endurance extends AbstractDerivedProperty implements EnduranceInterface
 {
-    /**
-     * @param Strength $strength
-     * @param Will $will
-     * @return Endurance
-     */
     public static function getIt(Strength $strength, Will $will): Endurance
     {
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new static(SumAndRound::average($strength->getValue(), $will->getValue()));
     }
 

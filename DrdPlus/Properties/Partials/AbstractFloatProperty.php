@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace DrdPlus\Properties\Partials;
 
-use Doctrineum\Float\FloatEnum;
 use DrdPlus\BaseProperties\Property;
+use Granam\FloatEnum\FloatEnum;
 use Granam\Number\NumberInterface;
 
 /**

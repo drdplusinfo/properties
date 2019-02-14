@@ -8,22 +8,17 @@ use DrdPlus\Properties\Derived\Partials\AbstractDerivedProperty;
 use DrdPlus\Tables\Measurements\Wounds\WoundsBonus;
 use DrdPlus\Tables\Tables;
 
+/**
+ * @method WoundBoundary add(int | \Granam\Integer\IntegerInterface $value)
+ * @method WoundBoundary sub(int | \Granam\Integer\IntegerInterface $value)
+ */
 class WoundBoundary extends AbstractDerivedProperty
 {
-    /**
-     * @param Toughness $toughness
-     * @param Tables $tables
-     * @return WoundBoundary
-     */
     public static function getIt(Toughness $toughness, Tables $tables): WoundBoundary
     {
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new static(
             $tables->getWoundsTable()->toWounds(
-                new WoundsBonus(
-                    $toughness->getValue() + 10,
-                    $tables->getWoundsTable()
-                )
+                new WoundsBonus($toughness->getValue() + 10, $tables->getWoundsTable())
             )->getValue()
         );
     }

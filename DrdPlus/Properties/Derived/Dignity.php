@@ -9,14 +9,12 @@ use DrdPlus\Properties\Derived\Partials\AspectOfVisage;
 use DrdPlus\BaseProperties\Intelligence;
 use DrdPlus\BaseProperties\Will;
 
+/**
+ * @method Dignity add(int | \Granam\Integer\IntegerInterface $value)
+ * @method Dignity sub(int | \Granam\Integer\IntegerInterface $value)
+ */
 class Dignity extends AspectOfVisage
 {
-    /**
-     * @param Intelligence $intelligence
-     * @param Will $will
-     * @param Charisma $charisma
-     * @return Dignity
-     */
     public static function getIt(Intelligence $intelligence, Will $will, Charisma $charisma): Dignity
     {
         return new static($intelligence, $will, $charisma);

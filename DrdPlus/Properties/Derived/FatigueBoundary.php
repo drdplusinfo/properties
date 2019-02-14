@@ -8,16 +8,14 @@ use DrdPlus\Properties\Derived\Partials\AbstractDerivedProperty;
 use DrdPlus\Tables\Measurements\Fatigue\FatigueBonus;
 use DrdPlus\Tables\Tables;
 
+/**
+ * @method FatigueBoundary add(int | \Granam\Integer\IntegerInterface $value)
+ * @method FatigueBoundary sub(int | \Granam\Integer\IntegerInterface $value)
+ */
 class FatigueBoundary extends AbstractDerivedProperty
 {
-    /**
-     * @param Endurance $endurance
-     * @param Tables $tables
-     * @return FatigueBoundary
-     */
     public static function getIt(Endurance $endurance, Tables $tables): FatigueBoundary
     {
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new static(
             $tables->getFatigueTable()->toFatigue(
                 new FatigueBonus(

@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace DrdPlus\Tests\Properties\Partials;
 
-use DrdPlus\Tests\BaseProperties\Partials\AbstractStoredPropertyTest;
+use DrdPlus\Tests\BaseProperties\Partials\AbstractSimplePropertyTest;
 
-abstract class AbstractFloatPropertyTest extends AbstractStoredPropertyTest
+abstract class AbstractFloatPropertyTest extends AbstractSimplePropertyTest
 {
     protected function getValuesForTest(): array
     {

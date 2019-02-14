@@ -7,7 +7,6 @@ use DrdPlus\Codes\Properties\PropertyCode;
 
 class Hearing extends RemarkableSenseProperty
 {
-
     /**
      * @return Hearing|RemarkableSenseProperty
      */

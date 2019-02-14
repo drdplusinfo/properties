@@ -10,18 +10,14 @@ use DrdPlus\BaseProperties\Knack;
 use DrdPlus\Properties\Derived\Partials\AbstractDerivedProperty;
 use DrdPlus\Tables\Tables;
 
+/**
+ * @method Senses add(int | \Granam\Integer\IntegerInterface $value)
+ * @method Senses sub(int | \Granam\Integer\IntegerInterface $value)
+ */
 class Senses extends AbstractDerivedProperty
 {
-    /**
-     * @param Knack $knack
-     * @param RaceCode $raceCode
-     * @param SubRaceCode $subRaceCode
-     * @param Tables $tables
-     * @return Senses
-     */
     public static function getIt(Knack $knack, RaceCode $raceCode, SubRaceCode $subRaceCode, Tables $tables): Senses
     {
-        /** @noinspection ExceptionsAnnotatingAndHandlingInspection */
         return new static($knack->getValue() + $tables->getRacesTable()->getSenses($raceCode, $subRaceCode));
     }
 

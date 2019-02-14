@@ -9,6 +9,10 @@ use DrdPlus\Properties\Derived\Partials\AspectOfVisage;
 use DrdPlus\BaseProperties\Strength;
 use DrdPlus\BaseProperties\Will;
 
+/**
+ * @method Dangerousness add(int | \Granam\Integer\IntegerInterface $value)
+ * @method Dangerousness sub(int | \Granam\Integer\IntegerInterface $value)
+ */
 class Dangerousness extends AspectOfVisage
 {
     /**

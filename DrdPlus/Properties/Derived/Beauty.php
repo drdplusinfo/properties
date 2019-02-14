@@ -9,14 +9,12 @@ use DrdPlus\BaseProperties\Charisma;
 use DrdPlus\Properties\Derived\Partials\AspectOfVisage;
 use DrdPlus\BaseProperties\Knack;
 
+/**
+ * @method Beauty add(int | \Granam\Integer\IntegerInterface $value)
+ * @method Beauty sub(int | \Granam\Integer\IntegerInterface $value)
+ */
 class Beauty extends AspectOfVisage
 {
-    /**
-     * @param Agility $agility
-     * @param Knack $knack
-     * @param Charisma $charisma
-     * @return Beauty
-     */
     public static function getIt(Agility $agility, Knack $knack, Charisma $charisma): Beauty
     {
         return new static($agility, $knack, $charisma);

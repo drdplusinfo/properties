@@ -4,11 +4,10 @@ declare(strict_types=1);
 namespace DrdPlus\Tests\Properties\RemarkableSenses;
 
 use DrdPlus\Codes\Properties\PropertyCode;
-use DrdPlus\Properties\RemarkableSenses\EnumTypes\RemarkableSenseType;
 use DrdPlus\Properties\RemarkableSenses\RemarkableSenseProperty;
-use DrdPlus\Tests\BaseProperties\Partials\AbstractStoredPropertyTest;
+use DrdPlus\Tests\BaseProperties\Partials\AbstractSimplePropertyTest;
 
-abstract class AbstractTestOfRemarkableSense extends AbstractStoredPropertyTest
+abstract class AbstractTestOfRemarkableSense extends AbstractSimplePropertyTest
 {
     /**
      * @test
@@ -29,14 +28,5 @@ abstract class AbstractTestOfRemarkableSense extends AbstractStoredPropertyTest
     protected function getValuesForTest(): array
     {
         throw new \LogicException('Should not be called');
-    }
-
-    /**
-     * @test
-     */
-    public function I_can_register_it_as_enum(): void
-    {
-        RemarkableSenseType::registerSenses();
-        self::assertTrue(RemarkableSenseType::hasSubTypeEnum(self::getSutClass()));
     }
 }

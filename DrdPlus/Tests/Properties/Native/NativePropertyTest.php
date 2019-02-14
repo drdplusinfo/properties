@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace DrdPlus\Tests\Properties\Native;
 
-use DrdPlus\Tests\Properties\AbstractBooleanStoredPropertyTest;
+use DrdPlus\Tests\Properties\Partials\AbstractBooleanPropertyTest;
 
-abstract class NativePropertyTest extends AbstractBooleanStoredPropertyTest
+abstract class NativePropertyTest extends AbstractBooleanPropertyTest
 {
     /**
      * @test

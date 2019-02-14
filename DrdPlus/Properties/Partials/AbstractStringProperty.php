@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace DrdPlus\Properties\Partials;
 
-use Doctrineum\Scalar\ScalarEnum;
 use DrdPlus\BaseProperties\Property;
+use Granam\ScalarEnum\ScalarEnum;
 use Granam\String\StringInterface;
 
 /**
